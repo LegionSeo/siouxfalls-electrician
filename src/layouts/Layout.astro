@@ -1,11 +1,19 @@
 ---
 import '../styles/global.css';
+import SEO from '../components/SEO.astro';
 
 interface Props {
   title: string;
+  description?: string;
+  canonical?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, canonical } = Astro.props;
+
+const pageTitle = `${title} | Sioux Falls Electricians`;
+const pageDescription =
+  description ?? 'Residential and commercial electricians serving Sioux Falls, Brandon, Harrisburg, and Tea.';
+const pageCanonical = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
 
 const phone = '605-xxx-xxxx';
 
@@ -31,7 +39,8 @@ const locations = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Sioux Falls Electricians</title>
+    <SEO title={pageTitle} description={pageDescription} canonical={pageCanonical} />
+    <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col bg-white text-brand-charcoal">
     <header class="border-b border-brand-grey bg-white">
@@ -99,7 +108,7 @@ const locations = [
         <div>
           <p class="text-lg font-bold text-brand-charcoal">Sioux Falls Electricians</p>
           <p class="mt-2 text-sm text-brand-charcoal/70">
-            Licensed local electricians serving the Sioux Falls area.
+            Local electricians serving the Sioux Falls area.
           </p>
         </div>
 

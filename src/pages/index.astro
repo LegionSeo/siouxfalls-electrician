@@ -1,7 +1,208 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const phone = '605-xxx-xxxx';
+
+const services = [
+  {
+    label: 'Emergency Electrician',
+    href: '/services/emergency-electrician',
+    description:
+      'Electrical problems do not wait for business hours. We answer emergency calls and get to you fast, day or night.',
+  },
+  {
+    label: 'Panel Upgrades',
+    href: '/services/panel-upgrades',
+    description:
+      'An old panel can trip breakers or struggle to keep up with your home. We replace outdated panels with safer, updated ones.',
+  },
+  {
+    label: 'Electrical Repair',
+    href: '/services/electrical-repair',
+    description:
+      'From flickering lights to dead outlets, we track down the problem and fix it. We repair wiring, switches, and outlets throughout your home.',
+  },
+  {
+    label: 'EV Charger Installation',
+    href: '/services/ev-charger-installation',
+    description:
+      'Charge your electric vehicle at home instead of waiting at a public station. We install a charger that matches your vehicle and your home.',
+  },
+  {
+    label: 'Commercial Electrician',
+    href: '/services/commercial-electrician',
+    description:
+      'Businesses need electrical work that keeps operations running. We handle commercial wiring, lighting, and repairs with minimal disruption.',
+  },
+  {
+    label: 'Wiring & Rewiring',
+    href: '/services/wiring-rewiring',
+    description:
+      'Old or damaged wiring can put your home at risk. We rewire single rooms or full homes to bring your electrical system up to date.',
+  },
+  {
+    label: 'Lighting Installation',
+    href: '/services/lighting-installation',
+    description:
+      'Good lighting changes how a room feels and works. We install indoor and outdoor lighting for every space in your home.',
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: 'Local Sioux Falls team',
+    description: 'We live and work in the Sioux Falls area, so we know the homes and businesses here.',
+  },
+  {
+    title: 'Upfront pricing',
+    description: 'You will know the cost of the job before we start any work.',
+  },
+  {
+    title: 'Residential and commercial',
+    description: 'We handle homes and businesses, from small repairs to larger projects.',
+  },
+  {
+    title: 'Fast response times',
+    description: 'We show up quickly, especially when you are dealing with a problem that cannot wait.',
+  },
+];
+
+const serviceAreas = [
+  { label: 'Sioux Falls', href: null },
+  { label: 'Brandon', href: '/locations/brandon' },
+  { label: 'Harrisburg', href: '/locations/harrisburg' },
+  { label: 'Tea', href: '/locations/tea' },
+];
+
+const steps = [
+  { title: 'Call us', description: 'Reach out by phone and tell us what is going on.' },
+  { title: 'Get a quote', description: 'We look at the job and give you a clear quote before any work starts.' },
+  { title: 'We do the work', description: 'Our team completes the job and cleans up when we are done.' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Electrician',
+  name: 'Sioux Falls Electricians',
+  url: 'https://siouxfalls-electrician.com',
+  telephone: phone,
+  areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Sioux Falls',
+    addressRegion: 'SD',
+    addressCountry: 'US',
+  },
+};
 ---
 
-<Layout title="Home">
-  <h1 class="mx-auto max-w-6xl px-4 py-16 text-4xl font-bold">Sioux Falls Electricians</h1>
+<Layout
+  title="Electrician Sioux Falls SD"
+  description="Licensed residential and commercial electricians serving Sioux Falls, Brandon, Harrisburg, and Tea. Call 605-xxx-xxxx for fast, reliable electrical service."
+  canonical="https://siouxfalls-electrician.com/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <!-- Hero -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-20 text-center">
+      <h1 class="text-4xl font-bold sm:text-5xl">Electrician in Sioux Falls, SD</h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-brand-charcoal/80">
+        We handle residential and commercial electrical work throughout Sioux Falls, from repairs to new installations.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-block rounded-md bg-brand-yellow px-6 py-3 font-semibold text-brand-charcoal transition hover:brightness-95"
+      >
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-3xl font-bold">Our Services</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((service) => (
+        <a
+          href={service.href}
+          class="block rounded-lg border border-brand-grey p-6 transition hover:border-brand-yellow hover:shadow-md"
+        >
+          <h3 class="text-lg font-semibold">{service.label}</h3>
+          <p class="mt-2 text-sm text-brand-charcoal/80">{service.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="text-3xl font-bold">Why Choose Us</h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {whyChooseUs.map((item) => (
+          <div class="rounded-lg bg-white p-6">
+            <h3 class="text-lg font-semibold">{item.title}</h3>
+            <p class="mt-2 text-sm text-brand-charcoal/80">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="text-3xl font-bold">Where We Work</h2>
+    <p class="mt-4 max-w-2xl text-brand-charcoal/80">
+      We serve Sioux Falls and the surrounding communities.
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-4">
+      {serviceAreas.map((area) => (
+        <li>
+          {area.href ? (
+            <a
+              href={area.href}
+              class="inline-block rounded-md border border-brand-grey px-5 py-2 font-medium transition hover:border-brand-yellow"
+            >
+              {area.label}
+            </a>
+          ) : (
+            <span class="inline-block rounded-md border border-brand-grey px-5 py-2 font-medium">
+              {area.label}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- How It Works -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="text-3xl font-bold">How It Works</h2>
+      <ol class="mt-8 grid gap-6 sm:grid-cols-3">
+        {steps.map((step, index) => (
+          <li class="rounded-lg bg-white p-6">
+            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brand-yellow font-semibold text-brand-charcoal">
+              {index + 1}
+            </span>
+            <h3 class="mt-4 text-lg font-semibold">{step.title}</h3>
+            <p class="mt-2 text-sm text-brand-charcoal/80">{step.description}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="mx-auto max-w-6xl px-4 py-16 text-center">
+    <h2 class="text-3xl font-bold">Ready to Get Started?</h2>
+    <p class="mt-4 text-brand-charcoal/80">Call us today and we will help you get your electrical work done.</p>
+    <a
+      href={`tel:${phone}`}
+      class="mt-8 inline-block rounded-md bg-brand-yellow px-6 py-3 font-semibold text-brand-charcoal transition hover:brightness-95"
+    >
+      Call {phone}
+    </a>
+  </section>
 </Layout>
