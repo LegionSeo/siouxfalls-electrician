@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero-electrician.png';
 
 const phone = '605-xxx-xxxx';
 
@@ -125,49 +127,60 @@ const schema = {
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
 
-  <!-- Hero: value prop + CTAs on the left, trust panel on the right -->
-  <section class="border-b border-brand-grey bg-white">
-    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
-      <div>
-        <span class="inline-flex items-center gap-2 rounded-full bg-brand-grey px-3 py-1 text-sm font-semibold text-brand-charcoal/80">
-          <Icon name="ph:map-pin" class="h-4 w-4" />
-          Sioux Falls and nearby towns
-        </span>
-        <h1 class="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-          Electrician in Sioux Falls, SD
-        </h1>
-        <p class="mt-5 max-w-xl text-lg text-brand-charcoal/70">
-          We handle residential and commercial electrical work in Sioux Falls, from urgent repairs to full installations.
-        </p>
-        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={`tel:${phone}`}
-            class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
-          >
-            <Icon name="ph:phone-fill" class="h-5 w-5" />
-            Call {phone}
-          </a>
-          <a
-            href="/contact"
-            class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-charcoal/20 px-6 py-3 font-bold text-brand-charcoal transition hover:border-brand-charcoal/40 active:scale-[0.98]"
-          >
-            Request a quote
-            <Icon name="ph:arrow-right" class="h-5 w-5" />
-          </a>
-        </div>
-      </div>
+  <!-- Hero: brand photo with the title and call button laid over it -->
+  <section class="relative isolate overflow-hidden bg-brand-charcoal">
+    <Image
+      src={heroImage}
+      alt="A Sioux Falls electrician in a branded polo testing an electrical panel outside a home"
+      class="absolute inset-0 h-full w-full object-cover object-[68%_center]"
+      widths={[640, 960, 1408]}
+      sizes="100vw"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <!-- scrims so the text stays readable over the photo -->
+    <div class="absolute inset-0 bg-brand-charcoal/50"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-charcoal/90 via-brand-charcoal/60 to-transparent"></div>
 
-      <div class="rounded-2xl border-t-4 border-brand-yellow bg-brand-charcoal p-8 text-white shadow-xl">
-        <p class="text-sm font-semibold uppercase tracking-wide text-brand-yellow">What you can count on</p>
-        <ul class="mt-5 space-y-4">
-          {trustPoints.map((point) => (
-            <li class="flex items-start gap-3">
-              <Icon name="ph:check-circle-fill" class="mt-0.5 h-6 w-6 shrink-0 text-brand-yellow" />
-              <span class="text-white/90">{point}</span>
-            </li>
-          ))}
-        </ul>
+    <div class="relative mx-auto flex min-h-[540px] max-w-6xl flex-col justify-center px-4 py-20 lg:min-h-[640px]">
+      <span class="inline-flex w-fit items-center gap-2 rounded-full bg-brand-yellow px-3 py-1 text-sm font-bold text-brand-charcoal">
+        <Icon name="ph:map-pin" class="h-4 w-4" />
+        Sioux Falls and nearby towns
+      </span>
+      <h1 class="mt-5 max-w-2xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+        Electrician in Sioux Falls, SD
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-white/85">
+        We handle residential and commercial electrical work in Sioux Falls, from urgent repairs to full installations.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={`tel:${phone}`}
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+        >
+          <Icon name="ph:phone-fill" class="h-5 w-5" />
+          Call {phone}
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 font-bold text-white backdrop-blur transition hover:bg-white/20 active:scale-[0.98]"
+        >
+          Request a quote
+          <Icon name="ph:arrow-right" class="h-5 w-5" />
+        </a>
       </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="border-b border-brand-grey bg-white">
+    <div class="mx-auto grid max-w-6xl gap-4 px-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
+      {trustPoints.map((point) => (
+        <div class="flex items-center gap-3">
+          <Icon name="ph:check-circle-fill" class="h-6 w-6 shrink-0 text-brand-yellow" />
+          <span class="text-sm font-medium text-brand-charcoal/80">{point}</span>
+        </div>
+      ))}
     </div>
   </section>
 
