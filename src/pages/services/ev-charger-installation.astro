@@ -1,7 +1,287 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const phone = '605-xxx-xxxx';
+const linkClass =
+  'font-semibold text-brand-charcoal underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-brand-charcoal/70';
+
+const chargerLevels = [
+  {
+    icon: 'ph:plug',
+    title: 'Level 1',
+    tag: 'Standard outlet',
+    points: [
+      'Plugs into a normal wall outlet.',
+      'Needs no special equipment.',
+      'Charges slowly, often a few miles of range each hour.',
+      'Works for short daily drives and overnight charging.',
+    ],
+  },
+  {
+    icon: 'ph:lightning',
+    title: 'Level 2',
+    tag: '240 volt circuit',
+    points: [
+      'Uses a 240 volt circuit, like a dryer or range.',
+      'Charges several times faster than Level 1.',
+      'Most drivers wake up to a full battery.',
+      'The better fit for daily driving.',
+    ],
+  },
+];
+
+const installSteps = [
+  'Look at your panel, your parking spot, and where the charger will go.',
+  'Run a new 240 volt circuit from the panel to the charger location.',
+  'Mount the charger and pull the permit so the work meets code.',
+  'Test everything and make sure it is ready to pass inspection.',
+];
+
+const locations = [
+  { label: 'Brandon', href: '/locations/brandon' },
+  { label: 'Harrisburg', href: '/locations/harrisburg' },
+  { label: 'Tea', href: '/locations/tea' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'EV Charger Installation',
+  provider: {
+    '@type': 'Electrician',
+    name: 'Sioux Falls Electricians',
+    url: 'https://siouxfalls-electrician.com',
+    telephone: phone,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Sioux Falls',
+      addressRegion: 'SD',
+      addressCountry: 'US',
+    },
+  },
+  areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://siouxfalls-electrician.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'EV Charger Installation',
+      item: 'https://siouxfalls-electrician.com/services/ev-charger-installation',
+    },
+  ],
+};
 ---
 
-<Layout title="EV Charger Installation">
-  <h1 class="mx-auto max-w-6xl px-4 py-16 text-4xl font-bold">EV Charger Installation</h1>
+<Layout
+  title="EV Charger Installation Sioux Falls SD | Home Charging"
+  fullTitle
+  description="EV charger installation in Sioux Falls. We install Level 2 home chargers and check your panel capacity. Call 605-xxx-xxxx to get started."
+  canonical="https://siouxfalls-electrician.com/services/ev-charger-installation"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Hero -->
+  <section class="border-b border-brand-grey bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-12 lg:py-16">
+      <nav aria-label="Breadcrumb" class="text-sm">
+        <ol class="flex items-center gap-2 text-brand-charcoal/60">
+          <li><a href="/" class="hover:text-brand-charcoal">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="font-semibold text-brand-charcoal">EV Charger Installation</li>
+        </ol>
+      </nav>
+      <span class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-grey px-3 py-1 text-sm font-semibold text-brand-charcoal/80">
+        <Icon name="ph:car" class="h-4 w-4" />
+        Home and business charging
+      </span>
+      <h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        EV Charger Installation in Sioux Falls, SD
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-brand-charcoal/70">
+        Charge your electric vehicle at home with a charger sized for your car, your garage, and your daily driving.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Level 1 versus Level 2 -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Level 1 versus Level 2 explained</h2>
+      <p class="mt-3 max-w-2xl text-brand-charcoal/70">
+        Home charging comes in two levels, and the difference matters. For most people who drive every day, a Level 2
+        charger is the better fit. We help you decide based on your car and how far you drive.
+      </p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {chargerLevels.map((level) => (
+          <div class="rounded-2xl bg-white p-8">
+            <div class="flex items-center gap-4">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow">
+                <Icon name={level.icon} class="h-7 w-7 text-brand-charcoal" />
+              </span>
+              <div>
+                <h3 class="text-xl font-bold">{level.title}</h3>
+                <p class="text-sm text-brand-charcoal/60">{level.tag}</p>
+              </div>
+            </div>
+            <ul class="mt-6 space-y-3">
+              {level.points.map((point) => (
+                <li class="flex items-start gap-3 text-sm text-brand-charcoal/80">
+                  <Icon name="ph:check-circle-fill" class="mt-0.5 h-5 w-5 shrink-0 text-brand-yellow" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What the install involves -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">What the install involves</h2>
+        <p class="mt-4 max-w-md text-brand-charcoal/70">
+          A Level 2 install is a real electrical project, not a plug and play job. Most home installs are done in a day.
+        </p>
+        <p class="mt-4 max-w-md text-brand-charcoal/70">
+          If your existing <a href="/services/wiring-rewiring" class={linkClass}>wiring</a> makes the run tricky, we
+          explain your options before we start, so there are no surprises.
+        </p>
+      </div>
+      <ol class="space-y-4">
+        {installSteps.map((step, index) => (
+          <li class="flex items-start gap-4 rounded-2xl border border-brand-grey p-5">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-yellow font-extrabold text-brand-charcoal">
+              {index + 1}
+            </span>
+            <span class="text-brand-charcoal/80">{step}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Does your panel have capacity -->
+  <section class="mx-auto max-w-6xl px-4 pb-16 lg:pb-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-12 text-white sm:px-12">
+      <h2 class="max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">Does your panel have capacity?</h2>
+      <div class="mt-6 grid gap-6 text-white/80 md:grid-cols-2">
+        <p>
+          Before adding a charger, we check whether your panel can handle the extra load. A car charger pulls a lot of
+          power, and not every panel has room to spare. We measure your current service and give you a straight answer
+          about what your panel can support.
+        </p>
+        <p>
+          If your panel is older or already full, we may recommend a
+          <a href="/services/panel-upgrades" class="font-semibold text-white underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-white/80">panel upgrade</a>
+          first. That step makes sure your charger runs safely and does not overload the rest of your home. Sometimes
+          there is plenty of room, and sometimes an upgrade is the smart first move.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Garage and driveway options -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Garage and driveway options</h2>
+        <div class="space-y-4 text-brand-charcoal/70">
+          <p>
+            Where you park changes how we approach the job. In an attached garage, the run from the panel is often short
+            and simple. For a detached garage or a driveway spot, we plan a safe route for the wiring and use equipment
+            rated for the outdoors.
+          </p>
+          <p>
+            We can mount the charger on a wall or a post, depending on your setup. If you are not sure where the charger
+            should go, we walk the space with you and find a spot that is easy to use and out of the way.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial and multi unit charging -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="max-w-3xl">
+      <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow">
+        <Icon name="ph:buildings" class="h-7 w-7 text-brand-charcoal" />
+      </span>
+      <h2 class="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">Commercial and multi unit charging</h2>
+      <p class="mt-4 text-brand-charcoal/70">
+        Charging is not just for single family homes. Workplaces, apartments, and other properties are adding chargers
+        for staff, tenants, and customers. These projects take more planning, since they often need several chargers and
+        a bigger power supply.
+      </p>
+      <p class="mt-4 text-brand-charcoal/70">
+        Our <a href="/services/commercial-electrician" class={linkClass}>commercial electrical</a> team handles the
+        layout, the load, and the equipment for jobs like these. Whether you need one charger for a small office or
+        several for a parking lot, we can scope the work and build it to last.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Charger installs near you</h2>
+          <p class="mt-4 max-w-md text-brand-charcoal/70">
+            We install EV chargers for homes and businesses in Sioux Falls and the surrounding towns. See the rest of
+            what we do on our <a href="/" class={linkClass}>Sioux Falls electrician</a> page, or pick your area below.
+          </p>
+        </div>
+        <ul class="grid gap-4 sm:grid-cols-3">
+          {locations.map((location) => (
+            <li>
+              <a
+                href={location.href}
+                class="group flex items-center justify-between rounded-2xl border border-brand-charcoal/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-brand-yellow hover:shadow-md"
+              >
+                <span class="flex items-center gap-3 font-bold">
+                  <Icon name="ph:map-pin" class="h-6 w-6 text-brand-charcoal" />
+                  {location.label}
+                </span>
+                <Icon name="ph:arrow-right" class="h-5 w-5 text-brand-charcoal/50 transition group-hover:translate-x-1 group-hover:text-brand-charcoal" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final call to action -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-14 text-center text-white sm:px-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Ready to charge at home?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-white/80">
+        Call us and we will help you pick the right charger and get it installed.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
 </Layout>

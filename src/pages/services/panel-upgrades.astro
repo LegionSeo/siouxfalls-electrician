@@ -1,7 +1,269 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const phone = '605-xxx-xxxx';
+const linkClass =
+  'font-semibold text-brand-charcoal underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-brand-charcoal/70';
+
+const signs = [
+  {
+    icon: 'ph:gauge',
+    title: 'Breakers trip often',
+    description: 'If you reset breakers on a regular basis, your panel may be overloaded or worn out.',
+  },
+  {
+    icon: 'ph:squares-four',
+    title: 'You still have a fuse box',
+    description: 'Fuse boxes worked years ago, but they cannot keep up with a modern home. Most now need a breaker panel.',
+  },
+  {
+    icon: 'ph:thermometer',
+    title: 'The panel feels warm or hums',
+    description: 'A panel that is warm to the touch, buzzing, or crackling is a safety concern. Give us a call soon.',
+  },
+  {
+    icon: 'ph:stack',
+    title: 'Not enough breaker slots',
+    description: 'When every slot is full, there is no room to add circuits. An upgrade gives you space to grow.',
+  },
+  {
+    icon: 'ph:plug',
+    title: 'You are adding large appliances',
+    description: 'Hot tubs, car chargers, and shop tools pull a lot of power. Your panel may need more capacity.',
+  },
+  {
+    icon: 'ph:house-line',
+    title: 'Your home is several decades old',
+    description: 'Many older Sioux Falls homes still run on their first panel. After a few decades, parts fall behind.',
+  },
+];
+
+const steps = [
+  'Look at your current panel and how much power your home uses.',
+  'Pull the permit and coordinate the short power shutoff with the utility.',
+  'Turn off the power and remove the old panel safely.',
+  'Install the new panel with fresh, clearly labeled breakers.',
+  'Have the work inspected to confirm everything is safe.',
+];
+
+const locations = [
+  { label: 'Brandon', href: '/locations/brandon' },
+  { label: 'Harrisburg', href: '/locations/harrisburg' },
+  { label: 'Tea', href: '/locations/tea' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Electrical Panel Upgrade',
+  provider: {
+    '@type': 'Electrician',
+    name: 'Sioux Falls Electricians',
+    url: 'https://siouxfalls-electrician.com',
+    telephone: phone,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Sioux Falls',
+      addressRegion: 'SD',
+      addressCountry: 'US',
+    },
+  },
+  areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://siouxfalls-electrician.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Panel Upgrades',
+      item: 'https://siouxfalls-electrician.com/services/panel-upgrades',
+    },
+  ],
+};
 ---
 
-<Layout title="Panel Upgrades">
-  <h1 class="mx-auto max-w-6xl px-4 py-16 text-4xl font-bold">Panel Upgrades</h1>
+<Layout
+  title="Electrical Panel Upgrade Sioux Falls SD | Panel Replacement"
+  fullTitle
+  description="Upgrading your electrical panel in Sioux Falls? We replace old breaker boxes and 100 amp panels with modern service. Call 605-xxx-xxxx for a quote."
+  canonical="https://siouxfalls-electrician.com/services/panel-upgrades"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Hero -->
+  <section class="border-b border-brand-grey bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-12 lg:py-16">
+      <nav aria-label="Breadcrumb" class="text-sm">
+        <ol class="flex items-center gap-2 text-brand-charcoal/60">
+          <li><a href="/" class="hover:text-brand-charcoal">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="font-semibold text-brand-charcoal">Panel Upgrades</li>
+        </ol>
+      </nav>
+      <span class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-grey px-3 py-1 text-sm font-semibold text-brand-charcoal/80">
+        <Icon name="ph:gauge" class="h-4 w-4" />
+        Panel upgrades and replacement
+      </span>
+      <h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        Electrical Panel Upgrades in Sioux Falls, SD
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-brand-charcoal/70">
+        We replace old or overloaded breaker boxes with modern panels built for how you use power today.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Signs you need a panel upgrade -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Signs you need a panel upgrade</h2>
+      <p class="mt-3 max-w-2xl text-brand-charcoal/70">
+        Your electrical panel feeds every circuit in your home. When it gets old or runs out of room, you start to
+        notice problems. These are the common signs it is time for a breaker box upgrade.
+      </p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {signs.map((item) => (
+          <div class="flex flex-col rounded-2xl bg-white p-6">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow">
+              <Icon name={item.icon} class="h-7 w-7 text-brand-charcoal" />
+            </span>
+            <h3 class="mt-5 text-lg font-bold">{item.title}</h3>
+            <p class="mt-2 text-sm text-brand-charcoal/70">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What a panel upgrade involves -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <div>
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">What a panel upgrade involves</h2>
+        <p class="mt-4 max-w-md text-brand-charcoal/70">
+          A panel replacement is a bigger job than a simple repair, so it helps to know what to expect. Here is how we
+          handle it from start to finish.
+        </p>
+        <p class="mt-4 max-w-md text-brand-charcoal/70">
+          Most upgrades are finished in a single day. If we spot worn wiring along the way, we point it out and can take
+          care of the <a href="/services/electrical-repair" class={linkClass}>electrical repair</a> at the same time.
+        </p>
+      </div>
+      <ol class="space-y-4">
+        {steps.map((step, index) => (
+          <li class="flex items-start gap-4 rounded-2xl border border-brand-grey p-5">
+            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-yellow font-extrabold text-brand-charcoal">
+              {index + 1}
+            </span>
+            <span class="text-brand-charcoal/80">{step}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Older homes with 100 amp service -->
+  <section class="mx-auto max-w-6xl px-4 pb-16 lg:pb-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-12 text-white sm:px-12">
+      <h2 class="max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">
+        Older Sioux Falls homes with 100 amp service
+      </h2>
+      <div class="mt-6 grid gap-6 text-white/80 md:grid-cols-2">
+        <p>
+          A lot of homes in Sioux Falls were built with 100 amp service, and some older ones have even less. That was
+          plenty when houses had fewer devices and smaller appliances. Today a busy home runs computers, large kitchen
+          appliances, air conditioning, and often a car charger.
+        </p>
+        <p>
+          Many of these homes now move up to 200 amp service to keep up. A larger service gives you steady power, fewer
+          nuisance trips, and room to add circuits later. If you are planning to add an
+          <a href="/services/ev-charger-installation" class="font-semibold text-white underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-white/80">EV charger</a>
+          or finish a basement, a 200 amp panel is often the first step. We look at your service size and tell you
+          honestly whether an upgrade makes sense.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial panel work -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <div class="max-w-3xl">
+        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow">
+          <Icon name="ph:buildings" class="h-7 w-7 text-brand-charcoal" />
+        </span>
+        <h2 class="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">Commercial panel work</h2>
+        <p class="mt-4 text-brand-charcoal/70">
+          Businesses have their own panel needs. Shops, offices, and restaurants add equipment over time, and the
+          original panel may not have room for it. We handle commercial panel replacements and upgrades, including work
+          on larger and three phase systems. We plan the job around your hours so downtime stays short.
+        </p>
+        <p class="mt-4 text-brand-charcoal/70">
+          If your building has older
+          <a href="/services/wiring-rewiring" class={linkClass}>wiring</a>
+          feeding the panel, we can update that as part of the project. Whether you run a small storefront or a larger
+          facility, we make sure your panel is safe and ready for the load you put on it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div>
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Where we upgrade panels</h2>
+        <p class="mt-4 max-w-md text-brand-charcoal/70">
+          We upgrade panels for homes and businesses in Sioux Falls and the towns around it. See the rest of what we do
+          on our <a href="/" class={linkClass}>Sioux Falls electrical services</a> page, or pick your town below.
+        </p>
+      </div>
+      <ul class="grid gap-4 sm:grid-cols-3">
+        {locations.map((location) => (
+          <li>
+            <a
+              href={location.href}
+              class="group flex items-center justify-between rounded-2xl border border-brand-grey bg-white p-5 transition hover:-translate-y-0.5 hover:border-brand-yellow hover:shadow-md"
+            >
+              <span class="flex items-center gap-3 font-bold">
+                <Icon name="ph:map-pin" class="h-6 w-6 text-brand-charcoal" />
+                {location.label}
+              </span>
+              <Icon name="ph:arrow-right" class="h-5 w-5 text-brand-charcoal/50 transition group-hover:translate-x-1 group-hover:text-brand-charcoal" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Final call to action -->
+  <section class="mx-auto max-w-6xl px-4 pb-16 lg:pb-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-14 text-center text-white sm:px-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Thinking about a panel upgrade?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-white/80">
+        Call us and we will take a look at your panel and talk through your options.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
 </Layout>

@@ -1,7 +1,247 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const phone = '605-xxx-xxxx';
+const linkClass =
+  'font-semibold text-brand-charcoal underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-brand-charcoal/70';
+
+const problems = [
+  { icon: 'ph:plug', title: 'Dead outlets', description: 'Outlets that stopped working, sometimes a whole wall at once.' },
+  { icon: 'ph:toggle-left', title: 'Warm or scorched switches', description: 'Switch plates that feel hot or look discolored need a closer look.' },
+  { icon: 'ph:lightbulb', title: 'Flickering lights', description: 'Lights that flicker, dim, or buzz when other things turn on.' },
+  { icon: 'ph:gauge', title: 'Breakers that trip', description: 'Breakers that keep shutting off a circuit you use every day.' },
+  { icon: 'ph:wrench', title: 'Loose fixtures', description: 'Wobbly outlets, switches, and fixtures that no longer sit tight.' },
+  { icon: 'ph:fire', title: 'Burning smells', description: 'Any burning smell near electrical is urgent. Call us right away.' },
+];
+
+const locations = [
+  { label: 'Brandon', href: '/locations/brandon' },
+  { label: 'Harrisburg', href: '/locations/harrisburg' },
+  { label: 'Tea', href: '/locations/tea' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Electrical Repair',
+  provider: {
+    '@type': 'Electrician',
+    name: 'Sioux Falls Electricians',
+    url: 'https://siouxfalls-electrician.com',
+    telephone: phone,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Sioux Falls',
+      addressRegion: 'SD',
+      addressCountry: 'US',
+    },
+  },
+  areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://siouxfalls-electrician.com/' },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Electrical Repair',
+      item: 'https://siouxfalls-electrician.com/services/electrical-repair',
+    },
+  ],
+};
 ---
 
-<Layout title="Electrical Repair">
-  <h1 class="mx-auto max-w-6xl px-4 py-16 text-4xl font-bold">Electrical Repair</h1>
+<Layout
+  title="Electrical Repair Sioux Falls SD | Outlet and Switch Repair"
+  fullTitle
+  description="Need electrical repair in Sioux Falls? We fix dead outlets, bad switches, flickering lights, and tripping breakers. Call 605-xxx-xxxx today."
+  canonical="https://siouxfalls-electrician.com/services/electrical-repair"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Hero -->
+  <section class="border-b border-brand-grey bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-12 lg:py-16">
+      <nav aria-label="Breadcrumb" class="text-sm">
+        <ol class="flex items-center gap-2 text-brand-charcoal/60">
+          <li><a href="/" class="hover:text-brand-charcoal">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="font-semibold text-brand-charcoal">Electrical Repair</li>
+        </ol>
+      </nav>
+      <span class="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-grey px-3 py-1 text-sm font-semibold text-brand-charcoal/80">
+        <Icon name="ph:wrench" class="h-4 w-4" />
+        Repairs for homes and businesses
+      </span>
+      <h1 class="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        Electrical Repair in Sioux Falls, SD
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-brand-charcoal/70">
+        From dead outlets to flickering lights, we track down electrical problems in your home and fix them the right way.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Common electrical problems we fix -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Common electrical problems we fix</h2>
+      <p class="mt-3 max-w-2xl text-brand-charcoal/70">
+        Small electrical problems have a way of turning into bigger ones. A loose outlet or a flickering light can point
+        to something that needs attention. These are the issues we see most often in Sioux Falls.
+      </p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {problems.map((item) => (
+          <div class="flex flex-col rounded-2xl bg-white p-6">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow">
+              <Icon name={item.icon} class="h-7 w-7 text-brand-charcoal" />
+            </span>
+            <h3 class="mt-5 text-lg font-bold">{item.title}</h3>
+            <p class="mt-2 text-sm text-brand-charcoal/70">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Outlets and switches -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Outlets and switches</h2>
+      <div class="space-y-4 text-brand-charcoal/70">
+        <p>
+          Outlets and switches take more wear than most parts of your electrical system. You use them every day, and over
+          time they loosen, crack, or stop working. We replace worn outlets, fix ones that feel loose, and swap out
+          switches that no longer click the way they should.
+        </p>
+        <p>
+          If you have older two prong outlets, we can update them to grounded three prong outlets that are safer for
+          modern devices. We also install GFCI outlets in kitchens, bathrooms, and other spots near water, where they
+          help protect you from shocks. If an outlet feels warm or shows scorch marks, stop using it and give us a call,
+          since that points to a wiring problem behind the wall.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flickering or dimming lights -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Flickering or dimming lights</h2>
+        <div class="space-y-4 text-brand-charcoal/70">
+          <p>
+            Flickering or dimming lights are easy to ignore, but they are worth checking. Sometimes the fix is simple,
+            like a loose bulb or a worn switch. Other times the lights dim because a circuit is overloaded or a
+            connection has come loose.
+          </p>
+          <p>
+            If your lights dim every time a large appliance kicks on, your home may be asking for more power than the
+            panel can give. That can be a sign it is time for a
+            <a href="/services/panel-upgrades" class={linkClass}>panel upgrade</a>. We find the real cause instead of
+            guessing, so the problem actually goes away.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tripping breakers -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Tripping breakers</h2>
+      <div class="space-y-4 text-brand-charcoal/70">
+        <p>
+          A breaker that trips now and then is doing its job. A breaker that trips over and over is telling you
+          something. It may be a single circuit with too much on it, a faulty breaker, or a deeper wiring issue. We test
+          the circuit, find what is causing the trips, and fix it.
+        </p>
+        <p>
+          When the problem is urgent, like sparking or a burning smell, treat it as an
+          <a href="/services/emergency-electrician" class={linkClass}>electrical emergency</a> and call right away. We
+          would rather hear from you early than have a small problem grow into a dangerous one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- When a repair becomes a bigger job -->
+  <section class="mx-auto max-w-6xl px-4 pb-16 lg:pb-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-12 text-white sm:px-12">
+      <h2 class="max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">When a repair becomes a bigger job</h2>
+      <div class="mt-6 grid gap-6 text-white/80 md:grid-cols-2">
+        <p>
+          Most repairs are quick. Now and then, we open up an outlet or fixture and find a problem that runs deeper, like
+          brittle insulation or wiring that was not done well. When that happens, a simple repair can turn into a larger
+          job.
+        </p>
+        <p>
+          We are honest with you about what we find and never push work you do not need. If the wiring in part of your
+          home is worn or unsafe, we can talk through
+          <a href="/services/wiring-rewiring" class="font-semibold text-white underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-white/80">rewiring</a>
+          that section. Our goal is to leave your home safer than we found it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Repairs across the Sioux Falls area</h2>
+          <p class="mt-4 max-w-md text-brand-charcoal/70">
+            We handle electrical repairs in Sioux Falls and the nearby towns. To see everything else we work on, visit
+            our <a href="/" class={linkClass}>home electrical services</a> page, or choose your area below.
+          </p>
+        </div>
+        <ul class="grid gap-4 sm:grid-cols-3">
+          {locations.map((location) => (
+            <li>
+              <a
+                href={location.href}
+                class="group flex items-center justify-between rounded-2xl border border-brand-charcoal/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-brand-yellow hover:shadow-md"
+              >
+                <span class="flex items-center gap-3 font-bold">
+                  <Icon name="ph:map-pin" class="h-6 w-6 text-brand-charcoal" />
+                  {location.label}
+                </span>
+                <Icon name="ph:arrow-right" class="h-5 w-5 text-brand-charcoal/50 transition group-hover:translate-x-1 group-hover:text-brand-charcoal" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final call to action -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-14 text-center text-white sm:px-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Need an electrical repair?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-white/80">
+        Call us and tell us what is going on. We will find the problem and get it fixed.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
 </Layout>
