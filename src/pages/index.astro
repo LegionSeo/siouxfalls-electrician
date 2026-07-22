@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 
 const phone = '605-xxx-xxxx';
 
@@ -7,77 +8,98 @@ const services = [
   {
     label: 'Emergency Electrician',
     href: '/services/emergency-electrician',
+    icon: 'ph:lightning',
     description:
       'Electrical problems do not wait for business hours. We answer emergency calls and get to you fast, day or night.',
   },
   {
     label: 'Panel Upgrades',
     href: '/services/panel-upgrades',
+    icon: 'ph:gauge',
     description:
       'An old panel can trip breakers or struggle to keep up with your home. We replace outdated panels with safer, updated ones.',
   },
   {
     label: 'Electrical Repair',
     href: '/services/electrical-repair',
+    icon: 'ph:wrench',
     description:
       'From flickering lights to dead outlets, we track down the problem and fix it. We repair wiring, switches, and outlets throughout your home.',
   },
   {
     label: 'EV Charger Installation',
     href: '/services/ev-charger-installation',
+    icon: 'ph:car',
     description:
       'Charge your electric vehicle at home instead of waiting at a public station. We install a charger that matches your vehicle and your home.',
   },
   {
     label: 'Commercial Electrician',
     href: '/services/commercial-electrician',
+    icon: 'ph:buildings',
     description:
       'Businesses need electrical work that keeps operations running. We handle commercial wiring, lighting, and repairs with minimal disruption.',
   },
   {
     label: 'Wiring & Rewiring',
     href: '/services/wiring-rewiring',
+    icon: 'ph:plug',
     description:
       'Old or damaged wiring can put your home at risk. We rewire single rooms or full homes to bring your electrical system up to date.',
   },
   {
     label: 'Lighting Installation',
     href: '/services/lighting-installation',
+    icon: 'ph:lightbulb',
     description:
       'Good lighting changes how a room feels and works. We install indoor and outdoor lighting for every space in your home.',
   },
 ];
 
+const featured = services[0];
+const otherServices = services.slice(1);
+
+const trustPoints = [
+  'Emergency calls answered day and night',
+  'Residential and commercial work',
+  'A clear quote before we start',
+  'Serving Sioux Falls and nearby towns',
+];
+
 const whyChooseUs = [
   {
+    icon: 'ph:map-pin',
     title: 'Local Sioux Falls team',
     description: 'We live and work in the Sioux Falls area, so we know the homes and businesses here.',
   },
   {
+    icon: 'ph:tag',
     title: 'Upfront pricing',
     description: 'You will know the cost of the job before we start any work.',
   },
   {
+    icon: 'ph:house-line',
     title: 'Residential and commercial',
     description: 'We handle homes and businesses, from small repairs to larger projects.',
   },
   {
+    icon: 'ph:clock',
     title: 'Fast response times',
     description: 'We show up quickly, especially when you are dealing with a problem that cannot wait.',
   },
 ];
 
 const serviceAreas = [
-  { label: 'Sioux Falls', href: null },
-  { label: 'Brandon', href: '/locations/brandon' },
-  { label: 'Harrisburg', href: '/locations/harrisburg' },
-  { label: 'Tea', href: '/locations/tea' },
+  { label: 'Sioux Falls', href: null, note: 'Home base' },
+  { label: 'Brandon', href: '/locations/brandon', note: null },
+  { label: 'Harrisburg', href: '/locations/harrisburg', note: null },
+  { label: 'Tea', href: '/locations/tea', note: null },
 ];
 
 const steps = [
-  { title: 'Call us', description: 'Reach out by phone and tell us what is going on.' },
-  { title: 'Get a quote', description: 'We look at the job and give you a clear quote before any work starts.' },
-  { title: 'We do the work', description: 'Our team completes the job and cleans up when we are done.' },
+  { icon: 'ph:phone', title: 'Call us', description: 'Reach out by phone and tell us what is going on.' },
+  { icon: 'ph:clipboard-text', title: 'Get a quote', description: 'We look at the job and give you a clear quote before any work starts.' },
+  { icon: 'ph:hammer', title: 'We do the work', description: 'Our team completes the job and cleans up when we are done.' },
 ];
 
 const schema = {
@@ -103,106 +125,184 @@ const schema = {
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
 
-  <!-- Hero -->
-  <section class="bg-brand-grey">
-    <div class="mx-auto max-w-6xl px-4 py-20 text-center">
-      <h1 class="text-4xl font-bold sm:text-5xl">Electrician in Sioux Falls, SD</h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg text-brand-charcoal/80">
-        We handle residential and commercial electrical work throughout Sioux Falls, from repairs to new installations.
-      </p>
-      <a
-        href={`tel:${phone}`}
-        class="mt-8 inline-block rounded-md bg-brand-yellow px-6 py-3 font-semibold text-brand-charcoal transition hover:brightness-95"
-      >
-        Call {phone}
-      </a>
+  <!-- Hero: value prop + CTAs on the left, trust panel on the right -->
+  <section class="border-b border-brand-grey bg-white">
+    <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:py-24">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-grey px-3 py-1 text-sm font-semibold text-brand-charcoal/80">
+          <Icon name="ph:map-pin" class="h-4 w-4" />
+          Sioux Falls and nearby towns
+        </span>
+        <h1 class="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          Electrician in Sioux Falls, SD
+        </h1>
+        <p class="mt-5 max-w-xl text-lg text-brand-charcoal/70">
+          We handle residential and commercial electrical work in Sioux Falls, from urgent repairs to full installations.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={`tel:${phone}`}
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+          >
+            <Icon name="ph:phone-fill" class="h-5 w-5" />
+            Call {phone}
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-brand-charcoal/20 px-6 py-3 font-bold text-brand-charcoal transition hover:border-brand-charcoal/40 active:scale-[0.98]"
+          >
+            Request a quote
+            <Icon name="ph:arrow-right" class="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border-t-4 border-brand-yellow bg-brand-charcoal p-8 text-white shadow-xl">
+        <p class="text-sm font-semibold uppercase tracking-wide text-brand-yellow">What you can count on</p>
+        <ul class="mt-5 space-y-4">
+          {trustPoints.map((point) => (
+            <li class="flex items-start gap-3">
+              <Icon name="ph:check-circle-fill" class="mt-0.5 h-6 w-6 shrink-0 text-brand-yellow" />
+              <span class="text-white/90">{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section class="mx-auto max-w-6xl px-4 py-16">
-    <h2 class="text-3xl font-bold">Our Services</h2>
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((service) => (
+  <!-- Services: one featured service, then the rest in a grid -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Our services</h2>
+    <p class="mt-3 max-w-2xl text-brand-charcoal/70">Homes and businesses across the Sioux Falls area.</p>
+
+    <a
+      href={featured.href}
+      class="group mt-8 flex flex-col gap-6 rounded-2xl bg-brand-charcoal p-8 text-white transition hover:-translate-y-0.5 sm:flex-row sm:items-center"
+    >
+      <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-brand-yellow">
+        <Icon name={featured.icon} class="h-8 w-8 text-brand-charcoal" />
+      </span>
+      <div class="flex-1">
+        <h3 class="text-xl font-bold">{featured.label}</h3>
+        <p class="mt-2 max-w-2xl text-white/80">{featured.description}</p>
+      </div>
+      <Icon name="ph:arrow-right" class="h-6 w-6 text-brand-yellow transition group-hover:translate-x-1" />
+    </a>
+
+    <div class="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {otherServices.map((service) => (
         <a
           href={service.href}
-          class="block rounded-lg border border-brand-grey p-6 transition hover:border-brand-yellow hover:shadow-md"
+          class="group flex flex-col rounded-2xl border border-brand-grey bg-white p-6 transition hover:-translate-y-0.5 hover:border-brand-yellow hover:shadow-md"
         >
-          <h3 class="text-lg font-semibold">{service.label}</h3>
-          <p class="mt-2 text-sm text-brand-charcoal/80">{service.description}</p>
+          <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-grey transition group-hover:bg-brand-yellow">
+            <Icon name={service.icon} class="h-7 w-7 text-brand-charcoal" />
+          </span>
+          <h3 class="mt-5 text-lg font-bold">{service.label}</h3>
+          <p class="mt-2 flex-1 text-sm text-brand-charcoal/70">{service.description}</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-charcoal">
+            Learn more
+            <Icon name="ph:arrow-right" class="h-4 w-4 transition group-hover:translate-x-1" />
+          </span>
         </a>
       ))}
     </div>
   </section>
 
-  <!-- Why Choose Us -->
+  <!-- Why choose us -->
   <section class="bg-brand-grey">
-    <div class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-3xl font-bold">Why Choose Us</h2>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Why choose us</h2>
+      <div class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {whyChooseUs.map((item) => (
-          <div class="rounded-lg bg-white p-6">
-            <h3 class="text-lg font-semibold">{item.title}</h3>
-            <p class="mt-2 text-sm text-brand-charcoal/80">{item.description}</p>
+          <div>
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow">
+              <Icon name={item.icon} class="h-7 w-7 text-brand-charcoal" />
+            </span>
+            <h3 class="mt-5 text-lg font-bold">{item.title}</h3>
+            <p class="mt-2 text-sm text-brand-charcoal/70">{item.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Service Area -->
-  <section class="mx-auto max-w-6xl px-4 py-16">
-    <h2 class="text-3xl font-bold">Where We Work</h2>
-    <p class="mt-4 max-w-2xl text-brand-charcoal/80">
-      We serve Sioux Falls and the surrounding communities.
-    </p>
-    <ul class="mt-6 flex flex-wrap gap-4">
-      {serviceAreas.map((area) => (
-        <li>
-          {area.href ? (
-            <a
-              href={area.href}
-              class="inline-block rounded-md border border-brand-grey px-5 py-2 font-medium transition hover:border-brand-yellow"
-            >
-              {area.label}
-            </a>
-          ) : (
-            <span class="inline-block rounded-md border border-brand-grey px-5 py-2 font-medium">
-              {area.label}
-            </span>
-          )}
-        </li>
-      ))}
-    </ul>
+  <!-- Service area: heading on the left, city tiles on the right -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+      <div>
+        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Where we work</h2>
+        <p class="mt-4 max-w-md text-brand-charcoal/70">
+          We serve Sioux Falls and the surrounding communities. Pick a nearby town to learn more.
+        </p>
+      </div>
+      <ul class="grid grid-cols-2 gap-4">
+        {serviceAreas.map((area) => (
+          <li>
+            {area.href ? (
+              <a
+                href={area.href}
+                class="group flex h-full items-center justify-between rounded-2xl border border-brand-grey bg-white p-5 transition hover:-translate-y-0.5 hover:border-brand-yellow hover:shadow-md"
+              >
+                <span class="flex items-center gap-3 font-bold">
+                  <Icon name="ph:map-pin" class="h-6 w-6 text-brand-charcoal" />
+                  {area.label}
+                </span>
+                <Icon name="ph:arrow-right" class="h-5 w-5 text-brand-charcoal/50 transition group-hover:translate-x-1 group-hover:text-brand-charcoal" />
+              </a>
+            ) : (
+              <div class="flex h-full items-center justify-between rounded-2xl border border-brand-charcoal/10 bg-brand-grey p-5">
+                <span class="flex items-center gap-3 font-bold">
+                  <Icon name="ph:map-pin-fill" class="h-6 w-6 text-brand-charcoal" />
+                  {area.label}
+                </span>
+                <span class="rounded-full bg-brand-yellow px-2.5 py-1 text-xs font-bold text-brand-charcoal">
+                  {area.note}
+                </span>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 
-  <!-- How It Works -->
+  <!-- How it works -->
   <section class="bg-brand-grey">
-    <div class="mx-auto max-w-6xl px-4 py-16">
-      <h2 class="text-3xl font-bold">How It Works</h2>
-      <ol class="mt-8 grid gap-6 sm:grid-cols-3">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">How it works</h2>
+      <ol class="mt-10 grid gap-8 sm:grid-cols-3">
         {steps.map((step, index) => (
-          <li class="rounded-lg bg-white p-6">
-            <span class="flex h-8 w-8 items-center justify-center rounded-full bg-brand-yellow font-semibold text-brand-charcoal">
-              {index + 1}
-            </span>
-            <h3 class="mt-4 text-lg font-semibold">{step.title}</h3>
-            <p class="mt-2 text-sm text-brand-charcoal/80">{step.description}</p>
+          <li class="relative">
+            <div class="flex items-center gap-4">
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-lg font-extrabold text-brand-charcoal shadow-sm">
+                {index + 1}
+              </span>
+              <Icon name={step.icon} class="h-8 w-8 text-brand-charcoal/70" />
+            </div>
+            <h3 class="mt-5 text-lg font-bold">{step.title}</h3>
+            <p class="mt-2 text-sm text-brand-charcoal/70">{step.description}</p>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <!-- Final CTA -->
-  <section class="mx-auto max-w-6xl px-4 py-16 text-center">
-    <h2 class="text-3xl font-bold">Ready to Get Started?</h2>
-    <p class="mt-4 text-brand-charcoal/80">Call us today and we will help you get your electrical work done.</p>
-    <a
-      href={`tel:${phone}`}
-      class="mt-8 inline-block rounded-md bg-brand-yellow px-6 py-3 font-semibold text-brand-charcoal transition hover:brightness-95"
-    >
-      Call {phone}
-    </a>
+  <!-- Final call to action -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-14 text-center text-white sm:px-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Ready to get started?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-white/80">
+        Call us today and we will help you get your electrical work done.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
   </section>
 </Layout>

@@ -1,7 +1,20 @@
 @import "tailwindcss";
+@import "@fontsource-variable/manrope";
 
 @theme {
   --color-brand-yellow: #facc15;
   --color-brand-grey: #f3f4f6;
   --color-brand-charcoal: #1f2937;
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

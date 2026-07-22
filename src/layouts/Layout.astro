@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Icon } from 'astro-icon/components';
 import SEO from '../components/SEO.astro';
 
 interface Props {
@@ -42,22 +43,23 @@ const locations = [
     <SEO title={pageTitle} description={pageDescription} canonical={pageCanonical} />
     <slot name="head" />
   </head>
-  <body class="flex min-h-screen flex-col bg-white text-brand-charcoal">
-    <header class="border-b border-brand-grey bg-white">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
-        <a href="/" class="text-lg font-bold tracking-tight text-brand-charcoal">
+  <body class="flex min-h-screen flex-col bg-white font-sans text-brand-charcoal antialiased">
+    <header class="sticky top-0 z-40 border-b border-brand-grey bg-white/90 backdrop-blur">
+      <div class="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-6 px-4">
+        <a href="/" class="flex items-center gap-2 font-extrabold tracking-tight text-brand-charcoal">
+          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-yellow">
+            <Icon name="ph:lightning-fill" class="h-5 w-5 text-brand-charcoal" />
+          </span>
           Sioux Falls Electricians
         </a>
 
         <nav aria-label="Main" class="hidden items-center gap-8 md:flex">
           <div class="group relative">
-            <button class="flex items-center gap-1 font-medium text-brand-charcoal">
+            <button class="flex items-center gap-1 text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">
               Services
-              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-              </svg>
+              <Icon name="ph:caret-down" class="h-4 w-4" />
             </button>
-            <ul class="invisible absolute left-0 top-full z-10 min-w-56 rounded-md border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <ul class="invisible absolute left-0 top-full z-10 min-w-56 rounded-xl border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               {services.map((service) => (
                 <li>
                   <a href={service.href} class="block px-4 py-2 text-sm hover:bg-brand-grey">
@@ -69,13 +71,11 @@ const locations = [
           </div>
 
           <div class="group relative">
-            <button class="flex items-center gap-1 font-medium text-brand-charcoal">
+            <button class="flex items-center gap-1 text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">
               Locations
-              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-              </svg>
+              <Icon name="ph:caret-down" class="h-4 w-4" />
             </button>
-            <ul class="invisible absolute left-0 top-full z-10 min-w-40 rounded-md border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <ul class="invisible absolute left-0 top-full z-10 min-w-40 rounded-xl border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               {locations.map((location) => (
                 <li>
                   <a href={location.href} class="block px-4 py-2 text-sm hover:bg-brand-grey">
@@ -86,16 +86,56 @@ const locations = [
             </ul>
           </div>
 
-          <a href="/about" class="font-medium text-brand-charcoal">About</a>
-          <a href="/contact" class="font-medium text-brand-charcoal">Contact</a>
+          <a href="/about" class="text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">About</a>
+          <a href="/contact" class="text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">Contact</a>
         </nav>
 
-        <a
-          href={`tel:${phone}`}
-          class="whitespace-nowrap rounded-md bg-brand-yellow px-4 py-2 font-semibold text-brand-charcoal transition hover:brightness-95"
-        >
-          Call {phone}
-        </a>
+        <div class="flex items-center gap-2">
+          <a
+            href={`tel:${phone}`}
+            class="flex items-center gap-2 whitespace-nowrap rounded-full bg-brand-yellow px-4 py-2 text-sm font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+          >
+            <Icon name="ph:phone-fill" class="h-4 w-4" />
+            <span class="hidden sm:inline">{phone}</span>
+            <span class="sm:hidden">Call</span>
+          </a>
+
+          <details class="group relative md:hidden">
+            <summary
+              class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-brand-grey text-brand-charcoal [&::-webkit-details-marker]:hidden"
+              aria-label="Open menu"
+            >
+              <Icon name="ph:list" class="h-5 w-5 group-open:hidden" />
+              <Icon name="ph:x" class="hidden h-5 w-5 group-open:block" />
+            </summary>
+            <div class="absolute right-0 top-full mt-2 max-h-[70vh] w-64 overflow-auto rounded-xl border border-brand-grey bg-white p-4 shadow-lg">
+              <p class="px-1 text-xs font-bold uppercase tracking-wide text-brand-charcoal/50">Services</p>
+              <ul class="mt-1">
+                {services.map((service) => (
+                  <li>
+                    <a href={service.href} class="block rounded-lg px-1 py-2 text-sm hover:bg-brand-grey">
+                      {service.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-3 px-1 text-xs font-bold uppercase tracking-wide text-brand-charcoal/50">Locations</p>
+              <ul class="mt-1">
+                {locations.map((location) => (
+                  <li>
+                    <a href={location.href} class="block rounded-lg px-1 py-2 text-sm hover:bg-brand-grey">
+                      {location.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div class="mt-3 border-t border-brand-grey pt-2">
+                <a href="/about" class="block rounded-lg px-1 py-2 text-sm font-semibold hover:bg-brand-grey">About</a>
+                <a href="/contact" class="block rounded-lg px-1 py-2 text-sm font-semibold hover:bg-brand-grey">Contact</a>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
     </header>
 
@@ -104,20 +144,25 @@ const locations = [
     </main>
 
     <footer class="border-t border-brand-grey bg-brand-grey">
-      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 md:grid-cols-4">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 md:grid-cols-4">
         <div>
-          <p class="text-lg font-bold text-brand-charcoal">Sioux Falls Electricians</p>
-          <p class="mt-2 text-sm text-brand-charcoal/70">
+          <p class="flex items-center gap-2 font-extrabold text-brand-charcoal">
+            <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-yellow">
+              <Icon name="ph:lightning-fill" class="h-4 w-4 text-brand-charcoal" />
+            </span>
+            Sioux Falls Electricians
+          </p>
+          <p class="mt-3 text-sm text-brand-charcoal/70">
             Local electricians serving the Sioux Falls area.
           </p>
         </div>
 
         <div>
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand-charcoal">Services</h2>
+          <h2 class="text-sm font-bold text-brand-charcoal">Services</h2>
           <ul class="mt-3 space-y-2 text-sm">
             {services.map((service) => (
               <li>
-                <a href={service.href} class="text-brand-charcoal/80 hover:text-brand-charcoal">
+                <a href={service.href} class="text-brand-charcoal/70 hover:text-brand-charcoal">
                   {service.label}
                 </a>
               </li>
@@ -126,11 +171,11 @@ const locations = [
         </div>
 
         <div>
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand-charcoal">Locations</h2>
+          <h2 class="text-sm font-bold text-brand-charcoal">Locations</h2>
           <ul class="mt-3 space-y-2 text-sm">
             {locations.map((location) => (
               <li>
-                <a href={location.href} class="text-brand-charcoal/80 hover:text-brand-charcoal">
+                <a href={location.href} class="text-brand-charcoal/70 hover:text-brand-charcoal">
                   {location.label}
                 </a>
               </li>
@@ -139,12 +184,14 @@ const locations = [
         </div>
 
         <div>
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand-charcoal">Contact</h2>
-          <p class="mt-3 text-sm">
-            <a href={`tel:${phone}`} class="font-semibold text-brand-charcoal hover:underline">
-              {phone}
-            </a>
-          </p>
+          <h2 class="text-sm font-bold text-brand-charcoal">Contact</h2>
+          <a
+            href={`tel:${phone}`}
+            class="mt-3 flex items-center gap-2 font-bold text-brand-charcoal hover:underline"
+          >
+            <Icon name="ph:phone-fill" class="h-4 w-4" />
+            {phone}
+          </a>
         </div>
       </div>
 
