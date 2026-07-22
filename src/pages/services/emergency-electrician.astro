@@ -1,7 +1,239 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+const phone = '605-xxx-xxxx';
+
+const whenToCall = [
+  {
+    icon: 'ph:lightning-slash',
+    title: 'Power out in part of the house',
+    description: 'Some rooms have power and others do not. That points to a problem worth checking right away.',
+  },
+  {
+    icon: 'ph:fire',
+    title: 'Burning smell from an outlet or panel',
+    description: 'A hot or burning smell near an outlet or your panel is a warning sign. Do not wait on it.',
+  },
+  {
+    icon: 'ph:lightning',
+    title: 'Sparking outlets or switches',
+    description: 'Sparks when you plug something in or flip a switch mean something is wrong inside the wiring.',
+  },
+  {
+    icon: 'ph:gauge',
+    title: 'A breaker that keeps tripping',
+    description: 'A breaker that trips again and again can point to an overloaded circuit or an aging panel.',
+  },
+  {
+    icon: 'ph:warning',
+    title: 'Exposed or damaged wiring',
+    description: 'Bare, chewed, or damaged wires are a shock and fire risk. Keep away and give us a call.',
+  },
+  {
+    icon: 'ph:drop',
+    title: 'Water damage near electrical',
+    description: 'Water near outlets, wiring, or your panel is dangerous. We check it out and make it safe.',
+  },
+];
+
+const safetySteps = [
+  {
+    icon: 'ph:power',
+    title: 'Shut off the breaker if safe to reach',
+    description: 'If you can get to your panel safely, turn off the breaker for the affected area.',
+  },
+  {
+    icon: 'ph:hand-palm',
+    title: 'Stay away from damaged wiring',
+    description: 'Keep yourself, kids, and pets away from any burnt, bare, or sparking wires.',
+  },
+  {
+    icon: 'ph:prohibit',
+    title: 'Do not use water near electrical',
+    description: 'Never use water on an electrical problem, even if you see smoke. It makes things worse.',
+  },
+];
+
+const locations = [
+  { label: 'Brandon', href: '/locations/brandon' },
+  { label: 'Harrisburg', href: '/locations/harrisburg' },
+  { label: 'Tea', href: '/locations/tea' },
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Emergency Electrical Service',
+  provider: {
+    '@type': 'Electrician',
+    name: 'Sioux Falls Electricians',
+    url: 'https://siouxfalls-electrician.com',
+    telephone: phone,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Sioux Falls',
+      addressRegion: 'SD',
+      addressCountry: 'US',
+    },
+  },
+  areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
+};
 ---
 
-<Layout title="Emergency Electrician">
-  <h1 class="mx-auto max-w-6xl px-4 py-16 text-4xl font-bold">Emergency Electrician</h1>
+<Layout
+  title="Emergency Electrician Sioux Falls SD | 24 Hour Service"
+  fullTitle
+  description="Need an emergency electrician in Sioux Falls? We handle power outages, sparking outlets, and electrical failures. Call 605-xxx-xxxx anytime."
+  canonical="https://siouxfalls-electrician.com/services/emergency-electrician"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <!-- Hero -->
+  <section class="border-b border-brand-grey bg-white">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <span class="inline-flex items-center gap-2 rounded-full bg-brand-yellow px-3 py-1 text-sm font-bold text-brand-charcoal">
+        <Icon name="ph:clock" class="h-4 w-4" />
+        24 hour emergency service
+      </span>
+      <h1 class="mt-5 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+        Emergency Electrician in Sioux Falls, SD
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-brand-charcoal/70">
+        When something goes wrong with your power, we respond fast to electrical emergencies across Sioux Falls.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- When to call -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">When to call an emergency electrician</h2>
+      <p class="mt-3 max-w-2xl text-brand-charcoal/70">
+        If any of these are happening, it is time to call. Do not try to wait it out.
+      </p>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {whenToCall.map((item) => (
+          <div class="flex flex-col rounded-2xl bg-white p-6">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-yellow">
+              <Icon name={item.icon} class="h-7 w-7 text-brand-charcoal" />
+            </span>
+            <h3 class="mt-5 text-lg font-bold">{item.title}</h3>
+            <p class="mt-2 text-sm text-brand-charcoal/70">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What we handle -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">What we handle</h2>
+    <p class="mt-3 max-w-2xl text-brand-charcoal/70">
+      We take emergency calls for homes and businesses across the Sioux Falls area.
+    </p>
+    <div class="mt-10 grid gap-6 md:grid-cols-2">
+      <div class="rounded-2xl border border-brand-grey p-8">
+        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-grey">
+          <Icon name="ph:house-line" class="h-7 w-7 text-brand-charcoal" />
+        </span>
+        <h3 class="mt-5 text-xl font-bold">Home emergencies</h3>
+        <p class="mt-2 text-brand-charcoal/70">
+          Outages, dead outlets, tripping breakers, and burning smells. We find the problem and make your home safe again.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-brand-grey p-8">
+        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-grey">
+          <Icon name="ph:buildings" class="h-7 w-7 text-brand-charcoal" />
+        </span>
+        <h3 class="mt-5 text-xl font-bold">Business emergencies</h3>
+        <p class="mt-2 text-brand-charcoal/70">
+          Lost power, failing circuits, and equipment that will not run. We work to get your business back up and running.
+        </p>
+      </div>
+    </div>
+    <p class="mt-8 max-w-3xl text-brand-charcoal/70">
+      We take care of the urgent problem first. Once things are safe, we can handle any follow-up
+      <a href="/services/electrical-repair" class="font-semibold text-brand-charcoal underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-brand-charcoal/70">electrical repair</a>
+      you need. If your breaker keeps tripping, that can be a sign it is time for a
+      <a href="/services/panel-upgrades" class="font-semibold text-brand-charcoal underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-brand-charcoal/70">panel upgrade</a>,
+      and we can walk you through that too.
+    </p>
+  </section>
+
+  <!-- What to do before we arrive -->
+  <section class="mx-auto max-w-6xl px-4 pb-16 lg:pb-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-12 text-white sm:px-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">What to do before we arrive</h2>
+      <p class="mt-3 max-w-2xl text-white/70">A few simple steps can keep you safe while you wait for us.</p>
+      <ol class="mt-10 grid gap-8 sm:grid-cols-3">
+        {safetySteps.map((step, index) => (
+          <li>
+            <div class="flex items-center gap-4">
+              <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-yellow text-lg font-extrabold text-brand-charcoal">
+                {index + 1}
+              </span>
+              <Icon name={step.icon} class="h-8 w-8 text-brand-yellow" />
+            </div>
+            <h3 class="mt-5 text-lg font-bold">{step.title}</h3>
+            <p class="mt-2 text-sm text-white/70">{step.description}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section class="bg-brand-grey">
+    <div class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+      <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Emergency service near you</h2>
+          <p class="mt-4 max-w-md text-brand-charcoal/70">
+            We answer emergency calls in Sioux Falls and the nearby towns. Pick yours to learn more.
+          </p>
+        </div>
+        <ul class="grid gap-4 sm:grid-cols-3">
+          {locations.map((location) => (
+            <li>
+              <a
+                href={location.href}
+                class="group flex items-center justify-between rounded-2xl border border-brand-charcoal/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-brand-yellow hover:shadow-md"
+              >
+                <span class="flex items-center gap-3 font-bold">
+                  <Icon name="ph:map-pin" class="h-6 w-6 text-brand-charcoal" />
+                  {location.label}
+                </span>
+                <Icon name="ph:arrow-right" class="h-5 w-5 text-brand-charcoal/50 transition group-hover:translate-x-1 group-hover:text-brand-charcoal" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final call to action -->
+  <section class="mx-auto max-w-6xl px-4 py-16 lg:py-20">
+    <div class="rounded-3xl bg-brand-charcoal px-6 py-14 text-center text-white sm:px-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Have an electrical emergency?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-white/80">
+        Call us anytime and we will get to you as fast as we can.
+      </p>
+      <a
+        href={`tel:${phone}`}
+        class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
+      >
+        <Icon name="ph:phone-fill" class="h-5 w-5" />
+        Call {phone}
+      </a>
+    </div>
+  </section>
 </Layout>

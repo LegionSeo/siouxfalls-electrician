@@ -7,11 +7,13 @@ interface Props {
   title: string;
   description?: string;
   canonical?: string;
+  /** When true, `title` is used verbatim as the <title> instead of appending the brand name. */
+  fullTitle?: boolean;
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical, fullTitle } = Astro.props;
 
-const pageTitle = `${title} | Sioux Falls Electricians`;
+const pageTitle = fullTitle ? title : `${title} | Sioux Falls Electricians`;
 const pageDescription =
   description ?? 'Residential and commercial electricians serving Sioux Falls, Brandon, Harrisburg, and Tea.';
 const pageCanonical = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
