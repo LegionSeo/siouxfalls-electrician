@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const phone = '605-xxx-xxxx';
+
+const services = [
+  { label: 'Emergency Electrician', href: '/services/emergency-electrician' },
+  { label: 'Panel Upgrades', href: '/services/panel-upgrades' },
+  { label: 'Electrical Repair', href: '/services/electrical-repair' },
+  { label: 'EV Charger Installation', href: '/services/ev-charger-installation' },
+  { label: 'Commercial Electrician', href: '/services/commercial-electrician' },
+  { label: 'Wiring & Rewiring', href: '/services/wiring-rewiring' },
+  { label: 'Lighting Installation', href: '/services/lighting-installation' },
+];
+
+const locations = [
+  { label: 'Brandon', href: '/locations/brandon' },
+  { label: 'Harrisburg', href: '/locations/harrisburg' },
+  { label: 'Tea', href: '/locations/tea' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Sioux Falls Electricians</title>
+  </head>
+  <body class="flex min-h-screen flex-col bg-white text-brand-charcoal">
+    <header class="border-b border-brand-grey bg-white">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-4">
+        <a href="/" class="text-lg font-bold tracking-tight text-brand-charcoal">
+          Sioux Falls Electricians
+        </a>
+
+        <nav aria-label="Main" class="hidden items-center gap-8 md:flex">
+          <div class="group relative">
+            <button class="flex items-center gap-1 font-medium text-brand-charcoal">
+              Services
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <ul class="invisible absolute left-0 top-full z-10 min-w-56 rounded-md border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              {services.map((service) => (
+                <li>
+                  <a href={service.href} class="block px-4 py-2 text-sm hover:bg-brand-grey">
+                    {service.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="group relative">
+            <button class="flex items-center gap-1 font-medium text-brand-charcoal">
+              Locations
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <ul class="invisible absolute left-0 top-full z-10 min-w-40 rounded-md border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              {locations.map((location) => (
+                <li>
+                  <a href={location.href} class="block px-4 py-2 text-sm hover:bg-brand-grey">
+                    {location.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a href="/about" class="font-medium text-brand-charcoal">About</a>
+          <a href="/contact" class="font-medium text-brand-charcoal">Contact</a>
+        </nav>
+
+        <a
+          href={`tel:${phone}`}
+          class="whitespace-nowrap rounded-md bg-brand-yellow px-4 py-2 font-semibold text-brand-charcoal transition hover:brightness-95"
+        >
+          Call {phone}
+        </a>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-brand-grey bg-brand-grey">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 md:grid-cols-4">
+        <div>
+          <p class="text-lg font-bold text-brand-charcoal">Sioux Falls Electricians</p>
+          <p class="mt-2 text-sm text-brand-charcoal/70">
+            Licensed local electricians serving the Sioux Falls area.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand-charcoal">Services</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            {services.map((service) => (
+              <li>
+                <a href={service.href} class="text-brand-charcoal/80 hover:text-brand-charcoal">
+                  {service.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand-charcoal">Locations</h2>
+          <ul class="mt-3 space-y-2 text-sm">
+            {locations.map((location) => (
+              <li>
+                <a href={location.href} class="text-brand-charcoal/80 hover:text-brand-charcoal">
+                  {location.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-brand-charcoal">Contact</h2>
+          <p class="mt-3 text-sm">
+            <a href={`tel:${phone}`} class="font-semibold text-brand-charcoal hover:underline">
+              {phone}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-brand-charcoal/10 px-4 py-4 text-center text-xs text-brand-charcoal/60">
+        &copy; {new Date().getFullYear()} Sioux Falls Electricians. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
