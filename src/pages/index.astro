@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
-import { Image } from 'astro:assets';
-import heroImage from '../assets/hero-electrician.png';
 
 const phone = '605-xxx-xxxx';
 
@@ -129,14 +127,15 @@ const schema = {
 
   <!-- Hero: brand photo with the title and call button laid over it -->
   <section class="relative isolate overflow-hidden bg-brand-charcoal">
-    <Image
-      src={heroImage}
+    <img
+      src="/hero-electrician.webp"
       alt="A Sioux Falls electrician in a branded polo testing an electrical panel outside a home"
+      width="1408"
+      height="768"
       class="absolute inset-0 h-full w-full object-cover object-[68%_center]"
-      widths={[640, 960, 1408]}
-      sizes="100vw"
       loading="eager"
       fetchpriority="high"
+      decoding="async"
     />
     <!-- scrims so the text stays readable over the photo -->
     <div class="absolute inset-0 bg-brand-charcoal/50"></div>
