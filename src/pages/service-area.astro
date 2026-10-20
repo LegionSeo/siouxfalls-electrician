@@ -52,13 +52,13 @@ const graph = [
         <div class="section">
           <div class="block-head">
             <h2 id="towns-heading">Town pages</h2>
-            <p class="lede">Each town below has its own page. Open it for the work people there ask about and for the permit note.</p>
+            <p class="lede">Each town below has its own page. Open it to see the work we do there and how permits work in that town.</p>
           </div>
           <ul class="card-grid cols-2">
             <li>
               <a class="text-card" href="/">
                 Sioux Falls
-                <span class="mt-2 block text-sm font-normal text-muted">Electrical work for homes and businesses in Sioux Falls.</span>
+                <span class="mt-2 block text-sm font-normal text-muted">Electrical work for your home or business in Sioux Falls.</span>
               </a>
             </li>
             {
@@ -67,7 +67,7 @@ const graph = [
                   <a class="text-card" href={town.href}>
                     {town.name}
                     <span class="mt-2 block text-sm font-normal text-muted">
-                      Electrical work for homes and businesses in {town.name}.
+                      Electrical work for your home or business in {town.name}.
                     </span>
                   </a>
                 </li>
@@ -76,7 +76,7 @@ const graph = [
           </ul>
           <div class="block-head mt-12">
             <h2 id="also-heading">Also served</h2>
-            <p class="lede">These towns are on the list and do not have their own page. Call with the town name and the problem.</p>
+            <p class="lede">We also come to these towns. They do not have their own page, so tell us the town when you call.</p>
           </div>
           <p class="measure text-muted">{joinNames(SITE.listOnlyTowns)}.</p>
         </div>
@@ -88,7 +88,7 @@ const graph = [
             <div>
               <div class="block-head">
                 <h2 id="map-heading">Map</h2>
-                <p class="lede">The map is centered on Sioux Falls. Match the job to a town page, or call if the town is only on the list.</p>
+                <p class="lede">The map is centered on Sioux Falls. Pick your town page, or call us if your town is only on the list.</p>
               </div>
               <MapEmbed
                 src="https://www.google.com/maps?q=Sioux+Falls,+SD&z=10&output=embed"

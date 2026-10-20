@@ -25,7 +25,7 @@ export const homeFaqs: FaqItem[] = [
     question: 'Do I need a permit for electrical work in Sioux Falls?',
     paragraphs: [
       'The City of Sioux Falls requires a permit for most electrical work, including many new circuits, panel changes, and equipment installs, so confirm the current rules with city building services before you start.',
-      'Where a permit is required, the work is permitted.',
+      'We pull a permit when the city requires one.',
     ],
   },
   {
