@@ -245,7 +245,7 @@ const steps = [
               townPages.some((town) => !town.live) &&
                 ` We also serve ${joinNames(townPages.filter((town) => !town.live).map((town) => town.name))}.`
             }
-            {' '}We take calls in {joinNames(SITE.listOnlyTowns)}. Those four towns do not have their own pages.
+            {' '}We take calls in {joinNames(SITE.listOnlyTowns)}.
           </p>
         </div>
       </div>
@@ -275,7 +275,7 @@ const steps = [
               )
             }
           </ul>
-          <p class="mt-4 text-sm text-muted">Also serving {SITE.listOnlyTowns.join(', ')}. Those towns do not have their own pages.</p>
+          <p class="mt-4 text-sm text-muted">Also serving {SITE.listOnlyTowns.join(', ')}.</p>
         </div>
       </div>
     </div>

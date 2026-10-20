@@ -19,14 +19,14 @@ export const homeFaqs: FaqItem[] = [
     question: 'What does an electrician in Sioux Falls typically charge, and what affects the price?',
     paragraphs: [
       'There is no single price for electrical work in Sioux Falls, because the quote changes with the type of repair, how hard the wiring is to reach, the space left in the panel, the materials, and whether the city requires a permit and inspection.',
-      'We do not list dollar amounts. Call for a written quote before work starts.',
+      'Call for a written quote before work starts.',
     ],
   },
   {
     question: 'Do I need a permit for electrical work in Sioux Falls?',
     paragraphs: [
       'The City of Sioux Falls requires a permit for most electrical work, including many new circuits, panel changes, and equipment installs, so confirm the current rules with city building services before you start.',
-      'This page does not cite code sections. Where a permit is required, the work is permitted.',
+      'Where a permit is required, the work is permitted.',
     ],
   },
   {

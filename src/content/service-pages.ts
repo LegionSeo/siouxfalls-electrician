@@ -46,7 +46,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'The quote changes with how long it takes to reach the fault, whether the box is buried in finished plaster, and whether the breaker or the wire is the part that failed.',
-      'A single device is a smaller job than a circuit that has to be opened in more than one room. Panel space, permit needs, and the materials on the truck also change the number. No prices are listed on this page.',
+      'A single device is a smaller job than a circuit that has to be opened in more than one room. Panel space, permit needs, and the materials on the truck also change the number.',
     ],
     emergency: 'Sparking, a burning smell, or a breaker that will not stay on is treated as urgent. If you see smoke or fire, call 911 first.',
     visit: 'You name the room and the device when you call, and you say what changed. On site the circuit is tested before a cover comes off. A failed device stays a device quote. A fault farther down the run is written as the boxes that have to open. Work starts after you accept that number. The breaker is labeled when the visit ends, and you are shown the circuit that was touched. A second problem that was not in the quote is written as its own item before anyone keeps going.',
@@ -86,7 +86,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'An emergency quote still comes in writing before repair work starts. The number moves with the hour, the access, and whether the fault is a device or a damaged feeder.',
-      'This page does not list dollar amounts and does not promise an arrival time. Say what you see and whether anyone is still in the building.',
+      'Say what you see and whether anyone is still in the building.',
     ],
     emergency: 'Calls are answered 24 hours a day, including emergency service. Arrival time is not promised. Smoke or fire is a 911 call.',
     visit: 'The first questions are whether anyone is still inside and whether you see smoke. Smoke or fire means the call stops at 911. Otherwise you shut off the breaker you can reach without stepping in water, then you wait. On arrival the live parts are isolated before the fault is traced. The written quote covers the repair that makes the building usable again. A panel change or a rewire, if one is needed, is a second quote you can accept later. No clock time is promised.',
@@ -126,7 +126,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'A replacement in an existing box is smaller than a new outlet that needs a new cable back to the panel. GFCI and 240-volt devices need the right breaker and wire size, which changes the materials.',
-      'Finished walls, brick, and crowded panels take longer. Permit rules depend on the city. No prices are posted here.',
+      'Finished walls, brick, and crowded panels take longer. Permit rules depend on the city.',
     ],
     emergency: 'A melting plug or a switch that smells hot is not a routine install. Treat that as an emergency repair and call right away.',
     visit: 'Start with a photo of the wall and, if you can take it safely, a photo of the panel. The visit confirms the circuit can take the new device and marks where the box will sit. A cable that can be fished is listed that way. A wall that has to open is listed with the opening. Devices go in only after you accept the plan. GFCI and 240-volt work includes the breaker that matches. The new device is tested, and the breaker that feeds it is labeled before the visit ends.',
@@ -166,7 +166,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'The quote moves with the panel size, whether the mast and meter stay, how far the new panel sits from the old one, and whether the city requires a permit and inspection.',
-      'A panel in a finished wall or a tight closet takes more labor than one in an open utility room. No dollar amounts are listed here.',
+      'A panel in a finished wall or a tight closet takes more labor than one in an open utility room.',
     ],
     emergency: 'A buzzing or hot panel is urgent even if the upgrade itself is scheduled. Call if the panel is hot, and call 911 if you see smoke.',
     visit: 'The visit starts with the cover off when that is safe, plus a list of loads you want to keep or add. The mast and the meter are photographed when a service change might be involved. The quote names the panel size, whether the utility has to move anything, and whether a permit is part of the job. Power is off for the swap. Circuits are landed and labeled before the cover goes back. You keep a copy of the directory. Space for a later charger or shop circuit is noted only if you asked for it.',
@@ -206,7 +206,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'Opening finished walls, plaster, and brick costs more labor than wiring a house that is already down to studs. The length of each run and the number of new circuits change the materials.',
-      'A one-room rewire is not priced like a whole house. Permit and inspection needs depend on the city. No prices are listed.',
+      'A one-room rewire is not priced like a whole house. Permit and inspection needs depend on the city.',
     ],
     emergency: 'Exposed glowing or burning cable is an emergency, not a remodel. Shut the breaker off if you can do it safely and call.',
     visit: 'The walk-through marks which rooms stay on the old cable and which rooms get new cable. Attic and basement paths are checked before anyone talks about opening plaster. The quote lists each new circuit, the path it takes, and the openings required. Walls open only where that list says so. New cable is pulled, devices are landed, and the panel directory is updated. Old cable that is left behind is made safe at both ends. Work held for a later phase is written as its own quote.',
@@ -246,7 +246,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'A portable inlet is a smaller job than a standby set with a concrete pad, gas piping, and an automatic switch. Fuel type, distance from the panel, and the circuits you choose all change the quote.',
-      'This page lists no prices and does not size a generator from a guess. Bring the model number or a photo of the nameplate.',
+      'Bring the model number or a photo of the nameplate.',
     ],
     emergency: 'Do not backfeed the house during an outage. That can energize the utility lines. Call for a proper inlet instead of improvising in the storm.',
     visit: 'Send the model or a photo of the nameplate when you already own the unit. On site the panel is checked for a place to land a transfer switch or an interlock, and the pad or inlet spot is marked. The quote lists the circuits that will be on the generator and the circuits that stay off. A double-ended cord is not offered. After the switch is in, those circuits are tested with the utility separated by the transfer equipment. The utility is contacted only when that setup needs their approval.',
@@ -254,7 +254,7 @@ export const servicePages: ServicePage[] = [
       { q: 'Can I plug a generator into a dryer outlet?', a: 'No. A dryer outlet is not a transfer switch. Backfeeding can send power onto the utility lines and injure a line worker. Use an inlet and a transfer method.' },
       { q: 'Will a portable generator run the whole house?', a: 'Usually no. The quote picks the circuits that fit the unit you have, such as a furnace fan, a fridge, and a few lights.' },
       { q: 'Do standby generators need the utility involved?', a: 'Often yes, because the automatic switch sits between the meter and the panel. The quote says when that approval is part of the job.' },
-      { q: 'Where should the generator sit?', a: 'Away from windows and the intake of a furnace, on a pad the manufacturer allows. The visit marks a spot. Exhaust rules are not guessed on this page.' },
+      { q: 'Where should the generator sit?', a: 'Away from windows and the intake of a furnace, on a pad the manufacturer allows. The visit marks a spot.' },
     ],
     related: ['/services/panel-upgrades', '/services/emergency-electrician', '/services/surge-protection'],
   },
@@ -286,7 +286,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'A charger on the other side of the panel wall is a shorter run than one at the far end of the garage or on a detached pad. Trenching, finished walls, and a panel upgrade change the quote.',
-      'Charger brand and amperage change the wire and the breaker. No prices are listed. Send a photo of the panel and say where the car parks.',
+      'Charger brand and amperage change the wire and the breaker. Send a photo of the panel and say where the car parks.',
     ],
     emergency: 'A charger that smells hot, trips as soon as the car plugs in, or shows a burned plug is a repair, not a new install. Stop using it and call.',
     visit: 'Say where the car parks, and send a photo of the panel plus the charger label if you already bought one. The visit measures the run and checks spare capacity. If the panel cannot feed the charger, the quote stops at a panel upgrade instead of treating the charger as ready. If it can, the quote lists the breaker, the wire path, and any trench or wall opening. The unit is mounted and tested. The breaker is labeled with the parking spot it serves.',
@@ -326,7 +326,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'Recessed lights in an open attic are simpler than the same lights under a finished second floor. Insulation, joist direction, and the number of holes change the labor.',
-      'Outdoor runs that need trench or conduit cost more than a fixture on an existing box. No prices are listed.',
+      'Outdoor runs that need trench or conduit cost more than a fixture on an existing box.',
     ],
     emergency: 'A light that sparks or smells like burning insulation should be switched off and treated as a repair, not left on the lighting schedule.',
     visit: 'The layout is marked in the room before a hole is cut, so the dark corners are the ones that get a light. The quote lists the count, whether those lamps share a circuit or need a new one, and whether a dimmer changes. Holes are cut only after you accept that layout. A joist or a duct can force a mark to move, and that move is pointed out before the saw runs. Fixtures are switched and left with lamps that match the dimmer when a dimmer was part of the quote.',
@@ -366,7 +366,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'A fan on an existing rated box is a short visit. Cutting in a brace from the attic, or from the room when there is no attic, takes longer and can need a ceiling opening.',
-      'High ceilings, vaulted drywall, and a new switch leg change the quote. No prices are listed. Tell us the ceiling height.',
+      'High ceilings, vaulted drywall, and a new switch leg change the quote. Tell us the ceiling height.',
     ],
     emergency: 'A fan that fell or is hanging by the wires should stay off. Do not spin it back onto a damaged box.',
     visit: 'The old fixture stays up until the quote is accepted, because the box decides the rest of the job. A box that is already fan-rated and solid gets the fan you bought. A light box means the quote already includes a rated brace and says whether the attic is the way in. The canopy is checked for movement before the visit ends. A light kit uses the switch leg that is already there. A second switch is added only when the quote said the wall would open.',
@@ -406,7 +406,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'Distance, trenching, concrete, and a full panel are the usual cost drivers. A tub on the other side of the yard is not the same job as a tub against the house.',
-      'The nameplate amperage sets the wire and the breaker. No prices are listed. Send a photo of the nameplate and of the panel.',
+      'The nameplate amperage sets the wire and the breaker. Send a photo of the nameplate and of the panel.',
     ],
     emergency: 'A tub that trips, smells hot, or has a chewed cord should be left off. Do not reset a GFCI over and over.',
     visit: 'Send the tub nameplate before any trench is discussed. The visit walks from the panel to the pad and notes concrete, gates, and the distance. The quote lists the breaker size, the wire method, where the disconnect sits, and whether the panel has room. Digging waits if the panel is full until that panel path is accepted. The circuit is built and tested at the disconnect before the tub is connected. Final landing waits until the tub is sitting where it will stay. The tub is not set or filled on this visit.',
@@ -427,7 +427,7 @@ export const servicePages: ServicePage[] = [
     alt: 'Electrician inspecting an open breaker panel',
     answer:
       'An electrical inspection on this page is a private safety check of the panel, wiring, and devices in a Sioux Falls area building. It is not a city or state inspection and it does not replace a permit inspection. You get a written list of what was seen. Call {phone}.',
-    includedLead: 'The visit looks. It does not certify the whole building, and it does not invent a pass sticker.',
+    includedLead: 'The visit looks. It does not certify the whole building,.',
     included: [
       'A look at the panel cover, breakers, and any signs of heat.',
       'A sample of outlets, switches, and visible cable in the attic or basement.',
@@ -446,7 +446,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'A walkthrough of a small house is a different visit from a large shop with more than one panel. Access to attics, locked rooms, and buried panels changes the time.',
-      'The inspection fee is quoted in writing. Repair work is a second quote. No price list is posted, and no official pass or fail certificate is offered.',
+      'The inspection fee is quoted in writing. Repair work is a second quote.',
     ],
     emergency: 'If the look finds active sparking or a burning smell, the emergency repair path starts the same day. The written list can wait.',
     visit: 'You walk the building along or you leave a key and a room list. The panel is opened when that is safe. Cable that can be seen in the attic, the basement, and open joists is noted. Devices are sampled. They are not pulled from every wall. Findings go on a written list the same day or the next business day: what was seen, where it was, and whether it is a repair or a watch item. That list is not a city approval. Repairs you want are a second quote drawn from the items you pick.',
@@ -486,7 +486,7 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'A protector added to a sound panel is a short visit. A panel that has no space, or a grounding path that has to be repaired first, is a larger quote.',
-      'Device type follows the panel brand and the service size. No prices are listed.',
+      'Device type follows the panel brand and the service size.',
     ],
     emergency: 'A surge device that is burned, cracked, or buzzing should be left alone. Call for a repair. It did its job or it failed, and either way it should be looked at.',
     visit: 'The panel is opened to find a place for the protector and to see that a grounding path is actually there. A damaged or full panel means the quote says the protector waits. A panel that can take the device gets a quote that names the unit and the breaker space. It is mounted, landed, and labeled. The indicator is checked before the cover goes on. Plug-in strips can stay on computers and televisions. A burned indicator later is a new visit, not a reason to ignore the device.',
@@ -507,7 +507,7 @@ export const servicePages: ServicePage[] = [
     alt: 'Electrician installing a hardwired smoke detector on a ceiling',
     answer:
       'Smoke and CO detector work in Sioux Falls replaces or adds hardwired smoke alarms and carbon monoxide detectors, including the interconnect wire when the house already has it. You get a written quote before any device comes down. Call {phone}.',
-    includedLead: 'This is device and circuit work. It is not a fire-code opinion and it does not cite code sections.',
+    includedLead: 'This is device and circuit work. The work is the devices and the circuit.',
     included: [
       'Replacement of hardwired smoke alarms that are past their date or that chirp after a new battery.',
       'Carbon monoxide alarms on levels that already have a place for them.',
@@ -526,14 +526,14 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'Swapping devices on existing boxes is smaller than fishing a new interconnect through a finished ceiling. The number of alarms and the ceiling height change the time.',
-      'No prices are listed. Count the alarms and say whether they are hardwired.',
+      'Count the alarms and say whether they are hardwired.',
     ],
     emergency: 'If an alarm is sounding and you smell smoke or feel ill, leave and call 911. An electrician visit is for after the building is safe.',
     visit: 'Count the alarms and note which ones are hardwired if you can do that before the visit. Each head is dated, and the circuit that feeds the alarms is identified. The quote lists the devices to replace, whether a carbon monoxide alarm is included, and whether an interconnect wire is already in the boxes. Heads are swapped and tested from the button. Fishing a missing interconnect is its own line, not a task added after the ladders are up. A battery-only house gets a note instead of a hardwired promise.',
     faqs: [
       { q: 'Why does a hardwired alarm still chirp?', a: 'The backup battery, a failing sensor, or a loose interconnect can chirp. The date stamp also ends the life of the sensor. The visit says which one it is.' },
       { q: 'Can you add interconnection to old alarms?', a: 'Only if a traveler wire can be run or is already in the box. Wireless interconnect is a product choice, not a promise that every ceiling can be fished.' },
-      { q: 'Do you tell me how many alarms the code requires?', a: 'No. This site does not cite code sections. The city or the fire official is the source for required locations. We install the devices you approve.' },
+      { q: 'Do you tell me how many alarms the code requires?', a: 'The city or the fire official is the source for required locations. We install the devices you approve.' },
       { q: 'Are CO alarms the same device as smoke alarms?', a: 'They can be separate or combined. The quote lists which heads go where, based on the appliances and the floors you describe.' },
     ],
     related: ['/services/electrical-repair', '/services/lighting-installation', '/services/electrical-inspections'],
@@ -566,14 +566,14 @@ export const servicePages: ServicePage[] = [
     ],
     cost: [
       'After-hours work, ceiling type, and lift access change the quote. A retail ceiling grid is not an office drywall ceiling.',
-      'Landlord approval and utility shutdowns can add time that is not labor. No prices are listed. Say the address, the hours you can be dark, and the equipment nameplate.',
+      'Landlord approval and utility shutdowns can add time that is not labor. Say the address, the hours you can be dark, and the equipment nameplate.',
     ],
     emergency: 'A burning smell in a shop panel is an emergency. Get people out if there is smoke and call 911, then call for the repair.',
     visit: 'The call names the suite, the hours a circuit can be dark, and whether a landlord has to open the meter room. The visit reads the panel directory, the failed circuit, and the ceiling type. The quote splits work that can happen while you are open from work that waits until the door is locked. A ladder or a lift is named when the ceiling needs one. Breakers are labeled in plain words before the visit ends. A machine circuit uses the nameplate amperage you provided. Anything outside that list is a new quote.',
     faqs: [
       { q: 'Do you work in occupied stores?', a: 'Yes, when the lights or the circuit can be off in a section. Say the hours. Some work has to wait until the door is locked.' },
       { q: 'Can you add one circuit for a new machine?', a: 'Yes, if the panel has space and capacity. A full panel means a larger quote. Bring the machine nameplate.' },
-      { q: 'Will you design a whole building?', a: 'No. This page is for repair, lighting, and added circuits. A full build-out needs a design this site does not pretend to replace.' },
+      { q: 'Will you design a whole building?', a: 'No. This page is for repair, lighting, and added circuits. A full build-out needs its own design.' },
       { q: 'Are house calls and business calls the same number?', a: 'Yes. Say that it is a business and whether a landlord has to approve access.' },
     ],
     related: ['/services/lighting-installation', '/services/panel-upgrades', '/services/electrical-repair'],

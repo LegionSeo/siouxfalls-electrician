@@ -44,7 +44,7 @@ export const townPagesContent: TownPage[] = [
       { label: 'ZIP', value: '57005' },
     ],
     detail: 'Brandon incorporated in 1973. The schools are in the Brandon Valley School District.',
-    housing: 'Neighborhood names and the age of the houses are not listed on this page.',
+    housing: '',
     permits:
       'Building permits inside Brandon go through the City of Brandon Planning and Inspection Department at 304 Main Ave. Electrical inspections follow the South Dakota State Electrical Commission. Sioux Falls city limits are a different inspection path.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/ev-charger-installation', '/services/lighting-installation'],
@@ -73,14 +73,14 @@ export const townPagesContent: TownPage[] = [
     ],
     detail:
       'Harrisburg was founded in 1873. The county seat is Canton. The school-district boundary and the city boundary do not match, so many Harrisburg schools sit inside Sioux Falls. Adventure, Freedom, and Liberty elementaries are inside the city limits.',
-    housing: 'A mileage figure and subdivision names are not listed on this page.',
+    housing: '',
     permits:
       'Work inside Harrisburg city limits is a city permit question. Electrical inspections outside Sioux Falls city limits go through the South Dakota State Electrical Commission.',
     services: ['/services/panel-upgrades', '/services/ev-charger-installation', '/services/lighting-installation', '/services/electrical-repair'],
     faqs: [
       { q: 'Is Harrisburg in the same county as Sioux Falls?', a: 'Harrisburg is in Lincoln County. Sioux Falls is mostly in Minnehaha County, with part of the city in Lincoln County.' },
       { q: 'Why are some Harrisburg schools in Sioux Falls?', a: 'The school-district boundary and the municipal boundary do not match, so several Harrisburg schools are inside Sioux Falls.' },
-      { q: 'Do you publish a Harrisburg trip fee?', a: 'No. Ask about travel when you call. The town page is for the work, not a mileage table.' },
+      { q: 'When was Harrisburg founded?', a: 'Harrisburg was founded in 1873. The county seat of Lincoln County is Canton.' },
     ],
     mapQuery: 'Harrisburg, SD',
     preview: '/images/maps/harrisburg.webp',
@@ -102,7 +102,7 @@ export const townPagesContent: TownPage[] = [
     ],
     detail:
       'Tea was founded in 1894. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls.',
-    housing: 'A driving distance and a highway number are not listed on this page.',
+    housing: '',
     permits:
       'Permits for work inside Tea are a city question. State electrical inspections cover wiring outside the Sioux Falls and Rapid City local programs.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/lighting-installation', '/services/panel-upgrades'],
@@ -131,7 +131,7 @@ export const townPagesContent: TownPage[] = [
     ],
     detail:
       'Hartford is northwest of Sioux Falls. West Central High School also draws from Humboldt, the Wall Lake area, and Ellis.',
-    housing: 'Housing age and subdivision names are not listed on this page.',
+    housing: '',
     permits:
       'Building permits inside Hartford go to the city. Electrical inspections follow the state commission unless the work is inside Sioux Falls, which has its own inspection department.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation', '/services/lighting-installation'],
@@ -159,15 +159,15 @@ export const townPagesContent: TownPage[] = [
       { label: 'Roads', value: 'I-29, SD 115' },
     ],
     detail:
-      'The city sits upstream of Sioux Falls on the Big Sioux River. Downtown is about three miles from I-29 by SD Highway 115. Old Highway 77 runs north out of the city. The school office is at 1216 N Garfield Ave. A current population is not listed.',
-    housing: 'The state transportation plan calls Dell Rapids a bedroom community of Sioux Falls. It does not give a mix of housing ages.',
+      'The city sits upstream of Sioux Falls on the Big Sioux River. Downtown is about three miles from I-29 by SD Highway 115. Old Highway 77 runs north out of the city. The school office is at 1216 N Garfield Ave.',
+    housing: 'The state transportation plan calls Dell Rapids a bedroom community of Sioux Falls.',
     permits:
       'City work is permitted by the city. The state electrical commission inspects wiring outside the Sioux Falls local program.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/wiring-rewiring', '/services/smoke-co-detectors'],
     faqs: [
       { q: 'How do you get from Dell Rapids to Sioux Falls?', a: 'The DOT master plan says SD Highway 115 connects downtown to I-29, about three miles west, and then south to Sioux Falls.' },
       { q: 'What schools are in town?', a: 'Dell Rapids Elementary, Middle School, and High School, in district 49-3, at 1216 N Garfield Ave.' },
-      { q: 'Is a current population printed here?', a: 'No. The 2017 figure in the state transportation plan is out of date, so it is not used.' },
+      { q: 'Which river runs through Dell Rapids?', a: 'The Big Sioux River. The city is upstream of Sioux Falls.' },
     ],
     mapQuery: 'Dell Rapids, SD',
     preview: '/images/maps/dell-rapids.webp',
@@ -189,7 +189,7 @@ export const townPagesContent: TownPage[] = [
       { label: 'ZIP', value: '57013' },
     ],
     detail: 'Canton is the Lincoln County seat. It incorporated in 1881. The schools are in Canton School District 41-1.',
-    housing: 'Canton is part of the Sioux Falls metropolitan area. A housing-age breakdown is not listed.',
+    housing: 'Canton is part of the Sioux Falls metropolitan area.',
     permits:
       'Ask the city or Lincoln County about a building permit, depending on whether the job is inside city limits. State electrical inspections apply outside Sioux Falls city limits.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/lighting-installation', '/services/commercial-electrician'],
@@ -219,7 +219,7 @@ export const townPagesContent: TownPage[] = [
     ],
     detail:
       'Lennox was founded in 1889. The district runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School.',
-    housing: 'Housing age and neighborhood names are not listed on this page.',
+    housing: '',
     permits:
       'Jobs inside Lennox go to the city for a building permit. Electrical inspection outside Sioux Falls is a state-commission inspection.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/generator-installation', '/services/smoke-co-detectors'],

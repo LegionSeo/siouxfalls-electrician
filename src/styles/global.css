@@ -145,7 +145,22 @@ footer :where(.grid) > * {
 
 @media (max-width: 1023px) {
   body {
-    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+    padding-bottom: calc(65px + env(safe-area-inset-bottom));
+  }
+}
+
+[data-sticky-bar] {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 70;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 1024px) {
+  [data-sticky-bar] {
+    display: none;
   }
 }
 
@@ -1054,6 +1069,28 @@ details[open] .faq-minus {
   display: none;
 }
 
+.page-main {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  padding-block: 24px;
+}
+
+.page-main > section {
+  background: #fff;
+  border: 1px solid #e7e2d9;
+  border-radius: 16px;
+}
+
+.page-main > section .section {
+  padding: 24px;
+}
+
+.page-main > section.surface-dark {
+  background: #0f2a2e;
+  border-color: #0f2a2e;
+}
+
 .page-main .wrap {
   width: 100%;
   margin-inline: 0;
@@ -1205,10 +1242,19 @@ details[open] .faq-minus {
     margin-inline: auto;
   }
 
+  .page-main {
+    gap: 24px;
+    padding-block: 40px;
+  }
+
+  .page-main > section .section {
+    padding: 40px;
+  }
+
   .page-rail {
     display: block;
     align-self: stretch;
-    padding-top: 96px;
+    padding-top: 40px;
   }
 
   .rail-card {

@@ -63,10 +63,16 @@ const graph = [
             }
           </dl>
           <p class="measure mt-8 text-muted">{page.detail}</p>
-          <div class="block-head mt-12">
-            <h2 id="housing-heading">Housing</h2>
-          </div>
-          <p class="measure text-muted">{page.housing}</p>
+          {
+            page.housing && (
+              <>
+                <div class="block-head mt-12">
+                  <h2 id="housing-heading">Housing</h2>
+                </div>
+                <p class="measure text-muted">{page.housing}</p>
+              </>
+            )
+          }
           <div class="block-head mt-12">
             <h2 id="permit-heading">Permits and inspections</h2>
           </div>

@@ -43,7 +43,7 @@ const graph = [
           <p class="measure text-lg">
             Sioux Falls Electricians works in Sioux Falls and {joinNames(liveTowns.map((town) => town.name))}.
             Each of those towns has a page with the local facts that could be checked.
-            {joinNames(SITE.listOnlyTowns)} appear here as plain text only. They do not have pages.
+            Calls also come from {joinNames(SITE.listOnlyTowns)}.
           </p>
           <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
         </div>
@@ -59,7 +59,7 @@ const graph = [
             {liveTowns.map((town) => <li><a class="text-card" href={town.href}>{town.name}</a></li>)}
           </ul>
           <div class="block-head mt-12">
-            <h2 id="also-heading">Also served, no page</h2>
+            <h2 id="also-heading">Also served</h2>
           </div>
           <p class="measure text-muted">{joinNames(SITE.listOnlyTowns)}.</p>
         </div>
