@@ -1,205 +1,145 @@
 ---
 import '../styles/global.css';
-import { Icon } from 'astro-icon/components';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import IconSprite from '../components/IconSprite.astro';
 import SEO from '../components/SEO.astro';
+import StickyCallBar from '../components/StickyCallBar.astro';
+import { UPDATED_ISO } from '../content/updated';
+import { SITE, activeAnalytics, canonicalUrl } from '../config/site';
+import { jsonLdScript, siteGraph } from '../lib/schema';
 
 interface Props {
   title: string;
   description?: string;
+  /** Ignored. Canonicals always use SITE.origin plus the path, with no trailing slash. */
   canonical?: string;
-  /** When true, `title` is used verbatim as the <title> instead of appending the brand name. */
   fullTitle?: boolean;
+  extraGraph?: Record<string, unknown>[];
+  /** Homepage only. Header starts transparent and turns solid after scroll. */
+  overlay?: boolean;
+  /** Omit the canonical link and ask crawlers not to index the page. */
+  noindex?: boolean;
 }
 
-const { title, description, canonical, fullTitle } = Astro.props;
-
-const pageTitle = fullTitle ? title : `${title} | Sioux Falls Electricians`;
+const { title, description, fullTitle, extraGraph = [], overlay = false, noindex = false } = Astro.props;
+const pageTitle = fullTitle ? title : `${title} | ${SITE.name}`;
 const pageDescription =
-  description ?? 'Residential and commercial electricians serving Sioux Falls, Brandon, Harrisburg, and Tea.';
-const pageCanonical = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
-
-const phone = '605-250-6993';
-
-const services = [
-  { label: 'Emergency Electrician', href: '/services/emergency-electrician' },
-  { label: 'Panel Upgrades', href: '/services/panel-upgrades' },
-  { label: 'Electrical Repair', href: '/services/electrical-repair' },
-  { label: 'EV Charger Installation', href: '/services/ev-charger-installation' },
-  { label: 'Commercial Electrician', href: '/services/commercial-electrician' },
-  { label: 'Wiring & Rewiring', href: '/services/wiring-rewiring' },
-  { label: 'Lighting Installation', href: '/services/lighting-installation' },
-];
-
-const locations = [
-  { label: 'Brandon', href: '/locations/brandon' },
-  { label: 'Harrisburg', href: '/locations/harrisburg' },
-  { label: 'Tea', href: '/locations/tea' },
-];
+  description ??
+  `${SITE.name} serves homes and businesses in Sioux Falls, SD and nearby towns. Call ${SITE.phoneDisplay}.`;
+const pageCanonical = canonicalUrl(Astro.url.pathname);
+const pagePath = (() => {
+  let path = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
+  path = path.replace(/\/+$/, '');
+  return path || '/';
+})();
+const jsonLd = jsonLdScript(
+  siteGraph(
+    { url: pageCanonical, name: pageTitle, description: pageDescription, dateModified: UPDATED_ISO },
+    extraGraph,
+    {
+      fullBusiness: pagePath === '/' || pagePath === '/contact',
+      catalog: pagePath === '/',
+    },
+  ),
+);
+const analytics = activeAnalytics();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme={SITE.theme}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={pageTitle} description={pageDescription} canonical={pageCanonical} />
+    <SEO title={pageTitle} description={pageDescription} canonical={pageCanonical} noindex={noindex} />
     <slot name="head" />
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
-  <body class="flex min-h-screen flex-col bg-white font-sans text-brand-charcoal antialiased">
-    <header class="sticky top-0 z-40 border-b border-brand-grey bg-white/90 backdrop-blur">
-      <div class="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-6 px-4">
-        <a href="/" class="flex items-center gap-2 font-extrabold tracking-tight text-brand-charcoal">
-          <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-yellow">
-            <Icon name="ph:lightning-fill" class="h-5 w-5 text-brand-charcoal" />
-          </span>
-          Sioux Falls Electricians
-        </a>
-
-        <nav aria-label="Main" class="hidden items-center gap-8 md:flex">
-          <div class="group relative">
-            <button class="flex items-center gap-1 text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">
-              Services
-              <Icon name="ph:caret-down" class="h-4 w-4" />
-            </button>
-            <ul class="invisible absolute left-0 top-full z-10 min-w-56 rounded-xl border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              {services.map((service) => (
-                <li>
-                  <a href={service.href} class="block px-4 py-2 text-sm hover:bg-brand-grey">
-                    {service.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div class="group relative">
-            <button class="flex items-center gap-1 text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">
-              Locations
-              <Icon name="ph:caret-down" class="h-4 w-4" />
-            </button>
-            <ul class="invisible absolute left-0 top-full z-10 min-w-40 rounded-xl border border-brand-grey bg-white py-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              {locations.map((location) => (
-                <li>
-                  <a href={location.href} class="block px-4 py-2 text-sm hover:bg-brand-grey">
-                    {location.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <a href="/about" class="text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">About</a>
-          <a href="/contact" class="text-sm font-semibold text-brand-charcoal/80 hover:text-brand-charcoal">Contact</a>
-        </nav>
-
-        <div class="flex items-center gap-2">
-          <a
-            href={`tel:${phone}`}
-            class="flex items-center gap-2 whitespace-nowrap rounded-full bg-brand-yellow px-4 py-2 text-sm font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
-          >
-            <Icon name="ph:phone-fill" class="h-4 w-4" />
-            <span class="hidden sm:inline">{phone}</span>
-            <span class="sm:hidden">Call</span>
-          </a>
-
-          <details class="group relative md:hidden">
-            <summary
-              class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-brand-grey text-brand-charcoal [&::-webkit-details-marker]:hidden"
-              aria-label="Open menu"
-            >
-              <Icon name="ph:list" class="h-5 w-5 group-open:hidden" />
-              <Icon name="ph:x" class="hidden h-5 w-5 group-open:block" />
-            </summary>
-            <div class="absolute right-0 top-full mt-2 max-h-[70vh] w-64 overflow-auto rounded-xl border border-brand-grey bg-white p-4 shadow-lg">
-              <p class="px-1 text-xs font-bold uppercase tracking-wide text-brand-charcoal/50">Services</p>
-              <ul class="mt-1">
-                {services.map((service) => (
-                  <li>
-                    <a href={service.href} class="block rounded-lg px-1 py-2 text-sm hover:bg-brand-grey">
-                      {service.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <p class="mt-3 px-1 text-xs font-bold uppercase tracking-wide text-brand-charcoal/50">Locations</p>
-              <ul class="mt-1">
-                {locations.map((location) => (
-                  <li>
-                    <a href={location.href} class="block rounded-lg px-1 py-2 text-sm hover:bg-brand-grey">
-                      {location.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div class="mt-3 border-t border-brand-grey pt-2">
-                <a href="/about" class="block rounded-lg px-1 py-2 text-sm font-semibold hover:bg-brand-grey">About</a>
-                <a href="/contact" class="block rounded-lg px-1 py-2 text-sm font-semibold hover:bg-brand-grey">Contact</a>
-              </div>
-            </div>
-          </details>
-        </div>
-      </div>
-    </header>
-
-    <main class="flex-1">
+  <body class:list={['min-h-screen bg-paper font-sans text-text antialiased', overlay && 'page-overlay']}>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <IconSprite />
+    <Header overlay={overlay} />
+    <main id="content" class="flex-1">
       <slot />
     </main>
+    <Footer />
+    <StickyCallBar />
+    {
+      analytics?.provider === 'gtm' && (
+        <script is:inline define:vars={{ analyticsId: analytics.id }}>
+          (function (w, d, i) {
+            w.dataLayer = w.dataLayer || [];
+            w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var j = d.createElement('script');
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(i);
+            d.body.appendChild(j);
+          })(window, document, analyticsId);
+        </script>
+      )
+    }
+    {
+      analytics?.provider === 'ga4' && (
+        <script is:inline define:vars={{ analyticsId: analytics.id }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = window.gtag || function () {
+            window.dataLayer.push(arguments);
+          };
+          window.gtag('js', new Date());
+          window.gtag('config', analyticsId);
+          var j = document.createElement('script');
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(analyticsId);
+          document.body.appendChild(j);
+        </script>
+      )
+    }
+    <script is:inline>
+      (function () {
+        document.addEventListener('click', function (event) {
+          var node = event.target;
+          var link = node && node.closest ? node.closest('a[href^="tel:"], a[href^="sms:"]') : null;
+          if (!link) return;
+          var href = link.getAttribute('href') || '';
+          var channel = href.indexOf('sms:') === 0 ? 'sms' : 'call';
+          var label = link.getAttribute('data-track') || channel;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: channel === 'sms' ? 'sms_click' : 'call_click',
+            contact_channel: channel,
+            contact_location: label,
+            link_url: href
+          });
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', channel === 'sms' ? 'sms_click' : 'call_click', {
+              event_category: 'contact',
+              event_label: label,
+              link_url: href
+            });
+          }
+        });
 
-    <footer class="border-t border-brand-grey bg-brand-grey">
-      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 md:grid-cols-4">
-        <div>
-          <p class="flex items-center gap-2 font-extrabold text-brand-charcoal">
-            <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-yellow">
-              <Icon name="ph:lightning-fill" class="h-4 w-4 text-brand-charcoal" />
-            </span>
-            Sioux Falls Electricians
-          </p>
-          <p class="mt-3 text-sm text-brand-charcoal/70">
-            Local electricians serving the Sioux Falls area.
-          </p>
-        </div>
+        var header = document.querySelector('[data-site-header]');
+        if (header && header.hasAttribute('data-overlay')) {
+          var onScroll = function () {
+            if (window.scrollY > 40) header.setAttribute('data-solid', '');
+            else header.removeAttribute('data-solid');
+          };
+          onScroll();
+          window.addEventListener('scroll', onScroll, { passive: true });
+        }
 
-        <div>
-          <h2 class="text-sm font-bold text-brand-charcoal">Services</h2>
-          <ul class="mt-3 space-y-2 text-sm">
-            {services.map((service) => (
-              <li>
-                <a href={service.href} class="text-brand-charcoal/70 hover:text-brand-charcoal">
-                  {service.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 class="text-sm font-bold text-brand-charcoal">Locations</h2>
-          <ul class="mt-3 space-y-2 text-sm">
-            {locations.map((location) => (
-              <li>
-                <a href={location.href} class="text-brand-charcoal/70 hover:text-brand-charcoal">
-                  {location.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 class="text-sm font-bold text-brand-charcoal">Contact</h2>
-          <a
-            href={`tel:${phone}`}
-            class="mt-3 flex items-center gap-2 font-bold text-brand-charcoal hover:underline"
-          >
-            <Icon name="ph:phone-fill" class="h-4 w-4" />
-            {phone}
-          </a>
-        </div>
-      </div>
-
-      <div class="border-t border-brand-charcoal/10 px-4 py-4 text-center text-xs text-brand-charcoal/60">
-        &copy; {new Date().getFullYear()} Sioux Falls Electricians. All rights reserved.
-      </div>
-    </footer>
+        var bar = document.querySelector('[data-sticky-bar]');
+        var form = document.querySelector('[data-request-form]');
+        if (bar && form && window.location.pathname.indexOf('/contact') === 0 && 'IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function (entries) {
+            var hide = entries[0].isIntersecting;
+            bar.hidden = hide;
+            document.body.classList.toggle('bar-hidden', hide);
+          });
+          observer.observe(form);
+        }
+      })();
+    </script>
   </body>
 </html>

@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import MapEmbed from '../components/MapEmbed.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceCards from '../components/ServiceCards.astro';
+import SideRail from '../components/SideRail.astro';
+import { joinNames, services, townPages } from '../config/catalog';
+import { UPDATED_ISO, UPDATED_LABEL } from '../content/updated';
+import { pagePhoto } from '../lib/photos';
+import { breadcrumb } from '../lib/page-schema';
+import { SITE } from '../config/site';
+
+const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
+const liveServices = services.filter((service) => service.live).slice(0, 3);
+const hero = pagePhoto('hero-area', 'Aerial view of a suburban neighborhood near Sioux Falls');
+const graph = [
+  breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: 'Service area', path: '/service-area' },
+  ]),
+];
+---
+
+<Layout
+  title="Towns We Serve Near Sioux Falls | Sioux Falls Electricians"
+  description="Electrical service in Sioux Falls, Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton and Lennox. Calls answered 24/7."
+  fullTitle
+  extraGraph={graph}
+  overlay
+>
+  <PageHero
+    photo={hero}
+    eyebrow="Service area"
+    title="Towns we serve around Sioux Falls"
+    sub="Sioux Falls plus Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox."
+  />
+
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <p class="measure text-lg">
+            Sioux Falls Electricians works in Sioux Falls and {joinNames(liveTowns.map((town) => town.name))}.
+            Calls also come from {joinNames(SITE.listOnlyTowns)}.
+          </p>
+          <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="towns-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="towns-heading">Town pages</h2>
+          </div>
+          <ul class="card-grid cols-2">
+            <li><a class="text-card" href="/">Sioux Falls</a></li>
+            {liveTowns.map((town) => <li><a class="text-card" href={town.href}>{town.name}</a></li>)}
+          </ul>
+          <div class="block-head mt-12">
+            <h2 id="also-heading">Also served</h2>
+          </div>
+          <p class="measure text-muted">{joinNames(SITE.listOnlyTowns)}.</p>
+        </div>
+      </section>
+
+      <section class="bg-paper" aria-labelledby="map-heading">
+        <div class="section">
+          <div class="town-work">
+            <div>
+              <div class="block-head">
+                <h2 id="map-heading">Map</h2>
+              </div>
+              <MapEmbed
+                src="https://www.google.com/maps?q=Sioux+Falls,+SD&z=10&output=embed"
+                title="Map of Sioux Falls, South Dakota and nearby towns"
+                label="Sioux Falls and the towns around it"
+                preview="/images/sioux-falls-area-preview.webp"
+              />
+            </div>
+            <div>
+              <div class="block-head">
+                <h2 id="requests-heading">Common requests</h2>
+                <p class="lede">
+                  Building permits inside a city go to that city. Electrical inspections inside Sioux Falls are handled by the city.
+                  Other wiring inspections follow the South Dakota State Electrical Commission.
+                </p>
+              </div>
+              <ServiceCards services={liveServices} />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <SideRail />
+  </div>
+
+  <CtaBand photo={hero} heading="Call with the town and the problem" />
+</Layout>

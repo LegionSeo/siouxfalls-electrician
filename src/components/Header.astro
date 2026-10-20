@@ -1,0 +1,87 @@
+---
+import { services, townPages } from '../config/catalog';
+import { SITE } from '../config/site';
+import ContactLink from './ContactLink.astro';
+import Icon from './Icon.astro';
+
+interface Props {
+  overlay?: boolean;
+}
+
+const { overlay = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const liveServices = services.filter((service) => service.live);
+const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
+const siouxFalls = townPages.find((town) => town.href === '/');
+if (!siouxFalls) throw new Error('Sioux Falls town entry is missing');
+---
+
+<header data-site-header class:list={['site-header', overlay && 'is-overlay']} data-overlay={overlay ? '' : undefined}>
+  <input id="site-menu-toggle" class="menu-toggle" type="checkbox" aria-controls="site-menu" aria-label="Open menu" />
+  <div class="wrap header-bar">
+    <a href="/" class="brand">
+      <img src={SITE.logo} width="133" height="60" alt={SITE.logoText} />
+    </a>
+
+    <nav id="site-menu" class="site-menu" aria-label="Main">
+      <div class="menu-group">
+        <button type="button" class="menu-label">
+          Services
+          <Icon name="caret" class="menu-caret" />
+        </button>
+        <ul>
+          {
+            liveServices.map((service) => (
+              <li>
+                <a href={service.href} class="menu-link">
+                  {service.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="menu-group">
+        <button type="button" class="menu-label">
+          Service area
+          <Icon name="caret" class="menu-caret" />
+        </button>
+        <ul>
+          <li>
+            <a href="/service-area" class="menu-link" aria-current={path === '/service-area' ? 'page' : undefined}>
+              All towns
+            </a>
+          </li>
+          <li><a href="/#service-area" class="menu-link">{siouxFalls.name}</a></li>
+          {
+            liveTowns.map((town) => (
+              <li>
+                <a href={town.href} class="menu-link" aria-current={path === town.href ? 'page' : undefined}>
+                  {town.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <ul class="menu-plain">
+        <li><a href="/about" class="menu-link" aria-current={path === '/about' ? 'page' : undefined}>About</a></li>
+        <li><a href="/contact" class="menu-link" aria-current={path === '/contact' ? 'page' : undefined}>Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <ContactLink track="call-header" class="btn btn-gold header-call" />
+      <ContactLink
+        track="call-header-m"
+        class="btn btn-gold header-call-icon"
+        label={`Call ${SITE.phoneDisplay}`}
+        iconOnly
+      />
+      <label for="site-menu-toggle" class="menu-button">
+        <Icon name="menu" class="menu-open" />
+        <Icon name="x" class="menu-close" />
+      </label>
+    </div>
+  </div>
+</header>
