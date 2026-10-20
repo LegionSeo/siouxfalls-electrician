@@ -101,7 +101,9 @@ const graph = [
             {
               page.included.map((item) => (
                 <li class="icon-card">
-                  <Icon name="check" class="h-6 w-6" />
+                  <span class="icon-chip">
+                    <Icon name="check" />
+                  </span>
                   <p>{item}</p>
                 </li>
               ))
@@ -120,7 +122,9 @@ const graph = [
             {
               page.signs.map((item) => (
                 <li class="icon-card">
-                  <Icon name="warning" class="h-6 w-6" />
+                  <span class="icon-chip">
+                    <Icon name="warning" />
+                  </span>
                   <p>{item}</p>
                 </li>
               ))
@@ -133,6 +137,7 @@ const graph = [
         <div class="section">
           <div class="block-head">
             <h2 id="cost-heading">What affects the price</h2>
+            <p class="lede">Access, materials, and a city permit are the usual reasons the job changes. There is no single price on this page.</p>
           </div>
           <ol class="card-grid cols-2">
             {
@@ -154,6 +159,7 @@ const graph = [
         <div class="section">
           <div class="block-head">
             <h2 id="visit-heading" class="text-white">How the visit goes</h2>
+            <p class="lede on-dark">You describe the problem, then the work stays on that list. A second problem found on site is written before anyone keeps going.</p>
           </div>
           <ol class="grid gap-8 md:grid-cols-3">
             {
@@ -183,6 +189,7 @@ const graph = [
           </ul>
           <div class="block-head mt-12">
             <h2 id="related-heading">Related services</h2>
+            <p class="lede">These jobs often show up next to this one. Open a card for what that visit covers.</p>
           </div>
           <ServiceCards services={related} />
           <p class="mt-6">

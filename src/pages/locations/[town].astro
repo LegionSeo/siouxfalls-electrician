@@ -51,6 +51,9 @@ const graph = [
         <div class="section">
           <div class="block-head">
             <h2 id="facts-heading">Local facts</h2>
+            <p class="lede">
+              These figures are about {page.name} itself. The visit still starts with the room, the panel, or the circuit you name.
+            </p>
           </div>
           <dl class="stat-grid">
             {
@@ -80,6 +83,7 @@ const graph = [
             <div>
               <div class="block-head">
                 <h2 id="map-heading">Map of {page.name}</h2>
+                <p class="lede">The pin is the town, not a job site. Give the street address of the house or business when you call.</p>
               </div>
               <MapEmbed
                 src={`https://www.google.com/maps?q=${encodeURIComponent(page.mapQuery)}&z=12&output=embed`}

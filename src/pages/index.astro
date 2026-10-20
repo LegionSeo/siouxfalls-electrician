@@ -37,9 +37,18 @@ const cardSizes = '(min-width: 1024px) 360px, (min-width: 700px) 45vw, 100vw';
 const eyebrow = SITE.available247 ? '24/7 · Sioux Falls & nearby towns' : 'Sioux Falls & nearby towns';
 
 const steps = [
-  { title: SITE.smsEnabled ? 'Call or text' : 'Call', text: 'Call and say what happened.' },
-  { title: 'We trace the fault', text: 'The visit starts with the room or the circuit you name.' },
-  { title: 'We do the work safely', text: 'Permitted where the city requires it.' },
+  {
+    title: SITE.smsEnabled ? 'Call or text' : 'Call',
+    text: 'Call and say what happened. Name the room, the device, and whether it is a house or a business.',
+  },
+  {
+    title: 'We trace the fault',
+    text: 'The visit starts with the room or the circuit you name. The device, the connections, and the breaker are checked before parts are replaced.',
+  },
+  {
+    title: 'We do the work safely',
+    text: 'Permitted where the city requires it. You are shown what was touched before the visit ends.',
+  },
 ];
 ---
 
@@ -106,26 +115,38 @@ const steps = [
     <div class="wrap section">
       <ul class="trust-grid">
         <li>
-          <Icon name="phone" class="h-6 w-6 text-rose" />
+          <span class="icon-chip">
+            <Icon name="phone" />
+          </span>
           <p class="mt-3 font-bold">{SITE.available247 ? '24/7 answered' : 'Calls answered'}</p>
           <p class="mt-1 text-sm text-muted">
-            {SITE.available247 ? 'Calls answered every day, including emergency service.' : 'Call and describe the problem.'}
+            {SITE.available247
+              ? 'Calls answered every day, including emergency service. Name the room and say if you smell heat.'
+              : 'Call and describe the problem. Name the room and whether it is a house or a business.'}
           </p>
         </li>
         <li>
-          <Icon name="check" class="h-6 w-6 text-rose" />
+          <span class="icon-chip">
+            <Icon name="check" />
+          </span>
           <p class="mt-3 font-bold">Houses and shops</p>
-          <p class="mt-1 text-sm text-muted">Both use the same phone number.</p>
+          <p class="mt-1 text-sm text-muted">Both use the same phone number. A house outlet and a shop circuit are booked the same way.</p>
         </li>
         <li>
-          <Icon name="wrench" class="h-6 w-6 text-rose" />
+          <span class="icon-chip">
+            <Icon name="wrench" />
+          </span>
           <p class="mt-3 font-bold">Permitted work</p>
-          <p class="mt-1 text-sm text-muted">Where the city requires a permit, the work is permitted.</p>
+          <p class="mt-1 text-sm text-muted">
+            Where the city requires a permit, the work is permitted. New circuits and panel changes are the jobs that usually need one.
+          </p>
         </li>
         <li>
-          <Icon name="pin" class="h-6 w-6 text-rose" />
+          <span class="icon-chip">
+            <Icon name="pin" />
+          </span>
           <p class="mt-3 font-bold">{SITE.serviceTowns.length} towns served</p>
-          <p class="mt-1 text-sm text-muted">Sioux Falls and the towns around it.</p>
+          <p class="mt-1 text-sm text-muted">Sioux Falls and the towns around it. Towns with a page list the work people there ask about first.</p>
         </li>
       </ul>
       <div class="mt-12 max-w-[65ch]">
@@ -141,7 +162,9 @@ const steps = [
     <div class="wrap section">
       <div class="section-head">
         <h2 id="services-heading">Electrical services in Sioux Falls</h2>
-        <p class="lede">Pick the job that matches the problem. Homes and businesses use the same phone number.</p>
+        <p class="lede">
+          Pick the job that matches the problem. Homes and businesses use the same phone number.
+        </p>
       </div>
       <h3 class="more-label">Most requested</h3>
       <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -187,7 +210,7 @@ const steps = [
     <div class="wrap section">
       <div class="section-head">
         <h2 id="help-heading">How can we help?</h2>
-        <p class="lede">House calls and business calls are both on this number.</p>
+        <p class="lede">House calls and business calls are both on this number. Say which one it is so the visit matches the building.</p>
       </div>
       <div class="grid gap-6 md:grid-cols-2">
         <a href="#services" class="split-panel">
@@ -195,7 +218,9 @@ const steps = [
           <span class="split-shade" aria-hidden="true"></span>
           <span class="relative flex flex-1 flex-col justify-end p-8">
             <h3 class="text-white">For your home</h3>
-            <p class="mt-3 max-w-[36ch] on-dark-soft">Outlets, panels, lighting, EV chargers, and wiring for houses.</p>
+            <p class="mt-3 max-w-[36ch] on-dark-soft">
+              Outlets, panels, lighting, EV chargers, and wiring for houses. A dead device and a planned upgrade are both house calls.
+            </p>
             <span class="btn btn-line mt-6 w-fit">See home services</span>
           </span>
         </a>
@@ -204,7 +229,9 @@ const steps = [
           <span class="split-shade" aria-hidden="true"></span>
           <span class="relative flex flex-1 flex-col justify-end p-8">
             <h3 class="text-white">For your business</h3>
-            <p class="mt-3 max-w-[36ch] on-dark-soft">Lighting and circuits for shops, offices, and other buildings.</p>
+            <p class="mt-3 max-w-[36ch] on-dark-soft">
+              Lighting and circuits for shops, offices, and other buildings. The visit can be set for hours when the equipment can be off.
+            </p>
             <span class="btn btn-line mt-6 w-fit">Commercial electrician</span>
           </span>
         </a>
@@ -216,6 +243,7 @@ const steps = [
     <div class="wrap section">
       <div class="section-head">
         <h2 id="process-heading" class="text-white">How it works</h2>
+        <p class="lede on-dark">A call, a look at the circuit you name, then the work. Homes and businesses follow the same three steps.</p>
       </div>
       <ol class="grid gap-8 md:grid-cols-3">
         {
@@ -280,6 +308,7 @@ const steps = [
       <div class="faq-col">
       <div class="section-head">
         <h2 id="faq-heading">Sioux Falls electrician FAQ</h2>
+        <p class="lede">Short answers to the calls we get most. Call if your problem is not on this list.</p>
       </div>
       <div class="faq">
         {
@@ -312,6 +341,7 @@ const steps = [
     <div class="absolute inset-0 ink-shade" aria-hidden="true"></div>
     <div class="wrap section relative">
       <h2 class="max-w-[16ch] text-white">Need an electrician now?</h2>
+      <p class="mt-4 max-w-[46ch] on-dark-soft">Call with the room and what stopped working. Homes and businesses use this number.</p>
       <div class="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center">
         <ContactLink track="call-quote" class="btn btn-gold w-full sm:w-auto" />
         {
