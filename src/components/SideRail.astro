@@ -9,7 +9,9 @@ const towns = townPages.filter((town) => town.live);
 <aside class="page-rail">
   <div class="rail-card">
     <p class="eyebrow eyebrow-on-dark">24/7</p>
-    <p class="rail-note">{SITE.available247 ? SITE.availabilityNote : 'Call and say what happened.'}</p>
+    <p class="rail-note">
+      {SITE.available247 ? SITE.availabilityNote : 'Call and tell us what happened.'} Tell us your town and what stopped working.
+    </p>
     <div class="rail-actions">
       <ContactLink track="call-rail" class="btn btn-gold w-full" />
       <a class="btn btn-line w-full" href="/contact">Request service</a>

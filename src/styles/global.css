@@ -216,9 +216,38 @@ footer :where(.grid) > * {
 
 .icon {
   display: block;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   fill: currentColor;
+}
+
+.icon-chip {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(180, 71, 62, 0.12);
+  color: #b4473e;
+}
+
+.icon-chip .icon {
+  width: 22px;
+  height: 22px;
+  overflow: visible;
+}
+
+.trust-grid .icon-chip {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+}
+
+.trust-grid .icon-chip .icon {
+  width: 28px;
+  height: 28px;
 }
 
 .site-header {
@@ -226,9 +255,10 @@ footer :where(.grid) > * {
   top: 0;
   z-index: 40;
   height: 72px;
+  min-height: 64px;
   background: #14211f;
   color: #ffffff;
-  transition: height 160ms ease, margin-bottom 160ms ease, box-shadow 160ms ease;
+  transition: height 200ms ease, margin-bottom 200ms ease, box-shadow 160ms ease;
 }
 
 .site-header.is-overlay {
@@ -268,7 +298,7 @@ footer :where(.grid) > * {
   display: block;
   height: 46px;
   width: auto;
-  transition: height 160ms ease;
+  transition: height 200ms ease;
 }
 
 footer .brand img {
@@ -297,6 +327,8 @@ footer .brand img {
 
 .header-call {
   display: none;
+  box-sizing: border-box;
+  transition: height 200ms ease, min-height 200ms ease, padding 200ms ease;
 }
 
 .menu-toggle {
@@ -442,8 +474,8 @@ footer .brand img {
   }
 
   .site-header.is-overlay[data-solid] {
-    height: 52px;
-    margin-bottom: 28px;
+    height: 68px;
+    margin-bottom: 12px;
   }
 
   .site-header .brand img {
@@ -451,7 +483,20 @@ footer .brand img {
   }
 
   .site-header.is-overlay[data-solid] .brand img {
-    height: 40px;
+    height: 48px;
+  }
+
+  .header-call {
+    height: 56px;
+    min-height: 56px;
+    padding: 0 24px;
+    flex-shrink: 0;
+  }
+
+  .site-header.is-overlay[data-solid] .header-call {
+    height: 48px;
+    min-height: 48px;
+    padding: 0 16px;
   }
 
   .header-bar {
@@ -955,8 +1000,8 @@ ul.grid + .more-label {
 }
 
 .more-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   margin-top: 2px;
   color: #b4473e;
 }
@@ -1175,7 +1220,7 @@ details[open] .faq-minus {
 .icon-card,
 .num-card {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: flex-start;
   padding: 16px;
 }
