@@ -1,0 +1,30 @@
+---
+import type { PhotoSlot } from '../config/site';
+
+interface Props {
+  photo: PhotoSlot;
+  sizes: string;
+  loading?: 'eager' | 'lazy';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  class?: string;
+}
+
+const { photo, sizes, loading = 'lazy', fetchpriority, class: className } = Astro.props;
+---
+
+<Fragment set:html={`<!-- PHOTO: ${photo.note} -->`} />
+<picture>
+  <source type="image/avif" srcset={photo.avifSrcset} sizes={sizes} />
+  <source type="image/webp" srcset={photo.webpSrcset} sizes={sizes} />
+  <img
+    src={photo.src}
+    alt={photo.alt}
+    width={photo.width}
+    height={photo.height}
+    sizes={sizes}
+    class={className}
+    decoding="async"
+    loading={loading}
+    fetchpriority={fetchpriority}
+  />
+</picture>

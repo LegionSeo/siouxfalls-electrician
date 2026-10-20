@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
-const phone = '605-250-6993';
+const phone = SITE.phoneDisplay;
 
 const whenToCall = [
   {
@@ -68,13 +69,15 @@ const schema = {
   provider: {
     '@type': 'Electrician',
     name: 'Sioux Falls Electricians',
-    url: 'https://siouxfalls-electrician.com',
-    telephone: phone,
+    url: SITE.origin,
+    telephone: SITE.phoneE164,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Sioux Falls',
-      addressRegion: 'SD',
-      addressCountry: 'US',
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.region,
+      postalCode: SITE.address.zip,
+      addressCountry: SITE.address.country,
     },
   },
   areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
@@ -84,8 +87,8 @@ const schema = {
 <Layout
   title="Emergency Electrician Sioux Falls SD | 24 Hour Service"
   fullTitle
-  description="Need an emergency electrician in Sioux Falls? We handle power outages, sparking outlets, and electrical failures. Call 605-250-6993 anytime."
-  canonical="https://siouxfalls-electrician.com/services/emergency-electrician"
+  description={`Need an emergency electrician in Sioux Falls? We handle power outages, sparking outlets, and electrical failures. Call ${SITE.phoneDisplay} anytime.`}
+  canonical={`${SITE.origin}/services/emergency-electrician`}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
 
@@ -103,7 +106,7 @@ const schema = {
         When something goes wrong with your power, we respond fast to electrical emergencies across Sioux Falls.
       </p>
       <a
-        href={`tel:${phone}`}
+        href={SITE.phoneHref} data-track="call-page" data-contact-channel="tel"
         class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
       >
         <Icon name="ph:phone-fill" class="h-5 w-5" />
@@ -228,7 +231,7 @@ const schema = {
         Call us anytime and we will get to you as fast as we can.
       </p>
       <a
-        href={`tel:${phone}`}
+        href={SITE.phoneHref} data-track="call-page" data-contact-channel="tel"
         class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
       >
         <Icon name="ph:phone-fill" class="h-5 w-5" />

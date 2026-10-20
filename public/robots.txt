@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://siouxfalls-electrician.com/sitemap-index.xml

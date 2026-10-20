@@ -1,0 +1,123 @@
+---
+import { footerTowns, services } from '../config/catalog';
+import { SITE, formatAddress, mapsUrl } from '../config/site';
+import ContactLink from './ContactLink.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer data-site-footer class="surface-dark border-t border-white/10 bg-ink text-white">
+  <div class="mx-auto grid max-w-[1200px] gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <a href="/" class="flex items-center gap-2 font-extrabold">
+        <img src={SITE.logo} width="28" height="28" alt="" />
+        {SITE.name}
+      </a>
+      <p class="mt-3 text-sm text-mist">
+        Residential and commercial electrical work in Sioux Falls and nearby towns.
+      </p>
+      <ContactLink track="call-footer" class="mt-4 inline-flex font-bold text-white underline-offset-2 hover:underline" />
+      <a class="mt-2 block text-sm text-mist underline-offset-2 hover:underline" href={`mailto:${SITE.email}`}>
+        {SITE.email}
+      </a>
+      <address class="mt-3 text-sm text-mist not-italic">
+        {formatAddress()}
+      </address>
+
+      <!-- PHOTO: Static map of the shop address for directions. Not a live embed. -->
+      <a class="mt-4 inline-block" href={mapsUrl()} rel="noopener noreferrer">
+        <img
+          src="/images/shop-map.svg"
+          width="320"
+          height="180"
+          alt="Illustrated map pin for the Sioux Falls address"
+          class="h-auto w-full max-w-[16rem] rounded-xl"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="mt-1 block text-sm font-semibold text-mist underline">Get directions</span>
+      </a>
+
+      <!-- Hours show when site.hours is set. License, rating, and reviews stay hidden while null. -->
+      {
+        SITE.hours && (
+          <p class="mt-4 text-sm text-mist">
+            <span class="font-bold text-white">Hours: </span>
+            {SITE.hours.label}
+          </p>
+        )
+      }
+      {
+        SITE.license && (
+          <p class="mt-2 text-sm text-mist">
+            <span class="font-bold text-white">License: </span>
+            {SITE.license}
+          </p>
+        )
+      }
+      {
+        SITE.rating && (
+          <p class="mt-2 text-sm text-mist">
+            {SITE.rating.value} · {SITE.rating.count} reviews on {SITE.rating.source}
+          </p>
+        )
+      }
+      {
+        SITE.available247 && (
+          <p class="mt-2 text-sm font-semibold text-white">{SITE.availabilityNote}</p>
+        )
+      }
+    </div>
+
+    <div>
+      <h2 class="text-sm font-bold">Services</h2>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          services.map((service) => (
+            <li>
+              <a href={service.href} class="text-mist hover:text-white hover:underline">
+                {service.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-bold">Service area</h2>
+      <ul class="mt-3 space-y-2 text-sm">
+        {
+          footerTowns.map((town) => (
+            <li>
+              <a href={town.href} class="text-mist hover:text-white hover:underline">
+                {town.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-4 text-sm text-mist">
+        Also serving {SITE.listOnlyTowns.join(', ')}.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-bold">Company</h2>
+      <ul class="mt-3 space-y-2 text-sm">
+        <li><a href="/about" class="text-mist hover:text-white hover:underline">About</a></li>
+        <li><a href="/guides" class="text-mist hover:text-white hover:underline">Guides</a></li>
+        <li><a href="/contact" class="text-mist hover:text-white hover:underline">Contact</a></li>
+        <li><a href="/privacy" class="text-mist hover:text-white hover:underline">Privacy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10 px-4 py-4 text-center text-xs text-mist">
+    <p>
+      &copy; {year} {SITE.name}
+      <span aria-hidden="true"> · </span>
+      Not affiliated with any other company of a similar name.
+    </p>
+  </div>
+</footer>

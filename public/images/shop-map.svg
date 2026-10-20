@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img">
+  <rect width="320" height="180" fill="#E6F2F0"/>
+  <path d="M40 40h240v100H40z" fill="none" stroke="#0F2A2E" stroke-opacity="0.25"/>
+  <path d="M160 48v84M48 90h224" stroke="#0F2A2E" stroke-opacity="0.2"/>
+  <circle cx="168" cy="96" r="8" fill="#C2410C"/>
+  <text x="20" y="164" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">5311 S Sycamore Ave</text>
+</svg>

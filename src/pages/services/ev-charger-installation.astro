@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
-const phone = '605-250-6993';
+const phone = SITE.phoneDisplay;
 const linkClass =
   'font-semibold text-brand-charcoal underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-brand-charcoal/70';
 
@@ -51,13 +52,15 @@ const serviceSchema = {
   provider: {
     '@type': 'Electrician',
     name: 'Sioux Falls Electricians',
-    url: 'https://siouxfalls-electrician.com',
-    telephone: phone,
+    url: SITE.origin,
+    telephone: SITE.phoneE164,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Sioux Falls',
-      addressRegion: 'SD',
-      addressCountry: 'US',
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.region,
+      postalCode: SITE.address.zip,
+      addressCountry: SITE.address.country,
     },
   },
   areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
@@ -67,12 +70,12 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://siouxfalls-electrician.com/' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.origin },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'EV Charger Installation',
-      item: 'https://siouxfalls-electrician.com/services/ev-charger-installation',
+      item: `${SITE.origin}/services/ev-charger-installation`,
     },
   ],
 };
@@ -81,8 +84,8 @@ const breadcrumbSchema = {
 <Layout
   title="EV Charger Installation Sioux Falls SD | Home Charging"
   fullTitle
-  description="EV charger installation in Sioux Falls. We install Level 2 home chargers and check your panel capacity. Call 605-250-6993 to get started."
-  canonical="https://siouxfalls-electrician.com/services/ev-charger-installation"
+  description={`EV charger installation in Sioux Falls. We install Level 2 home chargers and check your panel capacity. Call ${SITE.phoneDisplay} to get started.`}
+  canonical={`${SITE.origin}/services/ev-charger-installation`}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -108,7 +111,7 @@ const breadcrumbSchema = {
         Charge your electric vehicle at home with a charger sized for your car, your garage, and your daily driving.
       </p>
       <a
-        href={`tel:${phone}`}
+        href={SITE.phoneHref} data-track="call-page" data-contact-channel="tel"
         class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
       >
         <Icon name="ph:phone-fill" class="h-5 w-5" />
@@ -276,7 +279,7 @@ const breadcrumbSchema = {
         Call us and we will help you pick the right charger and get it installed.
       </p>
       <a
-        href={`tel:${phone}`}
+        href={SITE.phoneHref} data-track="call-page" data-contact-channel="tel"
         class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
       >
         <Icon name="ph:phone-fill" class="h-5 w-5" />

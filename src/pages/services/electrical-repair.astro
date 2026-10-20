@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { SITE } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
-const phone = '605-250-6993';
+const phone = SITE.phoneDisplay;
 const linkClass =
   'font-semibold text-brand-charcoal underline decoration-brand-yellow decoration-2 underline-offset-2 hover:text-brand-charcoal/70';
 
@@ -28,13 +29,15 @@ const serviceSchema = {
   provider: {
     '@type': 'Electrician',
     name: 'Sioux Falls Electricians',
-    url: 'https://siouxfalls-electrician.com',
-    telephone: phone,
+    url: SITE.origin,
+    telephone: SITE.phoneE164,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Sioux Falls',
-      addressRegion: 'SD',
-      addressCountry: 'US',
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.region,
+      postalCode: SITE.address.zip,
+      addressCountry: SITE.address.country,
     },
   },
   areaServed: ['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea'],
@@ -44,12 +47,12 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://siouxfalls-electrician.com/' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.origin },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Electrical Repair',
-      item: 'https://siouxfalls-electrician.com/services/electrical-repair',
+      item: `${SITE.origin}/services/electrical-repair`,
     },
   ],
 };
@@ -58,8 +61,8 @@ const breadcrumbSchema = {
 <Layout
   title="Electrical Repair Sioux Falls SD | Outlet and Switch Repair"
   fullTitle
-  description="Need electrical repair in Sioux Falls? We fix dead outlets, bad switches, flickering lights, and tripping breakers. Call 605-250-6993 today."
-  canonical="https://siouxfalls-electrician.com/services/electrical-repair"
+  description={`Need electrical repair in Sioux Falls? We fix dead outlets, bad switches, flickering lights, and tripping breakers. Call ${SITE.phoneDisplay} today.`}
+  canonical={`${SITE.origin}/services/electrical-repair`}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -85,7 +88,7 @@ const breadcrumbSchema = {
         From dead outlets to flickering lights, we track down electrical problems in your home and fix them the right way.
       </p>
       <a
-        href={`tel:${phone}`}
+        href={SITE.phoneHref} data-track="call-page" data-contact-channel="tel"
         class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
       >
         <Icon name="ph:phone-fill" class="h-5 w-5" />
@@ -236,7 +239,7 @@ const breadcrumbSchema = {
         Call us and tell us what is going on. We will find the problem and get it fixed.
       </p>
       <a
-        href={`tel:${phone}`}
+        href={SITE.phoneHref} data-track="call-page" data-contact-channel="tel"
         class="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-8 py-4 text-lg font-bold text-brand-charcoal transition hover:brightness-95 active:scale-[0.98]"
       >
         <Icon name="ph:phone-fill" class="h-5 w-5" />
