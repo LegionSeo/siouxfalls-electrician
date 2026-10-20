@@ -31,7 +31,7 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'brandon',
     name: 'Brandon',
-    title: 'Electrician Brandon SD',
+    title: 'Electrician in Brandon, SD',
     documentTitle: 'Electrician in Brandon, SD | Sioux Falls Electricians',
     description: 'Electrician in Brandon, SD for repairs, panels, EV chargers, and lighting. Brandon is five miles east of Sioux Falls in Minnehaha County.',
     sub: 'Repair, panel, lighting, and EV-charger calls five miles east of Sioux Falls.',
@@ -62,7 +62,7 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'harrisburg',
     name: 'Harrisburg',
-    title: 'Electrician Harrisburg SD',
+    title: 'Electrician in Harrisburg, SD',
     documentTitle: 'Electrician in Harrisburg, SD | Sioux Falls Electricians',
     description: 'Electrician in Harrisburg, SD, a Lincoln County suburb of Sioux Falls. Repairs, panels, lighting, and EV chargers.',
     sub: 'Electrical calls in this Lincoln County suburb.',
@@ -93,7 +93,7 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'tea',
     name: 'Tea',
-    title: 'Electrician Tea SD',
+    title: 'Electrician in Tea, SD',
     documentTitle: 'Electrician in Tea, SD | Sioux Falls Electricians',
     description: 'Electrician in Tea, SD, a Lincoln County suburb of Sioux Falls. Repairs, panels, lighting, and wiring.',
     sub: 'House and business electrical calls in this Lincoln County suburb.',
@@ -109,13 +109,13 @@ export const townPagesContent: TownPage[] = [
     detail:
       'Tea was laid out in 1894. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls.',
     about:
-      'Tea is an incorporated city in Lincoln County and a suburb of Sioux Falls. The town was laid out in 1894, and the name was chosen because it is short. The 2020 census counted 5,598 people. The Census Bureau estimate for 2024 is 7,699. The ZIP code is 57064. Students attend Tea Area School District 41-5. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls. South of Sioux Falls, I-29 Exit 73 at 271st Street is the Tea interchange. The corridor study treats that exit as Tea’s access to the interstate.',
+      'Tea is an incorporated city in Lincoln County and a suburb of Sioux Falls. The town was laid out in 1894, and the name was chosen because it is short. The 2020 census counted 5,598 people. The Census Bureau estimate for 2024 is 7,699. The ZIP code is 57064. Students attend Tea Area School District 41-5. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls. South of Sioux Falls, I-29 Exit 73 at 271st Street is the Tea interchange and Tea’s access to the interstate.',
     permits:
       'Permits for work inside Tea are a city question. State electrical inspections cover wiring outside the Sioux Falls and Rapid City local programs.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/lighting-installation', '/services/panel-upgrades'],
     faqs: [
       { q: 'What county is Tea in?', a: 'Lincoln County. It is a suburb of Sioux Falls.' },
-      { q: 'Are all Tea Area schools inside Tea?', a: 'No. The district contact page lists Frontier Elementary in Sioux Falls. The other listed schools use Tea street addresses.' },
+      { q: 'Are all Tea Area schools inside Tea?', a: 'No. Frontier Elementary is in Sioux Falls. The other schools use Tea street addresses.' },
       { q: 'When was Tea laid out?', a: 'Tea was laid out in 1894. The Census Bureau estimate for 2024 is 7,699 people.' },
     ],
     mapQuery: 'Tea, SD',
@@ -124,7 +124,7 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'hartford',
     name: 'Hartford',
-    title: 'Electrician Hartford SD',
+    title: 'Electrician in Hartford, SD',
     documentTitle: 'Electrician in Hartford, SD | Sioux Falls Electricians',
     description: 'Electrician in Hartford, SD, about 10 miles west of Sioux Falls in Minnehaha County. West Central schools.',
     sub: 'Electrical calls about 10 miles west of Sioux Falls, in Minnehaha County.',
@@ -145,7 +145,7 @@ export const townPagesContent: TownPage[] = [
       'Building permits inside Hartford go to the city. Electrical inspections follow the state commission unless the work is inside Sioux Falls, which has its own inspection department.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation', '/services/lighting-installation'],
     faqs: [
-      { q: 'How far is Hartford from Sioux Falls?', a: 'The City of Hartford says it is about 10 miles west of Sioux Falls.' },
+      { q: 'How far is Hartford from Sioux Falls?', a: 'Hartford is about 10 miles west of Sioux Falls.' },
       { q: 'What school district is Hartford in?', a: 'West Central. The district also includes Humboldt, the Wall Lake area, and Ellis.' },
       { q: 'Is Hartford in Lincoln County?', a: 'Hartford is in Minnehaha County.' },
     ],
@@ -155,13 +155,13 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'dell-rapids',
     name: 'Dell Rapids',
-    title: 'Electrician Dell Rapids SD',
+    title: 'Electrician in Dell Rapids, SD',
     documentTitle: 'Electrician in Dell Rapids, SD | Sioux Falls Electricians',
     description: 'Electrician in Dell Rapids, SD, about 15 miles north of Sioux Falls along I-29. Dell Rapids School District 49-3.',
     sub: 'Electrical calls about 15 miles north of Sioux Falls, along I-29.',
     photo: photo('town-dell-rapids', 'Electrician in a utility room with a breaker panel'),
     answer:
-      'Dell Rapids is at the north end of Minnehaha County, on the Big Sioux River. The South Dakota DOT master plan places it about 15 miles north of Sioux Falls along I-29. Dell Rapids School District 49-3 serves the town. Call {phone}.',
+      'Dell Rapids is at the north end of Minnehaha County, on the Big Sioux River, about 15 miles north of Sioux Falls along I-29. Dell Rapids School District 49-3 serves the town. Call {phone}.',
     stats: [
       { label: 'County', value: 'Minnehaha' },
       { label: 'Distance', value: '15 miles north' },
@@ -171,12 +171,12 @@ export const townPagesContent: TownPage[] = [
     detail:
       'The city sits upstream of Sioux Falls on the Big Sioux River. Downtown is about three miles from I-29 by SD Highway 115. Old Highway 77 runs north out of the city. The school office is at 1216 N Garfield Ave.',
     about:
-      'Dell Rapids sits at the north end of Minnehaha County on the Big Sioux River, upstream of Sioux Falls. The state transportation plan calls it a bedroom community of Sioux Falls and places the city about 15 miles north along I-29. Downtown is about three miles from I-29 by South Dakota Highway 115. Old Highway 77 runs north out of the city. Dell Rapids School District 49-3 serves the town from an office at 1216 N Garfield Ave. The district lists Dell Rapids Elementary, Dell Rapids Middle School, and Dell Rapids High School. From Sioux Falls, the plan uses I-29 north and then SD Highway 115 into downtown.',
+      'Dell Rapids sits at the north end of Minnehaha County on the Big Sioux River, upstream of Sioux Falls. It is a bedroom community of Sioux Falls, about 15 miles north along I-29. Downtown is about three miles from I-29 by South Dakota Highway 115. Old Highway 77 runs north out of the city. Dell Rapids School District 49-3 serves the town from an office at 1216 N Garfield Ave. The schools are Dell Rapids Elementary, Dell Rapids Middle School, and Dell Rapids High School. From Sioux Falls, I-29 north and then SD Highway 115 lead into downtown.',
     permits:
       'City work is permitted by the city. The state electrical commission inspects wiring outside the Sioux Falls local program.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/wiring-rewiring', '/services/smoke-co-detectors'],
     faqs: [
-      { q: 'How do you get from Dell Rapids to Sioux Falls?', a: 'The DOT master plan says SD Highway 115 connects downtown to I-29, about three miles west, and then south to Sioux Falls.' },
+      { q: 'How do you get from Dell Rapids to Sioux Falls?', a: 'SD Highway 115 connects downtown to I-29, about three miles west, and then south to Sioux Falls.' },
       { q: 'What schools are in town?', a: 'Dell Rapids Elementary, Middle School, and High School, in district 49-3, at 1216 N Garfield Ave.' },
       { q: 'Which river runs through Dell Rapids?', a: 'The Big Sioux River. The city is upstream of Sioux Falls.' },
     ],
@@ -186,7 +186,7 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'canton',
     name: 'Canton',
-    title: 'Electrician Canton SD',
+    title: 'Electrician in Canton, SD',
     documentTitle: 'Electrician in Canton, SD | Sioux Falls Electricians',
     description:
       'Electrician in Canton, SD, the Lincoln County seat 18 miles south of Sioux Falls. Repairs, panels, lighting and commercial work, 24/7.',
@@ -218,7 +218,7 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'lennox',
     name: 'Lennox',
-    title: 'Electrician Lennox SD',
+    title: 'Electrician in Lennox, SD',
     documentTitle: 'Electrician in Lennox, SD | Sioux Falls Electricians',
     description: 'Electrician in Lennox, SD, 20 miles southwest of Sioux Falls in Lincoln County. Lennox School District 41-4.',
     sub: 'Electrical calls 20 miles southwest of Sioux Falls, in Lincoln County.',
@@ -235,7 +235,7 @@ export const townPagesContent: TownPage[] = [
     detail:
       'Lennox was founded in 1889. The district runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School.',
     about:
-      'Lennox is a city in Lincoln County, 20 miles southwest of Sioux Falls. Settlers arrived in 1879, and the town was named for Ben Lennox, private secretary to the general manager of the Milwaukee Railroad. Lennox was founded in 1889. The 2020 census counted 2,423 people. The ZIP code is 57039. Lennox School District 41-4 runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School. South Dakota Highway 44 runs through Lennox and east to I-29. Exit 68, labeled Lennox / Parker, is the interstate interchange at 276th Street. The county plan shows SD 44 running from Lennox east to I-29.',
+      'Lennox is a city in Lincoln County, 20 miles southwest of Sioux Falls. Settlers arrived in 1879, and the town was named for Ben Lennox, private secretary to the general manager of the Milwaukee Railroad. Lennox was founded in 1889. The 2020 census counted 2,423 people. The ZIP code is 57039. Lennox School District 41-4 runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School. South Dakota Highway 44 runs through Lennox and east to I-29. Exit 68, labeled Lennox / Parker, is the interstate interchange at 276th Street.',
     permits:
       'Jobs inside Lennox go to the city for a building permit. Electrical inspection outside Sioux Falls is a state-commission inspection.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/generator-installation', '/services/smoke-co-detectors'],

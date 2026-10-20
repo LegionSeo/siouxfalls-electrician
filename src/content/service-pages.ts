@@ -107,7 +107,7 @@ export const servicePages: ServicePage[] = [
     alt: 'Electrician installing an outlet and a switch',
     answer:
       'Outlet and switch installation in Sioux Falls adds or replaces receptacles, switches, GFCI protection, dimmers, and 240-volt outlets. The circuit is checked for capacity before a new device is tied on. A new outlet can be fished from a basement or attic when a path is open. Call {phone}.',
-    includedLead: 'This page is for new devices and replacements, not for tracing a dead circuit. Repair lives on its own page.',
+    includedLead: 'New devices and replacements, not tracing a dead circuit. A dead circuit is a repair.',
     included: [
       'New general-use outlets where a lamp or tool currently uses an extension cord.',
       'GFCI receptacles in kitchens, baths, garages, and outdoor locations.',
@@ -141,7 +141,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'panel-upgrades',
     title: 'Panel Upgrades Sioux Falls SD',
-    description: 'Panel upgrades in Sioux Falls for full, warm, or outdated breaker panels and old fuse boxes.',
+    description: 'Panel upgrades in Sioux Falls for full, warm, or outdated breaker panels and old fuse boxes. Calls answered 24/7.',
     sub: 'Full, warm, or fuse-box panels replaced.',
     photo: 'service-panel-hero',
     alt: 'Electrician replacing a residential breaker panel',
@@ -181,13 +181,13 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'wiring-rewiring',
     title: 'Wiring and Rewiring Sioux Falls SD',
-    description: 'Wiring and rewiring in Sioux Falls for old circuits, added rooms, and whole-house rewires.',
+    description: 'Wiring and rewiring in Sioux Falls for old circuits, added rooms, and whole-house rewires. Calls answered 24/7.',
     sub: 'Old circuits, added rooms, and rewires.',
     photo: 'service-wiring',
     alt: 'Electrician pulling new cable through open wall studs',
     answer:
       'Wiring and rewiring in Sioux Falls covers old circuits, added rooms, and rewires of one area or a whole house. The plan says which cables stay and which are replaced. Attic and basement paths are checked before plaster is opened. Call {phone}.',
-    includedLead: 'Rewiring is planned work. A single dead outlet belongs on the repair page unless the cable itself is bad.',
+    includedLead: 'Rewiring is planned work. A single dead outlet is a repair unless the cable itself is bad.',
     included: [
       'New circuits for a kitchen, addition, or garage workshop.',
       'Replacement of brittle or damaged cable found during a repair.',
@@ -214,7 +214,7 @@ export const servicePages: ServicePage[] = [
       { q: 'Do you rewire one room without doing the whole house?', a: 'Yes, when that circuit can be separated safely. The notes say what stays on the old wiring and what is new.' },
       { q: 'Can new wire be fished without wrecking the plaster?', a: 'Often in attics and basements. Lathe and plaster, brick, and insulated walls are slower. The visit tells you where an opening is required.' },
       { q: 'What if the house has aluminum wiring?', a: 'If aluminum branch wiring is found, those connections are their own scope.' },
-      { q: 'Will a rewire include new devices?', a: 'The new cable ends at new devices where the old ones will not grip the new wire. Device swaps alone are on the outlet and switch page.' },
+      { q: 'Will a rewire include new devices?', a: 'The new cable ends at new devices where the old ones will not grip the new wire. A device swap by itself is outlet and switch work.' },
     ],
     related: ['/services/electrical-repair', '/services/panel-upgrades', '/services/lighting-installation'],
   },
@@ -261,7 +261,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'ev-charger-installation',
     title: 'EV Charger Installation Sioux Falls SD',
-    description: 'Level 2 home EV charger installation in Sioux Falls, including the circuit and a panel check.',
+    description: 'Level 2 home EV charger installation in Sioux Falls, including the circuit and a panel check. Calls answered 24/7.',
     sub: 'A Level 2 home charger on a new circuit, after the panel is checked.',
     photo: 'service-ev-hero',
     alt: 'Electrician mounting a home EV charger in a garage',
@@ -301,13 +301,13 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'lighting-installation',
     title: 'Lighting Installation Sioux Falls SD',
-    description: 'Recessed lights, LED swaps, and outdoor lighting installation in Sioux Falls.',
+    description: 'Recessed lights, LED swaps, new fixtures and outdoor lighting installed in Sioux Falls, SD and nearby towns. Calls answered 24/7.',
     sub: 'Recessed lights, LED swaps, and outdoor lighting.',
     photo: 'service-lighting-hero',
     alt: 'Electrician installing recessed lights in a kitchen ceiling',
     answer:
       'Lighting installation in Sioux Falls covers recessed lights, LED swaps, new fixtures, and outdoor lighting. The existing circuit is checked before more lamps are added to it. The layout is marked in the room before a hole is cut. Call {phone}.',
-    includedLead: 'This page is for new and replacement lighting, indoors and on the outside of the building.',
+    includedLead: 'New and replacement lighting, indoors and on the outside of the building.',
     included: [
       'Recessed lights in kitchens, halls, and living rooms.',
       'Swapping old fixtures for LED fixtures you already chose.',
@@ -381,7 +381,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'hot-tub-wiring',
     title: 'Hot Tub Wiring Sioux Falls SD',
-    description: 'Hot tub wiring in Sioux Falls: the dedicated circuit and disconnect a tub needs.',
+    description: 'Hot tub wiring in Sioux Falls, SD: the dedicated circuit and disconnect your tub needs, sized from its nameplate. Calls answered 24/7.',
     sub: 'The dedicated circuit and disconnect a tub needs, sized from the nameplate.',
     photo: 'service-hottub',
     alt: 'Electrician wiring a disconnect near a hot tub',
@@ -461,7 +461,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'surge-protection',
     title: 'Surge Protection Sioux Falls SD',
-    description: 'Whole-house surge protection installed at the panel in Sioux Falls.',
+    description: 'Whole-house surge protection installed at the panel in Sioux Falls, SD and nearby towns like Brandon and Tea. Calls answered 24/7.',
     sub: 'A whole-house device at the panel.',
     photo: 'service-surge',
     alt: 'Whole-house surge protector installed beside a breaker panel',
@@ -501,7 +501,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'smoke-co-detectors',
     title: 'Smoke and CO Detectors Sioux Falls SD',
-    description: 'Hardwired smoke alarms and carbon monoxide detectors in Sioux Falls homes.',
+    description: 'Hardwired smoke alarms and carbon monoxide detectors installed or replaced in Sioux Falls, SD homes and nearby towns. Calls answered 24/7.',
     sub: 'Hardwired smoke alarms and carbon monoxide detectors.',
     photo: 'service-smoke',
     alt: 'Electrician installing a hardwired smoke detector on a ceiling',
@@ -533,7 +533,7 @@ export const servicePages: ServicePage[] = [
     faqs: [
       { q: 'Why does a hardwired alarm still chirp?', a: 'The backup battery, a failing sensor, or a loose interconnect can chirp. The date stamp also ends the life of the sensor. The visit says which one it is.' },
       { q: 'Can you add interconnection to old alarms?', a: 'Only if a traveler wire can be run or is already in the box. Wireless interconnect is a product choice. Not every ceiling can be fished.' },
-      { q: 'Do you tell me how many alarms the code requires?', a: 'The city or the fire official is the source for required locations. We install the devices you approve.' },
+      { q: 'Do you tell me how many alarms the code requires?', a: 'The city or the fire official sets the required locations. We install the devices you approve.' },
       { q: 'Are CO alarms the same device as smoke alarms?', a: 'They can be separate or combined. The notes list which heads go where, based on the appliances and the floors you describe.' },
     ],
     related: ['/services/electrical-repair', '/services/lighting-installation', '/services/electrical-inspections'],
@@ -573,7 +573,7 @@ export const servicePages: ServicePage[] = [
     faqs: [
       { q: 'Do you work in occupied stores?', a: 'Yes, when the lights or the circuit can be off in a section. Say the hours. Some work has to wait until the door is locked.' },
       { q: 'Can you add one circuit for a new machine?', a: 'Yes, if the panel has space and capacity. A full panel means a larger job. Bring the machine nameplate.' },
-      { q: 'Will you design a whole building?', a: 'No. This page is for repair, lighting, and added circuits. A full build-out needs its own design.' },
+      { q: 'Will you design a whole building?', a: 'No. The work is repair, lighting, and added circuits. A full build-out needs its own design.' },
       { q: 'Are house calls and business calls the same number?', a: 'Yes. Say that it is a business and whether a landlord has to approve access.' },
     ],
     related: ['/services/lighting-installation', '/services/panel-upgrades', '/services/electrical-repair'],

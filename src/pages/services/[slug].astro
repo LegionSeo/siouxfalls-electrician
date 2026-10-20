@@ -52,8 +52,26 @@ const ctaName: Record<string, string> = {
   'smoke-co-detectors': 'smoke and CO detectors',
   'commercial-electrician': 'commercial electrical work',
 };
+const serviceTypes: Record<string, string> = {
+  'electrical-repair': 'Electrical fault repair',
+  'emergency-electrician': 'Emergency electrical service',
+  'outlet-switch-installation': 'Receptacle and switch installation',
+  'panel-upgrades': 'Electrical panel upgrade',
+  'wiring-rewiring': 'Circuit wiring and rewiring',
+  'generator-installation': 'Standby generator installation',
+  'ev-charger-installation': 'Level 2 EV charger installation',
+  'lighting-installation': 'Indoor and outdoor lighting installation',
+  'ceiling-fan-installation': 'Ceiling fan mounting',
+  'hot-tub-wiring': 'Hot tub circuit wiring',
+  'electrical-inspections': 'Private electrical safety inspection',
+  'surge-protection': 'Whole-house surge protection',
+  'smoke-co-detectors': 'Hardwired smoke and CO detector installation',
+  'commercial-electrician': 'Commercial electrical service',
+};
+const serviceType = serviceTypes[page.slug];
+if (!serviceType || serviceType === catalogService.name) throw new Error(`serviceType must differ from name for ${page.slug}`);
 const graph = [
-  serviceNode(catalogService.name, catalogService.name, path, SITE.serviceTowns),
+  serviceNode(catalogService.name, serviceType, path, SITE.serviceTowns),
   breadcrumb([
     { name: 'Home', path: '/' },
     { name: page.title, path },
