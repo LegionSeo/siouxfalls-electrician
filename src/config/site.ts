@@ -2,9 +2,7 @@
  * Renter-swappable business details.
  * Every phone number, email, address, hour, and photo path on the site comes from here.
  *
- * TODO: Replace phoneDisplay, phoneE164, phoneHref, and smsHref before launch.
- * (605) 555-0100 is a fictional 555-01xx placeholder and cannot take calls.
- * Do not reuse the old shared number from the previous site. Put a dedicated tracking number here instead.
+ * Calls use (605) 250-4838. Leave smsEnabled false until this number can receive texts.
  *
  * Photos below are temporary approved images. Point the paths at real job photos
  * when those exist. Do not describe the people in them as this company's crew.
@@ -158,10 +156,10 @@ const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 export const SITE: SiteConfig = {
   name: 'Sioux Falls Electricians',
   origin: 'https://www.siouxfalls-electrician.com',
-  phoneDisplay: '(605) 555-0100',
-  phoneE164: '+16055550100',
-  phoneHref: 'tel:+16055550100',
-  smsHref: 'sms:+16055550100',
+  phoneDisplay: '(605) 250-4838',
+  phoneE164: '+16052504838',
+  phoneHref: 'tel:+16052504838',
+  smsHref: 'sms:+16052504838',
   smsEnabled: false,
   email: 'service@siouxfalls-electrician.com',
   address: {
