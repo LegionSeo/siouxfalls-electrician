@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="area-map-title">
   <title id="area-map-title">Map of Sioux Falls, Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox</title>
-  <rect width="800" height="480" fill="#E6F2F0"/>
-  <circle cx="400" cy="250" r="150" fill="#0F2A2E" opacity="0.08"/>
-  <circle cx="400" cy="250" r="8" fill="#C2410C"/>
-  <text x="416" y="246" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="700">Sioux Falls</text>
-  <circle cx="560" cy="210" r="6" fill="#0F766E"/>
-  <text x="572" y="216" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Brandon</text>
-  <circle cx="430" cy="360" r="6" fill="#0F766E"/>
-  <text x="442" y="366" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Harrisburg</text>
-  <circle cx="300" cy="340" r="6" fill="#0F766E"/>
-  <text x="230" y="366" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Tea</text>
-  <circle cx="230" cy="200" r="6" fill="#0F766E"/>
-  <text x="150" y="196" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Hartford</text>
-  <circle cx="390" cy="110" r="6" fill="#0F766E"/>
-  <text x="404" y="106" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Dell Rapids</text>
-  <circle cx="520" cy="400" r="6" fill="#0F766E"/>
-  <text x="532" y="406" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Canton</text>
-  <circle cx="250" cy="400" r="6" fill="#0F766E"/>
-  <text x="180" y="426" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Lennox</text>
+  <rect width="800" height="480" fill="#F3EEE6"/>
+  <circle cx="400" cy="250" r="150" fill="#14211F" opacity="0.08"/>
+  <circle cx="400" cy="250" r="8" fill="#B4473E"/>
+  <text x="416" y="246" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" font-weight="700">Sioux Falls</text>
+  <circle cx="560" cy="210" r="6" fill="#14211F"/>
+  <text x="572" y="216" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Brandon</text>
+  <circle cx="430" cy="360" r="6" fill="#14211F"/>
+  <text x="442" y="366" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Harrisburg</text>
+  <circle cx="300" cy="340" r="6" fill="#14211F"/>
+  <text x="230" y="366" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Tea</text>
+  <circle cx="230" cy="200" r="6" fill="#14211F"/>
+  <text x="150" y="196" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Hartford</text>
+  <circle cx="390" cy="110" r="6" fill="#14211F"/>
+  <text x="404" y="106" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Dell Rapids</text>
+  <circle cx="520" cy="400" r="6" fill="#14211F"/>
+  <text x="532" y="406" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Canton</text>
+  <circle cx="250" cy="400" r="6" fill="#14211F"/>
+  <text x="180" y="426" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">Lennox</text>
 </svg>

@@ -26,16 +26,6 @@ export const serviceGroups: ServiceGroup[] = [
   'Commercial',
 ];
 
-const LIVE_SERVICE_HREFS = new Set([
-  '/services/electrical-repair',
-  '/services/emergency-electrician',
-  '/services/ev-charger-installation',
-  '/services/panel-upgrades',
-  '/services/lighting-installation',
-  '/services/wiring-rewiring',
-  '/services/commercial-electrician',
-]);
-
 const serviceList: Omit<ServiceItem, 'live'>[] = [
   {
     name: 'Electrical repair',
@@ -139,7 +129,7 @@ const serviceList: Omit<ServiceItem, 'live'>[] = [
 
 export const services: ServiceItem[] = serviceList.map((service) => ({
   ...service,
-  live: LIVE_SERVICE_HREFS.has(service.href),
+  live: true,
 }));
 
 export interface GuideItem {
@@ -190,14 +180,14 @@ export const guides: GuideItem[] = [
   {
     href: '/guides/panel-upgrade-cost-factors',
     title: 'Panel upgrade cost factors',
-    summary: 'What changes the quote for a panel upgrade. No prices are listed.',
+    summary: 'What changes the price of a panel upgrade.',
     featured: false,
     live: false,
   },
   {
     href: '/guides/electrical-permits-sioux-falls',
     title: 'Electrical permits in Sioux Falls',
-    summary: 'When the city expects a permit, and why this site does not cite code sections.',
+    summary: 'When the city expects a permit for electrical work in Sioux Falls.',
     featured: false,
     live: false,
   },
@@ -209,8 +199,7 @@ export function townHref(name: string): string {
 }
 
 /**
- * One entry per town page. Hartford, Dell Rapids, Canton, and Lennox stay
- * live:false until those pages exist. Crooks, Renner, Baltic, and Garretson
+ * One entry per town page. Crooks, Renner, Baltic, and Garretson
  * are list-only names in site.ts and must not be added here.
  */
 const TOWN_ENTRIES: { name: string; live: boolean }[] = [
@@ -218,10 +207,10 @@ const TOWN_ENTRIES: { name: string; live: boolean }[] = [
   { name: 'Brandon', live: true },
   { name: 'Harrisburg', live: true },
   { name: 'Tea', live: true },
-  { name: 'Hartford', live: false },
-  { name: 'Dell Rapids', live: false },
-  { name: 'Canton', live: false },
-  { name: 'Lennox', live: false },
+  { name: 'Hartford', live: true },
+  { name: 'Dell Rapids', live: true },
+  { name: 'Canton', live: true },
+  { name: 'Lennox', live: true },
 ];
 
 for (const name of SITE.listOnlyTowns) {

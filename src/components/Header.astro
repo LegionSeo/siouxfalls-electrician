@@ -20,8 +20,7 @@ if (!siouxFalls) throw new Error('Sioux Falls town entry is missing');
   <input id="site-menu-toggle" class="menu-toggle" type="checkbox" aria-controls="site-menu" aria-label="Open menu" />
   <div class="wrap header-bar">
     <a href="/" class="brand">
-      <img src={SITE.logo} width="32" height="32" alt="" />
-      <span>{SITE.name}</span>
+      <img src={SITE.logo} width="133" height="60" alt={SITE.logoText} />
     </a>
 
     <nav id="site-menu" class="site-menu" aria-label="Main">
@@ -48,6 +47,11 @@ if (!siouxFalls) throw new Error('Sioux Falls town entry is missing');
           <Icon name="caret" class="menu-caret" />
         </button>
         <ul>
+          <li>
+            <a href="/service-area" class="menu-link" aria-current={path === '/service-area' ? 'page' : undefined}>
+              All towns
+            </a>
+          </li>
           <li><a href="/#service-area" class="menu-link">{siouxFalls.name}</a></li>
           {
             liveTowns.map((town) => (
@@ -67,10 +71,10 @@ if (!siouxFalls) throw new Error('Sioux Falls town entry is missing');
     </nav>
 
     <div class="header-actions">
-      <ContactLink track="call-header" class="btn btn-copper header-call" />
+      <ContactLink track="call-header" class="btn btn-gold header-call" />
       <ContactLink
         track="call-header-m"
-        class="btn btn-copper header-call-icon h-12 w-12 shrink-0 rounded-full px-0"
+        class="btn btn-gold header-call-icon"
         label={`Call ${SITE.phoneDisplay}`}
         iconOnly
       />

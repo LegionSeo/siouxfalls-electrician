@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import IconSprite from '../components/IconSprite.astro';
 import SEO from '../components/SEO.astro';
 import StickyCallBar from '../components/StickyCallBar.astro';
+import { UPDATED_ISO } from '../content/updated';
 import { SITE, activeAnalytics, canonicalUrl } from '../config/site';
 import { jsonLdScript, siteGraph } from '../lib/schema';
 
@@ -17,9 +18,11 @@ interface Props {
   extraGraph?: Record<string, unknown>[];
   /** Homepage only. Header starts transparent and turns solid after scroll. */
   overlay?: boolean;
+  /** Omit the canonical link and ask crawlers not to index the page. */
+  noindex?: boolean;
 }
 
-const { title, description, fullTitle, extraGraph = [], overlay = false } = Astro.props;
+const { title, description, fullTitle, extraGraph = [], overlay = false, noindex = false } = Astro.props;
 const pageTitle = fullTitle ? title : `${title} | ${SITE.name}`;
 const pageDescription =
   description ??
@@ -31,10 +34,14 @@ const pagePath = (() => {
   return path || '/';
 })();
 const jsonLd = jsonLdScript(
-  siteGraph({ url: pageCanonical, name: pageTitle, description: pageDescription }, extraGraph, {
-    fullBusiness: pagePath === '/' || pagePath === '/contact',
-    catalog: pagePath === '/' || pagePath.startsWith('/services'),
-  }),
+  siteGraph(
+    { url: pageCanonical, name: pageTitle, description: pageDescription, dateModified: UPDATED_ISO },
+    extraGraph,
+    {
+      fullBusiness: pagePath === '/' || pagePath === '/contact',
+      catalog: pagePath === '/',
+    },
+  ),
 );
 const analytics = activeAnalytics();
 ---
@@ -44,7 +51,7 @@ const analytics = activeAnalytics();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <SEO title={pageTitle} description={pageDescription} canonical={pageCanonical} />
+    <SEO title={pageTitle} description={pageDescription} canonical={pageCanonical} noindex={noindex} />
     <slot name="head" />
     <script type="application/ld+json" set:html={jsonLd} />
   </head>

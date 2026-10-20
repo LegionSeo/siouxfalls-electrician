@@ -2,9 +2,7 @@
  * Renter-swappable business details.
  * Every phone number, email, address, hour, and photo path on the site comes from here.
  *
- * TODO: Replace phoneDisplay, phoneE164, phoneHref, and smsHref before launch.
- * (605) 555-0100 is a fictional 555-01xx placeholder and cannot take calls.
- * Do not reuse the old shared number from the previous site. Put a dedicated tracking number here instead.
+ * Calls use (605) 250-4838. Leave smsEnabled false until this number can receive texts.
  *
  * Photos below are temporary approved images. Point the paths at real job photos
  * when those exist. Do not describe the people in them as this company's crew.
@@ -88,7 +86,14 @@ export interface SiteConfig {
   license: string | null;
   owner: string | null;
   rating: Rating | null;
+  /** Dark-surface lockup for the header and footer. */
   logo: string;
+  /** Light-surface lockup. */
+  logoLight: string;
+  /** Bison mark without the wordmark. */
+  logoIcon: string;
+  /** Alt text, and the name to show if the logo image does not load. */
+  logoText: string;
   ogImage: string;
   /** Temporary approved hero. Replace src, srcset, and alt together. */
   heroPhoto: PhotoSlot;
@@ -100,11 +105,11 @@ export interface SiteConfig {
   /** Real job photos for the proof block. Empty keeps that block hidden. */
   jobPhotos: JobPhoto[];
   /**
-   * Set to a form action URL to show the quote form.
+   * Set to a form action URL to show the request form.
    * While this is null the form is hidden so a lead cannot be posted nowhere.
    */
   formEndpoint: string | null;
-  /** Palette id. Live tokens are Copper Current. */
+  /** Palette id. Live tokens are Thunder Sunrise. */
   theme: string;
   /**
    * GA4 measurement id, such as G-ABC123. Empty loads no tag.
@@ -151,10 +156,10 @@ const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 export const SITE: SiteConfig = {
   name: 'Sioux Falls Electricians',
   origin: 'https://www.siouxfalls-electrician.com',
-  phoneDisplay: '(605) 555-0100',
-  phoneE164: '+16055550100',
-  phoneHref: 'tel:+16055550100',
-  smsHref: 'sms:+16055550100',
+  phoneDisplay: '(605) 250-4838',
+  phoneE164: '+16052504838',
+  phoneHref: 'tel:+16052504838',
+  smsHref: 'sms:+16052504838',
   smsEnabled: false,
   email: 'service@siouxfalls-electrician.com',
   address: {
@@ -194,7 +199,10 @@ export const SITE: SiteConfig = {
   license: null,
   owner: null,
   rating: null,
-  logo: '/brand/logo.svg',
+  logo: '/logo-white.svg',
+  logoLight: '/logo.svg',
+  logoIcon: '/logo-icon.svg',
+  logoText: 'Sioux Falls Electricians',
   ogImage: '/brand/og-image.jpg',
   heroPhoto: photo(
     'hero-electrician-panel',
@@ -246,11 +254,18 @@ export const SITE: SiteConfig = {
       'Temporary approved photo for the commercial card. Replace with a real commercial job photo when one exists.',
     ),
     '/services/electrical-repair': repairWiringPhoto,
-    '/services/wiring-rewiring': repairWiringPhoto,
+    '/services/wiring-rewiring': photo(
+      'service-wiring',
+      1280,
+      800,
+      720,
+      'Electrician pulling new cable through open wall studs',
+      'Page photo for wiring. The person is not company staff.',
+    ),
   },
   jobPhotos: [],
   formEndpoint: null,
-  theme: 'copper-current',
+  theme: 'thunder-sunrise',
   ga4Id: '',
   gtmId: '',
 };

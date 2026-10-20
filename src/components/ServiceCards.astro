@@ -1,0 +1,34 @@
+---
+import Photo from './Photo.astro';
+import { servicePageBySlug } from '../content/service-pages';
+import { pagePhoto } from '../lib/photos';
+import type { ServiceItem } from '../config/catalog';
+
+interface Props {
+  services: ServiceItem[];
+}
+
+const { services } = Astro.props;
+const cards = services.map((service) => {
+  const page = servicePageBySlug(service.href.replace('/services/', ''));
+  if (!page) throw new Error(`Missing photo for ${service.href}`);
+  return { service, photo: pagePhoto(page.photo, page.alt) };
+});
+---
+
+<ul class="card-grid cols-3">
+  {
+    cards.map(({ service, photo }) => (
+      <li>
+        <a class="card" href={service.href}>
+          <Photo photo={photo} sizes="(min-width: 1024px) 280px, 100vw" loading="lazy" class="aspect-[4/3] w-full object-cover" />
+          <span class="flex flex-1 flex-col p-5">
+            <h3>{service.name}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{service.summary}</p>
+            <span class="mt-4 text-sm font-semibold text-rose">Learn more →</span>
+          </span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

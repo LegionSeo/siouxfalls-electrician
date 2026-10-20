@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import Icon from '../../components/Icon.astro';
+import PageHero from '../../components/PageHero.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import SideRail from '../../components/SideRail.astro';
+import { joinNames, services, townPages } from '../../config/catalog';
+import { servicePageBySlug, servicePages } from '../../content/service-pages';
+import { UPDATED_ISO, UPDATED_LABEL } from '../../content/updated';
+import { pagePhoto } from '../../lib/photos';
+import { visitSteps } from '../../lib/visit-steps';
+import { breadcrumb, serviceNode } from '../../lib/page-schema';
+import { SITE } from '../../config/site';
+
+export function getStaticPaths() {
+  return servicePages.map((page) => ({ params: { slug: page.slug } }));
+}
+
+const { slug } = Astro.params;
+const page = servicePageBySlug(slug);
+if (!page) throw new Error(`Missing service page ${slug}`);
+
+const path = `/services/${page.slug}`;
+const photo = pagePhoto(page.photo, page.alt);
+const answer = page.answer.replaceAll('{phone}', SITE.phoneDisplay);
+const related = page.related
+  .map((href) => services.find((service) => service.href === href))
+  .filter((service) => service?.live);
+const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
+const catalogService = services.find((service) => service.href === path);
+if (!catalogService) throw new Error(`Missing catalog service ${path}`);
+const steps = visitSteps(page.visit);
+const serviceTitle = page.title.replace(/ Sioux Falls SD$/, '');
+const longTitle = `${serviceTitle} in Sioux Falls, SD | ${SITE.name}`;
+const shortTitle = `${serviceTitle} | ${SITE.name}`;
+const documentTitle = longTitle.length <= 60 ? longTitle : shortTitle.length <= 60 ? shortTitle : page.title;
+const ctaName: Record<string, string> = {
+  'electrical-repair': 'an electrical repair',
+  'emergency-electrician': 'an emergency call',
+  'outlet-switch-installation': 'an outlet or switch',
+  'panel-upgrades': 'a panel upgrade',
+  'wiring-rewiring': 'wiring',
+  'generator-installation': 'a generator installation',
+  'ev-charger-installation': 'an EV charger installation',
+  'lighting-installation': 'a lighting installation',
+  'ceiling-fan-installation': 'a ceiling fan installation',
+  'hot-tub-wiring': 'hot tub wiring',
+  'electrical-inspections': 'an electrical inspection',
+  'surge-protection': 'surge protection',
+  'smoke-co-detectors': 'smoke and CO detectors',
+  'commercial-electrician': 'commercial electrical work',
+};
+const serviceTypes: Record<string, string> = {
+  'electrical-repair': 'Electrical fault repair',
+  'emergency-electrician': 'Emergency electrical service',
+  'outlet-switch-installation': 'Receptacle and switch installation',
+  'panel-upgrades': 'Electrical panel upgrade',
+  'wiring-rewiring': 'Circuit wiring and rewiring',
+  'generator-installation': 'Standby generator installation',
+  'ev-charger-installation': 'Level 2 EV charger installation',
+  'lighting-installation': 'Indoor and outdoor lighting installation',
+  'ceiling-fan-installation': 'Ceiling fan mounting',
+  'hot-tub-wiring': 'Hot tub circuit wiring',
+  'electrical-inspections': 'Private electrical safety inspection',
+  'surge-protection': 'Whole-house surge protection',
+  'smoke-co-detectors': 'Hardwired smoke and CO detector installation',
+  'commercial-electrician': 'Commercial electrical service',
+};
+const serviceType = serviceTypes[page.slug];
+if (!serviceType || serviceType === catalogService.name) throw new Error(`serviceType must differ from name for ${page.slug}`);
+const graph = [
+  serviceNode(catalogService.name, serviceType, path, SITE.serviceTowns),
+  breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: page.title, path },
+  ]),
+];
+---
+
+<Layout title={documentTitle} description={page.description} fullTitle extraGraph={graph} overlay>
+  <PageHero photo={photo} eyebrow="Sioux Falls and nearby towns" title={page.title} sub={page.sub} />
+
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <p class="measure text-lg">{answer}</p>
+          <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="included-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="included-heading">What’s included</h2>
+            <p class="lede">{page.includedLead}</p>
+          </div>
+          <ul class="card-grid cols-2">
+            {
+              page.included.map((item) => (
+                <li class="icon-card">
+                  <Icon name="check" class="h-6 w-6" />
+                  <p>{item}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-paper" aria-labelledby="signs-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="signs-heading">Signs you need it</h2>
+            <p class="lede">{page.signsLead}</p>
+          </div>
+          <ul class="card-grid cols-2">
+            {
+              page.signs.map((item) => (
+                <li class="icon-card">
+                  <Icon name="warning" class="h-6 w-6" />
+                  <p>{item}</p>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="cost-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="cost-heading">What affects the price</h2>
+          </div>
+          <ol class="card-grid cols-2">
+            {
+              page.cost.map((paragraph, index) => (
+                <li class="num-card">
+                  <span class="num">{index + 1}</span>
+                  <p>{paragraph}</p>
+                </li>
+              ))
+            }
+          </ol>
+          <h2 id="emergency-heading" class="mt-12">24/7 emergency service</h2>
+          <p class="measure mt-4 text-muted">{page.emergency}</p>
+          {SITE.available247 && <p class="measure mt-3 text-muted">{SITE.availabilityNote}</p>}
+        </div>
+      </section>
+
+      <section class="surface-dark bg-ink text-white" aria-labelledby="visit-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="visit-heading" class="text-white">How the visit goes</h2>
+          </div>
+          <ol class="grid gap-8 md:grid-cols-3">
+            {
+              steps.map((step, index) => (
+                <li>
+                  <span class="step-num">{index + 1}</span>
+                  <h3 class="mt-4 text-white">{step.title}</h3>
+                  <p class="mt-2 on-dark">{step.text}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </section>
+
+      <section class="bg-paper" aria-labelledby="towns-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="towns-heading">Towns served</h2>
+            <p class="lede">
+              This work is available in {joinNames(SITE.serviceTowns)}. See the <a class="text-link" href="/service-area">service area</a>.
+            </p>
+          </div>
+          <ul class="flex flex-wrap gap-2">
+            <li><a class="town-chip" href="/#service-area">Sioux Falls</a></li>
+            {liveTowns.map((town) => <li><a class="town-chip" href={town.href}>{town.name}</a></li>)}
+          </ul>
+          <div class="block-head mt-12">
+            <h2 id="related-heading">Related services</h2>
+          </div>
+          <ServiceCards services={related} />
+          <p class="mt-6">
+            <a class="text-link" href="/contact">Contact Sioux Falls Electricians</a>
+          </p>
+        </div>
+      </section>
+
+      <FaqAccordion items={page.faqs} heading="Questions about this work" />
+    </div>
+    <SideRail />
+  </div>
+
+  <CtaBand photo={photo} heading={`Need help with ${ctaName[page.slug] ?? catalogService.name.toLowerCase()}?`} />
+</Layout>

@@ -30,16 +30,19 @@ function offerCatalog() {
   };
 }
 
+const businessId = `${SITE.origin}/#business`;
+const websiteId = `${SITE.origin}/#website`;
+
 function electricianNode(catalog: boolean) {
   const node: Record<string, unknown> = {
     '@type': 'Electrician',
-    '@id': '#business',
+    '@id': businessId,
     name: SITE.name,
     url: SITE.origin,
     telephone: SITE.phoneE164,
     email: SITE.email,
-    image: absoluteUrl(SITE.ogImage),
-    logo: absoluteUrl(SITE.logo),
+    image: absoluteUrl('/logo.png'),
+    logo: absoluteUrl('/logo.png'),
     areaServed: areaServed(),
   };
 
@@ -103,39 +106,38 @@ export function faqNode(faqs: FaqItem[]) {
 }
 
 export function siteGraph(
-  page: { url: string; name: string; description: string },
+  page: { url: string; name: string; description: string; dateModified?: string },
   extra: Record<string, unknown>[] = [],
   options: { fullBusiness?: boolean; catalog?: boolean } = {},
 ) {
   const fullBusiness = options.fullBusiness ?? false;
   const catalog = options.catalog ?? false;
-  const business = fullBusiness
-    ? electricianNode(catalog)
-    : catalog
-      ? { '@type': 'Electrician', '@id': '#business', hasOfferCatalog: offerCatalog() }
-      : { '@id': '#business' };
+  const business = fullBusiness ? electricianNode(catalog) : { '@id': businessId };
+
+  const webpage: Record<string, unknown> = {
+    '@type': 'WebPage',
+    '@id': `${page.url}#webpage`,
+    url: page.url,
+    name: page.name,
+    description: page.description,
+    isPartOf: { '@id': websiteId },
+    about: { '@id': businessId },
+    inLanguage: 'en-US',
+  };
+  if (page.dateModified) webpage.dateModified = page.dateModified;
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': '#website',
+        '@id': websiteId,
         url: SITE.origin,
         name: SITE.name,
-        publisher: { '@id': '#business' },
+        publisher: { '@id': businessId },
       },
       business,
-      {
-        '@type': 'WebPage',
-        '@id': '#webpage',
-        url: page.url,
-        name: page.name,
-        description: page.description,
-        isPartOf: { '@id': '#website' },
-        about: { '@id': '#business' },
-        inLanguage: 'en-US',
-      },
+      webpage,
       ...extra,
     ],
   };
