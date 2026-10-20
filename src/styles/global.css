@@ -728,6 +728,19 @@ a.card:hover {
   max-width: 14ch;
 }
 
+.page-hero h1 {
+  max-width: 18ch;
+}
+
+.faq h2 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .hero-sub {
   margin-top: 16px;
   max-width: 40rem;

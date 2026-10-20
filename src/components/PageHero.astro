@@ -1,0 +1,30 @@
+---
+import ContactLink from './ContactLink.astro';
+import Photo from './Photo.astro';
+import type { PhotoSlot } from '../config/site';
+
+interface Props {
+  photo: PhotoSlot;
+  eyebrow: string;
+  title: string;
+  sub: string;
+}
+
+const { photo, eyebrow, title, sub } = Astro.props;
+---
+
+<section class="hero page-hero surface-dark">
+  <div class="hero-media">
+    <Photo photo={photo} pictureClass="hero-picture" sizes="100vw" loading="eager" fetchpriority="high" class="hero-img" />
+    <div class="hero-shade" aria-hidden="true"></div>
+  </div>
+  <div class="wrap hero-copy">
+    <p class="eyebrow eyebrow-on-dark">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="hero-sub">{sub}</p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <ContactLink track="call-page-hero" class="btn btn-copper w-full sm:w-auto" />
+      <a href="/contact" class="btn btn-line w-full sm:w-auto">Contact</a>
+    </div>
+  </div>
+</section>

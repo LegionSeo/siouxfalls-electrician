@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE } from '../config/site';
+---
+
+<Layout title="Page not found" description={`That page is not on ${SITE.name}. Call ${SITE.phoneDisplay}.`} fullTitle overlay>
+  <PageHero photo={SITE.heroPhoto} eyebrow="404" title="Page not found" sub="That address is not a page on this site." />
+
+  <section class="bg-paper">
+    <div class="wrap section">
+      <p class="measure text-lg text-muted">Try the homepage or the service area, or use the call button above.</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a class="btn btn-line-dark w-full sm:w-auto" href="/">Home</a>
+        <a class="btn btn-line-dark w-full sm:w-auto" href="/service-area">Service area</a>
+        <a class="btn btn-line-dark w-full sm:w-auto" href="/contact">Contact</a>
+      </div>
+    </div>
+  </section>
+</Layout>

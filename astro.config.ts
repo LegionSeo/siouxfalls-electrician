@@ -7,16 +7,23 @@ import { SITE } from './src/config/site';
 
 function gitLastmod(pathname: string): string | undefined {
   const path = pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/$/, '') || '/';
-  const file = path === '/' ? 'src/pages/index.astro' : `src/pages${path}.astro`;
-  try {
-    const stamp = execSync(`git log -1 --format=%cI -- ${file}`, {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'ignore'],
-    }).trim();
-    return stamp || undefined;
-  } catch {
-    return undefined;
+  const files = [
+    path === '/' ? 'src/pages/index.astro' : `src/pages${path}.astro`,
+    path.startsWith('/services/') ? 'src/pages/services/[slug].astro' : '',
+    path.startsWith('/locations/') ? 'src/pages/locations/[town].astro' : '',
+  ].filter(Boolean);
+  for (const file of files) {
+    try {
+      const stamp = execSync(`git log -1 --format=%cI -- ${file}`, {
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+      }).trim();
+      if (stamp) return stamp;
+    } catch {
+      /* try the next candidate */
+    }
   }
+  return undefined;
 }
 
 export default defineConfig({

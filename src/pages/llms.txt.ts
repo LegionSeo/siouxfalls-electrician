@@ -17,6 +17,7 @@ export const GET: APIRoute = () => {
     `${SITE.origin}`,
     `${SITE.origin}/about`,
     `${SITE.origin}/contact`,
+    `${SITE.origin}/service-area`,
     ...liveServices.map((service) => `${SITE.origin}${service.href}`),
     ...liveTowns.filter((town) => town.href !== '/').map((town) => `${SITE.origin}${town.href}`),
   ];

@@ -48,6 +48,11 @@ if (!siouxFalls) throw new Error('Sioux Falls town entry is missing');
           <Icon name="caret" class="menu-caret" />
         </button>
         <ul>
+          <li>
+            <a href="/service-area" class="menu-link" aria-current={path === '/service-area' ? 'page' : undefined}>
+              All towns
+            </a>
+          </li>
           <li><a href="/#service-area" class="menu-link">{siouxFalls.name}</a></li>
           {
             liveTowns.map((town) => (

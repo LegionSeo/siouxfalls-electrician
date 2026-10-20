@@ -240,7 +240,12 @@ const steps = [
             Older central neighborhoods, including the Cathedral Historic District, often still have older wiring. Newer subdivisions to the south and east are a different kind of job. Downtown sits between those areas.
           </p>
           <p>
-            {joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages. We also serve {joinNames(townPages.filter((town) => !town.live).map((town) => town.name))}, and we take calls in {joinNames(SITE.listOnlyTowns)}.
+            {joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages.
+            {
+              townPages.some((town) => !town.live) &&
+                ` We also serve ${joinNames(townPages.filter((town) => !town.live).map((town) => town.name))}.`
+            }
+            {' '}We take calls in {joinNames(SITE.listOnlyTowns)}. Those four towns do not have their own pages.
           </p>
         </div>
       </div>

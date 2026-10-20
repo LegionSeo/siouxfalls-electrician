@@ -68,7 +68,10 @@ const plainTowns = townPages.filter((town) => !town.live).map((town) => town.nam
           ))
         }
       </ul>
-      <p class="mt-4 text-sm leading-relaxed on-dark">Also serving {plainTowns.join(', ')}.</p>
+      {plainTowns.length > 0 && <p class="mt-4 text-sm leading-relaxed on-dark">Also serving {plainTowns.join(', ')}.</p>}
+      <p class="mt-4">
+        <a href="/service-area" class="on-dark hover:text-white hover:underline">Service area</a>
+      </p>
     </div>
 
     <div class="foot-col">
