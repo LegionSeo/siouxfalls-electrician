@@ -88,7 +88,14 @@ export interface SiteConfig {
   license: string | null;
   owner: string | null;
   rating: Rating | null;
+  /** Dark-surface lockup for the header and footer. */
   logo: string;
+  /** Light-surface lockup. */
+  logoLight: string;
+  /** Bison mark without the wordmark. */
+  logoIcon: string;
+  /** Alt text, and the name to show if the logo image does not load. */
+  logoText: string;
   ogImage: string;
   /** Temporary approved hero. Replace src, srcset, and alt together. */
   heroPhoto: PhotoSlot;
@@ -194,7 +201,10 @@ export const SITE: SiteConfig = {
   license: null,
   owner: null,
   rating: null,
-  logo: '/brand/logo.svg',
+  logo: '/logo-white.svg',
+  logoLight: '/logo.svg',
+  logoIcon: '/logo-icon.svg',
+  logoText: 'Sioux Falls Electricians',
   ogImage: '/brand/og-image.jpg',
   heroPhoto: photo(
     'hero-electrician-panel',

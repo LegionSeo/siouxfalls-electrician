@@ -41,8 +41,8 @@ function electricianNode(catalog: boolean) {
     url: SITE.origin,
     telephone: SITE.phoneE164,
     email: SITE.email,
-    image: absoluteUrl(SITE.ogImage),
-    logo: absoluteUrl(SITE.logo),
+    image: absoluteUrl('/logo.png'),
+    logo: absoluteUrl('/logo.png'),
     areaServed: areaServed(),
   };
 
