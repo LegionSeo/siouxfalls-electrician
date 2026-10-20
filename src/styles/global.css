@@ -232,7 +232,7 @@ footer :where(.grid) > * {
 }
 
 .site-header.is-overlay {
-  background: transparent;
+  background: #14211f;
   box-shadow: none;
 }
 
@@ -729,6 +729,11 @@ summary::-webkit-details-marker {
   font: inherit;
 }
 
+.field::placeholder {
+  color: #4e5754;
+  opacity: 1;
+}
+
 .card {
   display: flex;
   height: 100%;
@@ -897,7 +902,7 @@ a.card:hover {
 .split-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 33, 31, 0.12) 0%, rgba(20, 33, 31, 0.28) 42%, rgba(20, 33, 31, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(20, 33, 31, 0.28) 0%, rgba(20, 33, 31, 0.78) 46%, rgba(20, 33, 31, 0.94) 100%);
 }
 
 .split-home {
