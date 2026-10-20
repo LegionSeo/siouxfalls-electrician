@@ -6,7 +6,7 @@ import MapEmbed from '../components/MapEmbed.astro';
 import Photo from '../components/Photo.astro';
 import RequestPanel from '../components/RequestPanel.astro';
 import { services, townPages } from '../config/catalog';
-import { SITE, type PhotoSlot } from '../config/site';
+import { SITE } from '../config/site';
 import { homepageFaqs } from '../content/home';
 import { faqNode } from '../lib/schema';
 
@@ -14,22 +14,23 @@ const faqs = homepageFaqs();
 const homeTitle = 'Electrician Sioux Falls, SD | Sioux Falls Electricians';
 const homeDescription = `Residential and commercial electricians in Sioux Falls, Brandon, Harrisburg, Tea and nearby. Repairs, panel upgrades, EV chargers. Call ${SITE.phoneDisplay}.`;
 
-const closestPhoto: Record<string, string> = {
-  '/services/outlet-switch-installation': '/services/electrical-repair',
-  '/services/generator-installation': '/services/panel-upgrades',
-  '/services/ceiling-fan-installation': '/services/lighting-installation',
-  '/services/hot-tub-wiring': '/services/wiring-rewiring',
-  '/services/electrical-inspections': '/services/panel-upgrades',
-  '/services/surge-protection': '/services/panel-upgrades',
-  '/services/smoke-co-detectors': '/services/emergency-electrician',
-};
+const featuredHrefs = [
+  '/services/electrical-repair',
+  '/services/emergency-electrician',
+  '/services/panel-upgrades',
+  '/services/ev-charger-installation',
+  '/services/lighting-installation',
+  '/services/commercial-electrician',
+];
 
-function cardPhoto(href: string): PhotoSlot {
-  const photo = SITE.servicePhotos[href] ?? SITE.servicePhotos[closestPhoto[href]];
-  if (!photo) throw new Error(`No photo for ${href}`);
-  return photo;
-}
+const featured = featuredHrefs.map((href) => {
+  const service = services.find((item) => item.href === href);
+  const photo = SITE.servicePhotos[href];
+  if (!service || !photo) throw new Error(`Missing featured service ${href}`);
+  return { service, photo };
+});
 
+const moreServices = services.filter((service) => !featuredHrefs.includes(service.href));
 const homePhoto = SITE.servicePhotos['/services/lighting-installation'];
 const businessPhoto = SITE.servicePhotos['/services/commercial-electrician'];
 const cardSizes = '(min-width: 1024px) 360px, (min-width: 700px) 45vw, 100vw';
@@ -142,19 +143,36 @@ const steps = [
         <h2 id="services-heading">Electrical services in Sioux Falls</h2>
         <p class="lede">Pick the job that matches the problem. Homes and businesses use the same phone number.</p>
       </div>
+      <h3 class="more-label">Most requested</h3>
       <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
-          services.map((service) => {
-            const photo = cardPhoto(service.href);
+          featured.map(({ service, photo }) => (
+            <li>
+              <a href={service.href} class="card">
+                <Photo photo={photo} sizes={cardSizes} loading="lazy" class="aspect-[4/3] w-full object-cover" />
+                <span class="flex flex-1 flex-col p-5">
+                  <h3>{service.name}</h3>
+                  <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{service.summary}</p>
+                  <span class="mt-4 text-sm font-semibold text-teal">Learn more →</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <h3 class="more-label">More services</h3>
+      <ul class="more-grid">
+        {
+          moreServices.map((service) => {
             const Tag = service.live ? 'a' : 'div';
             return (
               <li>
-                <Tag href={service.live ? service.href : undefined} class="card">
-                  <Photo photo={photo} sizes={cardSizes} loading="lazy" class="aspect-[4/3] w-full object-cover" />
-                  <span class="flex flex-1 flex-col p-5">
-                    <h3>{service.name}</h3>
-                    <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{service.summary}</p>
-                    {service.live && <span class="mt-4 text-sm font-semibold text-teal">Learn more →</span>}
+                <Tag href={service.live ? service.href : undefined} class="more-row">
+                  <Icon name={service.icon} class="more-icon" />
+                  <span>
+                    <span class="more-title">{service.name}</span>
+                    <span class="more-line">{service.summary}</span>
+                    {service.live && <span class="more-go">Learn more</span>}
                   </span>
                 </Tag>
               </li>
@@ -173,7 +191,7 @@ const steps = [
       </div>
       <div class="grid gap-6 md:grid-cols-2">
         <a href="#services" class="split-panel">
-          <Photo photo={homePhoto} pictureClass="hero-picture" sizes="(min-width: 768px) 50vw, 100vw" loading="lazy" class="hero-img" />
+          <Photo photo={homePhoto} pictureClass="hero-picture" sizes="(min-width: 768px) 50vw, 100vw" loading="lazy" class="hero-img split-home" />
           <span class="split-shade" aria-hidden="true"></span>
           <span class="relative flex flex-1 flex-col justify-end p-8">
             <h3 class="text-white">For your home</h3>
@@ -182,7 +200,7 @@ const steps = [
           </span>
         </a>
         <a href="/services/commercial-electrician" class="split-panel">
-          <Photo photo={businessPhoto} pictureClass="hero-picture" sizes="(min-width: 768px) 50vw, 100vw" loading="lazy" class="hero-img" />
+          <Photo photo={businessPhoto} pictureClass="hero-picture" sizes="(min-width: 768px) 50vw, 100vw" loading="lazy" class="hero-img split-biz" />
           <span class="split-shade" aria-hidden="true"></span>
           <span class="relative flex flex-1 flex-col justify-end p-8">
             <h3 class="text-white">For your business</h3>
@@ -232,6 +250,7 @@ const steps = [
           src="https://www.google.com/maps?q=Sioux+Falls,+SD&z=10&output=embed"
           title="Map of Sioux Falls, South Dakota and nearby towns"
           label="Sioux Falls and the towns around it"
+          preview="/images/sioux-falls-area-preview.webp"
         />
         <div>
           <ul class="flex flex-wrap gap-2">
@@ -259,6 +278,7 @@ const steps = [
 
   <section id="faq" class="bg-paper" aria-labelledby="faq-heading">
     <div class="wrap section">
+      <div class="faq-col">
       <div class="section-head">
         <h2 id="faq-heading">Sioux Falls electrician FAQ</h2>
       </div>
@@ -277,6 +297,7 @@ const steps = [
             </details>
           ))
         }
+      </div>
       </div>
     </div>
   </section>

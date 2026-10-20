@@ -3,22 +3,22 @@ interface Props {
   src: string;
   title: string;
   label: string;
+  preview: string;
   class?: string;
 }
 
-const { src, title, label, class: className } = Astro.props;
+const { src, title, label, preview, class: className } = Astro.props;
 ---
 
-<div class:list={['map-embed relative overflow-hidden rounded-2xl bg-ink', className]} data-map>
-  <button
-    type="button"
-    class="absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-2 px-6 text-center text-white"
-    data-map-load={src}
-    data-map-title={title}
-  >
-    <span class="text-lg font-bold">Show map</span>
-    <span class="max-w-[28ch] text-sm leading-relaxed text-mist">{label}</span>
+<div class:list={['map-embed relative overflow-hidden rounded-2xl', className]} data-map>
+  <img class="map-preview" src={preview} alt="" width="800" height="1000" decoding="async" />
+  <button type="button" class="map-open" data-map-load={src} data-map-title={title}>
+    <span>Show map</span>
+    <span class="map-open-note">{label}</span>
   </button>
+  <a class="map-credit" href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer">
+    © OpenStreetMap
+  </a>
   <noscript>
     <iframe class="absolute inset-0 h-full w-full border-0" src={src} title={title} loading="lazy"></iframe>
   </noscript>
