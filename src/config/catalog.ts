@@ -141,6 +141,8 @@ export interface GuideItem {
   title: string;
   summary: string;
   featured: boolean;
+  /** False until the guide page exists. */
+  live: boolean;
 }
 
 export const guides: GuideItem[] = [
@@ -149,42 +151,49 @@ export const guides: GuideItem[] = [
     title: 'Why does my breaker keep tripping?',
     summary: 'What overload, a weak breaker, and a short look like, and when to stop resetting it.',
     featured: true,
+    live: false,
   },
   {
     href: '/guides/older-home-wiring-sioux-falls',
     title: 'Older home wiring in Sioux Falls',
     summary: 'Fuse boxes, knob-and-tube, and aluminum wiring, explained in plain words.',
     featured: true,
+    live: false,
   },
   {
     href: '/guides/home-ev-charging-sioux-falls',
     title: 'Home EV charging in Sioux Falls',
     summary: 'What a Level 2 charger asks of the panel, the garage, and the permit office.',
     featured: true,
+    live: false,
   },
   {
     href: '/guides/winter-electrical-tips-sioux-falls',
     title: 'Winter electrical safety tips',
     summary: 'Space heaters, outdoor outlets, and heat tape when the temperature drops.',
     featured: false,
+    live: false,
   },
   {
     href: '/guides/storm-power-outage-generator-guide',
     title: 'Storm and outage generator guide',
     summary: 'Why a generator must not backfeed the house, and what a transfer switch does.',
     featured: false,
+    live: false,
   },
   {
     href: '/guides/panel-upgrade-cost-factors',
     title: 'Panel upgrade cost factors',
     summary: 'What changes the quote for a panel upgrade. No prices are listed.',
     featured: false,
+    live: false,
   },
   {
     href: '/guides/electrical-permits-sioux-falls',
     title: 'Electrical permits in Sioux Falls',
     summary: 'When the city expects a permit, and why this site does not cite code sections.',
     featured: false,
+    live: false,
   },
 ];
 
@@ -203,4 +212,4 @@ export const townPages = SITE.serviceTowns.map((name) => ({
 
 export const footerTowns = townPages.filter((town) => town.name !== 'Sioux Falls');
 
-export const featuredGuides = guides.filter((guide) => guide.featured);
+export const featuredGuides = guides.filter((guide) => guide.featured && guide.live);

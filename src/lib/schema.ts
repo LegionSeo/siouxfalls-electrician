@@ -13,10 +13,27 @@ function areaServed() {
   }));
 }
 
-function electricianNode() {
+function offerCatalog() {
+  return {
+    '@type': 'OfferCatalog',
+    name: 'Electrical services',
+    itemListElement: services
+      .filter((service) => service.live)
+      .map((service) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: service.name,
+          url: `${SITE.origin}${service.href}`,
+        },
+      })),
+  };
+}
+
+function electricianNode(catalog: boolean) {
   const node: Record<string, unknown> = {
     '@type': 'Electrician',
-    '@id': `${SITE.origin}#business`,
+    '@id': '#business',
     name: SITE.name,
     url: SITE.origin,
     telephone: SITE.phoneE164,
@@ -24,19 +41,9 @@ function electricianNode() {
     image: absoluteUrl(SITE.ogImage),
     logo: absoluteUrl(SITE.logo),
     areaServed: areaServed(),
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Electrical services',
-      itemListElement: services.map((service) => ({
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: service.name,
-          ...(service.live ? { url: `${SITE.origin}${service.href}` } : {}),
-        },
-      })),
-    },
   };
+
+  if (catalog) node.hasOfferCatalog = offerCatalog();
 
   if (SITE.showStreetAddress) {
     node.address = {
@@ -107,26 +114,35 @@ export function faqNode(faqs: FaqItem[]) {
 export function siteGraph(
   page: { url: string; name: string; description: string },
   extra: Record<string, unknown>[] = [],
+  options: { fullBusiness?: boolean; catalog?: boolean } = {},
 ) {
+  const fullBusiness = options.fullBusiness ?? false;
+  const catalog = options.catalog ?? false;
+  const business = fullBusiness
+    ? electricianNode(catalog)
+    : catalog
+      ? { '@type': 'Electrician', '@id': '#business', hasOfferCatalog: offerCatalog() }
+      : { '@id': '#business' };
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': `${SITE.origin}#website`,
+        '@id': '#website',
         url: SITE.origin,
         name: SITE.name,
-        publisher: { '@id': `${SITE.origin}#business` },
+        publisher: { '@id': '#business' },
       },
-      electricianNode(),
+      business,
       {
         '@type': 'WebPage',
-        '@id': `${page.url}#webpage`,
+        '@id': '#webpage',
         url: page.url,
         name: page.name,
         description: page.description,
-        isPartOf: { '@id': `${SITE.origin}#website` },
-        about: { '@id': `${SITE.origin}#business` },
+        isPartOf: { '@id': '#website' },
+        about: { '@id': '#business' },
         inLanguage: 'en-US',
       },
       ...extra,

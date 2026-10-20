@@ -13,7 +13,6 @@ interface Props {
 const { photo, sizes, loading = 'lazy', fetchpriority, class: className, pictureClass } = Astro.props;
 ---
 
-<Fragment set:html={`<!-- PHOTO: ${photo.note} -->`} />
 <picture class={pictureClass}>
   <source type="image/avif" srcset={photo.avifSrcset} sizes={sizes} />
   <source type="image/webp" srcset={photo.webpSrcset} sizes={sizes} />

@@ -15,50 +15,53 @@ const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
 ---
 
 <header data-site-header class:list={['site-header', overlay && 'is-overlay']} data-overlay={overlay ? '' : undefined}>
+  <input id="site-menu-toggle" class="menu-toggle" type="checkbox" aria-controls="site-menu" aria-label="Open menu" />
   <div class="wrap header-bar">
     <a href="/" class="brand">
       <img src={SITE.logo} width="32" height="32" alt="" />
       <span>{SITE.name}</span>
     </a>
 
-    <nav aria-label="Main" class="desktop-nav">
-      <div class="group">
-        <button type="button" class="nav-link" aria-haspopup="true">
+    <nav id="site-menu" class="site-menu" aria-label="Main">
+      <div class="menu-group">
+        <button type="button" class="menu-label">
           Services
-          <Icon name="caret" class="h-4 w-4" />
+          <Icon name="caret" class="menu-caret" />
         </button>
-        <div class="dropdown">
+        <ul>
           {
             liveServices.map((service) => (
-              <a href={service.href} class="block rounded-lg px-3 py-2 text-sm font-semibold hover:bg-paper">
-                {service.name}
-              </a>
+              <li>
+                <a href={service.href} class="menu-link">
+                  {service.name}
+                </a>
+              </li>
             ))
           }
-        </div>
+        </ul>
       </div>
-      <div class="group">
-        <button type="button" class="nav-link" aria-haspopup="true">
+      <div class="menu-group">
+        <button type="button" class="menu-label">
           Service area
-          <Icon name="caret" class="h-4 w-4" />
+          <Icon name="caret" class="menu-caret" />
         </button>
-        <div class="dropdown">
-          <a href="/#service-area" class="block rounded-lg px-3 py-2 text-sm font-semibold hover:bg-paper">Sioux Falls</a>
+        <ul>
+          <li><a href="/#service-area" class="menu-link">Sioux Falls</a></li>
           {
             liveTowns.map((town) => (
-              <a
-                href={town.href}
-                aria-current={path === town.href ? 'page' : undefined}
-                class="block rounded-lg px-3 py-2 text-sm font-semibold hover:bg-paper"
-              >
-                {town.name}
-              </a>
+              <li>
+                <a href={town.href} class="menu-link" aria-current={path === town.href ? 'page' : undefined}>
+                  {town.name}
+                </a>
+              </li>
             ))
           }
-        </div>
+        </ul>
       </div>
-      <a href="/about" class="nav-link" aria-current={path === '/about' ? 'page' : undefined}>About</a>
-      <a href="/contact" class="nav-link" aria-current={path === '/contact' ? 'page' : undefined}>Contact</a>
+      <ul class="menu-plain">
+        <li><a href="/about" class="menu-link" aria-current={path === '/about' ? 'page' : undefined}>About</a></li>
+        <li><a href="/contact" class="menu-link" aria-current={path === '/contact' ? 'page' : undefined}>Contact</a></li>
+      </ul>
     </nav>
 
     <div class="header-actions">
@@ -69,46 +72,10 @@ const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
         label={`Call ${SITE.phoneDisplay}`}
         iconOnly
       />
-      <details class="mobile-nav relative lg:hidden">
-        <summary
-          class="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-xl border border-white/30"
-          aria-label="Open menu"
-        >
-          <Icon name="menu" class="menu-open-icon h-5 w-5" />
-          <Icon name="x" class="menu-close-icon h-5 w-5" />
-        </summary>
-        <div class="absolute right-0 top-full z-50 mt-2 max-h-[calc(100dvh-5rem)] w-[min(18rem,calc(100vw-32px))] overflow-auto rounded-2xl bg-white p-4 text-ink shadow-xl">
-          <p class="text-xs font-bold uppercase tracking-wide text-teal">Services</p>
-          <ul class="mt-1">
-            {
-              liveServices.map((service) => (
-                <li>
-                  <a href={service.href} class="block rounded-lg py-2 text-sm font-semibold">
-                    {service.name}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-          <p class="mt-4 text-xs font-bold uppercase tracking-wide text-teal">Service area</p>
-          <ul class="mt-1">
-            <li><a href="/#service-area" class="block rounded-lg py-2 text-sm font-semibold">Sioux Falls</a></li>
-            {
-              liveTowns.map((town) => (
-                <li>
-                  <a href={town.href} class="block rounded-lg py-2 text-sm font-semibold">
-                    {town.name}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-          <div class="mt-3 border-t border-line pt-2">
-            <a href="/about" class="block rounded-lg py-2 text-sm font-semibold">About</a>
-            <a href="/contact" class="block rounded-lg py-2 text-sm font-semibold">Contact</a>
-          </div>
-        </div>
-      </details>
+      <label for="site-menu-toggle" class="menu-button">
+        <Icon name="menu" class="menu-open" />
+        <Icon name="x" class="menu-close" />
+      </label>
     </div>
   </div>
 </header>

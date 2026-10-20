@@ -28,7 +28,7 @@ const text =
       aria-label={iconOnly ? text : undefined}
     >
       <Icon name={channel === 'sms' ? 'chat' : 'phone'} class="h-5 w-5" />
-      {!iconOnly && <span class="tabular-nums">{text}</span>}
+      {!iconOnly && <span>{text}</span>}
     </a>
   )
 }

@@ -19,14 +19,14 @@ const plainTowns = [
         <img src={SITE.logo} width="28" height="28" alt="" />
         {SITE.name}
       </a>
-      <p class="mt-3 text-sm leading-relaxed text-white/80">
+      <p class="mt-3 text-sm leading-relaxed on-dark">
         Residential and commercial electrical work in Sioux Falls and nearby towns.
       </p>
       <ContactLink track="call-footer" class="mt-4 inline-flex items-center gap-2 font-semibold text-white" />
-      <a class="mt-2 block break-words text-sm text-white/80 underline" href={`mailto:${SITE.email}`}>
+      <a class="mt-2 block break-words text-sm on-dark underline" href={`mailto:${SITE.email}`}>
         {SITE.email}
       </a>
-      <address class="mt-3 text-sm not-italic leading-relaxed text-white/80">
+      <address class="mt-3 text-sm not-italic leading-relaxed on-dark">
         {formatAddress()}
       </address>
       <a class="mt-3 inline-block text-sm font-semibold text-white underline" href={mapsUrl()} rel="noopener noreferrer">
@@ -34,7 +34,7 @@ const plainTowns = [
       </a>
       {
         SITE.hours && (
-          <p class="mt-4 text-sm text-white/80">
+          <p class="mt-4 text-sm on-dark">
             <span class="font-semibold text-white">Hours: </span>
             {SITE.hours.label}
           </p>
@@ -45,11 +45,11 @@ const plainTowns = [
 
     <div>
       <h2 class="text-sm font-bold">Services</h2>
-      <ul class="mt-3 space-y-2 text-sm">
+      <ul class="mt-3 stack-sm text-sm">
         {
           liveServices.map((service) => (
             <li>
-              <a href={service.href} class="text-white/80 hover:text-white hover:underline">
+              <a href={service.href} class="on-dark hover:text-white hover:underline">
                 {service.name}
               </a>
             </li>
@@ -60,30 +60,30 @@ const plainTowns = [
 
     <div>
       <h2 class="text-sm font-bold">Towns</h2>
-      <ul class="mt-3 space-y-2 text-sm">
+      <ul class="mt-3 stack-sm text-sm">
         {
           liveTowns.map((town) => (
             <li>
-              <a href={town.href === '/' ? '/#service-area' : town.href} class="text-white/80 hover:text-white hover:underline">
+              <a href={town.href === '/' ? '/#service-area' : town.href} class="on-dark hover:text-white hover:underline">
                 {town.name}
               </a>
             </li>
           ))
         }
       </ul>
-      <p class="mt-4 text-sm leading-relaxed text-white/80">Also serving {plainTowns.join(', ')}.</p>
+      <p class="mt-4 text-sm leading-relaxed on-dark">Also serving {plainTowns.join(', ')}.</p>
     </div>
 
     <div>
       <h2 class="text-sm font-bold">Contact</h2>
-      <ul class="mt-3 space-y-2 text-sm">
-        <li><a href="/contact" class="text-white/80 hover:text-white hover:underline">Contact</a></li>
-        <li><a href="/about" class="text-white/80 hover:text-white hover:underline">About</a></li>
-        <li><a href="/#quote" class="text-white/80 hover:text-white hover:underline">Request service</a></li>
+      <ul class="mt-3 stack-sm text-sm">
+        <li><a href="/contact" class="on-dark hover:text-white hover:underline">Contact</a></li>
+        <li><a href="/about" class="on-dark hover:text-white hover:underline">About</a></li>
+        <li><a href="/#quote" class="on-dark hover:text-white hover:underline">Request service</a></li>
       </ul>
     </div>
   </div>
-  <div class="border-t border-white/10 px-4 py-4 text-center text-xs text-white/70">
+  <div class="border-t rule-faint px-4 py-4 text-center text-xs on-dark-faint">
     <p>
       &copy; {year} {SITE.name}
       <span aria-hidden="true"> · </span>
