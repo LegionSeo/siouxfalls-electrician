@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { townPages } from '../../config/catalog';
 import { SITE } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
@@ -38,11 +39,9 @@ const installSteps = [
   'Test everything and make sure it is ready to pass inspection.',
 ];
 
-const locations = [
-  { label: 'Brandon', href: '/locations/brandon' },
-  { label: 'Harrisburg', href: '/locations/harrisburg' },
-  { label: 'Tea', href: '/locations/tea' },
-];
+const locations = townPages
+  .filter((town) => town.live && town.href !== '/')
+  .map((town) => ({ label: town.name, href: town.href }));
 
 const serviceSchema = {
   '@context': 'https://schema.org',

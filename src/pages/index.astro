@@ -5,7 +5,7 @@ import Icon from '../components/Icon.astro';
 import MapEmbed from '../components/MapEmbed.astro';
 import Photo from '../components/Photo.astro';
 import RequestPanel from '../components/RequestPanel.astro';
-import { services, townPages } from '../config/catalog';
+import { joinNames, services, townPages } from '../config/catalog';
 import { SITE } from '../config/site';
 import { homepageFaqs } from '../content/home';
 import { faqNode } from '../lib/schema';
@@ -240,7 +240,7 @@ const steps = [
             Older central neighborhoods, including the Cathedral Historic District, often still have older wiring. Newer subdivisions to the south and east are a different kind of job. Downtown sits between those areas.
           </p>
           <p>
-            Brandon, Harrisburg, and Tea have their own pages. We also serve Hartford, Dell Rapids, Canton, and Lennox, and we take calls in Crooks, Renner, Baltic, and Garretson.
+            {joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages. We also serve {joinNames(townPages.filter((town) => !town.live).map((town) => town.name))}, and we take calls in {joinNames(SITE.listOnlyTowns)}.
           </p>
         </div>
       </div>
@@ -346,31 +346,23 @@ const steps = [
   </section>
 
   {
-    (SITE.jobPhotos.length > 0 || SITE.rating || SITE.license) && (
-      <section class="wrap section" aria-label="Job photos and credentials">
-        {SITE.license && <p class="font-semibold">License: {SITE.license}</p>}
-        {SITE.rating && (
-          <p class="mt-2">
-            {SITE.rating.value} · {SITE.rating.count} reviews on {SITE.rating.source}
-          </p>
-        )}
-        {SITE.jobPhotos.length > 0 && (
-          <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {SITE.jobPhotos.map((photo) => (
-              <li>
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={photo.width}
-                  height={photo.height}
-                  class="h-auto w-full rounded-2xl"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </li>
-            ))}
-          </ul>
-        )}
+    SITE.jobPhotos.length > 0 && (
+      <section class="wrap section" aria-label="Job photos">
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SITE.jobPhotos.map((photo) => (
+            <li>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                width={photo.width}
+                height={photo.height}
+                class="h-auto w-full rounded-2xl"
+                loading="lazy"
+                decoding="async"
+              />
+            </li>
+          ))}
+        </ul>
       </section>
     )
   }

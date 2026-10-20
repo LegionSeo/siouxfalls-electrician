@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { townPages } from '../../config/catalog';
 import { SITE } from '../../config/site';
 import { Icon } from 'astro-icon/components';
 
@@ -15,11 +16,9 @@ const problems = [
   { icon: 'ph:fire', title: 'Burning smells', description: 'Any burning smell near electrical is urgent. Call us right away.' },
 ];
 
-const locations = [
-  { label: 'Brandon', href: '/locations/brandon' },
-  { label: 'Harrisburg', href: '/locations/harrisburg' },
-  { label: 'Tea', href: '/locations/tea' },
-];
+const locations = townPages
+  .filter((town) => town.live && town.href !== '/')
+  .map((town) => ({ label: town.name, href: town.href }));
 
 const serviceSchema = {
   '@context': 'https://schema.org',

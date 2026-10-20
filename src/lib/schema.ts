@@ -85,15 +85,6 @@ function electricianNode(catalog: boolean) {
     node.sameAs = SITE.sameAs;
   }
 
-  if (SITE.rating) {
-    node.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: SITE.rating.value,
-      reviewCount: SITE.rating.count,
-      bestRating: 5,
-    };
-  }
-
   return node;
 }
 

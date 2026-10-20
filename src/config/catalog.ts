@@ -1,5 +1,11 @@
 import { SITE } from './site';
 
+export function joinNames(names: string[]): string {
+  if (names.length <= 1) return names.join('');
+  if (names.length === 2) return `${names[0]} and ${names[1]}`;
+  return `${names.slice(0, -1).join(', ')}, and ${names[names.length - 1]}`;
+}
+
 export type ServiceGroup = 'Repair' | 'Upgrades' | 'Install' | 'Safety' | 'Commercial';
 
 export interface ServiceItem {
@@ -202,12 +208,32 @@ export function townHref(name: string): string {
   return `/locations/${name.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
-const LIVE_TOWNS = new Set(['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea']);
+/**
+ * One entry per town page. Hartford, Dell Rapids, Canton, and Lennox stay
+ * live:false until those pages exist. Crooks, Renner, Baltic, and Garretson
+ * are list-only names in site.ts and must not be added here.
+ */
+const TOWN_ENTRIES: { name: string; live: boolean }[] = [
+  { name: 'Sioux Falls', live: true },
+  { name: 'Brandon', live: true },
+  { name: 'Harrisburg', live: true },
+  { name: 'Tea', live: true },
+  { name: 'Hartford', live: false },
+  { name: 'Dell Rapids', live: false },
+  { name: 'Canton', live: false },
+  { name: 'Lennox', live: false },
+];
 
-export const townPages = SITE.serviceTowns.map((name) => ({
-  name,
-  href: townHref(name),
-  live: LIVE_TOWNS.has(name),
+for (const name of SITE.listOnlyTowns) {
+  if (TOWN_ENTRIES.some((town) => town.name === name)) {
+    throw new Error(`${name} is list-only and must not have a town page entry`);
+  }
+}
+
+export const townPages = TOWN_ENTRIES.map((town) => ({
+  name: town.name,
+  href: townHref(town.name),
+  live: town.live,
 }));
 
 export const footerTowns = townPages.filter((town) => town.name !== 'Sioux Falls');

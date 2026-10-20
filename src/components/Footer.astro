@@ -6,10 +6,7 @@ import ContactLink from './ContactLink.astro';
 const year = new Date().getFullYear();
 const liveServices = services.filter((service) => service.live);
 const liveTowns = townPages.filter((town) => town.live);
-const plainTowns = [
-  ...townPages.filter((town) => !town.live).map((town) => town.name),
-  ...SITE.listOnlyTowns,
-];
+const plainTowns = townPages.filter((town) => !town.live).map((town) => town.name);
 ---
 
 <footer class="surface-dark bg-ink text-white">

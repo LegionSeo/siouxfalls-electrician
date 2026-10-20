@@ -1,3 +1,4 @@
+import { joinNames, townPages } from '../config/catalog';
 import { SITE } from '../config/site';
 
 export interface FaqItem {
@@ -45,8 +46,8 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Which towns around Sioux Falls do you serve?',
     paragraphs: [
-      'We serve Sioux Falls, Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox, South Dakota, and we also take calls in Crooks, Renner, Baltic, and Garretson.',
-      'Sioux Falls is this page. Brandon, Harrisburg, and Tea have their own pages. We do not publish a trip fee. Ask about travel when you call.',
+      `We serve ${joinNames(townPages.map((town) => town.name))}, South Dakota. ${joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages, and Sioux Falls is this page.`,
+      'We do not publish a trip fee. Ask about travel when you call.',
     ],
   },
   {

@@ -12,6 +12,8 @@ const { overlay = false } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const liveServices = services.filter((service) => service.live);
 const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
+const siouxFalls = townPages.find((town) => town.href === '/');
+if (!siouxFalls) throw new Error('Sioux Falls town entry is missing');
 ---
 
 <header data-site-header class:list={['site-header', overlay && 'is-overlay']} data-overlay={overlay ? '' : undefined}>
@@ -46,7 +48,7 @@ const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
           <Icon name="caret" class="menu-caret" />
         </button>
         <ul>
-          <li><a href="/#service-area" class="menu-link">Sioux Falls</a></li>
+          <li><a href="/#service-area" class="menu-link">{siouxFalls.name}</a></li>
           {
             liveTowns.map((town) => (
               <li>
