@@ -5,15 +5,16 @@ interface Props {
   title: string;
   description: string;
   canonical: string;
+  noindex?: boolean;
 }
 
-const { title, description, canonical } = Astro.props;
+const { title, description, canonical, noindex = false } = Astro.props;
 const image = absoluteUrl(SITE.ogImage);
 ---
 
 <title>{title}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
+{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 <meta name="theme-color" content="#0F2A2E" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 

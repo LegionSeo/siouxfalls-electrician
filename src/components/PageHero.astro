@@ -34,10 +34,16 @@ const { photo, eyebrow, title, sub, actions = 'request' } = Astro.props;
               <Icon name="phone" class="h-5 w-5" />
               <span>Call {SITE.phoneDisplay}</span>
             </a>
-            <a class="btn btn-line w-full sm:w-auto" href={SITE.smsHref} data-track="sms-contact-hero" data-contact-channel="sms">
-              <Icon name="chat" class="h-5 w-5" />
-              <span>Text {SITE.phoneDisplay}</span>
-            </a>
+            {
+              SITE.smsEnabled ? (
+                <a class="btn btn-line w-full sm:w-auto" href={SITE.smsHref} data-track="sms-contact-hero" data-contact-channel="sms">
+                  <Icon name="chat" class="h-5 w-5" />
+                  <span>Text {SITE.phoneDisplay}</span>
+                </a>
+              ) : (
+                <a class="btn btn-line w-full sm:w-auto" href="#request-form">Send a note</a>
+              )
+            }
           </>
         ) : (
           <>

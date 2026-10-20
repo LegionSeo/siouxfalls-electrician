@@ -39,14 +39,14 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Can you work on both homes and businesses?',
     paragraphs: [
-      'Yes, we take electrical calls for both houses and businesses in Sioux Falls and the nearby towns on this page, from a single repair to a larger planned job.',
+      'Yes, we take electrical calls for both houses and businesses in Sioux Falls and nearby towns, from a single repair to a larger planned job.',
       'Home calls are often outlets, panels, lighting, and EV chargers. Business work can include lighting and added circuits.',
     ],
   },
   {
     question: 'Which towns around Sioux Falls do you serve?',
     paragraphs: [
-      `We serve ${joinNames(townPages.map((town) => town.name))}, South Dakota. ${joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages, and Sioux Falls is this page.`,
+      `We serve ${joinNames(townPages.map((town) => town.name))}, South Dakota.`,
       'We do not publish a trip fee. Ask about travel when you call.',
     ],
   },

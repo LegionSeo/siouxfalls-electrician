@@ -241,11 +241,6 @@ const steps = [
           </p>
           <p>
             {joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages.
-            {
-              townPages.some((town) => !town.live) &&
-                ` We also serve ${joinNames(townPages.filter((town) => !town.live).map((town) => town.name))}.`
-            }
-            {' '}We take calls in {joinNames(SITE.listOnlyTowns)}.
           </p>
         </div>
       </div>
@@ -275,7 +270,6 @@ const steps = [
               )
             }
           </ul>
-          <p class="mt-4 text-sm text-muted">Also serving {SITE.listOnlyTowns.join(', ')}.</p>
         </div>
       </div>
     </div>

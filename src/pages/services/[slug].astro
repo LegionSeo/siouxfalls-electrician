@@ -8,10 +8,10 @@ import ServiceCards from '../../components/ServiceCards.astro';
 import SideRail from '../../components/SideRail.astro';
 import { joinNames, services, townPages } from '../../config/catalog';
 import { servicePageBySlug, servicePages } from '../../content/service-pages';
-import { UPDATED_LABEL } from '../../content/updated';
+import { UPDATED_ISO, UPDATED_LABEL } from '../../content/updated';
 import { pagePhoto } from '../../lib/photos';
 import { visitSteps } from '../../lib/visit-steps';
-import { breadcrumb, servedTowns, serviceNode } from '../../lib/page-schema';
+import { breadcrumb, serviceNode } from '../../lib/page-schema';
 import { SITE } from '../../config/site';
 
 export function getStaticPaths() {
@@ -29,9 +29,31 @@ const related = page.related
   .map((href) => services.find((service) => service.href === href))
   .filter((service) => service?.live);
 const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
+const catalogService = services.find((service) => service.href === path);
+if (!catalogService) throw new Error(`Missing catalog service ${path}`);
 const steps = visitSteps(page.visit);
+const serviceTitle = page.title.replace(/ Sioux Falls SD$/, '');
+const longTitle = `${serviceTitle} in Sioux Falls, SD | ${SITE.name}`;
+const shortTitle = `${serviceTitle} | ${SITE.name}`;
+const documentTitle = longTitle.length <= 60 ? longTitle : shortTitle.length <= 60 ? shortTitle : page.title;
+const ctaName: Record<string, string> = {
+  'electrical-repair': 'an electrical repair',
+  'emergency-electrician': 'an emergency call',
+  'outlet-switch-installation': 'an outlet or switch',
+  'panel-upgrades': 'a panel upgrade',
+  'wiring-rewiring': 'wiring',
+  'generator-installation': 'a generator installation',
+  'ev-charger-installation': 'an EV charger installation',
+  'lighting-installation': 'a lighting installation',
+  'ceiling-fan-installation': 'a ceiling fan installation',
+  'hot-tub-wiring': 'hot tub wiring',
+  'electrical-inspections': 'an electrical inspection',
+  'surge-protection': 'surge protection',
+  'smoke-co-detectors': 'smoke and CO detectors',
+  'commercial-electrician': 'commercial electrical work',
+};
 const graph = [
-  serviceNode(page.title, page.title, path, servedTowns),
+  serviceNode(catalogService.name, catalogService.name, path, SITE.serviceTowns),
   breadcrumb([
     { name: 'Home', path: '/' },
     { name: page.title, path },
@@ -39,7 +61,7 @@ const graph = [
 ];
 ---
 
-<Layout title={page.title} description={page.description} fullTitle extraGraph={graph} overlay>
+<Layout title={documentTitle} description={page.description} fullTitle extraGraph={graph} overlay>
   <PageHero photo={photo} eyebrow="Sioux Falls and nearby towns" title={page.title} sub={page.sub} />
 
   <div class="page-split">
@@ -47,7 +69,7 @@ const graph = [
       <section class="bg-paper">
         <div class="section">
           <p class="measure text-lg">{answer}</p>
-          <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
+          <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
         </div>
       </section>
 
@@ -134,8 +156,7 @@ const graph = [
           <div class="block-head">
             <h2 id="towns-heading">Towns served</h2>
             <p class="lede">
-              This work is available in Sioux Falls and {joinNames(liveTowns.map((town) => town.name))}. Calls also come from {joinNames(SITE.listOnlyTowns)}.
-              See the <a class="text-link" href="/service-area">service area</a>.
+              This work is available in {joinNames(SITE.serviceTowns)}. See the <a class="text-link" href="/service-area">service area</a>.
             </p>
           </div>
           <ul class="flex flex-wrap gap-2">
@@ -157,5 +178,5 @@ const graph = [
     <SideRail />
   </div>
 
-  <CtaBand photo={photo} heading={`Need ${page.title.replace(' Sioux Falls SD', '')} help?`} />
+  <CtaBand photo={photo} heading={`Need help with ${ctaName[page.slug] ?? catalogService.name.toLowerCase()}?`} />
 </Layout>

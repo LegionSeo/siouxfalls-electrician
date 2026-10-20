@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import { SITE } from '../config/site';
 ---
 
-<Layout title="Page not found" description={`That page is not on ${SITE.name}. Call ${SITE.phoneDisplay}.`} fullTitle overlay>
+<Layout title={`Page not found | ${SITE.name}`} description={`That page is not on ${SITE.name}. Call ${SITE.phoneDisplay}.`} fullTitle noindex overlay>
   <PageHero photo={SITE.heroPhoto} eyebrow="404" title="Page not found" sub="That address is not a page on this site." />
 
   <section class="bg-paper">

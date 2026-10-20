@@ -5,7 +5,7 @@ import FaqAccordion from '../components/FaqAccordion.astro';
 import PageHero from '../components/PageHero.astro';
 import SideRail from '../components/SideRail.astro';
 import { joinNames, services, townPages } from '../config/catalog';
-import { UPDATED_LABEL } from '../content/updated';
+import { UPDATED_ISO, UPDATED_LABEL } from '../content/updated';
 import { pagePhoto } from '../lib/photos';
 import { SITE } from '../config/site';
 
@@ -49,7 +49,7 @@ const faqs = [
           <p class="mt-4 measure text-muted">
             {SITE.available247 ? SITE.availabilityNote : ''} The phone number on this site is {SITE.phoneDisplay}. It is the only number to use.
           </p>
-          <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
+          <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
         </div>
       </section>
 
@@ -57,9 +57,6 @@ const faqs = [
         <div class="section">
           <div class="block-head">
             <h2 id="work-heading">What this site covers</h2>
-            <p class="lede">
-              Each service has its own page.
-            </p>
           </div>
           <ul class="card-grid cols-2">
             {
@@ -81,8 +78,7 @@ const faqs = [
           <div class="block-head">
             <h2 id="area-heading">Where the calls come from</h2>
             <p class="lede">
-              Sioux Falls is this company’s home page. {joinNames(liveTowns.map((town) => town.name))} each have a town page.
-              We also take calls in {joinNames(SITE.listOnlyTowns)}.
+              Sioux Falls is home. {joinNames(liveTowns.map((town) => town.name))} are the other towns with pages.
             </p>
           </div>
           <p>

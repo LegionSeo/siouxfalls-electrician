@@ -180,14 +180,14 @@ export const guides: GuideItem[] = [
   {
     href: '/guides/panel-upgrade-cost-factors',
     title: 'Panel upgrade cost factors',
-    summary: 'What changes the quote for a panel upgrade. No prices are listed.',
+    summary: 'What changes the quote for a panel upgrade.',
     featured: false,
     live: false,
   },
   {
     href: '/guides/electrical-permits-sioux-falls',
     title: 'Electrical permits in Sioux Falls',
-    summary: 'When the city expects a permit, and why this site does not cite code sections.',
+    summary: 'When the city expects a permit for electrical work in Sioux Falls.',
     featured: false,
     live: false,
   },

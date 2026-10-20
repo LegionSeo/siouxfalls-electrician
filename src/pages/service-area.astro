@@ -6,7 +6,7 @@ import PageHero from '../components/PageHero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import SideRail from '../components/SideRail.astro';
 import { joinNames, services, townPages } from '../config/catalog';
-import { UPDATED_LABEL } from '../content/updated';
+import { UPDATED_ISO, UPDATED_LABEL } from '../content/updated';
 import { pagePhoto } from '../lib/photos';
 import { breadcrumb } from '../lib/page-schema';
 import { SITE } from '../config/site';
@@ -23,8 +23,8 @@ const graph = [
 ---
 
 <Layout
-  title="Electrician Service Area Sioux Falls SD"
-  description={`Towns served from Sioux Falls: ${joinNames(liveTowns.map((town) => town.name))}. ${joinNames(SITE.listOnlyTowns)} are listed as text only.`}
+  title="Towns We Serve Near Sioux Falls | Sioux Falls Electricians"
+  description="Electrical service in Sioux Falls, Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton and Lennox. Calls answered 24/7."
   fullTitle
   extraGraph={graph}
   overlay
@@ -32,7 +32,7 @@ const graph = [
   <PageHero
     photo={hero}
     eyebrow="Service area"
-    title="Electrician Service Area Sioux Falls SD"
+    title="Towns we serve around Sioux Falls"
     sub="Sioux Falls plus Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox."
   />
 
@@ -42,10 +42,9 @@ const graph = [
         <div class="section">
           <p class="measure text-lg">
             Sioux Falls Electricians works in Sioux Falls and {joinNames(liveTowns.map((town) => town.name))}.
-            Each of those towns has a page with the local facts that could be checked.
             Calls also come from {joinNames(SITE.listOnlyTowns)}.
           </p>
-          <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
+          <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
         </div>
       </section>
 

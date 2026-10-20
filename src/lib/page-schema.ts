@@ -14,7 +14,7 @@ export function serviceNode(name: string, serviceType: string, path: string, are
     name,
     serviceType,
     url: absoluteUrl(path),
-    provider: { '@id': '#business' },
+    provider: { '@id': `${SITE.origin}/#business` },
     areaServed: cityNodes(areas),
   };
 }
@@ -30,5 +30,3 @@ export function breadcrumb(items: { name: string; path: string }[]) {
     })),
   };
 }
-
-export const servedTowns = [...SITE.serviceTowns, ...SITE.listOnlyTowns];

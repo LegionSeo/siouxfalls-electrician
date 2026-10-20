@@ -27,7 +27,7 @@ export const servicePages: ServicePage[] = [
     alt: 'Electrician repairing an outlet in a living room',
     answer:
       'Electrical repair in Sioux Falls means finding why an outlet, switch, light, or breaker stopped working and fixing that fault. The check covers the device, the circuit, and the panel before any parts are replaced. You see a written quote before work starts. Call {phone}.',
-    includedLead: 'A repair visit stays on the circuit that failed. These are the jobs that fit this page.',
+    includedLead: 'A repair visit stays on the circuit that failed.',
     included: [
       'Dead outlets, including a run of outlets that quit on one wall.',
       'Switches that feel warm, stick, or no longer turn the light on.',
@@ -76,7 +76,7 @@ export const servicePages: ServicePage[] = [
       'Water that has reached a panel, outlet, or light.',
       'Storm damage to a mast, meter, or outdoor circuit after the utility says the service drop is safe.',
     ],
-    signsLead: 'Use this page when waiting would leave a fire or shock risk in the building.',
+    signsLead: 'Call when waiting would leave a fire or shock risk in the building.',
     signs: [
       'You hear buzzing from the panel.',
       'Lights brighten and dim on their own.',
@@ -213,7 +213,7 @@ export const servicePages: ServicePage[] = [
     faqs: [
       { q: 'Do you rewire one room without doing the whole house?', a: 'Yes, when that circuit can be separated safely. The quote says what stays on the old wiring and what is new.' },
       { q: 'Can new wire be fished without wrecking the plaster?', a: 'Often in attics and basements. Lathe and plaster, brick, and insulated walls are slower. The visit tells you where an opening is required.' },
-      { q: 'Is aluminum wiring on this page?', a: 'If aluminum branch wiring is found, the quote treats those connections as their own scope. This page does not claim every old house has aluminum wire.' },
+      { q: 'What if the house has aluminum wiring?', a: 'If aluminum branch wiring is found, the quote treats those connections as their own scope.' },
       { q: 'Will a rewire include new devices?', a: 'The new cable ends at new devices where the old ones will not grip the new wire. Device swaps alone are on the outlet and switch page.' },
     ],
     related: ['/services/electrical-repair', '/services/panel-upgrades', '/services/lighting-installation'],
@@ -387,7 +387,7 @@ export const servicePages: ServicePage[] = [
     alt: 'Electrician wiring a disconnect near a hot tub',
     answer:
       'Hot tub wiring in Sioux Falls is the dedicated circuit and disconnect the tub needs, sized from the tub nameplate. The panel is checked before any trench or conduit is promised. You get a written quote first. Call {phone}.',
-    includedLead: 'This page is the electrical run. It is not a spa sales page and it does not set the tub.',
+    includedLead: 'The work is the electrical run to the tub. The visit does not set the tub.',
     included: [
       'A dedicated circuit matched to the tub nameplate.',
       'A disconnect within sight of the tub when the rules for that site require it.',
@@ -426,8 +426,8 @@ export const servicePages: ServicePage[] = [
     photo: 'service-inspect',
     alt: 'Electrician inspecting an open breaker panel',
     answer:
-      'An electrical inspection on this page is a private safety check of the panel, wiring, and devices in a Sioux Falls area building. It is not a city or state inspection and it does not replace a permit inspection. You get a written list of what was seen. Call {phone}.',
-    includedLead: 'The visit looks. It does not certify the whole building,.',
+      'An electrical inspection is a private safety check of the panel, wiring, and devices in a Sioux Falls area building. It is not a city or state inspection and it does not replace a permit inspection. You get a written list of what was seen. Call {phone}.',
+    includedLead: 'The visit looks. It does not certify the whole building.',
     included: [
       'A look at the panel cover, breakers, and any signs of heat.',
       'A sample of outlets, switches, and visible cable in the attic or basement.',
@@ -448,8 +448,8 @@ export const servicePages: ServicePage[] = [
       'A walkthrough of a small house is a different visit from a large shop with more than one panel. Access to attics, locked rooms, and buried panels changes the time.',
       'The inspection fee is quoted in writing. Repair work is a second quote.',
     ],
-    emergency: 'If the look finds active sparking or a burning smell, the emergency repair path starts the same day. The written list can wait.',
-    visit: 'You walk the building along or you leave a key and a room list. The panel is opened when that is safe. Cable that can be seen in the attic, the basement, and open joists is noted. Devices are sampled. They are not pulled from every wall. Findings go on a written list the same day or the next business day: what was seen, where it was, and whether it is a repair or a watch item. That list is not a city approval. Repairs you want are a second quote drawn from the items you pick.',
+    emergency: 'Active sparking or a burning smell is handled as an emergency call.',
+    visit: 'You walk the building along or you leave a key and a room list. The panel is opened when that is safe. Cable that can be seen in the attic, the basement, and open joists is noted. Devices are sampled. They are not pulled from every wall. Findings go on a written list. That list is not a city approval. Repairs you want are a second quote drawn from the items you pick.',
     faqs: [
       { q: 'Is this the same as a city inspection?', a: 'No. City and state inspectors sign off on permitted work. This visit is a private look for the owner. It does not close a permit.' },
       { q: 'Will you open every wall?', a: 'No. The check uses the panel and the wiring that can be seen. Hidden cable stays hidden unless you approve an opening as a repair.' },

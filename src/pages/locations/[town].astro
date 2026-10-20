@@ -8,7 +8,7 @@ import ServiceCards from '../../components/ServiceCards.astro';
 import SideRail from '../../components/SideRail.astro';
 import { services } from '../../config/catalog';
 import { townPageBySlug, townPagesContent } from '../../content/town-pages';
-import { UPDATED_LABEL } from '../../content/updated';
+import { UPDATED_ISO, UPDATED_LABEL } from '../../content/updated';
 import { breadcrumb, serviceNode } from '../../lib/page-schema';
 import { SITE } from '../../config/site';
 
@@ -35,7 +35,7 @@ const graph = [
 ];
 ---
 
-<Layout title={page.title} description={page.description} fullTitle extraGraph={graph} overlay>
+<Layout title={page.documentTitle} description={page.description} fullTitle extraGraph={graph} overlay>
   <PageHero photo={page.photo} eyebrow={`${page.name}, South Dakota`} title={page.title} sub={page.sub} />
 
   <div class="page-split">
@@ -43,7 +43,7 @@ const graph = [
       <section class="bg-paper">
         <div class="section">
           <p class="measure text-lg">{answer}</p>
-          <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
+          <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
         </div>
       </section>
 
@@ -63,16 +63,10 @@ const graph = [
             }
           </dl>
           <p class="measure mt-8 text-muted">{page.detail}</p>
-          {
-            page.housing && (
-              <>
-                <div class="block-head mt-12">
-                  <h2 id="housing-heading">Housing</h2>
-                </div>
-                <p class="measure text-muted">{page.housing}</p>
-              </>
-            )
-          }
+          <div class="block-head mt-12">
+            <h2 id="about-heading">About {page.name}</h2>
+          </div>
+          <p class="measure text-muted">{page.about}</p>
           <div class="block-head mt-12">
             <h2 id="permit-heading">Permits and inspections</h2>
           </div>
