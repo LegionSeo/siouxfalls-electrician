@@ -7,7 +7,7 @@ import SideRail from '../components/SideRail.astro';
 import { joinNames, services, townPages } from '../config/catalog';
 import { UPDATED_ISO, UPDATED_LABEL } from '../content/updated';
 import { pagePhoto } from '../lib/photos';
-import { SITE } from '../config/site';
+import { SITE, formatAddress } from '../config/site';
 
 const liveServices = services.filter((service) => service.live);
 const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
@@ -15,7 +15,7 @@ const hero = pagePhoto('hero-about', 'Electrical contractor van parked in a resi
 const faqs = [
   {
     q: 'Where is the shop?',
-    a: `The published address is ${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.zip}. Call before you come by, so someone expects you.`,
+    a: `The published address is ${formatAddress()}. Call before you come by, so someone expects you.`,
   },
   {
     q: 'How do I ask for work?',

@@ -169,7 +169,7 @@ export const SITE: SiteConfig = {
     zip: '57108',
     country: 'US',
   },
-  showStreetAddress: true,
+  showStreetAddress: false,
   geo: null,
   hours: {
     label: 'Open 24 hours, 7 days',
@@ -284,11 +284,16 @@ export function activeAnalytics(): { provider: 'gtm' | 'ga4'; id: string } | nul
 
 export function formatAddress(): string {
   const { street, city, region, zip } = SITE.address;
-  return `${street}, ${city}, ${region} ${zip}`;
+  const place = `${city}, ${region} ${zip}`;
+  if (!SITE.showStreetAddress) return place;
+  return `${street}, ${place}`;
 }
 
 export function mapsUrl(): string {
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(formatAddress())}`;
+  const query = SITE.showStreetAddress
+    ? formatAddress()
+    : `${SITE.address.city}, ${SITE.address.region}`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
 /** Absolute canonical URL. Homepage has no trailing slash. */
