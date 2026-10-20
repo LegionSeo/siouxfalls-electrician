@@ -8,6 +8,8 @@ export interface ServiceItem {
   group: ServiceGroup;
   icon: string;
   summary: string;
+  /** False until the page exists. Dead URLs stay out of nav, footer, cards, and schema. */
+  live: boolean;
 }
 
 export const serviceGroups: ServiceGroup[] = [
@@ -18,7 +20,17 @@ export const serviceGroups: ServiceGroup[] = [
   'Commercial',
 ];
 
-export const services: ServiceItem[] = [
+const LIVE_SERVICE_HREFS = new Set([
+  '/services/electrical-repair',
+  '/services/emergency-electrician',
+  '/services/ev-charger-installation',
+  '/services/panel-upgrades',
+  '/services/lighting-installation',
+  '/services/wiring-rewiring',
+  '/services/commercial-electrician',
+]);
+
+const serviceList: Omit<ServiceItem, 'live'>[] = [
   {
     name: 'Electrical repair',
     href: '/services/electrical-repair',
@@ -119,6 +131,11 @@ export const services: ServiceItem[] = [
   },
 ];
 
+export const services: ServiceItem[] = serviceList.map((service) => ({
+  ...service,
+  live: LIVE_SERVICE_HREFS.has(service.href),
+}));
+
 export interface GuideItem {
   href: string;
   title: string;
@@ -176,9 +193,12 @@ export function townHref(name: string): string {
   return `/locations/${name.toLowerCase().replace(/\s+/g, '-')}`;
 }
 
+const LIVE_TOWNS = new Set(['Sioux Falls', 'Brandon', 'Harrisburg', 'Tea']);
+
 export const townPages = SITE.serviceTowns.map((name) => ({
   name,
   href: townHref(name),
+  live: LIVE_TOWNS.has(name),
 }));
 
 export const footerTowns = townPages.filter((town) => town.name !== 'Sioux Falls');

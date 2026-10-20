@@ -1,8 +1,23 @@
+import { execSync } from 'node:child_process';
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 import { SITE } from './src/config/site';
+
+function gitLastmod(pathname: string): string | undefined {
+  const path = pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  const file = path === '/' ? 'src/pages/index.astro' : `src/pages${path}.astro`;
+  try {
+    const stamp = execSync(`git log -1 --format=%cI -- ${file}`, {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    return stamp || undefined;
+  } catch {
+    return undefined;
+  }
+}
 
 export default defineConfig({
   site: SITE.origin,
@@ -15,6 +30,11 @@ export default defineConfig({
     icon(),
     sitemap({
       filter: (page) => !page.endsWith('/robots.txt') && !page.endsWith('/llms.txt'),
+      serialize(item) {
+        const stamp = gitLastmod(new URL(item.url).pathname);
+        if (stamp) item.lastmod = stamp;
+        return item;
+      },
     }),
   ],
   server: {

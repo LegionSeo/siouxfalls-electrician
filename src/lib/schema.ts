@@ -32,7 +32,7 @@ function electricianNode() {
         itemOffered: {
           '@type': 'Service',
           name: service.name,
-          url: `${SITE.origin}${service.href}`,
+          ...(service.live ? { url: `${SITE.origin}${service.href}` } : {}),
         },
       })),
     },
@@ -104,7 +104,10 @@ export function faqNode(faqs: FaqItem[]) {
   };
 }
 
-export function siteGraph(extra: Record<string, unknown>[] = []) {
+export function siteGraph(
+  page: { url: string; name: string; description: string },
+  extra: Record<string, unknown>[] = [],
+) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -116,6 +119,16 @@ export function siteGraph(extra: Record<string, unknown>[] = []) {
         publisher: { '@id': `${SITE.origin}#business` },
       },
       electricianNode(),
+      {
+        '@type': 'WebPage',
+        '@id': `${page.url}#webpage`,
+        url: page.url,
+        name: page.name,
+        description: page.description,
+        isPartOf: { '@id': `${SITE.origin}#website` },
+        about: { '@id': `${SITE.origin}#business` },
+        inLanguage: 'en-US',
+      },
       ...extra,
     ],
   };

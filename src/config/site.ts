@@ -106,6 +106,16 @@ export interface SiteConfig {
   formEndpoint: string | null;
   /** Palette id. Live tokens are Copper Current. */
   theme: string;
+  /**
+   * GA4 measurement id, such as G-ABC123. Empty loads no tag.
+   * Ignored when gtmId is set.
+   */
+  ga4Id: string;
+  /**
+   * GTM container id, such as GTM-ABC123. Empty loads no tag.
+   * When both ids are set, only GTM loads.
+   */
+  gtmId: string;
 }
 
 function photo(
@@ -241,7 +251,21 @@ export const SITE: SiteConfig = {
   jobPhotos: [],
   formEndpoint: null,
   theme: 'copper-current',
+  ga4Id: '',
+  gtmId: '',
 };
+
+const GTM_ID = /^GTM-[A-Z0-9]+$/;
+const GA4_ID = /^G-[A-Z0-9]+$/;
+
+/** Which tag to load. GTM wins when both ids are set. Empty or invalid ids load nothing. */
+export function activeAnalytics(): { provider: 'gtm' | 'ga4'; id: string } | null {
+  const gtmId = SITE.gtmId.trim();
+  if (gtmId) return GTM_ID.test(gtmId) ? { provider: 'gtm', id: gtmId } : null;
+  const ga4Id = SITE.ga4Id.trim();
+  if (ga4Id) return GA4_ID.test(ga4Id) ? { provider: 'ga4', id: ga4Id } : null;
+  return null;
+}
 
 export function formatAddress(): string {
   const { street, city, region, zip } = SITE.address;

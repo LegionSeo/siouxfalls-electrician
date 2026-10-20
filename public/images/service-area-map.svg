@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-labelledby="area-map-title">
+  <title id="area-map-title">Map of Sioux Falls and nearby towns</title>
   <rect width="800" height="480" fill="#E6F2F0"/>
   <circle cx="400" cy="250" r="150" fill="#0F2A2E" opacity="0.08"/>
   <circle cx="400" cy="250" r="8" fill="#C2410C"/>

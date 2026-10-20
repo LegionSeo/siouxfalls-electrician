@@ -10,7 +10,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'How do I find a good electrician in Sioux Falls?',
     paragraphs: [
-      'Ask for a written quote before any work starts, and ask whether the job needs a city permit. A careful electrician explains the problem in plain words and tells you what they will and will not touch.',
+      'Ask for a written quote before any work starts, and ask whether the job needs a city permit, because a careful electrician explains the problem in plain words and tells you what they will and will not touch.',
       'Call and say which room stopped working and what you already tried.',
     ],
   },
@@ -46,7 +46,7 @@ export const homeFaqs: FaqItem[] = [
     question: 'Which towns around Sioux Falls do you serve?',
     paragraphs: [
       'We serve Sioux Falls, Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox, South Dakota, and we also take calls in Crooks, Renner, Baltic, and Garretson.',
-      'Sioux Falls is this page. The other seven towns are linked below. We do not publish a trip fee. Ask about travel when you call.',
+      'Sioux Falls is this page. Brandon, Harrisburg, and Tea have their own pages. We do not publish a trip fee. Ask about travel when you call.',
     ],
   },
   {

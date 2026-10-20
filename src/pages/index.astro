@@ -2,10 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import ContactLink from '../components/ContactLink.astro';
 import Icon from '../components/Icon.astro';
+import MapEmbed from '../components/MapEmbed.astro';
 import Photo from '../components/Photo.astro';
 import RequestPanel from '../components/RequestPanel.astro';
-import { featuredGuides, serviceGroups, services, townPages } from '../config/catalog';
-import { SITE } from '../config/site';
+import { services, townPages } from '../config/catalog';
+import { SITE, type PhotoSlot } from '../config/site';
 import { homepageFaqs } from '../content/home';
 import { faqNode } from '../lib/schema';
 
@@ -13,360 +14,319 @@ const faqs = homepageFaqs();
 const homeTitle = 'Electrician Sioux Falls, SD | Sioux Falls Electricians';
 const homeDescription = `Residential and commercial electricians in Sioux Falls, Brandon, Harrisburg, Tea and nearby. Repairs, panel upgrades, EV chargers. Call ${SITE.phoneDisplay}.`;
 
-const trust = [
-  'Homes and businesses',
-  'Written quote before work starts',
-  'Permitted work where required',
-  'Serving 8 towns around Sioux Falls',
-];
-if (SITE.available247) trust.unshift(SITE.availabilityNote);
+const closestPhoto: Record<string, string> = {
+  '/services/outlet-switch-installation': '/services/electrical-repair',
+  '/services/generator-installation': '/services/panel-upgrades',
+  '/services/ceiling-fan-installation': '/services/lighting-installation',
+  '/services/hot-tub-wiring': '/services/wiring-rewiring',
+  '/services/electrical-inspections': '/services/panel-upgrades',
+  '/services/surge-protection': '/services/panel-upgrades',
+  '/services/smoke-co-detectors': '/services/emergency-electrician',
+};
+
+function cardPhoto(href: string): PhotoSlot {
+  const photo = SITE.servicePhotos[href] ?? SITE.servicePhotos[closestPhoto[href]];
+  if (!photo) throw new Error(`No photo for ${href}`);
+  return photo;
+}
+
+const homePhoto = SITE.servicePhotos['/services/lighting-installation'];
+const businessPhoto = SITE.servicePhotos['/services/commercial-electrician'];
+const cardSizes = '(min-width: 1024px) 360px, (min-width: 700px) 45vw, 100vw';
+const eyebrow = SITE.available247 ? '24/7 · Sioux Falls & nearby towns' : 'Sioux Falls & nearby towns';
 
 const steps = [
-  {
-    title: 'Call',
-    text: 'Call and say what happened.',
-  },
-  {
-    title: 'Assessment',
-    text: 'We explain the problem in plain words.',
-  },
-  {
-    title: 'Written quote',
-    text: 'You get the quote before work starts.',
-  },
-  {
-    title: 'Permitted work',
-    text: 'Where the city requires a permit, the work is permitted.',
-  },
-  {
-    title: 'Inspection where required',
-    text: 'If the city requires an inspection, that step is included.',
-  },
+  { title: SITE.smsEnabled ? 'Call or text' : 'Call', text: 'Call and say what happened.' },
+  { title: 'We give a written quote', text: 'You see the quote before work starts.' },
+  { title: 'We do the work safely', text: 'Permitted where the city requires it.' },
 ];
-
-const problems = [
-  {
-    title: 'Flickering lights',
-    text: 'Lights that dim when a motor starts can be a loose connection.',
-    href: '/services/electrical-repair',
-    label: 'electrical repair',
-  },
-  {
-    title: 'Tripping breakers',
-    text: 'A breaker that will not stay on needs a look.',
-    href: '/guides/breaker-keeps-tripping',
-    label: 'why a breaker keeps tripping',
-  },
-  {
-    title: 'Dead outlets',
-    text: 'One outlet or a whole wall can go quiet from a tripped GFCI or a loose wire.',
-    href: '/services/outlet-switch-installation',
-    label: 'outlet and switch installation',
-  },
-  {
-    title: 'Burning smell',
-    text: 'A hot or burning smell at an outlet, switch, or panel is a fire risk.',
-    href: '/services/emergency-electrician',
-    label: 'emergency electrician',
-    safety: true,
-  },
-  {
-    title: 'Buzzing panel',
-    text: 'A panel that hums or feels warm needs a closer look.',
-    href: '/services/panel-upgrades',
-    label: 'panel upgrades',
-  },
-  {
-    title: 'Warm switch plates',
-    text: 'A warm switch or outlet can be a loose connection.',
-    href: '/services/electrical-repair',
-    label: 'have the device checked',
-  },
-];
-
-const cardSizes = '(min-width: 1024px) 360px, (min-width: 640px) 45vw, 100vw';
 ---
 
-<Layout title={homeTitle} description={homeDescription} fullTitle extraGraph={[faqNode(faqs)]}>
-  <section class="surface-dark bg-ink text-white">
-    <div class="mx-auto grid max-w-[1200px] items-center gap-8 px-4 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
-      <div>
-        <p class="chip">Sioux Falls, SD</p>
-        <h1 class="mt-4 max-w-[14ch] text-white">Electrician in Sioux Falls, SD</h1>
-        <p class="mt-3 text-lg font-semibold text-white">
-          Repairs, panel upgrades, and EV chargers — done safely.
-        </p>
-        <p class="measure mt-3 text-mist">
-          Homes and businesses in Sioux Falls, Brandon, Harrisburg, Tea, and nearby towns. Written quote before work starts.
-        </p>
-        <ul class="mt-4 flex gap-2 overflow-x-auto pb-1">
-          {
-            townPages.map((town) => (
-              <li>
-                <a class="chip" href={town.href}>
-                  {town.name}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <ContactLink track="call-hero" class="btn btn-copper btn-lg w-full sm:w-auto" />
-          <a href="#quote" class="btn btn-white btn-lg w-full sm:w-auto">Request service</a>
-        </div>
-        <ul class="mt-6 grid gap-3 sm:grid-cols-2">
-          {
-            trust.map((item) => (
-              <li class="flex items-start gap-2 text-sm font-semibold text-white">
-                <Icon name="check" class="mt-0.5 h-5 w-5 shrink-0 text-copper" />
-                <span>{item}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div>
-        <Photo
-          photo={SITE.heroPhoto}
-          sizes="(min-width: 1024px) 46vw, 100vw"
-          loading="eager"
-          fetchpriority="high"
-          class="h-auto w-full rounded-2xl object-cover"
-        />
-        <div class="surface-light mt-4 hidden rounded-2xl bg-white p-5 text-text lg:block">
-          <RequestPanel
-            heading="Request service"
-            headingTag="p"
-            intro="Written quote before work starts."
-            callTrack="call-hero-card"
-            smsTrack="sms-hero-card"
-            formIdPrefix="hero"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+<Layout title={homeTitle} description={homeDescription} fullTitle extraGraph={[faqNode(faqs)]} overlay>
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href="/images/hero-electrician-panel-1280.avif"
+    imagesrcset={SITE.heroPhoto.avifSrcset}
+    imagesizes="100vw"
+    type="image/avif"
+    fetchpriority="high"
+  />
 
-  <section class="border-y-4 border-teal bg-mist" aria-label="Quick answer">
-    <div class="mx-auto max-w-[1200px] px-4 py-8 lg:py-10">
-      <p class="text-sm font-bold text-teal">Quick answer</p>
-      <p class="measure mt-2">
-        Sioux Falls Electricians handles repairs, panel upgrades, EV chargers, lighting, wiring, and commercial jobs for homes and businesses in Sioux Falls and nearby towns. Call and describe the problem.
-      </p>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-[1200px] px-4 py-14 lg:py-24" aria-labelledby="help-heading">
-    <h2 id="help-heading">How can we help?</h2>
-    <div class="mt-8 grid gap-4 md:grid-cols-2">
-      <a href="#services" class="card p-6">
-        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-mist text-teal">
-          <Icon name="home" class="h-7 w-7" />
-        </span>
-        <h3 class="mt-4">For your home</h3>
-        <p class="mt-2 flex-1 text-muted">Outlets, panels, lighting, chargers, and wiring for houses.</p>
-        <span class="mt-4 font-bold text-link">See home services</span>
-      </a>
-      <a href="/services/commercial-electrician" class="card p-6">
-        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-mist text-teal">
-          <Icon name="buildings" class="h-7 w-7" />
-        </span>
-        <h3 class="mt-4">For your business</h3>
-        <p class="mt-2 flex-1 text-muted">Lighting and circuits for shops, offices, and other buildings.</p>
-        <span class="mt-4 font-bold text-link">Commercial electrician</span>
-      </a>
-    </div>
-  </section>
-
-  <section id="services" class="bg-white" aria-labelledby="services-heading">
-    <div class="mx-auto max-w-[1200px] px-4 py-14 lg:py-24">
-      <h2 id="services-heading">Electrical services in Sioux Falls</h2>
-      <p class="measure mt-3 text-muted">Pick the job that matches the problem.</p>
-      {
-        serviceGroups.map((group) => (
-          <div class="mt-10">
-            <h3>{group}</h3>
-            <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {services
-                .filter((service) => service.group === group)
-                .map((service) => {
-                  const photo = SITE.servicePhotos[service.href];
-                  return (
-                    <li>
-                      <a href={service.href} class="card">
-                        {photo && (
-                          <Photo photo={photo} sizes={cardSizes} loading="lazy" class="aspect-[4/3] w-full object-cover" />
-                        )}
-                        <span class="flex flex-1 flex-col p-5">
-                          {photo ? null : (
-                            <span class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-mist text-teal">
-                              <Icon name={service.icon} class="h-6 w-6" />
-                            </span>
-                          )}
-                          <p class="text-lg font-bold">{service.name}</p>
-                          <p class="mt-2 flex-1 text-sm text-muted">{service.summary}</p>
-                          <span class="mt-4 text-sm font-bold text-link">Details</span>
-                        </span>
-                      </a>
-                    </li>
-                  );
-                })}
-            </ul>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <section id="emergency" class="surface-dark bg-ink text-white" aria-labelledby="emergency-heading">
-    <div class="mx-auto max-w-[720px] px-4 py-14 lg:py-20">
-      <div>
-        <h2 id="emergency-heading" class="text-white">Emergency electrical service</h2>
-        {SITE.available247 && <p class="mt-4 text-lg font-semibold text-white">{SITE.availabilityNote}</p>}
-        <p class="measure mt-4 text-mist">
-          If you see smoke or fire, leave and call 911. Shut the breaker off only if you can do it safely. We do not promise an arrival time.
-        </p>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <ContactLink track="call-emergency" class="btn btn-copper btn-lg w-full sm:w-auto" />
-          <a href="/services/emergency-electrician" class="btn btn-white btn-lg w-full sm:w-auto">
-            Emergency electrician
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="how-it-works" class="mx-auto max-w-[1200px] px-4 py-14 lg:py-24" aria-labelledby="process-heading">
-    <h2 id="process-heading">How it works</h2>
-    <ol class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-      {
-        steps.map((step, index) => (
-          <li class="rounded-2xl bg-white p-5">
-            <span class="flex h-10 w-10 items-center justify-center rounded-full bg-teal text-lg font-bold text-white">
-              {index + 1}
-            </span>
-            <h3 class="mt-4 text-lg">{step.title}</h3>
-            <p class="mt-2 text-sm text-muted">{step.text}</p>
-          </li>
-        ))
-      }
-    </ol>
-  </section>
-
-  <section class="bg-white" aria-labelledby="problems-heading">
-    <div class="mx-auto max-w-[1200px] px-4 py-14 lg:py-24">
-      <h2 id="problems-heading">Common electrical problems we fix</h2>
-      <p class="measure mt-3 text-muted">Each problem links to a service or a guide.</p>
-      <ul class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {
-          problems.map((problem) => (
-            <li class="rounded-2xl border border-line bg-paper p-5">
-              <h3 class="text-xl">{problem.title}</h3>
-              <p class="mt-2 text-sm text-muted">{problem.text}</p>
-              {problem.safety && (
-                <p class="mt-3 border-l-4 border-copper-deep pl-3 text-sm font-semibold text-text">
-                  Stay back. If you see smoke or flames, call 911. Shut the breaker off only if you can do it safely.
-                </p>
-              )}
-              <a class="mt-3 inline-block font-bold text-link underline" href={problem.href}>
-                {problem.label}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <section id="service-area" class="mx-auto max-w-[1200px] px-4 py-14 lg:py-24" aria-labelledby="area-heading">
-    <h2 id="area-heading">Areas we serve around Sioux Falls</h2>
-    <p class="measure mt-3 text-muted">Sioux Falls is this page. The other towns below have their own pages.</p>
-    <div class="mt-8 grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-      <div>
-        <!-- PHOTO: Static map of Sioux Falls with Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox. No live map embed. -->
-        <img
-          src="/images/service-area-map.svg"
-          width="800"
-          height="480"
-          alt="Illustrated map of Sioux Falls and the nearby towns we serve"
-          class="h-auto w-full rounded-2xl"
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-      <ul class="grid grid-cols-2 gap-3">
-        {
-          townPages.map((town) => (
-            <li>
-              <a href={town.href} class="card p-4">
-                <span class="font-bold">{town.name}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <p class="mt-6 text-muted">
-      We also take calls in {SITE.listOnlyTowns.join(', ')}. Those towns do not have their own pages.
-    </p>
-  </section>
-
-  <section class="bg-white" aria-labelledby="guides-heading">
-    <div class="mx-auto max-w-[1200px] px-4 py-14 lg:py-24">
-      <h2 id="guides-heading">Electrical guides</h2>
-      <p class="measure mt-3 text-muted">Plain-language guides for Sioux Falls homes.</p>
-      <ul class="mt-8 grid gap-4 md:grid-cols-3">
-        {
-          featuredGuides.map((guide) => (
-            <li>
-              <a href={guide.href} class="card p-6">
-                <h3 class="text-xl">{guide.title}</h3>
-                <p class="mt-2 flex-1 text-sm text-muted">{guide.summary}</p>
-                <span class="mt-4 font-bold text-link">Read</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
-
-  <section id="faq" class="mx-auto max-w-[1200px] px-4 py-14 lg:py-24" aria-labelledby="faq-heading">
-    <h2 id="faq-heading">Sioux Falls electrician FAQ</h2>
-    <div class="mt-8 divide-y divide-line rounded-2xl border border-line bg-white">
-      {
-        faqs.map((item) => (
-          <details class="group px-5 py-4">
-            <summary class="flex items-center justify-between gap-4">
-              <h3 class="text-lg">{item.question}</h3>
-              <Icon name="caret" class="h-5 w-5 shrink-0 text-teal" />
-            </summary>
-            {item.paragraphs.map((paragraph) => (
-              <p class="measure mt-3 text-muted">{paragraph}</p>
-            ))}
-          </details>
-        ))
-      }
-    </div>
-  </section>
-
-  <section id="quote" class="bg-white">
-    <div class="mx-auto max-w-[720px] px-4 py-14 lg:py-24">
-      <RequestPanel
-        heading="Request service"
-        headingTag="h2"
-        intro="Describe the problem. You get a written quote before work starts. We do not promise an arrival time."
-        callTrack="call-quote"
-        smsTrack="sms-quote"
-        formIdPrefix="quote"
+  <section class="hero surface-dark">
+    <div class="hero-media">
+      <Photo
+        photo={SITE.heroPhoto}
+        pictureClass="hero-picture"
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        class="hero-img"
       />
+      <div class="hero-shade" aria-hidden="true"></div>
+    </div>
+    <div class="wrap hero-copy">
+      <p class="eyebrow eyebrow-on-dark">{eyebrow}</p>
+      <h1>
+        Electrician in<br />
+        Sioux Falls, SD
+      </h1>
+      <p class="hero-sub">Repairs, panel upgrades, and EV chargers — done safely.</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <ContactLink track="call-hero" class="btn btn-copper w-full sm:w-auto" />
+        <a href="#quote" class="btn btn-line w-full sm:w-auto">
+          <Icon name="arrow" class="h-5 w-5" />
+          Request service
+        </a>
+      </div>
+      <ul class="mt-8 grid gap-4 sm:grid-cols-3">
+        {
+          SITE.available247 && (
+            <li class="flex items-start gap-3 text-sm font-semibold">
+              <Icon name="phone" class="mt-0.5 h-6 w-6 shrink-0 text-copper" />
+              <span>24/7 calls</span>
+            </li>
+          )
+        }
+        <li class="flex items-start gap-3 text-sm font-semibold">
+          <Icon name="check" class="mt-0.5 h-6 w-6 shrink-0 text-copper" />
+          <span>Written quote before work starts</span>
+        </li>
+        <li class="flex items-start gap-3 text-sm font-semibold">
+          <Icon name="home" class="mt-0.5 h-6 w-6 shrink-0 text-copper" />
+          <span>Homes and businesses</span>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <!-- PHOTO: Real renter job photos only, such as panels, chargers, and lighting. No staff portraits. Hidden until site.jobPhotos has entries. -->
+  <section class="bg-white" aria-label="Trust and quick answer">
+    <div class="wrap section">
+      <ul class="trust-grid">
+        <li>
+          <Icon name="phone" class="h-6 w-6 text-teal" />
+          <p class="mt-3 font-bold">{SITE.available247 ? '24/7 answered' : 'Calls answered'}</p>
+          <p class="mt-1 text-sm text-muted">
+            {SITE.available247 ? 'Calls answered every day, including emergency service.' : 'Call and describe the problem.'}
+          </p>
+        </li>
+        <li>
+          <Icon name="check" class="h-6 w-6 text-teal" />
+          <p class="mt-3 font-bold">Written quotes</p>
+          <p class="mt-1 text-sm text-muted">You see the quote before work starts.</p>
+        </li>
+        <li>
+          <Icon name="wrench" class="h-6 w-6 text-teal" />
+          <p class="mt-3 font-bold">Permitted work</p>
+          <p class="mt-1 text-sm text-muted">Where the city requires a permit, the work is permitted.</p>
+        </li>
+        <li>
+          <Icon name="pin" class="h-6 w-6 text-teal" />
+          <p class="mt-3 font-bold">{SITE.serviceTowns.length} towns served</p>
+          <p class="mt-1 text-sm text-muted">Sioux Falls and the towns around it.</p>
+        </li>
+      </ul>
+      <div class="mt-12 max-w-[65ch]">
+        <p class="eyebrow">Quick answer</p>
+        <p>
+          Sioux Falls Electricians handles electrical repairs, panel upgrades, EV chargers, lighting, wiring, and commercial jobs for homes and businesses in Sioux Falls, Brandon, Harrisburg, Tea, and nearby towns. Call {SITE.phoneDisplay} and describe the problem. You get a written quote before work starts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="bg-paper" aria-labelledby="services-heading">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 id="services-heading">Electrical services in Sioux Falls</h2>
+        <p class="lede">Pick the job that matches the problem. Homes and businesses use the same phone number.</p>
+      </div>
+      <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((service) => {
+            const photo = cardPhoto(service.href);
+            const Tag = service.live ? 'a' : 'div';
+            return (
+              <li>
+                <Tag href={service.live ? service.href : undefined} class="card">
+                  <Photo photo={photo} sizes={cardSizes} loading="lazy" class="aspect-[4/3] w-full object-cover" />
+                  <span class="flex flex-1 flex-col p-5">
+                    <h3>{service.name}</h3>
+                    <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{service.summary}</p>
+                    {service.live && <span class="mt-4 text-sm font-semibold text-teal">Learn more →</span>}
+                  </span>
+                </Tag>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-white" aria-labelledby="help-heading">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 id="help-heading">How can we help?</h2>
+        <p class="lede">House calls and business calls are both on this number.</p>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2">
+        <a href="#services" class="split-panel">
+          <Photo photo={homePhoto} pictureClass="hero-picture" sizes="(min-width: 768px) 50vw, 100vw" loading="lazy" class="hero-img" />
+          <span class="split-shade" aria-hidden="true"></span>
+          <span class="relative flex flex-1 flex-col justify-end p-8">
+            <h3 class="text-white">For your home</h3>
+            <p class="mt-3 max-w-[36ch] text-white/85">Outlets, panels, lighting, EV chargers, and wiring for houses.</p>
+            <span class="btn btn-line mt-6 w-fit">See home services</span>
+          </span>
+        </a>
+        <a href="/services/commercial-electrician" class="split-panel">
+          <Photo photo={businessPhoto} pictureClass="hero-picture" sizes="(min-width: 768px) 50vw, 100vw" loading="lazy" class="hero-img" />
+          <span class="split-shade" aria-hidden="true"></span>
+          <span class="relative flex flex-1 flex-col justify-end p-8">
+            <h3 class="text-white">For your business</h3>
+            <p class="mt-3 max-w-[36ch] text-white/85">Lighting and circuits for shops, offices, and other buildings.</p>
+            <span class="btn btn-line mt-6 w-fit">Commercial electrician</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="surface-dark bg-ink text-white" aria-labelledby="process-heading">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 id="process-heading" class="text-white">How it works</h2>
+      </div>
+      <ol class="grid gap-8 md:grid-cols-3">
+        {
+          steps.map((step, index) => (
+            <li>
+              <span class="step-num">{index + 1}</span>
+              <h3 class="mt-4 text-white">{step.title}</h3>
+              <p class="mt-2 text-white/80">{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section id="service-area" class="bg-white" aria-labelledby="area-heading">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 id="area-heading">Electricians serving Sioux Falls and nearby towns</h2>
+        <div class="lede space-y-3">
+          <p>
+            Sioux Falls is this page. Work here includes downtown, the Cathedral Historic District and other older central neighborhoods, and newer homes to the south and east.
+          </p>
+          <p>
+            Brandon, Harrisburg, and Tea have their own pages. We also serve Hartford, Dell Rapids, Canton, and Lennox, and we take calls in Crooks, Renner, Baltic, and Garretson.
+          </p>
+        </div>
+      </div>
+      <div class="grid items-start gap-8 lg:grid-cols-2">
+        <MapEmbed
+          class="aspect-[4/3]"
+          src="https://www.google.com/maps?q=Sioux+Falls,+SD&z=10&output=embed"
+          title="Map of Sioux Falls, South Dakota and nearby towns"
+          label="Sioux Falls and the towns around it"
+        />
+        <div>
+          <ul class="flex flex-wrap gap-2">
+            {
+              townPages.map((town) =>
+                town.live ? (
+                  <li>
+                    <a class="town-chip" href={town.href}>
+                      {town.name}
+                    </a>
+                  </li>
+                ) : (
+                  <li>
+                    <span class="town-chip">{town.name}</span>
+                  </li>
+                ),
+              )
+            }
+          </ul>
+          <p class="mt-4 text-sm text-muted">Also serving {SITE.listOnlyTowns.join(', ')}. Those towns do not have their own pages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="bg-paper" aria-labelledby="faq-heading">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2 id="faq-heading">Sioux Falls electrician FAQ</h2>
+      </div>
+      <div class="faq">
+        {
+          faqs.map((item) => (
+            <details>
+              <summary class="flex items-center justify-between gap-4">
+                <h3 class="text-lg">{item.question}</h3>
+                <span class="faq-plus text-2xl font-bold leading-none text-teal" aria-hidden="true">+</span>
+                <span class="faq-minus text-2xl font-bold leading-none text-teal" aria-hidden="true">−</span>
+              </summary>
+              {item.paragraphs.map((paragraph) => (
+                <p class="measure mt-3 text-muted">{paragraph}</p>
+              ))}
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="quote" class="surface-dark relative overflow-hidden bg-ink text-white">
+    <Photo
+      photo={SITE.heroPhoto}
+      pictureClass="hero-picture opacity-30"
+      sizes="100vw"
+      loading="lazy"
+      class="hero-img"
+    />
+    <div class="absolute inset-0 bg-ink/80" aria-hidden="true"></div>
+    <div class="wrap section relative">
+      <h2 class="max-w-[16ch] text-white">Need an electrician now?</h2>
+      <div class="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <ContactLink track="call-quote" class="btn btn-copper w-full sm:w-auto" />
+        {
+          SITE.smsEnabled ? (
+            <ContactLink track="sms-quote" channel="sms" class="btn btn-line w-full sm:w-auto" label="Text" />
+          ) : (
+            <p class="text-white/85">
+              <span>Prefer to write?</span>
+              <a class="ml-1 font-semibold text-white underline" href={`mailto:${SITE.email}`} data-track="email-quote">
+                Email {SITE.email}
+              </a>
+            </p>
+          )
+        }
+      </div>
+      {
+        SITE.formEndpoint && (
+          <div class="mt-8 max-w-xl rounded-2xl bg-white p-6 text-text">
+            <RequestPanel
+              heading="Request service"
+              headingTag="p"
+              intro="Describe the problem. You get a written quote before work starts."
+              callTrack="call-quote-form"
+              smsTrack="sms-quote-form"
+              formIdPrefix="quote"
+            />
+          </div>
+        )
+      }
+    </div>
+  </section>
+
   {
     (SITE.jobPhotos.length > 0 || SITE.rating || SITE.license) && (
-      <section class="mx-auto max-w-[1200px] px-4 py-14" aria-label="Job photos and credentials">
+      <section class="wrap section" aria-label="Job photos and credentials">
         {SITE.license && <p class="font-semibold">License: {SITE.license}</p>}
         {SITE.rating && (
           <p class="mt-2">
