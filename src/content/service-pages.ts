@@ -1,6 +1,7 @@
 export interface ServicePage {
   slug: string;
   title: string;
+  sub: string;
   description: string;
   photo: string;
   alt: string;
@@ -21,6 +22,7 @@ export const servicePages: ServicePage[] = [
     slug: 'electrical-repair',
     title: 'Electrical Repair Sioux Falls SD',
     description: 'Electrical repair in Sioux Falls for dead outlets, bad switches, flickering lights, and tripping breakers. Written quote before work starts.',
+    sub: 'Dead outlets, warm switches, and breakers that trip, with a written quote first.',
     photo: 'service-repair-hero',
     alt: 'Electrician repairing an outlet in a living room',
     answer:
@@ -60,6 +62,7 @@ export const servicePages: ServicePage[] = [
     slug: 'emergency-electrician',
     title: 'Emergency Electrician Sioux Falls SD',
     description: 'Emergency electrician in Sioux Falls for sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
+    sub: 'Sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
     photo: 'service-emergency-hero',
     alt: 'Electrician checking an outdoor outlet at night',
     answer:
@@ -99,6 +102,7 @@ export const servicePages: ServicePage[] = [
     slug: 'outlet-switch-installation',
     title: 'Outlet and Switch Installation Sioux Falls SD',
     description: 'New outlets, GFCI protection, dimmers, and 240-volt receptacles in Sioux Falls homes and businesses.',
+    sub: 'New outlets, GFCI protection, dimmers, and 240-volt receptacles, quoted before work.',
     photo: 'service-outlet',
     alt: 'Electrician installing an outlet and a switch',
     answer:
@@ -138,6 +142,7 @@ export const servicePages: ServicePage[] = [
     slug: 'panel-upgrades',
     title: 'Panel Upgrades Sioux Falls SD',
     description: 'Panel upgrades in Sioux Falls for full, warm, or outdated breaker panels and old fuse boxes. Written quote before work.',
+    sub: 'Full, warm, or fuse-box panels replaced, with a written quote first.',
     photo: 'service-panel-hero',
     alt: 'Electrician replacing a residential breaker panel',
     answer:
@@ -177,6 +182,7 @@ export const servicePages: ServicePage[] = [
     slug: 'wiring-rewiring',
     title: 'Wiring and Rewiring Sioux Falls SD',
     description: 'Wiring and rewiring in Sioux Falls for old circuits, added rooms, and whole-house rewires. Written quote before work starts.',
+    sub: 'Old circuits, added rooms, and rewires, with a written quote before walls open.',
     photo: 'service-wiring',
     alt: 'Electrician pulling new cable through open wall studs',
     answer:
@@ -216,6 +222,7 @@ export const servicePages: ServicePage[] = [
     slug: 'generator-installation',
     title: 'Generator Installation Sioux Falls SD',
     description: 'Standby generators, transfer switches, and inlets for a portable generator in Sioux Falls. No backfeed setups.',
+    sub: 'Standby units, transfer switches, and inlets. No backfeed setups.',
     photo: 'service-generator',
     alt: 'Electrician checking a home standby generator',
     answer:
@@ -255,6 +262,7 @@ export const servicePages: ServicePage[] = [
     slug: 'ev-charger-installation',
     title: 'EV Charger Installation Sioux Falls SD',
     description: 'Level 2 home EV charger installation in Sioux Falls, including the circuit and a panel check. Written quote first.',
+    sub: 'A Level 2 home charger on a new circuit, after the panel is checked.',
     photo: 'service-ev-hero',
     alt: 'Electrician mounting a home EV charger in a garage',
     answer:
@@ -294,6 +302,7 @@ export const servicePages: ServicePage[] = [
     slug: 'lighting-installation',
     title: 'Lighting Installation Sioux Falls SD',
     description: 'Recessed lights, LED swaps, and outdoor lighting installation in Sioux Falls. Written quote before any ceiling is opened.',
+    sub: 'Recessed lights, LED swaps, and outdoor lighting, quoted before the ceiling opens.',
     photo: 'service-lighting-hero',
     alt: 'Electrician installing recessed lights in a kitchen ceiling',
     answer:
@@ -333,6 +342,7 @@ export const servicePages: ServicePage[] = [
     slug: 'ceiling-fan-installation',
     title: 'Ceiling Fan Installation Sioux Falls SD',
     description: 'Ceiling fan installation in Sioux Falls with fan-rated boxes, replacements, and fans that include a light.',
+    sub: 'Fans hung on a box rated for the weight, with a written quote first.',
     photo: 'service-fan',
     alt: 'Electrician mounting a ceiling fan on a braced box',
     answer:
@@ -372,6 +382,7 @@ export const servicePages: ServicePage[] = [
     slug: 'hot-tub-wiring',
     title: 'Hot Tub Wiring Sioux Falls SD',
     description: 'Hot tub wiring in Sioux Falls: the dedicated circuit and disconnect a tub needs. Written quote before the run is built.',
+    sub: 'The dedicated circuit and disconnect a tub needs, sized from the nameplate.',
     photo: 'service-hottub',
     alt: 'Electrician wiring a disconnect near a hot tub',
     answer:
@@ -411,6 +422,7 @@ export const servicePages: ServicePage[] = [
     slug: 'electrical-inspections',
     title: 'Electrical Inspections Sioux Falls SD',
     description: 'Private electrical safety checks in Sioux Falls for panels, wiring, and devices. This is not a city inspection.',
+    sub: 'A private look at the panel and visible wiring. This is not a city inspection.',
     photo: 'service-inspect',
     alt: 'Electrician inspecting an open breaker panel',
     answer:
@@ -450,6 +462,7 @@ export const servicePages: ServicePage[] = [
     slug: 'surge-protection',
     title: 'Surge Protection Sioux Falls SD',
     description: 'Whole-house surge protection installed at the panel in Sioux Falls. Written quote before the device is added.',
+    sub: 'A whole-house device at the panel, with a written quote before it is added.',
     photo: 'service-surge',
     alt: 'Whole-house surge protector installed beside a breaker panel',
     answer:
@@ -489,6 +502,7 @@ export const servicePages: ServicePage[] = [
     slug: 'smoke-co-detectors',
     title: 'Smoke and CO Detectors Sioux Falls SD',
     description: 'Hardwired smoke alarms and carbon monoxide detectors in Sioux Falls homes. Written quote before devices are replaced.',
+    sub: 'Hardwired smoke alarms and carbon monoxide detectors, quoted before they come down.',
     photo: 'service-smoke',
     alt: 'Electrician installing a hardwired smoke detector on a ceiling',
     answer:
@@ -528,6 +542,7 @@ export const servicePages: ServicePage[] = [
     slug: 'commercial-electrician',
     title: 'Commercial Electrician Sioux Falls SD',
     description: 'Commercial electrician in Sioux Falls for lighting, circuits, and panels in shops, offices, and other buildings.',
+    sub: 'Lighting, circuits, and panels for shops and offices, scheduled around your hours.',
     photo: 'service-commercial-hero',
     alt: 'Electrician working among commercial electrical cabinets',
     answer:

@@ -4,6 +4,8 @@ import CtaBand from '../../components/CtaBand.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import MapEmbed from '../../components/MapEmbed.astro';
 import PageHero from '../../components/PageHero.astro';
+import ServiceCards from '../../components/ServiceCards.astro';
+import SideRail from '../../components/SideRail.astro';
 import { services } from '../../config/catalog';
 import { townPageBySlug, townPagesContent } from '../../content/town-pages';
 import { UPDATED_LABEL } from '../../content/updated';
@@ -34,76 +36,76 @@ const graph = [
 ---
 
 <Layout title={page.title} description={page.description} fullTitle extraGraph={graph} overlay>
-  <PageHero photo={page.photo} eyebrow={`${page.name}, South Dakota`} title={page.title} sub="House and business electrical calls." />
+  <PageHero photo={page.photo} eyebrow={`${page.name}, South Dakota`} title={page.title} sub={page.sub} />
 
-  <section class="bg-paper">
-    <div class="wrap section">
-      <p class="measure text-lg">{answer}</p>
-      <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
-    </div>
-  </section>
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <p class="measure text-lg">{answer}</p>
+          <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
+        </div>
+      </section>
 
-  <section class="bg-white" aria-labelledby="facts-heading">
-    <div class="wrap section">
-      <h2 id="facts-heading">Local facts</h2>
-      <dl class="mt-6 grid gap-4">
-        {
-          page.facts.map((fact) => (
-            <div class="border-t border-[#e7e2d9] pt-4">
-              <dt class="font-bold">{fact.label}</dt>
-              <dd class="measure mt-1 text-muted">{fact.text}</dd>
+      <section class="bg-white" aria-labelledby="facts-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="facts-heading">Local facts</h2>
+          </div>
+          <dl class="stat-grid">
+            {
+              page.stats.map((stat) => (
+                <div class="stat-card">
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))
+            }
+          </dl>
+          <p class="measure mt-8 text-muted">{page.detail}</p>
+          <div class="block-head mt-12">
+            <h2 id="housing-heading">Housing</h2>
+          </div>
+          <p class="measure text-muted">{page.housing}</p>
+          <div class="block-head mt-12">
+            <h2 id="permit-heading">Permits and inspections</h2>
+          </div>
+          <p class="measure text-muted">{page.permits}</p>
+        </div>
+      </section>
+
+      <section class="bg-paper" aria-labelledby="work-heading">
+        <div class="section">
+          <div class="town-work">
+            <div>
+              <div class="block-head">
+                <h2 id="map-heading">Map of {page.name}</h2>
+              </div>
+              <MapEmbed
+                src={`https://www.google.com/maps?q=${encodeURIComponent(page.mapQuery)}&z=12&output=embed`}
+                title={`Map of ${page.name}, South Dakota`}
+                label={page.mapQuery}
+                preview={page.preview}
+              />
             </div>
-          ))
-        }
-      </dl>
-      <h2 id="housing-heading" class="mt-12">Housing</h2>
-      <p class="measure mt-4 text-muted">{page.housing}</p>
-      <h2 id="permit-heading" class="mt-12">Permits and inspections</h2>
-      <p class="measure mt-4 text-muted">{page.permits}</p>
-      <p class="measure mt-3 text-sm text-muted">
-        Sources for the facts on this page are listed in the project notes. Unverified neighborhood names and housing ages are left out.
-      </p>
-    </div>
-  </section>
+            <div>
+              <div class="block-head">
+                <h2 id="work-heading">Electrical work in {page.name}</h2>
+                <p class="lede">These are the services most people in {page.name} ask about first. The full list is on the homepage.</p>
+              </div>
+              <ServiceCards services={linked} />
+              <p class="mt-6">
+                <a class="text-link" href="/service-area">Back to the service area</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <section class="bg-paper" aria-labelledby="work-heading">
-    <div class="wrap section">
-      <h2 id="work-heading">Electrical work in {page.name}</h2>
-      <p class="measure mt-4 text-muted">
-        These are the services most people in {page.name} ask about first. The full list is on the homepage.
-      </p>
-      <ul class="mt-6 grid gap-3 sm:grid-cols-2">
-        {
-          linked.map((service) => (
-            <li>
-              <a class="card p-5" href={service.href}>
-                <span class="font-bold">{service.name}</span>
-                <span class="mt-2 block text-sm text-muted">{service.summary}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <p class="mt-6">
-        <a class="text-link" href="/service-area">Back to the service area</a>
-      </p>
+      <FaqAccordion items={page.faqs} heading={`${page.name} questions`} />
     </div>
-  </section>
+    <SideRail />
+  </div>
 
-  <section class="bg-white" aria-labelledby="map-heading">
-    <div class="wrap section">
-      <h2 id="map-heading">Map of {page.name}</h2>
-      <div class="mt-6 max-w-3xl">
-        <MapEmbed
-          src={`https://www.google.com/maps?q=${encodeURIComponent(page.mapQuery)}&z=12&output=embed`}
-          title={`Map of ${page.name}, South Dakota`}
-          label={page.mapQuery}
-          preview={page.preview}
-        />
-      </div>
-    </div>
-  </section>
-
-  <FaqAccordion items={page.faqs} heading={`${page.name} questions`} />
   <CtaBand photo={page.photo} heading={`Need an electrician in ${page.name}?`} />
 </Layout>

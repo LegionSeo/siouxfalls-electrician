@@ -202,6 +202,12 @@ footer :where(.grid) > * {
   box-shadow: none;
 }
 
+@media (max-width: 1023px) {
+  .site-header.is-overlay {
+    background: #0f2a2e;
+  }
+}
+
 .site-header.is-overlay[data-solid] {
   background: #0f2a2e;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
@@ -715,13 +721,23 @@ a.card:hover {
 }
 
 @media (max-width: 1023px) {
+  .page-overlay .hero {
+    margin-top: 0;
+  }
+
   .page-overlay .hero-media {
-    margin-top: 64px;
+    margin-top: 0;
   }
 }
 
 .hero-copy {
   padding: 32px 0 40px;
+}
+
+@media (max-width: 1023px) {
+  .page-hero .hero-copy {
+    padding-bottom: 24px;
+  }
 }
 
 .hero h1 {
@@ -772,6 +788,16 @@ a.card:hover {
     flex-direction: column;
     justify-content: center;
     padding-top: 64px;
+  }
+
+  .page-hero {
+    min-height: 520px;
+  }
+
+  .page-hero .hero-copy {
+    min-height: 520px;
+    justify-content: flex-end;
+    padding-bottom: 40px;
   }
 }
 
@@ -1011,6 +1037,200 @@ details[open] .faq-minus {
   font-weight: 800;
   line-height: 1;
   color: #f47a2a;
+}
+
+.page-split {
+  width: min(1200px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+@media (min-width: 400px) {
+  .page-split {
+    width: min(1200px, calc(100% - 48px));
+  }
+}
+
+.page-rail {
+  display: none;
+}
+
+.page-main .wrap {
+  width: 100%;
+  margin-inline: 0;
+}
+
+.block-head {
+  max-width: 720px;
+  margin-bottom: 32px;
+}
+
+.block-head h2 {
+  margin: 0;
+}
+
+.card-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.icon-card,
+.num-card,
+.stat-card,
+.text-card {
+  border: 1px solid #e7e2d9;
+  border-radius: 12px;
+  background: #faf7f2;
+}
+
+.icon-card,
+.num-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px;
+}
+
+.icon-card .icon {
+  flex-shrink: 0;
+  color: #0f766e;
+}
+
+.num-card .num {
+  flex-shrink: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #0f766e;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  padding: 16px;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0f2a2e;
+}
+
+.stat-card span {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+.text-card {
+  display: block;
+  padding: 16px;
+  font-weight: 800;
+  color: #0f2a2e;
+  text-decoration: none;
+}
+
+.town-work {
+  display: grid;
+  gap: 32px;
+}
+
+.rail-card {
+  border-radius: 16px;
+  background: #0f2a2e;
+  color: #ffffff;
+  padding: 24px;
+}
+
+.rail-note {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.rail-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.rail-label {
+  margin-top: 24px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f47a2a;
+}
+
+.rail-towns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rail-towns a {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.rail-also {
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (min-width: 700px) {
+  .card-grid.cols-2,
+  .card-grid.cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-split {
+    display: grid;
+    grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+    column-gap: 32px;
+    align-items: start;
+    width: min(1200px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  .page-rail {
+    display: block;
+    align-self: stretch;
+    padding-top: 96px;
+  }
+
+  .rail-card {
+    position: sticky;
+    top: 88px;
+  }
+
+  .card-grid.cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .town-work {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .town-work .card-grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

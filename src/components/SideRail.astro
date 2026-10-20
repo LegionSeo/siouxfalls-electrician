@@ -1,0 +1,29 @@
+---
+import ContactLink from './ContactLink.astro';
+import { townPages } from '../config/catalog';
+import { SITE } from '../config/site';
+
+const towns = townPages.filter((town) => town.live);
+---
+
+<aside class="page-rail">
+  <div class="rail-card">
+    <p class="eyebrow eyebrow-on-dark">24/7</p>
+    <p class="rail-note">{SITE.available247 ? SITE.availabilityNote : 'Call and say what happened.'}</p>
+    <div class="rail-actions">
+      <ContactLink track="call-rail" class="btn btn-copper w-full" />
+      <a class="btn btn-line w-full" href="/contact">Request service</a>
+    </div>
+    <p class="rail-label">Towns served</p>
+    <ul class="rail-towns">
+      {
+        towns.map((town) => (
+          <li>
+            <a href={town.href}>{town.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="rail-also">{SITE.listOnlyTowns.join(', ')}</p>
+  </div>
+</aside>

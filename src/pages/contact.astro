@@ -4,6 +4,9 @@ import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import { townPages } from '../config/catalog';
 import { SITE, formatAddress } from '../config/site';
+import { pagePhoto } from '../lib/photos';
+
+const hero = pagePhoto('hero-contact', 'Shop counter with a desk phone and a blank notepad');
 
 const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').map((town) => town.name), ...SITE.listOnlyTowns];
 ---
@@ -15,10 +18,11 @@ const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').m
   overlay
 >
   <PageHero
-    photo={SITE.heroPhoto}
+    photo={hero}
     eyebrow="Contact"
     title="Contact Sioux Falls Electricians"
-    sub={SITE.available247 ? SITE.availabilityNote : 'Call and say what happened.'}
+    sub="Call, text, or send a short note. You get a written quote before work starts."
+    actions="reach"
   />
 
   <section class="bg-paper">

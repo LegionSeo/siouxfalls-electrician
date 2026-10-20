@@ -3,12 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import CtaBand from '../components/CtaBand.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import PageHero from '../components/PageHero.astro';
+import SideRail from '../components/SideRail.astro';
 import { joinNames, services, townPages } from '../config/catalog';
 import { UPDATED_LABEL } from '../content/updated';
+import { pagePhoto } from '../lib/photos';
 import { SITE } from '../config/site';
 
 const liveServices = services.filter((service) => service.live);
 const liveTowns = townPages.filter((town) => town.live && town.href !== '/');
+const hero = pagePhoto('hero-about', 'Electrical contractor van parked in a residential driveway, side door open, no people');
 const faqs = [
   {
     q: 'Where is the shop?',
@@ -32,57 +35,70 @@ const faqs = [
   overlay
 >
   <PageHero
-    photo={SITE.heroPhoto}
+    photo={hero}
     eyebrow={SITE.name}
     title="About Sioux Falls Electricians"
-    sub="Repairs, panels, and new circuits for homes and businesses."
+    sub="Residential and commercial electrical work in Sioux Falls and the towns around it."
   />
 
-  <section class="bg-paper">
-    <div class="wrap section">
-      <p class="measure text-lg">
-        {SITE.name} does residential and commercial electrical work in Sioux Falls and the towns on the service area page.
-        The work is repairs, panel upgrades, wiring, lighting, EV chargers, and the other services listed on this site.
-        You get a written quote before work starts.
-      </p>
-      <p class="mt-4 measure text-muted">
-        {SITE.available247 ? SITE.availabilityNote : ''} The phone number on this site is {SITE.phoneDisplay}. It is the only number to use.
-      </p>
-      <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
-    </div>
-  </section>
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <p class="measure text-lg">
+            {SITE.name} does residential and commercial electrical work in Sioux Falls and the towns on the service area page.
+            The work is repairs, panel upgrades, wiring, lighting, EV chargers, and the other services listed on this site.
+            You get a written quote before work starts.
+          </p>
+          <p class="mt-4 measure text-muted">
+            {SITE.available247 ? SITE.availabilityNote : ''} The phone number on this site is {SITE.phoneDisplay}. It is the only number to use.
+          </p>
+          <p class="mt-6 text-sm text-muted">Updated {UPDATED_LABEL}</p>
+        </div>
+      </section>
 
-  <section class="bg-white" aria-labelledby="work-heading">
-    <div class="wrap section">
-      <h2 id="work-heading">What this site covers</h2>
-      <p class="measure mt-4 text-muted">
-        Each service has its own page. The pages do not share the same paragraphs, and they do not list prices, reviews, or a license number.
-      </p>
-      <ul class="mt-6 grid gap-3 sm:grid-cols-2">
-        {
-          liveServices.map((service) => (
-            <li>
-              <a class="text-link" href={service.href}>{service.name}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
+      <section class="bg-white" aria-labelledby="work-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="work-heading">What this site covers</h2>
+            <p class="lede">
+              Each service has its own page. The pages do not share the same paragraphs, and they do not list prices, reviews, or a license number.
+            </p>
+          </div>
+          <ul class="card-grid cols-2">
+            {
+              liveServices.map((service) => (
+                <li>
+                  <a class="text-card" href={service.href}>
+                    {service.name}
+                    <span class="mt-2 block text-sm font-normal text-muted">{service.summary}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
 
-  <section class="bg-paper" aria-labelledby="area-heading">
-    <div class="wrap section">
-      <h2 id="area-heading">Where the calls come from</h2>
-      <p class="measure mt-4 text-muted">
-        Sioux Falls is this company’s home page. {joinNames(liveTowns.map((town) => town.name))} each have a town page.
-        {joinNames(SITE.listOnlyTowns)} are named only as towns we also take calls in. They do not have pages.
-      </p>
-      <p class="mt-6">
-        <a class="text-link" href="/service-area">Read the service area page</a>
-      </p>
-    </div>
-  </section>
+      <section class="bg-paper" aria-labelledby="area-heading">
+        <div class="section">
+          <div class="block-head">
+            <h2 id="area-heading">Where the calls come from</h2>
+            <p class="lede">
+              Sioux Falls is this company’s home page. {joinNames(liveTowns.map((town) => town.name))} each have a town page.
+              {joinNames(SITE.listOnlyTowns)} are named only as towns we also take calls in. They do not have pages.
+            </p>
+          </div>
+          <p>
+            <a class="text-link" href="/service-area">Read the service area page</a>
+          </p>
+        </div>
+      </section>
 
-  <FaqAccordion items={faqs} heading="About these pages" />
-  <CtaBand photo={SITE.heroPhoto} heading="Call for a written quote" />
+      <FaqAccordion items={faqs} heading="About these pages" />
+    </div>
+    <SideRail />
+  </div>
+
+  <CtaBand photo={hero} heading="Call for a written quote" />
 </Layout>
