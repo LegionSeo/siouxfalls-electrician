@@ -145,7 +145,22 @@ footer :where(.grid) > * {
 
 @media (max-width: 1023px) {
   body {
-    padding-bottom: calc(88px + env(safe-area-inset-bottom));
+    padding-bottom: calc(65px + env(safe-area-inset-bottom));
+  }
+}
+
+[data-sticky-bar] {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 70;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 1024px) {
+  [data-sticky-bar] {
+    display: none;
   }
 }
 
