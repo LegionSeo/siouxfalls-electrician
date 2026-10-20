@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="shop-map-title">
   <title id="shop-map-title">Map of 5311 S Sycamore Ave, Sioux Falls</title>
-  <rect width="320" height="180" fill="#E6F2F0"/>
-  <path d="M40 40h240v100H40z" fill="none" stroke="#0F2A2E" stroke-opacity="0.25"/>
-  <path d="M160 48v84M48 90h224" stroke="#0F2A2E" stroke-opacity="0.2"/>
-  <circle cx="168" cy="96" r="8" fill="#C2410C"/>
-  <text x="20" y="164" fill="#1A202C" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">5311 S Sycamore Ave</text>
+  <rect width="320" height="180" fill="#F3EEE6"/>
+  <path d="M40 40h240v100H40z" fill="none" stroke="#14211F" stroke-opacity="0.25"/>
+  <path d="M160 48v84M48 90h224" stroke="#14211F" stroke-opacity="0.2"/>
+  <circle cx="168" cy="96" r="8" fill="#B4473E"/>
+  <text x="20" y="164" fill="#14211F" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">5311 S Sycamore Ave</text>
 </svg>

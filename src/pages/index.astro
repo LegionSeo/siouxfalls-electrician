@@ -75,7 +75,7 @@ const steps = [
       </h1>
       <p class="hero-sub">Repairs, panel upgrades, and EV chargers — done safely.</p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <ContactLink track="call-hero" class="btn btn-copper w-full sm:w-auto" />
+        <ContactLink track="call-hero" class="btn btn-gold w-full sm:w-auto" />
         <a href="#quote" class="btn btn-line w-full sm:w-auto">
           <Icon name="arrow" class="h-5 w-5" />
           Request service
@@ -85,17 +85,17 @@ const steps = [
         {
           SITE.available247 && (
             <li class="flex items-start gap-3 text-sm font-semibold">
-              <Icon name="phone" class="mt-0.5 h-6 w-6 shrink-0 text-copper" />
+              <Icon name="phone" class="mt-0.5 h-6 w-6 shrink-0 text-rose" />
               <span>24/7 calls</span>
             </li>
           )
         }
         <li class="flex items-start gap-3 text-sm font-semibold">
-          <Icon name="check" class="mt-0.5 h-6 w-6 shrink-0 text-copper" />
+          <Icon name="check" class="mt-0.5 h-6 w-6 shrink-0 text-rose" />
           <span>Repairs and panel work</span>
         </li>
         <li class="flex items-start gap-3 text-sm font-semibold">
-          <Icon name="home" class="mt-0.5 h-6 w-6 shrink-0 text-copper" />
+          <Icon name="home" class="mt-0.5 h-6 w-6 shrink-0 text-rose" />
           <span>Homes and businesses</span>
         </li>
       </ul>
@@ -106,24 +106,24 @@ const steps = [
     <div class="wrap section">
       <ul class="trust-grid">
         <li>
-          <Icon name="phone" class="h-6 w-6 text-teal" />
+          <Icon name="phone" class="h-6 w-6 text-rose" />
           <p class="mt-3 font-bold">{SITE.available247 ? '24/7 answered' : 'Calls answered'}</p>
           <p class="mt-1 text-sm text-muted">
             {SITE.available247 ? 'Calls answered every day, including emergency service.' : 'Call and describe the problem.'}
           </p>
         </li>
         <li>
-          <Icon name="check" class="h-6 w-6 text-teal" />
+          <Icon name="check" class="h-6 w-6 text-rose" />
           <p class="mt-3 font-bold">Houses and shops</p>
           <p class="mt-1 text-sm text-muted">Both use the same phone number.</p>
         </li>
         <li>
-          <Icon name="wrench" class="h-6 w-6 text-teal" />
+          <Icon name="wrench" class="h-6 w-6 text-rose" />
           <p class="mt-3 font-bold">Permitted work</p>
           <p class="mt-1 text-sm text-muted">Where the city requires a permit, the work is permitted.</p>
         </li>
         <li>
-          <Icon name="pin" class="h-6 w-6 text-teal" />
+          <Icon name="pin" class="h-6 w-6 text-rose" />
           <p class="mt-3 font-bold">{SITE.serviceTowns.length} towns served</p>
           <p class="mt-1 text-sm text-muted">Sioux Falls and the towns around it.</p>
         </li>
@@ -153,7 +153,7 @@ const steps = [
                 <span class="flex flex-1 flex-col p-5">
                   <h3>{service.name}</h3>
                   <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{service.summary}</p>
-                  <span class="mt-4 text-sm font-semibold text-teal">Learn more →</span>
+                  <span class="mt-4 text-sm font-semibold text-rose">Learn more →</span>
                 </span>
               </a>
             </li>
@@ -287,8 +287,8 @@ const steps = [
             <details>
               <summary class="flex items-center justify-between gap-4">
                 <h3 class="text-lg">{item.question}</h3>
-                <span class="faq-plus text-2xl font-bold leading-none text-teal" aria-hidden="true">+</span>
-                <span class="faq-minus text-2xl font-bold leading-none text-teal" aria-hidden="true">−</span>
+                <span class="faq-plus text-2xl font-bold leading-none text-rose" aria-hidden="true">+</span>
+                <span class="faq-minus text-2xl font-bold leading-none text-rose" aria-hidden="true">−</span>
               </summary>
               {item.paragraphs.map((paragraph) => (
                 <p class="measure mt-3 text-muted">{paragraph}</p>
@@ -313,7 +313,7 @@ const steps = [
     <div class="wrap section relative">
       <h2 class="max-w-[16ch] text-white">Need an electrician now?</h2>
       <div class="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <ContactLink track="call-quote" class="btn btn-copper w-full sm:w-auto" />
+        <ContactLink track="call-quote" class="btn btn-gold w-full sm:w-auto" />
         {
           SITE.smsEnabled ? (
             <ContactLink track="sms-quote" channel="sms" class="btn btn-line w-full sm:w-auto" label="Text" />

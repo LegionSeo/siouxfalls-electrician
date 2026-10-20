@@ -30,7 +30,7 @@ const { photo, eyebrow, title, sub, actions = 'request' } = Astro.props;
       {
         actions === 'reach' ? (
           <>
-            <a class="btn btn-copper w-full sm:w-auto" href={SITE.phoneHref} data-track="call-contact-hero" data-contact-channel="tel">
+            <a class="btn btn-gold w-full sm:w-auto" href={SITE.phoneHref} data-track="call-contact-hero" data-contact-channel="tel">
               <Icon name="phone" class="h-5 w-5" />
               <span>Call {SITE.phoneDisplay}</span>
             </a>
@@ -47,7 +47,7 @@ const { photo, eyebrow, title, sub, actions = 'request' } = Astro.props;
           </>
         ) : (
           <>
-            <ContactLink track="call-page-hero" class="btn btn-copper w-full sm:w-auto" />
+            <ContactLink track="call-page-hero" class="btn btn-gold w-full sm:w-auto" />
             <a href="/contact" class="btn btn-line w-full sm:w-auto">Request service</a>
           </>
         )

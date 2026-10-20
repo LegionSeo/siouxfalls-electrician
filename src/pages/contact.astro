@@ -34,7 +34,7 @@ const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').m
             Use it for a house or a business.
           </p>
           <div class="mt-6 flex flex-col gap-3 sm:max-w-sm">
-            <a class="btn btn-copper" href={SITE.phoneHref} data-track="call-contact" data-contact-channel="tel">
+            <a class="btn btn-gold" href={SITE.phoneHref} data-track="call-contact" data-contact-channel="tel">
               <Icon name="phone" class="h-5 w-5" />
               <span>Call {SITE.phoneDisplay}</span>
             </a>
@@ -81,7 +81,7 @@ const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').m
               What happened
               <textarea class="field min-h-32" id="contact-message" name="message" required></textarea>
             </label>
-            <button class="btn btn-deep w-full" type="submit">Send</button>
+            <button class="btn btn-gold w-full" type="submit">Send</button>
           </form>
         </div>
       </div>

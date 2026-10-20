@@ -111,7 +111,7 @@ export interface SiteConfig {
    * While this is null the form is hidden so a lead cannot be posted nowhere.
    */
   formEndpoint: string | null;
-  /** Palette id. Live tokens are Copper Current. */
+  /** Palette id. Live tokens are Thunder Sunrise. */
   theme: string;
   /**
    * GA4 measurement id, such as G-ABC123. Empty loads no tag.
@@ -267,7 +267,7 @@ export const SITE: SiteConfig = {
   },
   jobPhotos: [],
   formEndpoint: null,
-  theme: 'copper-current',
+  theme: 'thunder-sunrise',
   ga4Id: '',
   gtmId: '',
 };
