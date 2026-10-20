@@ -180,7 +180,7 @@ export const guides: GuideItem[] = [
   {
     href: '/guides/panel-upgrade-cost-factors',
     title: 'Panel upgrade cost factors',
-    summary: 'What changes the quote for a panel upgrade.',
+    summary: 'What changes the price of a panel upgrade.',
     featured: false,
     live: false,
   },

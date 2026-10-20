@@ -11,15 +11,14 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'How do I find a good electrician in Sioux Falls?',
     paragraphs: [
-      'Ask for a written quote before any work starts, and ask whether the job needs a city permit, because a careful electrician explains the problem in plain words and tells you what they will and will not touch.',
+      'Ask whether the job needs a city permit, because a careful electrician explains the problem in plain words and tells you what they will and will not touch.',
       'Call and say which room stopped working and what you already tried.',
     ],
   },
   {
     question: 'What does an electrician in Sioux Falls typically charge, and what affects the price?',
     paragraphs: [
-      'There is no single price for electrical work in Sioux Falls, because the quote changes with the type of repair, how hard the wiring is to reach, the space left in the panel, the materials, and whether the city requires a permit and inspection.',
-      'Call for a written quote before work starts.',
+      'There is no single price for electrical work in Sioux Falls, because the price changes with the type of repair, how hard the wiring is to reach, the space left in the panel, the materials, and whether the city requires a permit and inspection.',
     ],
   },
   {

@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'How do I ask for work?',
-    a: `Call ${SITE.phoneDisplay} or use the contact page. You get a written quote before work starts.`,
+    a: `Call ${SITE.phoneDisplay} or use the contact page.`,
   },
 ];
 ---
@@ -44,7 +44,6 @@ const faqs = [
           <p class="measure text-lg">
             {SITE.name} does residential and commercial electrical work in Sioux Falls and the towns on the service area page.
             The work is repairs, panel upgrades, wiring, lighting, EV chargers, and the other services listed on this site.
-            You get a written quote before work starts.
           </p>
           <p class="mt-4 measure text-muted">
             {SITE.available247 ? SITE.availabilityNote : ''} The phone number on this site is {SITE.phoneDisplay}. It is the only number to use.
@@ -92,5 +91,5 @@ const faqs = [
     <SideRail />
   </div>
 
-  <CtaBand photo={hero} heading="Call for a written quote" />
+  <CtaBand photo={hero} heading="Call with the problem" />
 </Layout>

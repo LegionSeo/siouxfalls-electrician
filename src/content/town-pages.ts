@@ -65,7 +65,7 @@ export const townPagesContent: TownPage[] = [
     title: 'Electrician Harrisburg SD',
     documentTitle: 'Electrician in Harrisburg, SD | Sioux Falls Electricians',
     description: 'Electrician in Harrisburg, SD, a Lincoln County suburb of Sioux Falls. Repairs, panels, lighting, and EV chargers.',
-    sub: 'Electrical calls in this Lincoln County suburb, with a written quote first.',
+    sub: 'Electrical calls in this Lincoln County suburb.',
     photo: photo('town-harrisburg', 'Electrician running conduit in a residential garage'),
     answer:
       'Harrisburg is a Lincoln County suburb of Sioux Falls. The 2020 census counted 6,732 people. The school district and the city limits do not match, so many district schools sit inside Sioux Falls. Call {phone} for electrical work in Harrisburg.',

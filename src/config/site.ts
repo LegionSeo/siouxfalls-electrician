@@ -100,7 +100,7 @@ export interface SiteConfig {
   /** Real job photos for the proof block. Empty keeps that block hidden. */
   jobPhotos: JobPhoto[];
   /**
-   * Set to a form action URL to show the quote form.
+   * Set to a form action URL to show the request form.
    * While this is null the form is hidden so a lead cannot be posted nowhere.
    */
   formEndpoint: string | null;
