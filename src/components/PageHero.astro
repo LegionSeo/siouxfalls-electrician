@@ -9,22 +9,34 @@ interface Props {
   photo: PhotoSlot;
   eyebrow: string;
   title: string;
+  /** Second headline line. The visible H1 is still one heading. */
+  titleAfter?: string;
   sub: string;
   /** request: Call + Request service. reach: Call + Text, for the contact page. */
   actions?: 'request' | 'reach';
+  /** Town heroes use a wider headline so "Best Electrician in" stays on one line. */
+  town?: boolean;
 }
 
-const { photo, eyebrow, title, sub, actions = 'request' } = Astro.props;
+const { photo, eyebrow, title, sub, titleAfter, actions = 'request', town = false } = Astro.props;
 ---
 
-<section class="hero page-hero surface-dark">
+<section class:list={['hero page-hero surface-dark', town && 'hero-town']}>
   <div class="hero-media">
     <Photo photo={photo} pictureClass="hero-picture" sizes="100vw" loading="eager" fetchpriority="high" class="hero-img" />
     <div class="hero-shade" aria-hidden="true"></div>
   </div>
   <div class="wrap hero-copy">
     <p class="eyebrow eyebrow-on-dark">{eyebrow}</p>
-    <h1>{title}</h1>
+    <h1>
+      {title}
+      {titleAfter && (
+        <>
+          <br />
+          {titleAfter}
+        </>
+      )}
+    </h1>
     <p class="hero-sub">{sub}</p>
     <div class="mt-6 flex flex-col gap-3 sm:flex-row">
       {
