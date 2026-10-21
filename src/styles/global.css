@@ -1469,3 +1469,54 @@ details[open] .faq-minus {
     transform: none;
   }
 }
+
+.job-list,
+.warn-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  max-width: 68ch;
+}
+
+.job-list li + li,
+.warn-list li + li {
+  margin-top: 10px;
+}
+
+.warn-block {
+  max-width: 68ch;
+  margin-top: 32px;
+}
+
+.warn-block h3 {
+  margin: 0 0 8px;
+}
+
+.warn-list {
+  margin-top: 12px;
+}
+
+.warn-note {
+  margin-top: 16px;
+}
+
+.brandon-faq {
+  display: grid;
+  gap: 28px;
+  max-width: 68ch;
+}
+
+.brandon-faq h3 {
+  margin: 0 0 8px;
+}
+
+.source-note {
+  margin-top: 16px;
+  max-width: 68ch;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #4e5754;
+}
+
+.housing-copy {
+  margin-top: 28px;
+}

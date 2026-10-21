@@ -31,7 +31,7 @@ export const townPlaces: TownPlace[] = [
     slug: 'brandon',
     photo: placePhoto(
       'place-brandon',
-      'Downtown Brandon, South Dakota, looking north along Main Street',
+      'Downtown Brandon, SD',
       1600,
       900,
       'https://commons.wikimedia.org/wiki/File:Downtown_Brandon.jpg',

@@ -11,8 +11,11 @@ import { services } from '../../config/catalog';
 import { townPageBySlug, townPagesContent } from '../../content/town-pages';
 import { townPlaceBySlug } from '../../content/town-places';
 import { UPDATED_ISO, UPDATED_LABEL } from '../../content/updated';
+import { brandonFaqs, withPhone } from '../../content/brandon-town';
 import { breadcrumb, serviceNode } from '../../lib/page-schema';
+import { faqNode } from '../../lib/schema';
 import { SITE } from '../../config/site';
+import BrandonTown from '../../components/BrandonTown.astro';
 
 export function getStaticPaths() {
   return townPagesContent.map((page) => ({ params: { town: page.slug } }));
@@ -37,6 +40,16 @@ const graph = [
     { name: page.name, path },
   ]),
 ];
+if (page.slug === 'brandon') {
+  graph.push(
+    faqNode(
+      brandonFaqs.map((item) => ({
+        question: item.question,
+        paragraphs: item.paragraphs.map((paragraph) => withPhone(paragraph, SITE.phoneDisplay)),
+      })),
+    ),
+  );
+}
 ---
 
 <Layout
@@ -58,6 +71,9 @@ const graph = [
 
   <div class="page-split">
     <div class="page-main">
+      {page.slug === 'brandon' ? (
+        <BrandonTown phone={SITE.phoneDisplay} place={place} mapQuery={page.mapQuery} preview={page.preview} />
+      ) : (
       <section class="bg-paper">
         <div class="section">
           <p class="measure text-lg">{answer}</p>
@@ -127,6 +143,7 @@ const graph = [
       </section>
 
       <FaqAccordion items={page.faqs} heading={`${page.name} questions`} />
+      )}
     </div>
     <SideRail />
   </div>

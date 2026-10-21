@@ -38,7 +38,7 @@ export const townPagesContent: TownPage[] = [
     sub: 'Repair, panel, lighting, and EV-charger calls five miles east of Sioux Falls.',
     photo: photo('town-brandon', 'Electrician at a breaker panel inside a suburban house'),
     answer:
-      'Brandon is a city in Minnehaha County, five miles east of Sioux Falls. The 2020 census counted 11,048 people. Sioux Falls Electricians takes repair, panel, lighting, and EV-charger calls in Brandon. Call {phone}.',
+      'Need an electrician in Brandon, SD? We handle repairs, panel work, Level 2 EV chargers, and outlet work for homes and businesses across Brandon, 24/7. Call {phone} and tell us your street and what is going on at the house or the shop.',
     stats: [
       { label: 'County', value: 'Minnehaha' },
       { label: 'Distance', value: '5 miles east' },
@@ -49,12 +49,26 @@ export const townPagesContent: TownPage[] = [
     detail: 'Brandon incorporated in 1973. The schools are in the Brandon Valley School District.',
     about:
       'Brandon is a city in Minnehaha County, five miles east of Sioux Falls. A post office called Brandon has been in operation since 1878, and the city took its name from Brandon Township. Brandon incorporated in 1973. The 2020 census counted 11,048 people. The city lies along the Big Sioux River and Split Rock Creek. Students are in the Brandon Valley School District. The high school, middle school, intermediate school, Brandon Elementary, Robert Bennis Elementary, and Burkman Valley Elementary are inside Brandon. Inspiration Elementary and Fred Assam Elementary sit a few miles southwest, in eastern Sioux Falls. The ZIP code is 57005.',
-    permits: 'We pull permits when the city requires them.',
+    permits:
+      'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits Brandon requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/ev-charger-installation', '/services/lighting-installation'],
     faqs: [
-      { q: 'How far is Brandon from Sioux Falls?', a: 'Brandon is five miles east of Sioux Falls, in Minnehaha County.' },
-      { q: 'Which school district serves Brandon?', a: 'Brandon Valley School District.' },
-      { q: 'Do you pull permits in Brandon?', a: 'We pull permits when the city requires them.' },
+      {
+        q: 'Do you serve all of Brandon?',
+        a: 'Yes. We take electrical calls for homes and businesses across Brandon, in the newer subdivisions and along the older streets near Main Street. We answer 24/7. Call {phone}, tell us the street, and tell us what the power is doing. We will say whether that job is one we can take.',
+      },
+      {
+        q: 'Do I need a permit for a panel upgrade in Brandon?',
+        a: 'A panel replacement and a 200-amp service upgrade are different jobs. The service upgrade is the meter and the service entrance, coordinated with the utility. Outside Sioux Falls and Rapid City, this wiring needs a state wiring permit and a state inspection, plus any local permit Brandon requires. Permit-required wiring is done by a licensed electrician.',
+      },
+      {
+        q: 'Can you install an EV charger in a Brandon garage?',
+        a: 'Yes. A home charger in a Brandon garage is a Level 2 charger on its own 240-volt circuit. We start with a load calculation to see whether the panel and the service can carry it. A full panel, or a 60 or 100 amp service, is a separate job from the charger. Call {phone} and tell us the garage.',
+      },
+      {
+        q: 'Who do I call for a power outage in Brandon?',
+        a: 'Call your power company first. The City of Brandon says Sioux Valley Energy supplies electricity in Brandon, and Xcel Energy serves only parts of Sunset Addition, Stone Ridge Addition, and Bethany Meadows. If the utility says the problem is on your side of the meter, call us at {phone}.',
+      },
     ],
     mapQuery: 'Brandon, SD',
     preview: '/images/maps/brandon.webp',
