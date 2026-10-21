@@ -1295,47 +1295,65 @@ details[open] .faq-minus {
   color: #b4473e;
 }
 
-#place-story {
-  overflow: hidden;
+.place-layout {
+  display: grid;
+  gap: 24px;
+  align-items: start;
 }
 
 .place-card {
   margin: 0;
-  background: #ffffff;
 }
 
-.place-picture,
+.place-frame {
+  overflow: hidden;
+  border: 3px solid #e8b84a;
+  border-radius: 16px;
+  background: #14211f;
+  box-shadow: 0 8px 24px rgba(20, 33, 31, 0.08);
+}
+
+.place-picture {
+  display: block;
+  aspect-ratio: 3 / 2;
+}
+
 .place-img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
 }
 
 .place-caption {
   display: grid;
-  gap: 6px;
-  border-top: 3px solid #e8b84a;
-  padding: 14px 16px 16px;
-  font-size: 0.8125rem;
-  line-height: 1.45;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  line-height: 1.4;
   color: #4e5754;
 }
 
-.place-caption-title {
-  color: #14211f;
-  font-weight: 700;
-}
-
+.place-caption-title,
 .place-credit {
-  display: block;
+  color: #4e5754;
+  font-weight: 500;
 }
 
 .place-copy h2 {
-  margin: 0 0 12px;
+  margin: 48px 0 12px;
 }
 
-.place-subhead {
-  margin-top: 28px;
+.place-copy h2:first-of-type {
+  margin-top: 0;
+}
+
+@media (min-width: 1024px) {
+  .place-layout {
+    grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr);
+    gap: 40px;
+  }
 }
 
 .rail-card {
