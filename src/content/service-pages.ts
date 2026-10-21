@@ -1,6 +1,8 @@
 export interface ServicePage {
   slug: string;
   title: string;
+  /** Document title only. Visible H1 stays `title`. Include the city. No brand suffix. */
+  documentTitle?: string;
   sub: string;
   description: string;
   photo: string;
@@ -21,6 +23,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'electrical-repair',
     title: 'Electrical Repair Sioux Falls SD',
+    documentTitle: 'Electrical Repair in Sioux Falls, SD',
     description: 'Electrical repair in Sioux Falls for dead outlets, bad switches, flickering lights, and tripping breakers.',
     sub: 'Dead outlets, warm switches, and breakers that trip.',
     photo: 'service-repair-hero',
@@ -61,6 +64,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'emergency-electrician',
     title: 'Emergency Electrician Sioux Falls SD',
+    documentTitle: '24/7 Emergency Electrician in Sioux Falls, SD',
     description: 'Emergency electrician in Sioux Falls for sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
     sub: 'Sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
     photo: 'service-emergency-hero',
@@ -101,6 +105,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'outlet-switch-installation',
     title: 'Outlet and Switch Installation Sioux Falls SD',
+    documentTitle: 'Outlet & Switch Installation in Sioux Falls, SD',
     description: 'New outlets, GFCI protection, dimmers, and 240-volt receptacles in Sioux Falls homes and businesses.',
     sub: 'New outlets, GFCI protection, dimmers, and 240-volt receptacles.',
     photo: 'service-outlet',
@@ -141,6 +146,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'panel-upgrades',
     title: 'Panel Upgrades Sioux Falls SD',
+    documentTitle: 'Electrical Panel Upgrades in Sioux Falls, SD',
     description: 'Panel upgrades in Sioux Falls for full, warm, or outdated breaker panels and old fuse boxes. Calls answered 24/7.',
     sub: 'Full, warm, or fuse-box panels replaced.',
     photo: 'service-panel-hero',
@@ -181,6 +187,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'wiring-rewiring',
     title: 'Wiring and Rewiring Sioux Falls SD',
+    documentTitle: 'Home Wiring & Rewiring in Sioux Falls, SD',
     description: 'Wiring and rewiring in Sioux Falls for old circuits, added rooms, and whole-house rewires. Calls answered 24/7.',
     sub: 'Old circuits, added rooms, and rewires.',
     photo: 'service-wiring',
@@ -221,6 +228,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'generator-installation',
     title: 'Generator Installation Sioux Falls SD',
+    documentTitle: 'Generator Installation in Sioux Falls, SD',
     description: 'Standby generators, transfer switches, and inlets for a portable generator in Sioux Falls. No backfeed setups.',
     sub: 'Standby units, transfer switches, and inlets. No backfeed setups.',
     photo: 'service-generator',
@@ -261,6 +269,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'ev-charger-installation',
     title: 'EV Charger Installation Sioux Falls SD',
+    documentTitle: 'EV Charger Installation in Sioux Falls, SD',
     description: 'Level 2 home EV charger installation in Sioux Falls, including the circuit and a panel check. Calls answered 24/7.',
     sub: 'A Level 2 home charger on a new circuit, after the panel is checked.',
     photo: 'service-ev-hero',
@@ -301,6 +310,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'lighting-installation',
     title: 'Lighting Installation Sioux Falls SD',
+    documentTitle: 'Lighting Installation in Sioux Falls, SD',
     description: 'Recessed lights, LED swaps, new fixtures and outdoor lighting installed in Sioux Falls, SD and nearby towns. Calls answered 24/7.',
     sub: 'Recessed lights, LED swaps, and outdoor lighting.',
     photo: 'service-lighting-hero',
@@ -341,6 +351,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'ceiling-fan-installation',
     title: 'Ceiling Fan Installation Sioux Falls SD',
+    documentTitle: 'Ceiling Fan Installation in Sioux Falls, SD',
     description: 'Ceiling fan installation in Sioux Falls with fan-rated boxes, replacements, and fans that include a light.',
     sub: 'Fans hung on a box rated for the weight.',
     photo: 'service-fan',
@@ -381,6 +392,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'hot-tub-wiring',
     title: 'Hot Tub Wiring Sioux Falls SD',
+    documentTitle: 'Hot Tub Wiring in Sioux Falls, SD',
     description: 'Hot tub wiring in Sioux Falls, SD: the dedicated circuit and disconnect your tub needs, sized from its nameplate. Calls answered 24/7.',
     sub: 'The dedicated circuit and disconnect a tub needs, sized from the nameplate.',
     photo: 'service-hottub',
@@ -421,6 +433,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'electrical-inspections',
     title: 'Electrical Inspections Sioux Falls SD',
+    documentTitle: 'Electrical Inspections in Sioux Falls, SD',
     description: 'Private electrical safety checks in Sioux Falls for panels, wiring, and devices. This is not a city inspection.',
     sub: 'A private look at the panel and visible wiring. This is not a city inspection.',
     photo: 'service-inspect',
@@ -461,6 +474,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'surge-protection',
     title: 'Surge Protection Sioux Falls SD',
+    documentTitle: 'Whole-Home Surge Protection in Sioux Falls, SD',
     description: 'Whole-house surge protection installed at the panel in Sioux Falls, SD and nearby towns like Brandon and Tea. Calls answered 24/7.',
     sub: 'A whole-house device at the panel.',
     photo: 'service-surge',
@@ -501,6 +515,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'smoke-co-detectors',
     title: 'Smoke and CO Detectors Sioux Falls SD',
+    documentTitle: 'Smoke & CO Detector Installation in Sioux Falls, SD',
     description: 'Hardwired smoke alarms and carbon monoxide detectors installed or replaced in Sioux Falls, SD homes and nearby towns. Calls answered 24/7.',
     sub: 'Hardwired smoke alarms and carbon monoxide detectors.',
     photo: 'service-smoke',
@@ -541,6 +556,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'commercial-electrician',
     title: 'Commercial Electrician Sioux Falls SD',
+    documentTitle: 'Commercial Electrician in Sioux Falls, SD',
     description: 'Commercial electrician in Sioux Falls for lighting, circuits, and panels in shops, offices, and other buildings.',
     sub: 'Lighting, circuits, and panels for shops and offices, scheduled around your hours.',
     photo: 'service-commercial-hero',

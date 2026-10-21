@@ -35,7 +35,14 @@ const graph = [
 ];
 ---
 
-<Layout title={page.documentTitle} description={page.description} fullTitle extraGraph={graph} overlay>
+<Layout
+  title={page.documentTitle}
+  schemaName={`Electrician in ${page.name}, SD | ${SITE.name}`}
+  description={page.description}
+  fullTitle
+  extraGraph={graph}
+  overlay
+>
   <PageHero
     photo={page.photo}
     eyebrow={`${page.name}, South Dakota`}
