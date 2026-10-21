@@ -49,14 +49,14 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'What to tell us when you call',
     work: [
       'In a newer Brandon house, people often call about lighting, or an EV charger in the garage. The panel needs open space and enough capacity before a charger goes on the wall. Near Main Street, the call is more often a repair, or a panel that filled up as rooms were added. Tell us the street, the room, and whether the power is out or only unreliable.',
-      'Call us in Brandon for a repair, a panel upgrade, lighting, or an EV charger. If a switch or a breaker smells hot, say that first. We pull permits when the city requires them.',
+      'Call us in Brandon for a repair, a panel upgrade, lighting, or an EV charger. If a switch or a breaker smells hot, say that first. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
     slug: 'harrisburg',
     photo: placePhoto(
       'place-harrisburg',
-      'A DAIR locomotive on the tracks in Harrisburg, South Dakota',
+      'A DAIR locomotive in Harrisburg, SD',
       1600,
       1067,
       'https://commons.wikimedia.org/wiki/File:DAIR_3024,_Harrisburg_-_Flickr_-_chief_huddleston.jpg',
@@ -74,14 +74,14 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'Older blocks and newer houses',
     work: [
       'Near Railroad Avenue, an older building may need a repair, or a panel that can take a modern circuit. In a newer house, the call is more often lighting or an EV charger, and the panel has to have room for it. Say which one you need, and give us the street so we know which part of town we are coming to.',
-      'Panel upgrades, EV chargers, lighting, and repairs are the Harrisburg calls we take. We pull permits when the city requires them.',
+      'Panel upgrades, EV chargers, lighting, and repairs are the Harrisburg calls we take. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
     slug: 'tea',
     photo: placePhoto(
       'place-tea',
-      'Entrance to Tea Area High School in Tea, South Dakota',
+      'Entrance to Tea Area High School in Tea, SD',
       1600,
       1205,
       'https://commons.wikimedia.org/wiki/File:Tea_Area_High_School.jpg',
@@ -99,14 +99,14 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'New houses and older ones',
     work: [
       'In a newer Tea house, people call about lighting, or a panel that needs one more circuit. In an older house, the work is usually the circuit that quit, or rewiring in that one room. Tell us the address, and say whether we are coming to a house or a shop.',
-      'Repairs, rewiring, lighting, and panel upgrades are the jobs we do in Tea. We pull permits when the city requires them.',
+      'Repairs, rewiring, lighting, and panel upgrades are the jobs we do in Tea. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
     slug: 'hartford',
     photo: placePhoto(
       'place-hartford',
-      'Downtown Hartford, South Dakota, along the main commercial block',
+      'Downtown Hartford, SD',
       1600,
       756,
       'https://commons.wikimedia.org/wiki/File:Hartford,_South_Dakota_5.jpg',
@@ -124,14 +124,14 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'Repairs, panels, lights, and generator inlets',
     work: [
       'A house on the older streets may need a repair or a lighting change. Before storm season, people ask about a generator inlet. The inlet is wired so a portable generator can power the house without sending power back onto the utility line. A house in a later addition is more likely to need a panel with space for what you want to add. Tell us which of those fits, and which room lost power.',
-      'In Hartford we handle repairs, panel upgrades, generator installation, and lighting. We pull permits when the city requires them.',
+      'In Hartford we handle repairs, panel upgrades, generator installation, and lighting. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
     slug: 'dell-rapids',
     photo: placePhoto(
       'place-dell-rapids',
-      'Downtown Dell Rapids, South Dakota, on a winter day',
+      'Downtown Dell Rapids, SD',
       1600,
       1067,
       'https://commons.wikimedia.org/wiki/File:Downtown_Dell_Rapids,_South_Dakota.JPG',
@@ -149,14 +149,14 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'Old stone buildings and newer lots',
     work: [
       'A quartzite storefront, or a house from the years after that fire, can need rewiring, a panel upgrade, or smoke and carbon monoxide detectors. If an alarm is past its date, tell us. A house on a newer lot, away from those stone blocks, is usually a repair or a lighting job. Tell us the street and what you want checked. If only part of the house is out, say which rooms still have power.',
-      'Bring us a repair, a panel upgrade, a rewire, or new smoke and carbon monoxide detectors. We pull permits when the city requires them.',
+      'Bring us a repair, a panel upgrade, a rewire, or new smoke and carbon monoxide detectors. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
     slug: 'canton',
     photo: placePhoto(
       'place-canton',
-      'Downtown Canton, South Dakota, with older brick buildings along the street',
+      'Downtown Canton, SD',
       1600,
       785,
       'https://commons.wikimedia.org/wiki/File:Canton,_South_Dakota_5.jpg',
@@ -174,14 +174,14 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'Houses downtown and shops at the park',
     work: [
       'An older house or a downtown building often needs a repair, a panel upgrade, or new lighting. A shop at the industrial park is a different visit. Tell us whether the job is a house or a business, the hours a circuit can be off, and the address. If a landlord has to open a meter room, say that on the call.',
-      'Repairs, panel upgrades, lighting, and commercial work are all on the list in Canton. We pull permits when the city requires them.',
+      'Repairs, panel upgrades, lighting, and commercial work are all on the list in Canton. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
     slug: 'lennox',
     photo: placePhoto(
       'place-lennox',
-      'Downtown Lennox, South Dakota, with brick storefronts along the street',
+      'Downtown Lennox, SD',
       1600,
       710,
       'https://commons.wikimedia.org/wiki/File:Lennox,_South_Dakota_5.jpg',
@@ -199,7 +199,7 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'Older houses, rewires, and storm power',
     work: [
       'In an older Lennox house, the work is often rewiring, a repair, or smoke and carbon monoxide detectors. A generator inlet is a separate job. It lets you plug in a portable generator during an outage, and it keeps that power off the utility line. Tell us the address and which of those you need. If the panel is in a basement or a mudroom, say so.',
-      'A repair, rewiring, a generator inlet, and smoke and carbon monoxide detectors are the Lennox jobs. We pull permits when the city requires them.',
+      'A repair, rewiring, a generator inlet, and smoke and carbon monoxide detectors are the Lennox jobs. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
 ];

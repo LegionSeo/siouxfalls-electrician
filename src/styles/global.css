@@ -1499,13 +1499,15 @@ details[open] .faq-minus {
   margin-top: 16px;
 }
 
-.brandon-faq {
+.brandon-faq,
+.town-faq {
   display: grid;
   gap: 28px;
   max-width: 68ch;
 }
 
-.brandon-faq h3 {
+.brandon-faq h3,
+.town-faq h3 {
   margin: 0 0 8px;
 }
 

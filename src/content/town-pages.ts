@@ -93,7 +93,7 @@ export const townPagesContent: TownPage[] = [
       'The county seat is Canton. The school-district boundary and the city boundary do not match, so many Harrisburg schools sit inside Sioux Falls. Adventure, Freedom, and Liberty elementaries are inside Harrisburg city limits.',
     about:
       'Harrisburg is a suburb of Sioux Falls in Lincoln County, about 2.7 miles from the southern edge of Sioux Falls. The 2020 census counted 6,732 people. The ZIP code is 57032. Canton is the Lincoln County seat. The Harrisburg School District boundary and the city boundary do not match, so most district schools sit inside Sioux Falls. Adventure Elementary, Freedom Elementary, and Liberty Elementary are inside Harrisburg city limits.',
-    permits: 'We pull permits when the city requires them.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/panel-upgrades', '/services/ev-charger-installation', '/services/lighting-installation', '/services/electrical-repair'],
     faqs: [
       { q: 'Is Harrisburg in the same county as Sioux Falls?', a: 'Harrisburg is in Lincoln County. Sioux Falls is mostly in Minnehaha County, with part of the city in Lincoln County.' },
@@ -123,7 +123,7 @@ export const townPagesContent: TownPage[] = [
       'Tea was laid out in 1894. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls.',
     about:
       'Tea is an incorporated city in Lincoln County and a suburb of Sioux Falls. The town was laid out in 1894, and the name was chosen because it is short. The 2020 census counted 5,598 people. The Census Bureau estimate for 2024 is 7,699. The ZIP code is 57064. Students attend Tea Area School District 41-5. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls.',
-    permits: 'We pull permits when the city requires them.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/lighting-installation', '/services/panel-upgrades'],
     faqs: [
       { q: 'What county is Tea in?', a: 'Lincoln County. It is a suburb of Sioux Falls.' },
@@ -153,7 +153,7 @@ export const townPagesContent: TownPage[] = [
       'Hartford is northwest of Sioux Falls. West Central High School also draws from Humboldt, the Wall Lake area, and Ellis.',
     about:
       'Hartford is a suburban city in Minnehaha County, northwest of Sioux Falls. The city site says Hartford is about 10 miles west of Sioux Falls. The settlement was named Oaksville in 1878, renamed Hartford in 1881, and incorporated in 1896. A post office has been in operation since 1880. The 2020 census counted 3,354 people. The ZIP code is 57033. West Central High School draws students from Hartford, Humboldt, the Wall Lake area, and Ellis.',
-    permits: 'We pull permits when the city requires them.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation', '/services/lighting-installation'],
     faqs: [
       { q: 'How far is Hartford from Sioux Falls?', a: 'Hartford is about 10 miles west of Sioux Falls.' },
@@ -183,7 +183,7 @@ export const townPagesContent: TownPage[] = [
       'The city sits on the Big Sioux River, upstream of Sioux Falls. The public schools and St. Mary\'s Catholic school both serve the town.',
     about:
       'Dell Rapids sits in Minnehaha County on the Big Sioux River, upstream of Sioux Falls. The 2020 census counted 3,996 people. It is a bedroom community about 15 miles north of Sioux Falls. The public schools are Dell Rapids Elementary, Dell Rapids Middle School, and Dell Rapids High School. St. Mary\'s is a separate Catholic school.',
-    permits: 'We pull permits when the city requires them.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/wiring-rewiring', '/services/smoke-co-detectors'],
     faqs: [
       { q: 'What is the public school mascot?', a: 'The Quarriers, named for the Sioux quartzite quarries in town.' },
@@ -214,7 +214,7 @@ export const townPagesContent: TownPage[] = [
     detail: 'Canton is the Lincoln County seat. It incorporated in 1881. The schools are in Canton School District 41-1.',
     about:
       'Canton is the county seat of Lincoln County, 18 miles south of Sioux Falls. The city sits on the Big Sioux River across from Beloit, Iowa, and it incorporated in 1881. The 2020 census counted 3,066 people. The ZIP code is 57013. Canton is part of the Sioux Falls metropolitan area. The city received the South Dakota Community of the Year Award in 2004 and again in 2011. Lincoln County Courthouse was built in 1889. Canton School District 41-1 serves the city.',
-    permits: 'We pull permits when the city requires them.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/lighting-installation', '/services/commercial-electrician'],
     faqs: [
       { q: 'Is Canton the county seat?', a: 'Yes. Lincoln County’s seat is Canton. The courthouse is in Canton.' },
@@ -245,7 +245,7 @@ export const townPagesContent: TownPage[] = [
       'Settlers arrived in 1879. The district runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School.',
     about:
       'Lennox is a city in Lincoln County, 20 miles southwest of Sioux Falls. Settlers arrived in 1879, and the town was named for Ben Lennox, private secretary to the general manager of the Milwaukee Railroad. The 2020 census counted 2,423 people. The ZIP code is 57039. Lennox School District 41-4 runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School.',
-    permits: 'We pull permits when the city requires them.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/generator-installation', '/services/smoke-co-detectors'],
     faqs: [
       { q: 'How far is Lennox from Sioux Falls?', a: 'Lennox is 20 miles southwest of Sioux Falls.' },

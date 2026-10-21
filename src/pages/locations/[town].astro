@@ -1,21 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import FaqAccordion from '../../components/FaqAccordion.astro';
-import MapEmbed from '../../components/MapEmbed.astro';
 import PageHero from '../../components/PageHero.astro';
-import PlaceStory from '../../components/PlaceStory.astro';
-import ServiceCards from '../../components/ServiceCards.astro';
 import SideRail from '../../components/SideRail.astro';
-import { services } from '../../config/catalog';
+import TownElectrical from '../../components/TownElectrical.astro';
 import { townPageBySlug, townPagesContent } from '../../content/town-pages';
 import { townPlaceBySlug } from '../../content/town-places';
-import { UPDATED_ISO, UPDATED_LABEL } from '../../content/updated';
-import { brandonFaqs, withPhone } from '../../content/brandon-town';
+import { faqItemsFor, townBlockBySlug } from '../../content/town-electrical';
 import { breadcrumb, serviceNode } from '../../lib/page-schema';
 import { faqNode } from '../../lib/schema';
 import { SITE } from '../../config/site';
-import BrandonTown from '../../components/BrandonTown.astro';
 
 export function getStaticPaths() {
   return townPagesContent.map((page) => ({ params: { town: page.slug } }));
@@ -28,10 +22,8 @@ const place = townPlaceBySlug(page.slug);
 if (!place) throw new Error(`Missing town place story ${town}`);
 
 const path = `/locations/${page.slug}`;
-const answer = page.answer.replaceAll('{phone}', SITE.phoneDisplay);
-const linked = page.services
-  .map((href) => services.find((service) => service.href === href))
-  .filter((service) => service?.live);
+const block = townBlockBySlug(page.slug);
+if (!block) throw new Error(`Missing town electrical block ${town}`);
 const graph = [
   serviceNode(`Electrician in ${page.name}, SD`, 'Electrician', path, [page.name]),
   breadcrumb([
@@ -39,17 +31,8 @@ const graph = [
     { name: 'Service area', path: '/service-area' },
     { name: page.name, path },
   ]),
+  faqNode(faqItemsFor(block, SITE.phoneDisplay)),
 ];
-if (page.slug === 'brandon') {
-  graph.push(
-    faqNode(
-      brandonFaqs.map((item) => ({
-        question: item.question,
-        paragraphs: item.paragraphs.map((paragraph) => withPhone(paragraph, SITE.phoneDisplay)),
-      })),
-    ),
-  );
-}
 ---
 
 <Layout
@@ -71,79 +54,13 @@ if (page.slug === 'brandon') {
 
   <div class="page-split">
     <div class="page-main">
-      {page.slug === 'brandon' ? (
-        <BrandonTown phone={SITE.phoneDisplay} place={place} mapQuery={page.mapQuery} preview={page.preview} />
-      ) : (
-      <section class="bg-paper">
-        <div class="section">
-          <p class="measure text-lg">{answer}</p>
-          <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
-        </div>
-      </section>
-
-      <section class="bg-white" aria-labelledby="facts-heading">
-        <div class="section">
-          <div class="block-head">
-            <h2 id="facts-heading">Local facts</h2>
-            <p class="lede">
-              These numbers are about {page.name}. When you call, tell us the room, the panel, or the circuit.
-            </p>
-          </div>
-          <dl class="stat-grid">
-            {
-              page.stats.map((stat) => (
-                <div class="stat-card">
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
-                </div>
-              ))
-            }
-          </dl>
-          <p class="measure mt-8 text-muted">{page.detail}</p>
-          <div class="block-head mt-12">
-            <h2 id="about-heading">About {page.name}</h2>
-          </div>
-          <p class="measure text-muted">{page.about}</p>
-          <div class="block-head mt-12">
-            <h2 id="permit-heading">Permits and inspections</h2>
-          </div>
-          <p class="measure text-muted">{page.permits}</p>
-        </div>
-      </section>
-
-      <PlaceStory place={place} name={page.name} />
-
-      <section class="bg-white" aria-labelledby="work-heading">
-        <div class="section">
-          <div class="town-work">
-            <div>
-              <div class="block-head">
-                <h2 id="map-heading">Map of {page.name}</h2>
-                <p class="lede">This pin marks the town, not your house. When you call, give us the address where you need us.</p>
-              </div>
-              <MapEmbed
-                src={`https://www.google.com/maps?q=${encodeURIComponent(page.mapQuery)}&z=12&output=embed`}
-                title={`Map of ${page.name}, South Dakota`}
-                label={page.mapQuery}
-                preview={page.preview}
-              />
-            </div>
-            <div>
-              <div class="block-head">
-                <h2 id="work-heading">Electrical work in {page.name}</h2>
-                <p class="lede">These are the services most people in {page.name} ask about first. The full list is on the homepage.</p>
-              </div>
-              <ServiceCards services={linked} />
-              <p class="mt-6">
-                <a class="text-link" href="/service-area">Back to the service area</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FaqAccordion items={page.faqs} heading={`${page.name} questions`} />
-      )}
+      <TownElectrical
+        phone={SITE.phoneDisplay}
+        place={place}
+        mapQuery={page.mapQuery}
+        preview={page.preview}
+        block={block}
+      />
     </div>
     <SideRail />
   </div>
