@@ -35,7 +35,11 @@ const steps = visitSteps(page.visit);
 const serviceTitle = page.title.replace(/ Sioux Falls SD$/, '');
 const longTitle = `${serviceTitle} in Sioux Falls, SD | ${SITE.name}`;
 const shortTitle = `${serviceTitle} | ${SITE.name}`;
-const documentTitle = longTitle.length <= 60 ? longTitle : shortTitle.length <= 60 ? shortTitle : page.title;
+const schemaName = longTitle.length <= 60 ? longTitle : shortTitle.length <= 60 ? shortTitle : page.title;
+const documentTitle = page.documentTitle ?? `${serviceTitle} in Sioux Falls, SD`;
+if (!documentTitle.includes('Sioux Falls')) {
+  throw new Error(`Service title must include the city: ${page.slug}`);
+}
 const ctaName: Record<string, string> = {
   'electrical-repair': 'an electrical repair',
   'emergency-electrician': 'an emergency call',
@@ -79,7 +83,7 @@ const graph = [
 ];
 ---
 
-<Layout title={documentTitle} description={page.description} fullTitle extraGraph={graph} overlay>
+<Layout title={documentTitle} schemaName={schemaName} description={page.description} fullTitle extraGraph={graph} overlay>
   <PageHero photo={photo} eyebrow="Sioux Falls and nearby towns" title={page.title} sub={page.sub} />
 
   <div class="page-split">

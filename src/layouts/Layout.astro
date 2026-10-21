@@ -14,7 +14,13 @@ interface Props {
   description?: string;
   /** Ignored. Canonicals always use SITE.origin plus the path, with no trailing slash. */
   canonical?: string;
+  /** When true, title is used as written. No brand suffix is appended. */
   fullTitle?: boolean;
+  /**
+   * WebPage schema name. Defaults to the document title.
+   * Set this when the <title> changes and the schema name must stay the same.
+   */
+  schemaName?: string;
   extraGraph?: Record<string, unknown>[];
   /** Homepage only. Header starts transparent and turns solid after scroll. */
   overlay?: boolean;
@@ -22,8 +28,9 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description, fullTitle, extraGraph = [], overlay = false, noindex = false } = Astro.props;
+const { title, description, fullTitle, schemaName, extraGraph = [], overlay = false, noindex = false } = Astro.props;
 const pageTitle = fullTitle ? title : `${title} | ${SITE.name}`;
+const schemaPageName = schemaName ?? pageTitle;
 const pageDescription =
   description ??
   `${SITE.name} serves homes and businesses in Sioux Falls, SD and nearby towns. Call ${SITE.phoneDisplay}.`;
@@ -35,7 +42,7 @@ const pagePath = (() => {
 })();
 const jsonLd = jsonLdScript(
   siteGraph(
-    { url: pageCanonical, name: pageTitle, description: pageDescription, dateModified: UPDATED_ISO },
+    { url: pageCanonical, name: schemaPageName, description: pageDescription, dateModified: UPDATED_ISO },
     extraGraph,
     {
       fullBusiness: pagePath === '/' || pagePath === '/contact',

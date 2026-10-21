@@ -11,7 +11,8 @@ import { homepageFaqs } from '../content/home';
 import { faqNode } from '../lib/schema';
 
 const faqs = homepageFaqs();
-const homeTitle = 'Electrician Sioux Falls, SD | Sioux Falls Electricians';
+const homeTitle = 'Best Electrician in Sioux Falls, SD | 24/7 Service';
+const homeSchemaName = 'Electrician Sioux Falls, SD | Sioux Falls Electricians';
 const homeDescription = `Residential and commercial electricians in Sioux Falls, Brandon, Harrisburg, Tea and nearby. Repairs, panel upgrades, EV chargers. Call ${SITE.phoneDisplay}.`;
 
 const featuredHrefs = [
@@ -52,7 +53,7 @@ const steps = [
 ];
 ---
 
-<Layout title={homeTitle} description={homeDescription} fullTitle extraGraph={[faqNode(faqs)]} overlay>
+<Layout title={homeTitle} schemaName={homeSchemaName} description={homeDescription} fullTitle extraGraph={[faqNode(faqs)]} overlay>
   <link
     slot="head"
     rel="preload"

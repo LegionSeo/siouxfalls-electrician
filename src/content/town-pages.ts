@@ -10,6 +10,7 @@ export interface TownPage {
   slug: string;
   name: string;
   title: string;
+  /** Document title only. Unique per town, and it names that town. */
   documentTitle: string;
   description: string;
   sub: string;
@@ -32,7 +33,7 @@ export const townPagesContent: TownPage[] = [
     slug: 'brandon',
     name: 'Brandon',
     title: 'Electrician in Brandon, SD',
-    documentTitle: 'Electrician in Brandon, SD | Sioux Falls Electricians',
+    documentTitle: 'Best Electrician in Brandon, SD | 24/7 Service',
     description: 'Electrician in Brandon, SD for repairs, panels, EV chargers, and lighting. Brandon is five miles east of Sioux Falls in Minnehaha County.',
     sub: 'Repair, panel, lighting, and EV-charger calls five miles east of Sioux Falls.',
     photo: photo('town-brandon', 'Electrician at a breaker panel inside a suburban house'),
@@ -63,7 +64,7 @@ export const townPagesContent: TownPage[] = [
     slug: 'harrisburg',
     name: 'Harrisburg',
     title: 'Electrician in Harrisburg, SD',
-    documentTitle: 'Electrician in Harrisburg, SD | Sioux Falls Electricians',
+    documentTitle: 'Best Electrician in Harrisburg, SD | 24/7 Service',
     description: 'Electrician in Harrisburg, SD, a Lincoln County suburb of Sioux Falls. Repairs, panels, lighting, and EV chargers.',
     sub: 'Electrical calls in this Lincoln County suburb.',
     photo: photo('town-harrisburg', 'Electrician running conduit in a residential garage'),
@@ -94,7 +95,7 @@ export const townPagesContent: TownPage[] = [
     slug: 'tea',
     name: 'Tea',
     title: 'Electrician in Tea, SD',
-    documentTitle: 'Electrician in Tea, SD | Sioux Falls Electricians',
+    documentTitle: 'Best Electrician in Tea, SD | 24/7 Service',
     description: 'Electrician in Tea, SD, a Lincoln County suburb of Sioux Falls. Repairs, panels, lighting, and wiring.',
     sub: 'House and business electrical calls in this Lincoln County suburb.',
     photo: photo('town-tea', 'Electrician at an outdoor electric meter on a house'),
@@ -125,7 +126,7 @@ export const townPagesContent: TownPage[] = [
     slug: 'hartford',
     name: 'Hartford',
     title: 'Electrician in Hartford, SD',
-    documentTitle: 'Electrician in Hartford, SD | Sioux Falls Electricians',
+    documentTitle: 'Best Electrician in Hartford, SD | 24/7 Service',
     description: 'Electrician in Hartford, SD, about 10 miles west of Sioux Falls in Minnehaha County. West Central schools.',
     sub: 'Electrical calls about 10 miles west of Sioux Falls, in Minnehaha County.',
     photo: photo('town-hartford', 'Electrician on a ladder at a house service mast'),
@@ -156,7 +157,7 @@ export const townPagesContent: TownPage[] = [
     slug: 'dell-rapids',
     name: 'Dell Rapids',
     title: 'Electrician in Dell Rapids, SD',
-    documentTitle: 'Electrician in Dell Rapids, SD | Sioux Falls Electricians',
+    documentTitle: 'Best Electrician in Dell Rapids, SD | 24/7 Service',
     description: 'Electrician in Dell Rapids, SD, about 15 miles north of Sioux Falls along I-29. Dell Rapids School District 49-3.',
     sub: 'Electrical calls about 15 miles north of Sioux Falls, along I-29.',
     photo: photo('town-dell-rapids', 'Electrician in a utility room with a breaker panel'),
@@ -187,7 +188,7 @@ export const townPagesContent: TownPage[] = [
     slug: 'canton',
     name: 'Canton',
     title: 'Electrician in Canton, SD',
-    documentTitle: 'Electrician in Canton, SD | Sioux Falls Electricians',
+    documentTitle: 'Best Electrician in Canton, SD | 24/7 Service',
     description:
       'Electrician in Canton, SD, the Lincoln County seat 18 miles south of Sioux Falls. Repairs, panels, lighting and commercial work, 24/7.',
     sub: 'Electrical calls in the Lincoln County seat, 18 miles south of Sioux Falls.',
@@ -219,7 +220,7 @@ export const townPagesContent: TownPage[] = [
     slug: 'lennox',
     name: 'Lennox',
     title: 'Electrician in Lennox, SD',
-    documentTitle: 'Electrician in Lennox, SD | Sioux Falls Electricians',
+    documentTitle: 'Best Electrician in Lennox, SD | 24/7 Service',
     description: 'Electrician in Lennox, SD, 20 miles southwest of Sioux Falls in Lincoln County. Lennox School District 41-4.',
     sub: 'Electrical calls 20 miles southwest of Sioux Falls, in Lincoln County.',
     photo: photo('town-lennox', 'Electrician at a floor outlet in a ranch-house kitchen'),
@@ -248,6 +249,17 @@ export const townPagesContent: TownPage[] = [
     preview: '/images/maps/lennox.webp',
   },
 ];
+
+const townDocumentTitles = new Set<string>();
+for (const page of townPagesContent) {
+  if (!page.documentTitle.includes(page.name) || !page.documentTitle.includes('SD')) {
+    throw new Error(`Town title must name ${page.name} and SD`);
+  }
+  if (townDocumentTitles.has(page.documentTitle)) {
+    throw new Error(`Duplicate town title: ${page.documentTitle}`);
+  }
+  townDocumentTitles.add(page.documentTitle);
+}
 
 export function townPageBySlug(slug: string) {
   return townPagesContent.find((page) => page.slug === slug);
