@@ -1,0 +1,49 @@
+---
+import Photo from './Photo.astro';
+import type { TownPlace } from '../content/town-places';
+
+interface Props {
+  place: TownPlace;
+  name: string;
+}
+
+const { place, name } = Astro.props;
+---
+
+<section class="bg-paper" id="place-story" aria-labelledby="place-heading">
+  <figure class="place-card">
+    <Photo
+      photo={place.photo}
+      sizes="(min-width: 1024px) 720px, 100vw"
+      loading="lazy"
+      class="place-img"
+      pictureClass="place-picture"
+    />
+    <figcaption class="place-caption">
+      <span class="place-caption-title">{place.caption}</span>
+      <span class="place-credit">
+        Photo by {place.author}.
+        <a class="text-link" href={place.licenseUrl} rel="license">{place.license}</a>.
+        <a class="text-link" href={place.sourceUrl}>Wikimedia Commons</a>.
+        Resized.
+      </span>
+    </figcaption>
+  </figure>
+  <div class="section">
+    <div class="place-copy">
+      <p class="place-kicker">Around {name}</p>
+      <h2 id="place-heading">{place.heading}</h2>
+        {
+          place.intro.map((paragraph, index) => (
+            <p class:list={['measure', index > 0 && 'mt-4']}>{paragraph}</p>
+          ))
+        }
+        <h2 class="place-subhead">{place.workHeading}</h2>
+        {
+          place.work.map((paragraph, index) => (
+            <p class:list={['measure', index > 0 && 'mt-4']}>{paragraph}</p>
+          ))
+        }
+    </div>
+  </div>
+</section>

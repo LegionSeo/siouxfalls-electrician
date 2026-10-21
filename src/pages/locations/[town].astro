@@ -4,10 +4,12 @@ import CtaBand from '../../components/CtaBand.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import MapEmbed from '../../components/MapEmbed.astro';
 import PageHero from '../../components/PageHero.astro';
+import PlaceStory from '../../components/PlaceStory.astro';
 import ServiceCards from '../../components/ServiceCards.astro';
 import SideRail from '../../components/SideRail.astro';
 import { services } from '../../config/catalog';
 import { townPageBySlug, townPagesContent } from '../../content/town-pages';
+import { townPlaceBySlug } from '../../content/town-places';
 import { UPDATED_ISO, UPDATED_LABEL } from '../../content/updated';
 import { breadcrumb, serviceNode } from '../../lib/page-schema';
 import { SITE } from '../../config/site';
@@ -19,6 +21,8 @@ export function getStaticPaths() {
 const { town } = Astro.params;
 const page = townPageBySlug(town);
 if (!page) throw new Error(`Missing town page ${town}`);
+const place = townPlaceBySlug(page.slug);
+if (!place) throw new Error(`Missing town place story ${town}`);
 
 const path = `/locations/${page.slug}`;
 const answer = page.answer.replaceAll('{phone}', SITE.phoneDisplay);
@@ -91,7 +95,9 @@ const graph = [
         </div>
       </section>
 
-      <section class="bg-paper" aria-labelledby="work-heading">
+      <PlaceStory place={place} name={page.name} />
+
+      <section class="bg-white" aria-labelledby="work-heading">
         <div class="section">
           <div class="town-work">
             <div>

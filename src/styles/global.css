@@ -1286,6 +1286,58 @@ details[open] .faq-minus {
   gap: 32px;
 }
 
+.place-kicker {
+  margin: 0 0 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #b4473e;
+}
+
+#place-story {
+  overflow: hidden;
+}
+
+.place-card {
+  margin: 0;
+  background: #ffffff;
+}
+
+.place-picture,
+.place-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.place-caption {
+  display: grid;
+  gap: 6px;
+  border-top: 3px solid #e8b84a;
+  padding: 14px 16px 16px;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: #4e5754;
+}
+
+.place-caption-title {
+  color: #14211f;
+  font-weight: 700;
+}
+
+.place-credit {
+  display: block;
+}
+
+.place-copy h2 {
+  margin: 0 0 12px;
+}
+
+.place-subhead {
+  margin-top: 28px;
+}
+
 .rail-card {
   border-radius: 16px;
   background: #1f302d;
