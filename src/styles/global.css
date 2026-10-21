@@ -882,6 +882,10 @@ a.card:hover {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.hero-home .hero-sub {
+  max-width: 38rem;
+}
+
 @media (min-width: 1024px) {
   .hero {
     min-height: 88vh;

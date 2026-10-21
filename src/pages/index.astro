@@ -64,7 +64,7 @@ const steps = [
     fetchpriority="high"
   />
 
-  <section class="hero surface-dark">
+  <section class="hero hero-home surface-dark">
     <div class="hero-media">
       <Photo
         photo={SITE.heroPhoto}
@@ -82,7 +82,9 @@ const steps = [
         Best Electrician in<br />
         Sioux Falls, SD
       </h1>
-      <p class="hero-sub">Repairs, panel upgrades, and EV chargers. Done safely.</p>
+      <p class="hero-sub">
+        {SITE.name} handles electrical work for homes and businesses. Repairs, panel upgrades, EV chargers, and lighting at home. Lighting, circuits, and panels for shops and offices, done safely{SITE.available247 ? ', 24/7' : ''}.
+      </p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <ContactLink track="call-hero" class="btn btn-gold w-full sm:w-auto" />
         <a href="#quote" class="btn btn-line w-full sm:w-auto">
