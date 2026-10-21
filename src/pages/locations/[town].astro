@@ -36,7 +36,14 @@ const graph = [
 ---
 
 <Layout title={page.documentTitle} description={page.description} fullTitle extraGraph={graph} overlay>
-  <PageHero photo={page.photo} eyebrow={`${page.name}, South Dakota`} title={`Electrician in ${page.name}, SD`} sub={page.sub} />
+  <PageHero
+    photo={page.photo}
+    eyebrow={`${page.name}, South Dakota`}
+    title="Best Electrician in"
+    titleAfter={`${page.name}, SD`}
+    sub={page.sub}
+    town
+  />
 
   <div class="page-split">
     <div class="page-main">

@@ -854,11 +854,15 @@ a.card:hover {
 }
 
 .hero h1 {
-  max-width: 14ch;
+  max-width: 22ch;
 }
 
 .page-hero h1 {
   max-width: 18ch;
+}
+
+.hero-town h1 {
+  max-width: 22ch;
 }
 
 .faq h2 {
