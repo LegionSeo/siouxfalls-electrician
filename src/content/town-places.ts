@@ -43,7 +43,7 @@ export const townPlaces: TownPlace[] = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Downtown_Brandon.jpg',
     heading: 'Newer homes and the older downtown',
     intro: [
-      'Brandon is in Minnehaha County, five miles east of Sioux Falls. The Big Sioux River and Split Rock Creek run through the city. Interstate 90 runs along the north side of town. A post office called Brandon has been here since 1878, and the city incorporated in 1973. The photo looks north along Main Street in downtown Brandon. Newer houses fill the streets that were added as the city grew.',
+      'Brandon is in Minnehaha County, five miles east of Sioux Falls. The Big Sioux River and Split Rock Creek run through the city. Interstate 90 runs along the north side of town. A post office called Brandon has been here since 1878, and the city incorporated in 1973. Newer houses fill the streets that were added as the city grew.',
       'The census counted 3,238 housing units in 2010 and 4,038 in 2020. That is about 800 more homes in ten years. Newer homes and older homes near Main Street usually need different work. The Big Sioux Recreation Area sits west of Robert Bennis Elementary, with trails and bridges over the river. Great Bear Recreation Park is about two and a half miles west of town.',
     ],
     workHeading: 'What to tell us when you call',
@@ -93,8 +93,8 @@ export const townPlaces: TownPlace[] = [
     sourceUrl: 'https://commons.wikimedia.org/wiki/File:Tea_Area_High_School.jpg',
     heading: 'A suburb that grew quickly',
     intro: [
-      'Tea is a suburb of Sioux Falls in Lincoln County. The town was laid out in 1894, and the name was chosen because it is short. The 2000 census counted 1,742 people and 600 housing units. The 2010 census counted 3,806 people and 1,354 housing units. The 2020 census counted 5,598 people and 1,970 housing units. The Census Bureau estimate for 2024 is 7,699. In 2020 the median age was 29.7, and 36.1 percent of residents were under 18. Many of the houses here went up during that growth.',
-      'The city parks are Tea City Park, the Tea Athletic Complex, Howling Ridge Park, and Prairie Trails Park. Tea Area schools include three elementary schools, a middle school, and Tea Area High School. The photo shows the high school entrance. A newer house near the schools and an older house from the early years of the city are both part of a call here.',
+      'Tea is a suburb of Sioux Falls in Lincoln County. The town was laid out in 1894, and the name was chosen because it is short. The 2000 census counted 1,742 people and 600 housing units. The 2010 census counted 3,806 people and 1,354 housing units. The 2020 census counted 5,598 people and 1,970 housing units. The Census Bureau estimate for 2024 is 7,699. In 2020 the median age was 29.7, and 36.1 percent of residents were under 18. Many of the houses here went up during that growth. That is a lot of new houses in a short time.',
+      'The city parks are Tea City Park, the Tea Athletic Complex, Howling Ridge Park, and Prairie Trails Park. Tea Area schools include three elementary schools, a middle school, and Tea Area High School. A newer house near the schools and an older house from the early years of the city are both part of a call here.',
     ],
     workHeading: 'New houses and older ones',
     work: [
@@ -119,7 +119,7 @@ export const townPlaces: TownPlace[] = [
     heading: 'Oaksville, then Hartford',
     intro: [
       'Hartford began as Oaksville in 1878, named for I. E. Oaks. Early settlers renamed it Hartford in 1881, after Hartford, Connecticut. A post office has been here since 1880, and the city incorporated in 1896. You are in Minnehaha County, about 10 miles west of Sioux Falls. The city also points residents to a pool, a golf course, bike trails, and parks. The 2020 census counted 3,354 people and 1,294 housing units.',
-      'West Central High School serves students from Hartford, Humboldt, the Wall Lake area, and Ellis. Downtown is the older commercial block, and the photo looks along that street. A nature path in the southwest part of the city passes half a mile of apple trees. Hartford City Park has five shelters and an amphitheater. Turtle Creek Park has one shelter, and you reserve a shelter through city hall.',
+      'West Central High School serves students from Hartford, Humboldt, the Wall Lake area, and Ellis. Downtown is the older commercial block. A nature path in the southwest part of the city passes half a mile of apple trees. Hartford City Park has five shelters and an amphitheater. Turtle Creek Park has one shelter, and you reserve a shelter through city hall.',
     ],
     workHeading: 'Repairs, panels, lights, and generator inlets',
     work: [
@@ -144,7 +144,7 @@ export const townPlaces: TownPlace[] = [
     heading: 'Quartzite downtown on the Big Sioux',
     intro: [
       'Dell Rapids is in Minnehaha County, on the Big Sioux River. The rapids reminded people of the Dells of the Wisconsin River. The first name was Dell City. After a fire burned most of the main street, the town was rebuilt in Sioux quartzite, the pink stone quarried here. LG Everist still runs two large quartzite quarries. The D and I Railroad serves those quarries. The public school teams are the Quarriers, named for that rock.',
-      'The 2020 census counted 3,996 people. The public schools are an elementary school, a middle school, and Dell Rapids High School. St. Mary\'s is a separate Catholic school, with an elementary, a junior high, and a high school. The winter street in the photo is that downtown block of quartzite buildings.',
+      'The 2020 census counted 3,996 people. The public schools are an elementary school, a middle school, and Dell Rapids High School. St. Mary\'s is a separate Catholic school, with an elementary, a junior high, and a high school. The quartzite blocks along the main street are the older part of downtown.',
     ],
     workHeading: 'Old stone buildings and newer lots',
     work: [
@@ -194,7 +194,7 @@ export const townPlaces: TownPlace[] = [
     heading: 'A railroad town southwest of Sioux Falls',
     intro: [
       'Lennox is in Lincoln County, 20 miles southwest of Sioux Falls. Settlers arrived in 1879. The town was named for Ben Lennox, private secretary to the general manager of the Milwaukee Railroad. The 2020 census counted 2,423 people, 905 households, and 961 housing units. The median age was 38.1. In that count, 26.6 percent of residents were under 18, and 17.2 percent were 65 or older.',
-      'Downtown is the commercial block from the railroad years, and the photo looks along that street. Houses from those early years and houses added later are different buildings, even in a town this size. The Lennox schools include an elementary school, an intermediate school, a junior high, and a high school. Most calls are still one house, so the address and the room matter more than the size of the town.',
+      'Downtown is the commercial block from the railroad years. Houses from those early years and houses added later are different buildings, even in a town this size. The Lennox schools include an elementary school, an intermediate school, a junior high, and a high school. Most calls are still one house, so the address and the room matter more than the size of the town.',
     ],
     workHeading: 'Older houses, rewires, and storm power',
     work: [
