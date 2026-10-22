@@ -38,7 +38,7 @@ export const townPagesContent: TownPage[] = [
     sub: 'Repair, panel, lighting, and EV-charger calls five miles east of Sioux Falls.',
     photo: photo('town-brandon', 'Electrician at a breaker panel inside a suburban house'),
     answer:
-      'Brandon is a city in Minnehaha County, five miles east of Sioux Falls. The 2020 census counted 11,048 people. Sioux Falls Electricians takes repair, panel, lighting, and EV-charger calls in Brandon. Call {phone}.',
+      'Need an electrician in Brandon, SD? We handle repairs, panel work, Level 2 EV chargers, and outlet work for homes and businesses across Brandon, 24/7. Call {phone} and tell us your street and what is going on at the house or the shop.',
     stats: [
       { label: 'County', value: 'Minnehaha' },
       { label: 'Distance', value: '5 miles east' },
@@ -50,12 +50,25 @@ export const townPagesContent: TownPage[] = [
     about:
       'Brandon is a city in Minnehaha County, five miles east of Sioux Falls. A post office called Brandon has been in operation since 1878, and the city took its name from Brandon Township. Brandon incorporated in 1973. The 2020 census counted 11,048 people. The city lies along the Big Sioux River and Split Rock Creek. Students are in the Brandon Valley School District. The high school, middle school, intermediate school, Brandon Elementary, Robert Bennis Elementary, and Burkman Valley Elementary are inside Brandon. Inspiration Elementary and Fred Assam Elementary sit a few miles southwest, in eastern Sioux Falls. The ZIP code is 57005.',
     permits:
-      'Building permits inside Brandon go through the City of Brandon Planning and Inspection Department at 304 Main Ave. Electrical inspections follow the South Dakota State Electrical Commission. Sioux Falls city limits are a different inspection path.',
+      'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits Brandon requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/ev-charger-installation', '/services/lighting-installation'],
     faqs: [
-      { q: 'How far is Brandon from Sioux Falls?', a: 'Brandon is five miles east of Sioux Falls, in Minnehaha County.' },
-      { q: 'Which school district serves Brandon?', a: 'Brandon Valley School District.' },
-      { q: 'Who issues a building permit in Brandon?', a: 'The City of Brandon Planning and Inspection Department at 304 Main Ave. State electrical inspection rules still apply, and they are separate from a city building permit.' },
+      {
+        q: 'Do you serve all of Brandon?',
+        a: 'Yes. We take electrical calls for homes and businesses across Brandon, in the newer subdivisions and along the older streets near Main Street. We answer 24/7. Call {phone}, tell us the street, and tell us what the power is doing. We will say whether that job is one we can take.',
+      },
+      {
+        q: 'Do I need a permit for a panel upgrade in Brandon?',
+        a: 'A panel replacement and a 200-amp service upgrade are different jobs. The service upgrade is the meter and the service entrance, coordinated with the utility. Outside Sioux Falls and Rapid City, this wiring needs a state wiring permit and a state inspection, plus any local permit Brandon requires. Permit-required wiring is done by a licensed electrician.',
+      },
+      {
+        q: 'Can you install an EV charger in a Brandon garage?',
+        a: 'Yes. A home charger in a Brandon garage is a Level 2 charger on its own 240-volt circuit. We start with a load calculation to see whether the panel and the service can carry it. A full panel, or a 60 or 100 amp service, is a separate job from the charger. Call {phone} and tell us the garage.',
+      },
+      {
+        q: 'Who do I call for a power outage in Brandon?',
+        a: 'Call your power company first. The City of Brandon says Sioux Valley Energy supplies electricity in Brandon, and Xcel Energy serves only parts of Sunset Addition, Stone Ridge Addition, and Bethany Meadows. If the utility says the problem is on your side of the meter, call us at {phone}.',
+      },
     ],
     mapQuery: 'Brandon, SD',
     preview: '/images/maps/brandon.webp',
@@ -77,16 +90,15 @@ export const townPagesContent: TownPage[] = [
       { label: 'ZIP', value: '57032' },
     ],
     detail:
-      'Harrisburg was founded in 1873. The county seat is Canton. The school-district boundary and the city boundary do not match, so many Harrisburg schools sit inside Sioux Falls. Adventure, Freedom, and Liberty elementaries are inside Harrisburg city limits.',
+      'The county seat is Canton. The school-district boundary and the city boundary do not match, so many Harrisburg schools sit inside Sioux Falls. Adventure, Freedom, and Liberty elementaries are inside Harrisburg city limits.',
     about:
-      'Harrisburg is a suburb of Sioux Falls in Lincoln County, about 2.7 miles from the southern edge of Sioux Falls. The town was founded in 1873. The 2020 census counted 6,732 people, and the Census Bureau estimate for 2024 is 10,203. The ZIP code is 57032. Canton is the Lincoln County seat. The Harrisburg School District boundary and the city boundary do not match, so most district schools sit inside Sioux Falls. Adventure Elementary, Freedom Elementary, and Liberty Elementary are inside Harrisburg city limits. From I-29, Exit 71 at 273rd Street is the Harrisburg interchange. 273rd Street is the main east-west road into the city, and South Dakota Highway 115 runs through Harrisburg.',
-    permits:
-      'Work inside Harrisburg city limits is a city permit question. Electrical inspections outside Sioux Falls city limits go through the South Dakota State Electrical Commission.',
+      'Harrisburg is a suburb of Sioux Falls in Lincoln County, about 2.7 miles from the southern edge of Sioux Falls. The 2020 census counted 6,732 people. The ZIP code is 57032. Canton is the Lincoln County seat. The Harrisburg School District boundary and the city boundary do not match, so most district schools sit inside Sioux Falls. Adventure Elementary, Freedom Elementary, and Liberty Elementary are inside Harrisburg city limits.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/panel-upgrades', '/services/ev-charger-installation', '/services/lighting-installation', '/services/electrical-repair'],
     faqs: [
       { q: 'Is Harrisburg in the same county as Sioux Falls?', a: 'Harrisburg is in Lincoln County. Sioux Falls is mostly in Minnehaha County, with part of the city in Lincoln County.' },
       { q: 'Why are some Harrisburg schools in Sioux Falls?', a: 'The school-district boundary and the municipal boundary do not match, so several Harrisburg schools are inside Sioux Falls.' },
-      { q: 'When was Harrisburg founded?', a: 'Harrisburg was founded in 1873. The county seat of Lincoln County is Canton.' },
+      { q: 'When did the railroad reach Harrisburg?', a: 'The first train came through on August 1, 1879, between Sioux City and Sioux Falls. Canton is the Lincoln County seat.' },
     ],
     mapQuery: 'Harrisburg, SD',
     preview: '/images/maps/harrisburg.webp',
@@ -110,9 +122,8 @@ export const townPagesContent: TownPage[] = [
     detail:
       'Tea was laid out in 1894. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls.',
     about:
-      'Tea is an incorporated city in Lincoln County and a suburb of Sioux Falls. The town was laid out in 1894, and the name was chosen because it is short. The 2020 census counted 5,598 people. The Census Bureau estimate for 2024 is 7,699. The ZIP code is 57064. Students attend Tea Area School District 41-5. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls. South of Sioux Falls, I-29 Exit 73 at 271st Street is the Tea interchange and Tea’s access to the interstate.',
-    permits:
-      'Permits for work inside Tea are a city question. State electrical inspections cover wiring outside the Sioux Falls and Rapid City local programs.',
+      'Tea is an incorporated city in Lincoln County and a suburb of Sioux Falls. The town was laid out in 1894, and the name was chosen because it is short. The 2020 census counted 5,598 people. The Census Bureau estimate for 2024 is 7,699. The ZIP code is 57064. Students attend Tea Area School District 41-5. The district office is at 131 N Poplar. Legacy Elementary, Venture Elementary, the middle school, and the high school use Tea addresses. Frontier Elementary is in Sioux Falls.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/lighting-installation', '/services/panel-upgrades'],
     faqs: [
       { q: 'What county is Tea in?', a: 'Lincoln County. It is a suburb of Sioux Falls.' },
@@ -141,9 +152,8 @@ export const townPagesContent: TownPage[] = [
     detail:
       'Hartford is northwest of Sioux Falls. West Central High School also draws from Humboldt, the Wall Lake area, and Ellis.',
     about:
-      'Hartford is a suburban city in Minnehaha County, northwest of Sioux Falls. The city site says Hartford is about 10 miles west of Sioux Falls. The settlement was named Oaksville in 1878, renamed Hartford in 1881, and incorporated in 1896. A post office has been in operation since 1880. The 2020 census counted 3,354 people. The ZIP code is 57033. West Central High School draws students from Hartford, Humboldt, the Wall Lake area, and Ellis. South Dakota Highway 38 runs through Hartford and meets I-90 at Exit 390, just east of the city. That highway is the road to homes and schools inside Hartford.',
-    permits:
-      'Building permits inside Hartford go to the city. Electrical inspections follow the state commission unless the work is inside Sioux Falls, which has its own inspection department.',
+      'Hartford is a suburban city in Minnehaha County, northwest of Sioux Falls. The city site says Hartford is about 10 miles west of Sioux Falls. The settlement was named Oaksville in 1878, renamed Hartford in 1881, and incorporated in 1896. A post office has been in operation since 1880. The 2020 census counted 3,354 people. The ZIP code is 57033. West Central High School draws students from Hartford, Humboldt, the Wall Lake area, and Ellis.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation', '/services/lighting-installation'],
     faqs: [
       { q: 'How far is Hartford from Sioux Falls?', a: 'Hartford is about 10 miles west of Sioux Falls.' },
@@ -167,18 +177,17 @@ export const townPagesContent: TownPage[] = [
       { label: 'County', value: 'Minnehaha' },
       { label: 'Distance', value: '15 miles north' },
       { label: 'School district', value: 'District 49-3' },
-      { label: 'Roads', value: 'I-29, SD 115' },
+      { label: 'Population 2020', value: '3,996' },
     ],
     detail:
-      'The city sits upstream of Sioux Falls on the Big Sioux River. Downtown is about three miles from I-29 by SD Highway 115. Old Highway 77 runs north out of the city. The school office is at 1216 N Garfield Ave.',
+      'The city sits on the Big Sioux River, upstream of Sioux Falls. The public schools and St. Mary\'s Catholic school both serve the town.',
     about:
-      'Dell Rapids sits at the north end of Minnehaha County on the Big Sioux River, upstream of Sioux Falls. It is a bedroom community of Sioux Falls, about 15 miles north along I-29. Downtown is about three miles from I-29 by South Dakota Highway 115. Old Highway 77 runs north out of the city. Dell Rapids School District 49-3 serves the town from an office at 1216 N Garfield Ave. The schools are Dell Rapids Elementary, Dell Rapids Middle School, and Dell Rapids High School. From Sioux Falls, I-29 north and then SD Highway 115 lead into downtown.',
-    permits:
-      'City work is permitted by the city. The state electrical commission inspects wiring outside the Sioux Falls local program.',
+      'Dell Rapids sits in Minnehaha County on the Big Sioux River, upstream of Sioux Falls. The 2020 census counted 3,996 people. It is a bedroom community about 15 miles north of Sioux Falls. The public schools are Dell Rapids Elementary, Dell Rapids Middle School, and Dell Rapids High School. St. Mary\'s is a separate Catholic school.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/wiring-rewiring', '/services/smoke-co-detectors'],
     faqs: [
-      { q: 'How do you get from Dell Rapids to Sioux Falls?', a: 'SD Highway 115 connects downtown to I-29, about three miles west, and then south to Sioux Falls.' },
-      { q: 'What schools are in town?', a: 'Dell Rapids Elementary, Middle School, and High School, in district 49-3, at 1216 N Garfield Ave.' },
+      { q: 'What is the public school mascot?', a: 'The Quarriers, named for the Sioux quartzite quarries in town.' },
+      { q: 'What schools are in town?', a: 'Dell Rapids Elementary, Middle School, and High School, plus St. Mary\'s Catholic school.' },
       { q: 'Which river runs through Dell Rapids?', a: 'The Big Sioux River. The city is upstream of Sioux Falls.' },
     ],
     mapQuery: 'Dell Rapids, SD',
@@ -204,9 +213,8 @@ export const townPagesContent: TownPage[] = [
     ],
     detail: 'Canton is the Lincoln County seat. It incorporated in 1881. The schools are in Canton School District 41-1.',
     about:
-      'Canton is the county seat of Lincoln County, 18 miles south of Sioux Falls. The city sits on the Big Sioux River across from Beloit, Iowa, and it incorporated in 1881. The 2020 census counted 3,066 people. The ZIP code is 57013. Canton is part of the Sioux Falls metropolitan area. The city received the South Dakota Community of the Year Award in 2004 and again in 2011. Lincoln County Courthouse was built in 1889. Canton School District 41-1 serves the city. I-29 Exit 62 is the Canton interchange, where US Highway 18 crosses the interstate and continues east into Canton.',
-    permits:
-      'Ask the city or Lincoln County about a building permit, depending on whether the job is inside city limits. State electrical inspections apply outside Sioux Falls city limits.',
+      'Canton is the county seat of Lincoln County, 18 miles south of Sioux Falls. The city sits on the Big Sioux River across from Beloit, Iowa, and it incorporated in 1881. The 2020 census counted 3,066 people. The ZIP code is 57013. Canton is part of the Sioux Falls metropolitan area. The city received the South Dakota Community of the Year Award in 2004 and again in 2011. Lincoln County Courthouse was built in 1889. Canton School District 41-1 serves the city.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/panel-upgrades', '/services/lighting-installation', '/services/commercial-electrician'],
     faqs: [
       { q: 'Is Canton the county seat?', a: 'Yes. Lincoln County’s seat is Canton. The courthouse is in Canton.' },
@@ -234,11 +242,10 @@ export const townPagesContent: TownPage[] = [
       { label: 'ZIP', value: '57039' },
     ],
     detail:
-      'Lennox was founded in 1889. The district runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School.',
+      'Settlers arrived in 1879. The district runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School.',
     about:
-      'Lennox is a city in Lincoln County, 20 miles southwest of Sioux Falls. Settlers arrived in 1879, and the town was named for Ben Lennox, private secretary to the general manager of the Milwaukee Railroad. Lennox was founded in 1889. The 2020 census counted 2,423 people. The ZIP code is 57039. Lennox School District 41-4 runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School. South Dakota Highway 44 runs through Lennox and east to I-29. Exit 68, labeled Lennox / Parker, is the interstate interchange at 276th Street.',
-    permits:
-      'Jobs inside Lennox go to the city for a building permit. Electrical inspection outside Sioux Falls is a state-commission inspection.',
+      'Lennox is a city in Lincoln County, 20 miles southwest of Sioux Falls. Settlers arrived in 1879, and the town was named for Ben Lennox, private secretary to the general manager of the Milwaukee Railroad. The 2020 census counted 2,423 people. The ZIP code is 57039. Lennox School District 41-4 runs Lennox Elementary, LWC Intermediate, LWC Junior High, and Lennox High School.',
+    permits: 'Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     services: ['/services/electrical-repair', '/services/wiring-rewiring', '/services/generator-installation', '/services/smoke-co-detectors'],
     faqs: [
       { q: 'How far is Lennox from Sioux Falls?', a: 'Lennox is 20 miles southwest of Sioux Falls.' },
