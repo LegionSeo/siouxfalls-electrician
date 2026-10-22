@@ -759,7 +759,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'The power is out in Canton. What is the first call?',
         paragraphs: [[
-          { text: 'Call your power company first. We do not name a Canton electric utility here, because an official city or utility page did not confirm one company for the town. If they say the trouble is on your side of the meter, call us at {phone}.' },
+          { text: 'Call the power company listed on your electric bill first. If they say the problem is on your side of the meter, call {name} at {phone}.' },
         ]],
       },
     ],
@@ -879,7 +879,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Who should I call during a Lennox outage?',
         paragraphs: [[
-          { text: 'Call your power company first. No official city or utility page we checked names one electric company for every Lennox address, so use the company on your bill. If they say the problem is on your side of the meter, call {phone}.' },
+          { text: 'Start with the power company named on your electric bill. If they tell you the trouble is on your side of the meter, call {name} at {phone}.' },
         ]],
       },
     ],
@@ -896,17 +896,17 @@ export const townBlocks: TownBlock[] = [
   },
 ];
 
-export function withPhone(text: string, phone: string) {
-  return text.replaceAll('{phone}', phone);
+export function withPhone(text: string, phone: string, name: string) {
+  return text.replaceAll('{phone}', phone).replaceAll('{name}', name);
 }
 
 export function townBlockBySlug(slug: string) {
   return townBlocks.find((block) => block.slug === slug);
 }
 
-export function faqItemsFor(block: TownBlock, phone: string): FaqItem[] {
+export function faqItemsFor(block: TownBlock, phone: string, name: string): FaqItem[] {
   return block.faqs.map((item) => ({
     question: item.question,
-    paragraphs: item.paragraphs.map((parts) => parts.map((part) => withPhone(part.text, phone)).join('')),
+    paragraphs: item.paragraphs.map((parts) => parts.map((part) => withPhone(part.text, phone, name)).join('')),
   }));
 }
