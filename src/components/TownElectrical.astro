@@ -6,22 +6,23 @@ import type { TownPlace } from '../content/town-places';
 
 interface Props {
   phone: string;
+  name: string;
   place: TownPlace;
   mapQuery: string;
   preview: string;
   block: TownBlock;
 }
 
-const { phone, place, mapQuery, preview, block } = Astro.props;
+const { phone, name, place, mapQuery, preview, block } = Astro.props;
 
 function filled(parts: TextPart[]): TextPart[] {
-  return parts.map((part) => ({ ...part, text: withPhone(part.text, phone) }));
+  return parts.map((part) => ({ ...part, text: withPhone(part.text, phone, name) }));
 }
 ---
 
 <section class="bg-paper">
   <div class="section">
-    <p class="measure text-lg">{withPhone(block.answer, phone)}</p>
+    <p class="measure text-lg">{withPhone(block.answer, phone, name)}</p>
     <p class="mt-6 text-sm text-muted">Updated <time datetime="2026-10">October 2026</time></p>
   </div>
 </section>
