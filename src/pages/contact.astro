@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
+import SmsConsent from '../components/SmsConsent.astro';
 import { townPages } from '../config/catalog';
 import { SITE, formatAddress } from '../config/site';
 import { pagePhoto } from '../lib/photos';
@@ -82,6 +83,7 @@ const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').m
               What happened
               <textarea class="field min-h-32" id="contact-message" name="message" required></textarea>
             </label>
+            <SmsConsent id="contact-sms-consent" />
             <button class="btn btn-gold w-full" type="submit">Send</button>
           </form>
         </div>
@@ -97,8 +99,10 @@ const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').m
       event.preventDefault();
       const data = new FormData(form);
       const mail = form.dataset.mail || '';
+      const consent = data.get('sms_consent') === 'yes' ? 'yes' : 'no';
       const body = ['name', 'phone', 'town', 'message']
         .map((key) => `${key}: ${String(data.get(key) || '')}`)
+        .concat(`sms_consent: ${consent}`)
         .join('\n');
       window.location.href = `mailto:${mail}?subject=${encodeURIComponent('Service request')}&body=${encodeURIComponent(body)}`;
     });

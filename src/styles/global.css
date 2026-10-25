@@ -1522,3 +1522,55 @@ details[open] .faq-minus {
 .housing-copy {
   margin-top: 28px;
 }
+
+.policy {
+  max-width: 68ch;
+}
+
+.policy h1 {
+  max-width: 12ch;
+}
+
+.policy h2 {
+  margin: 40px 0 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.policy p,
+.policy .job-list {
+  margin-top: 12px;
+}
+
+.policy-date {
+  color: #4e5754;
+}
+
+.policy p.policy-callout {
+  margin-top: 16px;
+  border: 1px solid #e8b84a;
+  border-radius: 12px;
+  background: #fff8e6;
+  padding: 16px 18px;
+  font-weight: 600;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #14211f;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.consent input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2rem;
+  flex: none;
+  accent-color: #14211f;
+}

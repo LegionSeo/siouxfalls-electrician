@@ -37,13 +37,19 @@ export default defineConfig({
   site: SITE.origin,
   output: 'static',
   trailingSlash: 'never',
+  redirects: {
+    '/privacy': '/privacy-policy',
+  },
   build: {
     format: 'file',
   },
   integrations: [
     icon(),
     sitemap({
-      filter: (page) => !page.endsWith('/robots.txt') && !page.endsWith('/llms.txt') && !page.endsWith('/404'),
+      filter: (page) => {
+        const path = new URL(page).pathname.replace(/\/+$/, '') || '/';
+        return path !== '/robots.txt' && path !== '/llms.txt' && path !== '/404' && path !== '/privacy';
+      },
       serialize(item) {
         const stamp = gitLastmod(new URL(item.url).pathname);
         if (stamp) item.lastmod = stamp;
