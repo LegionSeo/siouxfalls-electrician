@@ -185,7 +185,7 @@ const graph = [
       <section class="bg-white" aria-labelledby="cost-heading">
         <div class="section">
           <div class="block-head">
-            <h2 id="cost-heading">What affects the price</h2>
+            <h2 id="cost-heading">{page.costHeading ?? 'What affects the price'}</h2>
             <p class="lede">What you pay depends on how hard the wires are to reach, the parts, and whether your city wants a permit. We do not list one price here.</p>
           </div>
           <ol class="card-grid cols-2">
@@ -258,5 +258,8 @@ const graph = [
     <SideRail />
   </div>
 
-  <CtaBand photo={photo} heading={`Need help with ${ctaName[page.slug] ?? catalogService.name.toLowerCase()}?`} />
+  <CtaBand
+    photo={photo}
+    heading={page.ctaHeading ?? `Need help with ${ctaName[page.slug] ?? catalogService.name.toLowerCase()}?`}
+  />
 </Layout>
