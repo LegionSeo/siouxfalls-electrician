@@ -49,7 +49,7 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'What to tell us when you call',
     work: [
       'In a newer Brandon house, people often call about lighting, or an EV charger in the garage. The panel needs open space and enough capacity before a charger goes on the wall. Near Main Street, the call is more often a repair, or a panel that filled up as rooms were added. Tell us the street, the room, and whether the power is out or only unreliable.',
-      'Call us in Brandon for a repair, a panel upgrade, lighting, or an EV charger. If a switch or a breaker smells hot, say that first. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
+      'Call us in Brandon and we will connect you with a local licensed electrician for a repair, a panel upgrade, lighting, or an EV charger. If a switch or a breaker smells hot, say that first. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
@@ -73,8 +73,8 @@ export const townPlaces: TownPlace[] = [
     ],
     workHeading: 'Older blocks and newer houses',
     work: [
-      'Near Railroad Avenue, an older building may need a repair, or a panel that can take a modern circuit. In a newer house, the call is more often lighting or an EV charger, and the panel has to have room for it. Say which one you need, and give us the street so we know which part of town we are coming to.',
-      'Panel upgrades, EV chargers, lighting, and repairs are the Harrisburg calls we take. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
+      'Near Railroad Avenue, an older building may need a repair, or a panel that can take a modern circuit. In a newer house, the call is more often lighting or an EV charger, and the panel has to have room for it. Say which one you need, and give us the street so we know which part of town to match with an electrician.',
+      'Panel upgrades, EV chargers, lighting, and repairs are the Harrisburg requests we connect with a local licensed electrician. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
@@ -98,8 +98,8 @@ export const townPlaces: TownPlace[] = [
     ],
     workHeading: 'New houses and older ones',
     work: [
-      'In a newer Tea house, people call about lighting, or a panel that needs one more circuit. In an older house, the work is usually the circuit that quit, or rewiring in that one room. Tell us the address, and say whether we are coming to a house or a shop.',
-      'Repairs, rewiring, lighting, and panel upgrades are the jobs we do in Tea. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
+      'In a newer Tea house, people call about lighting, or a panel that needs one more circuit. In an older house, the work is usually the circuit that quit, or rewiring in that one room. Tell us the address, and say whether the electrician is coming to a house or a shop.',
+      'Repairs, rewiring, lighting, and panel upgrades are the Tea jobs we connect with a local licensed electrician. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
@@ -124,7 +124,7 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'Repairs, panels, lights, and generator inlets',
     work: [
       'A house on the older streets may need a repair or a lighting change. Before storm season, people ask about a generator inlet. The inlet is wired so a portable generator can power the house without sending power back onto the utility line. A house in a later addition is more likely to need a panel with space for what you want to add. Tell us which of those fits, and which room lost power.',
-      'In Hartford we handle repairs, panel upgrades, generator installation, and lighting. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
+      'In Hartford we connect you with a local licensed electrician for repairs, panel upgrades, generator installation, and lighting. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {
@@ -149,7 +149,7 @@ export const townPlaces: TownPlace[] = [
     workHeading: 'Old stone buildings and newer lots',
     work: [
       'A quartzite storefront, or a house from the years after that fire, can need rewiring, a panel upgrade, or smoke and carbon monoxide detectors. If an alarm is past its date, tell us. A house on a newer lot, away from those stone blocks, is usually a repair or a lighting job. Tell us the street and what you want checked. If only part of the house is out, say which rooms still have power.',
-      'Bring us a repair, a panel upgrade, a rewire, or new smoke and carbon monoxide detectors. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
+      'Call us with a repair, a panel upgrade, a rewire, or new smoke and carbon monoxide detectors, and we will connect you with a local licensed electrician. Permit-required wiring is done by a licensed electrician, with a state wiring permit and inspection, plus any local permits the city requires.',
     ],
   },
   {

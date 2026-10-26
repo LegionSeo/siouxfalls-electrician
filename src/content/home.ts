@@ -25,7 +25,7 @@ export const homeFaqs: FaqItem[] = [
     question: 'Do I need a permit for electrical work in Sioux Falls?',
     paragraphs: [
       'The City of Sioux Falls requires a permit for most electrical work, including many new circuits, panel changes, and equipment installs, so confirm the current rules with city building services before you start.',
-      'We pull a permit when the city requires one.',
+      "The electrician you're matched with pulls a permit when the city requires one.",
     ],
   },
   {
@@ -38,14 +38,14 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Can you work on both homes and businesses?',
     paragraphs: [
-      'Yes, we take electrical calls for both houses and businesses in Sioux Falls and nearby towns, from a single repair to a larger planned job.',
+      'Yes. We connect you with a local licensed electrician for houses and businesses in Sioux Falls and nearby towns, from a single repair to a larger planned job.',
       'Home calls are often outlets, panels, lighting, and EV chargers. Business work can include lighting and added circuits.',
     ],
   },
   {
     question: 'Which towns around Sioux Falls do you serve?',
     paragraphs: [
-      `We serve ${joinNames(townPages.map((town) => town.name))}, South Dakota.`,
+      `We connect you with a local licensed electrician in ${joinNames(townPages.map((town) => town.name))}, South Dakota.`,
       'We do not publish a trip fee. Ask about travel when you call.',
     ],
   },
@@ -59,7 +59,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'Can you install an EV charger in my garage?',
     paragraphs: [
-      'Yes, we can install a Level 2 charger in a garage, including a charger you already bought, after we check that the panel can carry the extra load.',
+      "Yes. We connect you with a local licensed electrician who can install a Level 2 charger in a garage, including a charger you already bought, after they check that the panel can carry the extra load.",
       'Many chargers need a new 240-volt circuit, and the city often requires a permit. Call with the panel size and where you park.',
     ],
   },

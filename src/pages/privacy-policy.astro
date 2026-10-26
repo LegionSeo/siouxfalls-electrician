@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE } from '../config/site';
+import { OPERATOR_EMAIL, REFERRAL_DISCLOSURE, SITE } from '../config/site';
 import { breadcrumb } from '../lib/page-schema';
 
 const place = `${SITE.address.city}, ${SITE.address.region} ${SITE.address.zip}`;
@@ -27,16 +27,19 @@ const graph = [
         <h1>Privacy Policy</h1>
         <p class="policy-date">Effective date: October 24, 2026</p>
         <p>
-          {SITE.name} ("we," "us," or "our") provides electrical service information and service requests for Sioux Falls,
-          SD and nearby towns. This Privacy Policy explains what information we collect through {host}, by phone, and by
+          {REFERRAL_DISCLOSURE} {SITE.name} ("we," "us," or "our") provides electrical service information and referral
+          requests for Sioux Falls, SD and nearby towns. This Privacy Policy explains what information we collect through {host}, by phone, and by
           text message, how we use it, and the choices you have.
         </p>
 
         <h2>Who we are</h2>
         <p>
-          {SITE.name}<br />
+          {REFERRAL_DISCLOSURE}<br />
+          Midwest Leads LLC<br />
           {place}<br />
-          Phone: <a class="text-link" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+          Phone: <a class="text-link" href={SITE.phoneHref}>{SITE.phoneDisplay}</a><br />
+          Email: <a class="text-link" href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a><br />
+          Email: <a class="text-link" href={`mailto:${SITE.email}`}>{SITE.email}</a>
         </p>
 
         <h2>Information we collect</h2>
@@ -63,7 +66,7 @@ const graph = [
         <ul class="job-list">
           <li>To respond to your service request and answer your questions.</li>
           <li>To contact you by phone or text message about your request.</li>
-          <li>To schedule appointments and follow up on service.</li>
+          <li>To connect you with a local licensed electrician and follow up on your request.</li>
           <li>To keep our website working and secure.</li>
           <li>To comply with legal obligations.</li>
         </ul>
@@ -135,7 +138,10 @@ const graph = [
         </p>
 
         <h2>Contact us</h2>
-        <p>For privacy questions, call <a class="text-link" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>.</p>
+        <p>
+          For privacy questions, call <a class="text-link" href={SITE.phoneHref}>{SITE.phoneDisplay}</a>
+          or email <a class="text-link" href={`mailto:${OPERATOR_EMAIL}`}>{OPERATOR_EMAIL}</a>.
+        </p>
       </article>
     </div>
   </section>
