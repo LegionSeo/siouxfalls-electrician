@@ -1877,3 +1877,81 @@ details[open] .faq-minus {
   flex: none;
   accent-color: #14211f;
 }
+
+.contact-layout {
+  display: grid;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.contact-panel {
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+
+.contact-panel-dark {
+  background: #14211f;
+  color: #ffffff;
+}
+
+.contact-panel-dark h2 {
+  color: #ffffff;
+}
+
+.contact-panel-form {
+  border: 1px solid #e7e2d9;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(20, 33, 31, 0.06);
+}
+
+.choice-set {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.choice-set legend {
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.choice-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choice-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 14px;
+  border: 1px solid #e7e2d9;
+  border-radius: 12px;
+  background: #faf7f2;
+  font-weight: 600;
+}
+
+.choice-options input {
+  accent-color: #14211f;
+}
+
+.town-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (min-width: 900px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: start;
+    gap: 32px;
+  }
+
+  .contact-panel {
+    padding: 36px 32px;
+  }
+}
