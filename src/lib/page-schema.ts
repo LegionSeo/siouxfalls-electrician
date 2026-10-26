@@ -13,8 +13,6 @@ export function serviceNode(name: string, serviceType: string, path: string, are
     '@type': 'Service',
     name,
     serviceType,
-    description:
-      'Referral to a local licensed electrician. Sioux Falls Electricians does not perform electrical work.',
     url: absoluteUrl(path),
     provider: { '@id': `${SITE.origin}/#business` },
     areaServed: cityNodes(areas),

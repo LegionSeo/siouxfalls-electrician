@@ -1,6 +1,6 @@
 ---
 import { services, townPages } from '../config/catalog';
-import { OPERATOR_EMAIL, REFERRAL_DISCLOSURE, SITE, formatAddress, mapsUrl } from '../config/site';
+import { SITE, formatAddress, mapsUrl } from '../config/site';
 import ContactLink from './ContactLink.astro';
 
 const year = new Date().getFullYear();
@@ -16,14 +16,14 @@ const plainTowns = townPages.filter((town) => !town.live).map((town) => town.nam
         <img src={SITE.logo} width="142" height="64" alt={SITE.logoText} />
       </a>
       <p class="mt-3 text-sm leading-relaxed on-dark">
-        {REFERRAL_DISCLOSURE}
+        Residential and commercial electrical work in Sioux Falls and nearby towns.
+      </p>
+      <p class="mt-3 text-sm leading-relaxed on-dark">
+        Sioux Falls Electricians is a referral service operated by Midwest Leads LLC, Sioux Falls, SD.
       </p>
       <ContactLink track="call-footer" class="mt-4 inline-flex items-center gap-2 font-semibold text-white" />
       <a class="mt-2 block break-words text-sm on-dark underline" href={`mailto:${SITE.email}`}>
         {SITE.email}
-      </a>
-      <a class="mt-2 block break-words text-sm on-dark underline" href={`mailto:${OPERATOR_EMAIL}`}>
-        {OPERATOR_EMAIL}
       </a>
       <address class="mt-3 text-sm not-italic leading-relaxed on-dark">
         {formatAddress()}

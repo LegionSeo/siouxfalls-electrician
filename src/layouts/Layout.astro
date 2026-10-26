@@ -33,7 +33,7 @@ const pageTitle = fullTitle ? title : `${title} | ${SITE.name}`;
 const schemaPageName = schemaName ?? pageTitle;
 const pageDescription =
   description ??
-  `${SITE.name} connects you with a local licensed electrician for homes and businesses in Sioux Falls, SD and nearby towns. Call ${SITE.phoneDisplay}.`;
+  `${SITE.name} serves homes and businesses in Sioux Falls, SD and nearby towns. Call ${SITE.phoneDisplay}.`;
 const pageCanonical = canonicalUrl(Astro.url.pathname);
 const pagePath = (() => {
   let path = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');

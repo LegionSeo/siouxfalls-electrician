@@ -15,7 +15,7 @@ import { sendLead } from '../src/scripts/lead-form.ts';
 const PHONE = '(605) 250-4838';
 const PHONE_HREF = 'tel:+16052504838';
 const ENDPOINT = 'https://formsubmit.co/ajax/office@siouxfalls-electrician.com';
-const CONTACT_SUCCESS = `Thanks. We got your note. Midwest Leads LLC will reply and connect you with a local licensed electrician. You can also call ${PHONE}.`;
+const CONTACT_SUCCESS = `Thanks. We got your note. Someone on our team will reply. You can also call ${PHONE}.`;
 
 class FakeNode {
   textContent = '';

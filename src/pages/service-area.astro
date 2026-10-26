@@ -24,9 +24,9 @@ const graph = [
 ---
 
 <Layout
-  title="Electrician Referrals in Sioux Falls, SD & Nearby Towns"
-  schemaName="Towns We Cover Near Sioux Falls | Sioux Falls Electricians"
-  description="Electrician referrals in Sioux Falls, Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox. Sioux Falls Electricians connects you with a local licensed electrician. Calls answered 24/7."
+  title="Electricians Serving Sioux Falls, SD & Nearby Towns"
+  schemaName="Towns We Serve Near Sioux Falls | Sioux Falls Electricians"
+  description="Electrical service in Sioux Falls, Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton and Lennox. Calls answered 24/7."
   fullTitle
   extraGraph={graph}
   overlay
@@ -34,7 +34,7 @@ const graph = [
   <PageHero
     photo={hero}
     eyebrow="Service area"
-    title="Towns we cover around Sioux Falls"
+    title="Towns we serve around Sioux Falls"
     sub="Sioux Falls plus Brandon, Harrisburg, Tea, Hartford, Dell Rapids, Canton, and Lennox."
   />
 
@@ -43,8 +43,8 @@ const graph = [
       <section class="bg-paper">
         <div class="section">
           <p class="measure text-lg">
-            Sioux Falls Electricians connects you with a local licensed electrician in Sioux Falls and {joinNames(liveTowns.map((town) => town.name))}.
-            Requests also come from {joinNames(SITE.listOnlyTowns)}.
+            Sioux Falls Electricians works in Sioux Falls and {joinNames(liveTowns.map((town) => town.name))}.
+            Calls also come from {joinNames(SITE.listOnlyTowns)}.
           </p>
           <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
         </div>
@@ -54,13 +54,13 @@ const graph = [
         <div class="section">
           <div class="block-head">
             <h2 id="towns-heading">Town pages</h2>
-            <p class="lede">Each town below has its own page. Open it to see the work a matched electrician does there and how permits work in that town.</p>
+            <p class="lede">Each town below has its own page. Open it to see the work we do there and how permits work in that town.</p>
           </div>
           <ul class="card-grid cols-2">
             <li>
               <a class="text-card" href="/">
                 Sioux Falls
-                <span class="mt-2 block text-sm font-normal text-muted">Referrals for your home or business in Sioux Falls.</span>
+                <span class="mt-2 block text-sm font-normal text-muted">Electrician for your home or business in Sioux Falls.</span>
               </a>
             </li>
             {
@@ -69,7 +69,7 @@ const graph = [
                   <a class="text-card" href={town.href}>
                     {town.name}
                     <span class="mt-2 block text-sm font-normal text-muted">
-                      Referrals for electrical work at your home or business in {town.name}.
+                      Electrical work for your home or business in {town.name}.
                     </span>
                   </a>
                 </li>
@@ -78,7 +78,7 @@ const graph = [
           </ul>
           <div class="block-head mt-12">
             <h2 id="also-heading">Also served</h2>
-            <p class="lede">We also take requests from these towns. They do not have their own page, so tell us the town when you call.</p>
+            <p class="lede">We also come to these towns. They do not have their own page, so tell us the town when you call.</p>
           </div>
           <p class="measure text-muted">{joinNames(SITE.listOnlyTowns)}.</p>
         </div>

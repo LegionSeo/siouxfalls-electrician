@@ -1,9 +1,6 @@
 import { services } from '../config/catalog';
 import { faqAnswerText, type FaqItem } from '../content/home';
-import { OPERATOR_LEGAL_NAME, REFERRAL_DISCLOSURE, SITE, absoluteUrl } from '../config/site';
-
-const referralServiceDescription =
-  'Referral to a local licensed electrician. Sioux Falls Electricians does not perform electrical work.';
+import { SITE, absoluteUrl } from '../config/site';
 
 function areaServed() {
   return [...SITE.serviceTowns, ...SITE.listOnlyTowns].map((name) => ({
@@ -27,7 +24,6 @@ function offerCatalog() {
         itemOffered: {
           '@type': 'Service',
           name: service.name,
-          description: referralServiceDescription,
           url: `${SITE.origin}${service.href}`,
         },
       })),
@@ -37,22 +33,16 @@ function offerCatalog() {
 const businessId = `${SITE.origin}/#business`;
 const websiteId = `${SITE.origin}/#website`;
 
-function organizationNode(catalog: boolean) {
+function electricianNode(catalog: boolean) {
   const node: Record<string, unknown> = {
-    '@type': 'Organization',
+    '@type': 'Electrician',
     '@id': businessId,
     name: SITE.name,
-    legalName: OPERATOR_LEGAL_NAME,
-    description: REFERRAL_DISCLOSURE,
     url: SITE.origin,
     telephone: SITE.phoneE164,
     email: SITE.email,
     image: absoluteUrl('/logo.png'),
     logo: absoluteUrl('/logo.png'),
-    parentOrganization: {
-      '@type': 'Organization',
-      name: OPERATOR_LEGAL_NAME,
-    },
     areaServed: areaServed(),
   };
 
@@ -121,9 +111,9 @@ export function siteGraph(
   options: { catalog?: boolean } = {},
 ) {
   const catalog = options.catalog ?? false;
-  // Every page carries the same Organization node. Rich Results Test reads one
+  // Every page carries the same Electrician node. Rich Results Test reads one
   // URL at a time and does not fill in a bare @id from another page.
-  const business = organizationNode(catalog);
+  const business = electricianNode(catalog);
 
   const webpage: Record<string, unknown> = {
     '@type': 'WebPage',

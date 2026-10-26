@@ -53,7 +53,7 @@ export const townBlocks: TownBlock[] = [
     slug: 'brandon',
     name: 'Brandon',
     answer:
-      'Need an electrician in Brandon, SD? We connect you with a local licensed electrician for repairs, panel work, Level 2 EV chargers, and outlet work for homes and businesses across Brandon. Calls are answered 24/7. Call {phone} and tell us your street and what is going on at the house or the shop.',
+      'Need an electrician in Brandon, SD? We handle repairs, panel work, Level 2 EV chargers, and outlet work for homes and businesses across Brandon, 24/7. Call {phone} and tell us your street and what is going on at the house or the shop.',
     workIntro:
       'Brandon has newer subdivisions and an older core near Main Street. The call depends on which one you are in.',
     jobs: [
@@ -146,7 +146,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Do you serve all of Brandon?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for homes and businesses across Brandon, in the newer subdivisions and along the older streets near Main Street. We answer 24/7. Call {phone}, tell us the street, and tell us what the power is doing.' },
+          { text: 'Yes. We take electrical calls for homes and businesses across Brandon, in the newer subdivisions and along the older streets near Main Street. We answer 24/7. Call {phone}, tell us the street, and tell us what the power is doing. We will say whether that job is one we can take.' },
         ]],
       },
       {
@@ -158,7 +158,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Can you install an EV charger in a Brandon garage?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for a Level 2 charger on its own 240-volt circuit in a Brandon garage. The electrician starts with a load calculation to see whether the panel and the service can carry it. A full panel, or a 60 or 100 amp service, is a separate job from the charger. Call {phone} and tell us the garage.' },
+          { text: 'Yes. A home charger in a Brandon garage is a Level 2 charger on its own 240-volt circuit. We start with a load calculation to see whether the panel and the service can carry it. A full panel, or a 60 or 100 amp service, is a separate job from the charger. Call {phone} and tell us the garage.' },
         ]],
       },
       {
@@ -171,23 +171,23 @@ export const townBlocks: TownBlock[] = [
       },
     ],
     serving: [
-      { text: 'Brandon is east of Sioux Falls. Interstate 90 runs along the north side of town, and South Dakota Highway 11 runs north and south through Brandon. The drive from Sioux Falls is about 10 to 20 minutes, depending on where you start. We also connect callers in ' },
+      { text: 'Brandon is east of Sioux Falls. Interstate 90 runs along the north side of town, and South Dakota Highway 11 runs north and south through Brandon. The drive from Sioux Falls is about 10 to 20 minutes, depending on where you start. We also serve ' },
       { text: 'Harrisburg', href: '/locations/harrisburg' },
       { text: ' and ' },
       { text: 'Dell Rapids', href: '/locations/dell-rapids' },
-      { text: ', and the ' },
-      { text: 'Sioux Falls Electricians', href: '/' },
+      { text: ', and our ' },
+      { text: 'Sioux Falls electrician', href: '/' },
       { text: ' page covers the city itself. The full list is on the ' },
       { text: 'service area page', href: '/service-area' },
       { text: '.' },
     ],
-    mapNote: 'This pin marks the town, not your house. When you call, give us the address where you need an electrician.',
+    mapNote: 'This pin marks the town, not your house. When you call, give us the address where you need us.',
   },
   {
     slug: 'harrisburg',
     name: 'Harrisburg',
     answer:
-      'Need an electrician in Harrisburg, SD? Most requests here are newer houses: panel room, Level 2 EV chargers, lighting, and a repair when one circuit quits. We answer 24/7 and connect you with a local licensed electrician. Call {phone} and tell us the addition and what stopped working.',
+      'Need an electrician in Harrisburg, SD? Most calls here are newer houses: panel room, Level 2 EV chargers, lighting, and a repair when one circuit quits. We answer 24/7. Call {phone} and tell us the addition and what stopped working.',
     workIntro:
       'Harrisburg grew fast after 2000. A smaller set of older houses still sits near the original town. Those two groups are different jobs.',
     jobs: [
@@ -266,7 +266,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Do you cover the new Harrisburg additions and the older blocks?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for both the subdivisions built since 2000 and the smaller older part of Harrisburg. We answer 24/7. Call {phone}, name the addition or the street, and say whether you need a new circuit or a repair.' },
+          { text: 'Yes. We take both the subdivisions built since 2000 and the smaller older part of Harrisburg. We answer 24/7. Call {phone}, name the addition or the street, and say whether you need a new circuit or a repair. We will tell you if that job is one we can do.' },
         ]],
       },
       {
@@ -278,7 +278,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Can a Harrisburg garage get a Level 2 charger?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for a Level 2 charger on a dedicated 240-volt circuit. The electrician runs a load calculation before mounting it, so the panel and the service can carry the car. If the panel is full, a subpanel is a separate conversation. Call {phone} and describe the garage and the panel if you know it.' },
+          { text: 'Yes. The charger is Level 2, on a dedicated 240-volt circuit. We run a load calculation before we mount it, so the panel and the service can carry the car. If the panel is full, a subpanel is a separate conversation. Call {phone} and describe the garage and the panel if you know it.' },
         ]],
       },
       {
@@ -291,12 +291,12 @@ export const townBlocks: TownBlock[] = [
       },
     ],
     serving: [
-      { text: 'Harrisburg is south of Sioux Falls. Interstate 29 meets 273rd Street on the way, and South Dakota Highway 115 also runs down from the city. The drive is about 15 to 25 minutes, depending on where you start. We also connect callers in ' },
+      { text: 'Harrisburg is south of Sioux Falls. Interstate 29 meets 273rd Street on the way, and South Dakota Highway 115 also runs down from the city. The drive is about 15 to 25 minutes, depending on where you start. We also serve ' },
       { text: 'Tea', href: '/locations/tea' },
       { text: ' and ' },
       { text: 'Canton', href: '/locations/canton' },
-      { text: ', and the ' },
-      { text: 'Sioux Falls Electricians', href: '/' },
+      { text: ', and our ' },
+      { text: 'Sioux Falls electrician', href: '/' },
       { text: ' page covers the city itself. See the ' },
       { text: 'service area page', href: '/service-area' },
       { text: ' for the rest.' },
@@ -307,7 +307,7 @@ export const townBlocks: TownBlock[] = [
     slug: 'tea',
     name: 'Tea',
     answer:
-      'Looking for an electrician in Tea, SD? We connect you with a local licensed electrician for newer houses and the smaller number of older ones: chargers, basements, lighting, and repairs. Calls are answered 24/7. Call {phone} with the street and a short description of the problem.',
+      'Looking for an electrician in Tea, SD? We wire newer houses and the smaller number of older ones: chargers, basements, lighting, and repairs. We are available 24/7. Call {phone} with the street and a short description of the problem.',
     workIntro:
       'Tea added a lot of houses from the 1990s through the last few years. The older streets are a smaller share of the calls.',
     jobs: [
@@ -388,7 +388,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Do you work in the newer Tea neighborhoods?',
         paragraphs: [[
-          { text: 'Yes. Newer additions are most of Tea, and we also take requests from the older streets. We answer 24/7 and connect you with a local licensed electrician. Call {phone} and give the street, then say if the job is a charger, a basement, lighting, or a circuit that failed.' },
+          { text: 'Yes. Newer additions are most of Tea, and we also take the older streets. We answer 24/7. Call {phone} and give the street, then say if the job is a charger, a basement, lighting, or a circuit that failed. We will say if we can take it.' },
         ]],
       },
       {
@@ -400,7 +400,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'What do you check before a charger goes in a Tea garage?',
         paragraphs: [[
-          { text: 'The electrician you\'re matched with treats a home unit as a Level 2 charger on a 240-volt circuit of its own. The first step is a load calculation, so they know the panel and the service can feed it. A full panel is a different job from the charger. Call {phone} and tell us which garage and what the panel looks like.' },
+          { text: 'We treat a home unit as a Level 2 charger on a 240-volt circuit of its own. The first step is a load calculation, so we know the panel and the service can feed it. A full panel is a different job from the charger. Call {phone} and tell us which garage and what the panel looks like.' },
         ]],
       },
       {
@@ -413,12 +413,12 @@ export const townBlocks: TownBlock[] = [
       },
     ],
     serving: [
-      { text: 'Tea sits southwest of Sioux Falls, with Interstate 29 along the east side and 271st Street into town. The drive is about 10 to 20 minutes, depending on your start. We also connect callers in ' },
+      { text: 'Tea sits southwest of Sioux Falls, with Interstate 29 along the east side and 271st Street into town. The drive is about 10 to 20 minutes, depending on your start. We also serve ' },
       { text: 'Harrisburg', href: '/locations/harrisburg' },
       { text: ' and ' },
       { text: 'Lennox', href: '/locations/lennox' },
-      { text: ', and the ' },
-      { text: 'Sioux Falls Electricians', href: '/' },
+      { text: ', and our ' },
+      { text: 'Sioux Falls electrician', href: '/' },
       { text: ' page covers the city itself. The ' },
       { text: 'service area page', href: '/service-area' },
       { text: ' lists every town.' },
@@ -429,7 +429,7 @@ export const townBlocks: TownBlock[] = [
     slug: 'hartford',
     name: 'Hartford',
     answer:
-      'Need an electrician in Hartford, SD? We connect you with a local licensed electrician for downtown houses, newer additions, and acreages at the edge of town. Panels, repairs, shop circuits, and generator hookups are the usual list. We answer 24/7. Call {phone} and say which place and what failed.',
+      'Need an electrician in Hartford, SD? We take downtown houses, newer additions, and acreages at the edge of town. Panels, repairs, shop circuits, and generator hookups are the usual list. We answer 24/7. Call {phone} and say which place and what failed.',
     workIntro:
       'Hartford is a mix. Newer additions and an older downtown sit in the same town, and the roads out of town turn into acreages.',
     jobs: [
@@ -509,7 +509,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Do you come to Hartford houses and to acreages outside town?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for the older downtown streets and the later additions. Outside town, shops, wells, and outbuildings are part of the same referral area. We answer 24/7. Call {phone} with the address and what lost power or what you want added.' },
+          { text: 'Yes. In town we see both the older downtown streets and the later additions. Outside town, shops, wells, and outbuildings are part of the same service area. We answer 24/7. Call {phone} with the address and what lost power or what you want added.' },
         ]],
       },
       {
@@ -521,7 +521,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'How do you connect a generator at a Hartford property?',
         paragraphs: [[
-          { text: 'A standby or portable generator is connected through a transfer switch or an interlock kit. That is the safe way to use it during an outage. The electrician you\'re matched with looks at the panel and the loads first. Call {phone} and tell us if the generator is already on site or still a plan. We answer 24/7.' },
+          { text: 'A standby or portable generator is connected through a transfer switch or an interlock kit. That is the safe way to use it during an outage. We look at the panel and the loads first. Call {phone} and tell us if the generator is already on site or still a plan. We answer 24/7.' },
         ]],
       },
       {
@@ -534,13 +534,13 @@ export const townBlocks: TownBlock[] = [
       },
     ],
     serving: [
-      { text: 'Hartford is west of Sioux Falls. South Dakota Highway 38 runs out to town and meets Interstate 90. Figure about 15 to 25 minutes from Sioux Falls, depending on the start. We also connect callers in ' },
+      { text: 'Hartford is west of Sioux Falls. South Dakota Highway 38 runs out to town and meets Interstate 90. Figure about 15 to 25 minutes from Sioux Falls, depending on the start. We also serve ' },
       { text: 'Dell Rapids', href: '/locations/dell-rapids' },
       { text: ' and ' },
       { text: 'Tea', href: '/locations/tea' },
-      { text: ', and the ' },
-      { text: 'Sioux Falls Electricians', href: '/' },
-      { text: ' page covers the city itself. Every town we take requests from is on the ' },
+      { text: ', and our ' },
+      { text: 'Sioux Falls electrician', href: '/' },
+      { text: ' page covers the city itself. Every town we cover is on the ' },
       { text: 'service area page', href: '/service-area' },
       { text: '.' },
     ],
@@ -550,7 +550,7 @@ export const townBlocks: TownBlock[] = [
     slug: 'dell-rapids',
     name: 'Dell Rapids',
     answer:
-      'Need an electrician in Dell Rapids, SD? Older houses near downtown and newer ones farther out need different work. We connect you with a local licensed electrician for both, plus shops at the edge of town. We answer 24/7. Call {phone} and describe the street and the trouble.',
+      'Need an electrician in Dell Rapids, SD? Older houses near downtown and newer ones farther out need different work, and we do both, plus shops at the edge of town. We answer 24/7. Call {phone} and describe the street and the trouble.',
     workIntro:
       'A large share of Dell Rapids housing is from 1939 or earlier, and another large share was built after 1980. The job follows the house.',
     jobs: [
@@ -631,7 +631,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Do you work on the older houses near downtown Dell Rapids?',
         paragraphs: [[
-          { text: 'Yes. Downtown and the older streets are a large part of the housing here, and we also connect you with a local licensed electrician for newer houses and shops at the edge of town. We answer 24/7. Call {phone}, give the street, and say if you are looking at a fuse box, a dead circuit, or something you want added.' },
+          { text: 'Yes. Downtown and the older streets are a large part of the housing here, and we also take newer houses and shops at the edge of town. We answer 24/7. Call {phone}, give the street, and say if you are looking at a fuse box, a dead circuit, or something you want added.' },
         ]],
       },
       {
@@ -643,7 +643,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Can you replace smoke and CO alarms in an older Dell Rapids house?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician who can replace them. Alarms wear out after about 10 years, so the date on the back matters more than whether the button still clicks. The electrician can also talk about GFCI shock protection in kitchens and baths on the same visit if those outlets are the old ungrounded kind. Call {phone} and say how many alarms you have.' },
+          { text: 'Yes. Alarms wear out after about 10 years, so the date on the back matters more than whether the button still clicks. We can also talk about GFCI shock protection in kitchens and baths on the same visit if those outlets are the old ungrounded kind. Call {phone} and say how many alarms you have.' },
         ]],
       },
       {
@@ -656,12 +656,12 @@ export const townBlocks: TownBlock[] = [
       },
     ],
     serving: [
-      { text: 'Dell Rapids is north of Sioux Falls. Interstate 29 is the highway north, and South Dakota Highway 115 runs from the interstate into town. The drive is about 25 to 35 minutes. We also connect callers in ' },
+      { text: 'Dell Rapids is north of Sioux Falls. Interstate 29 is the highway north, and South Dakota Highway 115 runs from the interstate into town. The drive is about 25 to 35 minutes. We also serve ' },
       { text: 'Hartford', href: '/locations/hartford' },
       { text: ' and ' },
       { text: 'Brandon', href: '/locations/brandon' },
-      { text: ', and the ' },
-      { text: 'Sioux Falls Electricians', href: '/' },
+      { text: ', and our ' },
+      { text: 'Sioux Falls electrician', href: '/' },
       { text: ' page covers the city itself. The rest of the list is the ' },
       { text: 'service area page', href: '/service-area' },
       { text: '.' },
@@ -672,7 +672,7 @@ export const townBlocks: TownBlock[] = [
     slug: 'canton',
     name: 'Canton',
     answer:
-      'Need an electrician in Canton, SD? A lot of the houses are older, so rewires, panels, and small services are common, along with shops and wells at the edge of town. We connect you with a local licensed electrician. We answer 24/7. Call {phone} and tell us the address and what you need.',
+      'Need an electrician in Canton, SD? A lot of the houses are older, so rewires, panels, and small services are common, along with shops and wells at the edge of town. We answer 24/7. Call {phone} and tell us the address and what you need.',
     workIntro:
       'Canton\'s housing estimate leans old. The largest group was built in 1939 or earlier. Newer houses exist, and they are the smaller share.',
     jobs: [
@@ -754,7 +754,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Do you take older Canton houses and places just outside town?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for older houses, newer houses, and acreages with a shop or a well. We answer 24/7. Call {phone} and say whether the job is a house downtown, a newer street, or a place on the edge.' },
+          { text: 'Yes. Most of the estimated housing is from 1979 or earlier, and we also go to newer houses and to acreages with a shop or a well. We answer 24/7. Call {phone} and say whether we are coming to a house downtown, a newer street, or a place on the edge.' },
         ]],
       },
       {
@@ -766,7 +766,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Can you wire a well pump or a stock tank heater near Canton?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician when the place is in the towns on this site. A well pump circuit is sized from the pump label. A stock tank heater sits near water, so the circuit needs GFCI shock protection. Neither one is a 200-amp service upgrade unless the service itself is too small. Call {phone} and describe the building the power comes from.' },
+          { text: 'Yes, when the place is in our service area. A well pump circuit is sized from the pump label. A stock tank heater sits near water, so the circuit needs GFCI shock protection. Neither one is a 200-amp service upgrade unless the service itself is too small. Call {phone} and describe the building the power comes from.' },
         ]],
       },
       {
@@ -777,12 +777,12 @@ export const townBlocks: TownBlock[] = [
       },
     ],
     serving: [
-      { text: 'Canton is south of Sioux Falls. The usual roads are Interstate 29 to US Highway 18, or South Dakota Highway 11. The drive is about 30 to 40 minutes. We also connect callers in ' },
+      { text: 'Canton is south of Sioux Falls. The usual roads are Interstate 29 to US Highway 18, or South Dakota Highway 11. The drive is about 30 to 40 minutes. We also serve ' },
       { text: 'Harrisburg', href: '/locations/harrisburg' },
       { text: ' and ' },
       { text: 'Lennox', href: '/locations/lennox' },
-      { text: ', and the ' },
-      { text: 'Sioux Falls Electricians', href: '/' },
+      { text: ', and our ' },
+      { text: 'Sioux Falls electrician', href: '/' },
       { text: ' page covers the city itself. The ' },
       { text: 'service area page', href: '/service-area' },
       { text: ' has the full list.' },
@@ -793,7 +793,7 @@ export const townBlocks: TownBlock[] = [
     slug: 'lennox',
     name: 'Lennox',
     answer:
-      'Need an electrician in Lennox, SD? We connect you with a local licensed electrician for older houses in town and outbuildings on the edge: repairs, panels, shop circuits, and generator hookups. We answer 24/7. Call {phone} with the street and a plain description of the problem.',
+      'Need an electrician in Lennox, SD? We handle older houses in town and outbuildings on the edge: repairs, panels, shop circuits, and generator hookups. We answer 24/7. Call {phone} with the street and a plain description of the problem.',
     workIntro:
       'Lennox is not a new subdivision town. More than half of the estimated housing was built before 1980, with both a prewar group and a 1970s group.',
     jobs: [
@@ -846,7 +846,7 @@ export const townBlocks: TownBlock[] = [
     housing: [
       'Lennox city has an estimated 1,032 housing units. An estimated 579 were built in 1979 or earlier, and an estimated 453 were built in 1980 or later. Within the older estimate, 222 units date from 1939 or earlier and 234 from the 1970s.',
       'So the town is not one age. Houses from 1939 or earlier and houses from the 1970s can both have tight panels, while the newer streets are fewer. Places at the edge add shops, wells, and outbuildings that a house on a town lot does not have.',
-      'Say which building the electrician would be feeding. A subpanel in a shop does not replace a 200-amp service upgrade at the house.',
+      'Say which building we are feeding. A subpanel in a shop does not replace a 200-amp service upgrade at the house.',
     ],
     housingSource:
       'Lennox city, South Dakota housing counts are estimates from American Community Survey 2024 5-year table B25034, Year Structure Built.',
@@ -876,7 +876,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Will you come to an older Lennox house and to a shop outside town?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for older houses, and for shops or wells just outside town. We answer 24/7. Call {phone} and say house, shop, or both, plus the street or the rural address.' },
+          { text: 'Yes. Older houses are the larger share of the estimate, and shops or wells just outside town are part of the work too. We answer 24/7. Call {phone} and say house, shop, or both, plus the street or the rural address.' },
         ]],
       },
       {
@@ -888,7 +888,7 @@ export const townBlocks: TownBlock[] = [
       {
         question: 'Can you add a shop subpanel on a Lennox acreage?',
         paragraphs: [[
-          { text: 'Yes. We connect you with a local licensed electrician for a subpanel in the shop or the outbuilding. It does not, by itself, raise the house to a 200-amp service. If the existing service is 60 or 100 amp, the electrician talks about that upgrade separately and coordinates the meter work with the utility. Call {phone} and tell us what the shop needs to run.' },
+          { text: 'Yes. The subpanel is for the shop or the outbuilding. It does not, by itself, raise the house to a 200-amp service. If the existing service is 60 or 100 amp, we talk about that upgrade separately and coordinate the meter work with the utility. Call {phone} and tell us what the shop needs to run.' },
         ]],
       },
       {
@@ -899,12 +899,12 @@ export const townBlocks: TownBlock[] = [
       },
     ],
     serving: [
-      { text: 'Lennox is southwest of Sioux Falls. Interstate 29 to South Dakota Highway 44 is the usual drive, about 25 to 35 minutes depending on the start. We also connect callers in ' },
+      { text: 'Lennox is southwest of Sioux Falls. Interstate 29 to South Dakota Highway 44 is the usual drive, about 25 to 35 minutes depending on the start. We also serve ' },
       { text: 'Tea', href: '/locations/tea' },
       { text: ' and ' },
       { text: 'Canton', href: '/locations/canton' },
-      { text: ', and the ' },
-      { text: 'Sioux Falls Electricians', href: '/' },
+      { text: ', and our ' },
+      { text: 'Sioux Falls electrician', href: '/' },
       { text: ' page covers the city itself. The ' },
       { text: 'service area page', href: '/service-area' },
       { text: ' names the others.' },
