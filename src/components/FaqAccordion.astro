@@ -1,4 +1,6 @@
 ---
+import InlineText from './InlineText.astro';
+
 interface Item {
   q: string;
   a: string;
@@ -27,7 +29,9 @@ const { items, heading = 'Questions' } = Astro.props;
                 <span class="faq-plus text-2xl font-bold leading-none text-rose" aria-hidden="true">+</span>
                 <span class="faq-minus text-2xl font-bold leading-none text-rose" aria-hidden="true">−</span>
               </summary>
-              <p class="measure mt-3 text-muted">{item.a}</p>
+              <p class="measure mt-3 text-muted">
+                <InlineText text={item.a} />
+              </p>
             </details>
           ))
         }

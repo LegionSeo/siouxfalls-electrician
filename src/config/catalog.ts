@@ -56,6 +56,13 @@ const serviceList: Omit<ServiceItem, 'live'>[] = [
     summary: 'Replace a full, warm, or outdated panel, including an old fuse box. We size the new panel for your service and for what you want to add.',
   },
   {
+    name: 'Circuit breaker and panel repair',
+    href: '/services/circuit-breaker-panel-repair',
+    group: 'Repair',
+    icon: 'wrench',
+    summary: 'Breakers that trip, and panels that are hot, rusted, or damaged. A capacity upgrade is a different visit.',
+  },
+  {
     name: 'Wiring and rewiring',
     href: '/services/wiring-rewiring',
     group: 'Upgrades',
