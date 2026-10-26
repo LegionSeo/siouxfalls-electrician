@@ -10,9 +10,9 @@ import { homepageFaqs } from '../content/home';
 import { faqNode } from '../lib/schema';
 
 const faqs = homepageFaqs();
-const homeTitle = 'Best Electrician in Sioux Falls, SD | 24/7 Service';
-const homeSchemaName = 'Electrician Sioux Falls, SD | Sioux Falls Electricians';
-const homeDescription = `Need an electrician in Sioux Falls? Residential and commercial electricians for Sioux Falls, Brandon, Harrisburg, Tea and nearby, 24/7. Call ${SITE.phoneDisplay}.`;
+const homeTitle = 'Electrician Referrals in Sioux Falls, SD | Sioux Falls Electricians';
+const homeSchemaName = 'Electrician Referrals in Sioux Falls, SD | Sioux Falls Electricians';
+const homeDescription = `Need an electrician in Sioux Falls? ${SITE.name} is a referral service that connects you with a local licensed electrician for homes and businesses in Sioux Falls, Brandon, Harrisburg, Tea, and nearby towns. Calls answered 24/7. Call ${SITE.phoneDisplay}.`;
 
 const featuredHrefs = [
   '/services/electrical-repair',
@@ -44,12 +44,12 @@ const steps = [
     text: 'Call and tell us what happened. Say which room, and whether it is your house or your business.',
   },
   {
-    title: 'We trace the fault',
-    text: 'We start in the room you tell us about. We check the device, the wires, and the breaker before we replace anything.',
+    title: 'We match you',
+    text: 'We connect you with a local licensed electrician who starts in the room you describe and checks the device, the wires, and the breaker before replacing anything.',
   },
   {
-    title: 'We do the work safely',
-    text: 'We pull a permit when your city requires one. Before we leave, we show you what we worked on.',
+    title: 'The electrician does the work',
+    text: "The electrician you're matched with pulls a permit when your city requires one. Before they leave, they show you what they worked on.",
   },
 ];
 ---
@@ -81,11 +81,11 @@ const steps = [
     <div class="wrap hero-copy">
       <p class="eyebrow eyebrow-on-dark">{eyebrow}</p>
       <h1>
-        Best Electrician in<br />
+        Electrician referrals in<br />
         Sioux Falls, SD
       </h1>
       <p class="hero-sub">
-        {SITE.name} is a local electrical company for homes and businesses. Repairs, panel upgrades, EV chargers, and lighting at home. Lighting, circuits, and panels for shops and offices, done safely{SITE.available247 ? ', 24/7' : ''}.
+        {SITE.name} connects you with a local licensed electrician for homes and businesses. Repairs, panel upgrades, EV chargers, and lighting at home. Lighting, circuits, and panels for shops and offices{SITE.available247 ? '. Calls answered 24/7' : ''}.
       </p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <ContactLink track="call-hero" class="btn btn-gold w-full sm:w-auto" />
@@ -134,7 +134,7 @@ const steps = [
             <Icon name="check" />
           </span>
           <p class="mt-3 font-bold">Houses and shops</p>
-          <p class="mt-1 text-sm text-muted">We work on houses and on shops. Homeowners and business owners call the same number.</p>
+          <p class="mt-1 text-sm text-muted">Homeowners and business owners call the same number. We connect either one with a local licensed electrician.</p>
         </li>
         <li>
           <span class="icon-chip">
@@ -142,21 +142,21 @@ const steps = [
           </span>
           <p class="mt-3 font-bold">Permitted work</p>
           <p class="mt-1 text-sm text-muted">
-            We pull permits when the city requires them. New circuits and panel changes are the jobs that usually need one.
+            The electrician you're matched with pulls permits when the city requires them. New circuits and panel changes are the jobs that usually need one.
           </p>
         </li>
         <li>
           <span class="icon-chip">
             <Icon name="pin" />
           </span>
-          <p class="mt-3 font-bold">{SITE.serviceTowns.length} towns served</p>
-          <p class="mt-1 text-sm text-muted">We work in Sioux Falls and the towns around it. Open a town page to see the jobs we do there.</p>
+          <p class="mt-3 font-bold">{SITE.serviceTowns.length} towns covered</p>
+          <p class="mt-1 text-sm text-muted">We take requests in Sioux Falls and the towns around it. Open a town page to see the jobs a matched electrician does there.</p>
         </li>
       </ul>
       <div class="mt-12 max-w-[65ch]">
         <p class="eyebrow">Quick answer</p>
         <p>
-          Sioux Falls Electricians handles repairs, panel upgrades, EV chargers, lighting, and wiring for homes and businesses in Sioux Falls and nearby towns.{SITE.available247 ? ` ${SITE.availabilityNote}` : ''} Call {SITE.phoneDisplay}.
+          Sioux Falls Electricians connects you with a local licensed electrician for repairs, panel upgrades, EV chargers, lighting, and wiring for homes and businesses in Sioux Falls and nearby towns.{SITE.available247 ? ` ${SITE.availabilityNote}` : ''} Call {SITE.phoneDisplay}.
         </p>
       </div>
     </div>
@@ -214,7 +214,7 @@ const steps = [
     <div class="wrap section">
       <div class="section-head">
         <h2 id="help-heading">Residential and commercial electrician in Sioux Falls</h2>
-        <p class="lede">Call us for your house or your business. Tell us which one so we show up ready for that building.</p>
+        <p class="lede">Call us for your house or your business. Tell us which one so the electrician you're matched with shows up ready for that building.</p>
       </div>
       <div class="grid gap-6 md:grid-cols-2">
         <a href="#services" class="split-panel">
@@ -223,7 +223,7 @@ const steps = [
           <span class="relative flex flex-1 flex-col justify-end p-8">
             <h3 class="text-white">For your home</h3>
             <p class="mt-3 max-w-[36ch] on-dark-soft">
-              Outlets, panels, lights, EV chargers, and wiring in your house. Call us for one bad outlet or for a bigger job.
+              Outlets, panels, lights, EV chargers, and wiring in your house. Call us for one bad outlet or for a bigger job. We connect you with a local licensed electrician.
             </p>
             <span class="btn btn-line mt-6 w-fit">See home services</span>
           </span>
@@ -234,7 +234,7 @@ const steps = [
           <span class="relative flex flex-1 flex-col justify-end p-8">
             <h3 class="text-white">For your business</h3>
             <p class="mt-3 max-w-[36ch] on-dark-soft">
-              Lights and circuits for your shop, office, or other building. We can come when you can turn the equipment off.
+              Lights and circuits for your shop, office, or other building. The electrician you're matched with can come when you can turn the equipment off.
             </p>
             <span class="btn btn-line mt-6 w-fit">Commercial electrician</span>
           </span>
@@ -247,7 +247,7 @@ const steps = [
     <div class="wrap section">
       <div class="section-head">
         <h2 id="process-heading" class="text-white">How it works</h2>
-        <p class="lede on-dark">You call, we look at the circuit, then we do the work. Your house and your business follow the same steps.</p>
+        <p class="lede on-dark">You call, we connect you with a local licensed electrician, and that electrician does the work. Your house and your business follow the same steps.</p>
       </div>
       <ol class="grid gap-8 md:grid-cols-3">
         {
@@ -266,7 +266,7 @@ const steps = [
   <section id="service-area" class="bg-white" aria-labelledby="area-heading">
     <div class="wrap section">
       <div class="section-head">
-        <h2 id="area-heading">Local electricians serving Sioux Falls and nearby towns</h2>
+        <h2 id="area-heading">Electrician referrals for Sioux Falls and nearby towns</h2>
         <div class="lede stack-md">
           <p>
             Older central neighborhoods, including the Cathedral Historic District, often still have older wiring. Newer subdivisions to the south and east are a different kind of job. Downtown sits between those areas.
