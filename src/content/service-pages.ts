@@ -23,12 +23,16 @@ export interface ServicePage {
     rows: { title: string; text: string }[];
   };
   cost: string[];
+  /** Overrides the shared “What affects the price” heading. */
+  costHeading?: string;
   /** Overrides the shared “24/7 emergency service” heading. */
   emergencyHeading?: string;
   emergency: string;
   visit: string;
   faqs: { q: string; a: string }[];
   related: string[];
+  /** Overrides the shared bottom call-to-action heading. */
+  ctaHeading?: string;
 }
 
 export const servicePages: ServicePage[] = [
@@ -41,7 +45,8 @@ export const servicePages: ServicePage[] = [
     photo: 'service-repair-hero',
     alt: 'Electrician repairing an outlet in a living room',
     answer:
-      'Electrical repair in Sioux Falls means finding why an outlet, switch, light, or breaker stopped working and fixing that fault. The check covers the device, the circuit, and the panel before any parts are replaced. Homes and small businesses use the same phone number. Call {phone}.',
+      'Electrical repair in Sioux Falls means finding why an outlet, switch, light, or breaker stopped working and fixing that fault. The check covers the device, the circuit, and the panel before any parts are replaced. Home electrical repair and small-business calls use the same phone number. Call {phone}.',
+    signsHeading: 'Signs you need electrical repair',
     includedLead: 'We stay on the circuit that failed. We check the device, the wires, and the breaker before we replace anything.',
     included: [
       'Dead outlets, including a run of outlets that quit on one wall. We follow that whole run, not just the one that looks dead.',
@@ -77,12 +82,14 @@ export const servicePages: ServicePage[] = [
     slug: 'emergency-electrician',
     title: 'Emergency Electrician Sioux Falls SD',
     documentTitle: '24/7 Emergency Electrician in Sioux Falls, SD',
-    description: 'Emergency electrician in Sioux Falls for sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
+    description: '24/7 emergency electrician in Sioux Falls for sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
     sub: 'Sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
     photo: 'service-emergency-hero',
-    alt: 'Electrician checking an outdoor outlet at night',
+    alt: 'Emergency electrician checking an outdoor outlet at night',
     answer:
       'An emergency electrician in Sioux Falls handles sparking, a burning smell, a dead section of the building, or a panel that will not reset. Make the area safe, then call. If you see smoke or flames, call 911 before you call an electrician. Call {phone}.',
+    includedHeading: 'What an emergency electrical service call includes',
+    emergencyHeading: '24/7 emergency electrician service',
     includedLead: 'Call us when it should not wait until tomorrow. If you see smoke or fire, call 911 first.',
     included: [
       'Sparking outlets, switches, or panel buses. Keep everyone away from the spark.',
@@ -104,7 +111,7 @@ export const servicePages: ServicePage[] = [
       'The number moves with the hour, the access, and whether the fault is a device or a damaged feeder.',
       'Say what you see and whether anyone is still in the building.',
     ],
-    emergency: 'Calls are answered 24 hours a day, including emergency service. Arrival time is not promised. Smoke or fire is a 911 call.',
+    emergency: 'Calls are answered 24 hours a day, including after-hours electrician calls at night and on weekends. Arrival time is not promised. Smoke or fire is a 911 call.',
     visit: 'The first questions are whether anyone is still inside and whether you see smoke. Smoke or fire means the call stops at 911. Otherwise you shut off the breaker you can reach without stepping in water, then you wait. On arrival the live parts are isolated before the fault is traced. That visit covers the repair that makes the building usable again. A panel change or a rewire, if one is needed, is a separate job. No clock time is promised.',
     faqs: [
       { q: 'When should I call 911 instead of an electrician?', a: 'Call 911 if you see smoke, flames, or someone who has been shocked and needs medical help. After the fire department says the building is safe, call an electrician to find the fault.' },
@@ -118,12 +125,12 @@ export const servicePages: ServicePage[] = [
     slug: 'outlet-switch-installation',
     title: 'Outlet and Switch Installation Sioux Falls SD',
     documentTitle: 'Outlet & Switch Installation in Sioux Falls, SD',
-    description: 'New outlets, GFCI protection, dimmers, and 240-volt receptacles in Sioux Falls homes and businesses.',
+    description: 'Outlet repair and replacement, new outlets, GFCI protection, dimmers, and 240-volt receptacles in Sioux Falls homes and businesses.',
     sub: 'New outlets, GFCI protection, dimmers, and 240-volt receptacles.',
     photo: 'service-outlet',
     alt: 'Electrician installing an outlet and a switch',
     answer:
-      'Outlet and switch installation in Sioux Falls adds or replaces receptacles, switches, GFCI protection, dimmers, and 240-volt outlets. The circuit is checked for capacity before a new device is tied on. A new outlet can be fished from a basement or attic when a path is open. Call {phone}.',
+      'Outlet and switch installation in Sioux Falls covers outlet repair and replacement, new receptacles, switches, GFCI protection, dimmers, and 240-volt outlets. The circuit is checked for capacity before a new device is tied on. A new outlet can be fished from a basement or attic when a path is open. Call {phone}.',
     includedLead: 'New devices and replacements, not tracing a dead circuit. A dead circuit is a repair.',
     included: [
       'New general-use outlets where a lamp or tool currently uses an extension cord. We put an outlet there so you can put the cord away.',
@@ -133,6 +140,7 @@ export const servicePages: ServicePage[] = [
       'USB or tamper-resistant devices where the box has room. If the box is packed, we put in a deeper one first.',
       'Covers and boxes that no longer hold the device tight. We snug the device up before the new cover goes on.',
     ],
+    signsHeading: 'Signs you need outlet repair or replacement',
     signsLead: 'Call us when the room does not have enough outlets for how you use it. A dead circuit is a repair, not a new outlet.',
     signs: [
       'Extension cords are a permanent setup. A real wall outlet is the safer fix.',
@@ -174,7 +182,9 @@ export const servicePages: ServicePage[] = [
       'Service changes coordinated with the utility when the meter or mast has to move. If the power company has to move the meter, we line that up before we swap the panel.',
       'Labeling of circuits after the new panel is on. You get a copy of the new directory.',
       'Room for a later EV charger, shop, or addition when you say that is the goal. Tell us, and we will leave space for it.',
+      'Stab-Lok panel replacement when that is the panel you have. The new panel is sized to the service and to the loads you plan to add, the same way as any other panel upgrade.',
     ],
+    signsHeading: 'Signs you need a panel upgrade',
     signsLead: 'These are the usual reasons we replace the panel, not just one device. A photo of the panel door helps us on the call.',
     signs: [
       'Every breaker space is full and you still need a circuit. A skinny tandem breaker does not fit every panel.',
@@ -187,10 +197,11 @@ export const servicePages: ServicePage[] = [
       'The price moves with the panel size, whether the mast and meter stay, how far the new panel sits from the old one, and whether the city requires a permit and inspection.',
       'A panel in a finished wall or a tight closet takes more labor than one in an open utility room.',
     ],
+    costHeading: 'What affects panel upgrade cost',
     emergency: 'A buzzing or hot panel is urgent even if the upgrade itself is scheduled. Call if the panel is hot, and call 911 if you see smoke.',
     visit: 'The visit starts with the cover off when that is safe, plus a list of loads you want to keep or add. The mast and the meter are photographed when a service change might be involved. The notes name the panel size, whether the utility has to move anything, and whether a permit is part of the job. Power is off for the swap. Circuits are landed and labeled before the cover goes back. You keep a copy of the directory. Space for a later charger or shop circuit is noted only if you asked for it.',
     faqs: [
-      { q: 'Does a panel upgrade always mean a larger service?', a: 'No. Some homes need a new panel at the same service size because the old one is full or unsafe. A larger service is a separate decision based on the loads you list.' },
+      { q: 'Does a panel upgrade always mean a larger service?', a: 'No. Some homes need a new panel at the same service size because the old one is full or unsafe. A larger service, such as a 200-amp panel upgrade, is a separate decision based on the loads you list.' },
       { q: 'Can you add circuits without replacing the panel?', a: 'Only when there is space and the panel is in sound condition. Tandem breakers are not a fit for every panel. The visit says which path is real.' },
       { q: 'Who inspects a panel change?', a: 'Inside Sioux Falls, the city has its own inspection path. Other towns follow that city plus the state electrical inspection rules. The visit notes what the job needs.' },
       { q: 'How should I prepare for a panel visit?', a: 'Send a photo of the panel with the cover closed and another with it open if you can do that safely. List any large loads you plan to add.' },
@@ -202,7 +213,7 @@ export const servicePages: ServicePage[] = [
     title: 'Circuit Breaker and Panel Repair Sioux Falls SD',
     documentTitle: 'Circuit Breaker & Panel Repair in Sioux Falls, SD',
     description:
-      'Circuit breaker and panel repair in Sioux Falls for breakers that keep tripping and panels that are hot, rusted, or damaged. Calls answered 24/7.',
+      'Circuit breaker repair and panel repair in Sioux Falls for breakers that keep tripping and panels that are hot, rusted, or damaged. Calls answered 24/7.',
     sub: 'Tripping breakers and damaged panels. Not a capacity upgrade.',
     photo: 'service-inspect',
     alt: 'Electrician inspecting an open breaker panel',
@@ -222,7 +233,7 @@ export const servicePages: ServicePage[] = [
       'Water, rust, or a breaker that will not seat on the bus. That is panel damage. If the service size can stay, we repair or replace the panel. More spaces or more amps is a panel upgrade.',
     ],
     signsLead:
-      'These are signs the panel or a breaker has failed. A panel that still works but has no open spaces, or a fuse box you want to leave so you can add a charger or a shop, belongs on the [panel upgrades](/services/panel-upgrades) page.',
+      'These are signs the panel or a breaker has failed. A panel that still works but has no open spaces, or a fuse box you want to leave so you can add a charger or a shop, belongs on the [panel upgrades](/services/panel-upgrades) page. A Stab-Lok panel replacement belongs there too.',
     signs: [
       'The same breaker trips during ordinary use, then trips again after one reset. Stop resetting it and call.',
       'The panel cover is warm, you smell hot plastic, or you see scorch marks around a breaker. Leave the cover on.',
@@ -256,6 +267,7 @@ export const servicePages: ServicePage[] = [
       'The price changes with how long the test takes, whether one breaker failed or the bus is damaged, and whether a permit is required. Inside Sioux Falls, the city has its own inspection path. [Brandon](/locations/brandon) and the other towns outside Sioux Falls follow the state electrical inspection rules, plus any local permit that town requires.',
       'A breaker on a sound panel is a smaller job than a panel that has to come out, or a cable opened in finished plaster. A tight closet takes more labor than an open utility room. Parts follow the panel brand and the breaker that bus will accept.',
     ],
+    costHeading: 'What affects breaker repair and replacement cost',
     emergency:
       'Reset a tripped breaker once, if you can reach it without touching a hot cover or standing in water. If it trips again, leave it off. Do not take the panel cover off. If you see smoke or fire, leave and call 911 before you call an electrician. A burning smell, buzzing, or a breaker that will not stay on should not wait. Sparking at the panel is an [emergency electrician](/services/emergency-electrician) call.',
     visit:
@@ -329,12 +341,12 @@ export const servicePages: ServicePage[] = [
     slug: 'generator-installation',
     title: 'Generator Installation Sioux Falls SD',
     documentTitle: 'Generator Installation in Sioux Falls, SD',
-    description: 'Standby generators, transfer switches, and inlets for a portable generator in Sioux Falls. No backfeed setups.',
+    description: 'Home backup generator installation in Sioux Falls: standby generators, transfer switches, and inlets for a portable generator. No backfeed setups.',
     sub: 'Standby units, transfer switches, and inlets. No backfeed setups.',
     photo: 'service-generator',
     alt: 'Electrician checking a home standby generator',
     answer:
-      'Generator installation in Sioux Falls covers a standby generator, a transfer switch, or an inlet for a portable generator. The panel has to accept the switch, and the generator must not backfeed the utility lines. A portable inlet is a different job from a standby set. Call {phone}.',
+      'Generator installation in Sioux Falls covers a home backup generator (a standby unit), a transfer switch, or an inlet for a portable generator. The panel has to accept the switch, and the generator must not backfeed the utility lines. A portable inlet is a different job from a standby set. Call {phone}.',
     includedLead: 'The safe part is the transfer switch, not just setting a generator on a pad. We will not hook up a double-ended cord.',
     included: [
       'Manual transfer switches and interlock kits that the panel can accept. We check your panel before we pick a kit.',
@@ -344,6 +356,7 @@ export const servicePages: ServicePage[] = [
       'Coordination with the utility when a standby set needs their approval. We call the power company only when they have to sign off.',
       'A clear refusal of any double-ended cord or backfeed trick. Backfeeding can put power on the utility lines.',
     ],
+    signsHeading: 'Signs you need a home backup generator',
     signsLead: 'Think about a generator before storm season if an outage costs you heat, a sump, or a medical device. If you already own one, have the model number handy.',
     signs: [
       'You run a generator with an extension cord through a door. An inlet is the right way to bring that power inside.',
@@ -356,6 +369,7 @@ export const servicePages: ServicePage[] = [
       'A portable inlet is a smaller job than a standby set with a concrete pad, gas piping, and an automatic switch. Fuel type, distance from the panel, and the circuits you choose all change the price.',
       'Bring the model number or a photo of the nameplate.',
     ],
+    costHeading: 'What affects emergency generator installation cost',
     emergency: 'Do not backfeed the house during an outage. That can energize the utility lines. Call for a proper inlet instead of improvising in the storm.',
     visit: 'Send the model or a photo of the nameplate when you already own the unit. On site the panel is checked for a place to land a transfer switch or an interlock, and the pad or inlet spot is marked. The notes list the circuits that will be on the generator and the circuits that stay off. A double-ended cord is not offered. After the switch is in, those circuits are tested with the utility separated by the transfer equipment. The utility is contacted only when that setup needs their approval.',
     faqs: [
@@ -397,6 +411,7 @@ export const servicePages: ServicePage[] = [
       'A charger on the other side of the panel wall is a shorter run than one at the far end of the garage or on a detached pad. Trenching, finished walls, and a panel upgrade change the price.',
       'Charger brand and amperage change the wire and the breaker. Send a photo of the panel and say where the car parks.',
     ],
+    costHeading: 'What affects EV charger installation cost',
     emergency: 'A charger that smells hot, trips as soon as the car plugs in, or shows a burned plug is a repair, not a new install. Stop using it and call.',
     visit: 'Say where the car parks, and send a photo of the panel plus the charger label if you already bought one. The visit measures the run and checks spare capacity. If the panel cannot feed the charger, the job stops at a panel upgrade instead of treating the charger as ready. If it can, the notes list the breaker, the wire path, and any trench or wall opening. The unit is mounted and tested. The breaker is labeled with the parking spot it serves.',
     faqs: [
@@ -417,12 +432,14 @@ export const servicePages: ServicePage[] = [
     alt: 'Electrician installing recessed lights in a kitchen ceiling',
     answer:
       'Lighting installation in Sioux Falls covers recessed lights, LED swaps, new fixtures, and outdoor lighting. The existing circuit is checked before more lamps are added to it. The layout is marked in the room before a hole is cut. Call {phone}.',
+    includedHeading: 'What’s included in lighting installation',
     includedLead: 'We install new lights and we replace old ones, inside and outside. We check the circuit before we add more lamps.',
     included: [
       'Recessed lights in kitchens, halls, and living rooms. We mark the holes with you before we cut.',
       'Swapping old fixtures for LED fixtures you already chose. The box has to hold the new weight.',
       'Under-cabinet lights fed from a proper switch. We feed them from a real switch, not a plug-in strip.',
-      'Outdoor wall lights, soffit lights, and yard circuits. A long run across the yard usually gets its own circuit.',
+      'Outdoor wall lights, soffit lights, and yard circuits, including landscape lighting repair when a yard light or its wiring has quit. A long run across the yard usually gets its own circuit.',
+      'Chandelier installation for a hanging fixture you already chose, when the box can carry the weight. A heavy chandelier that needs a listed brace is called out before it goes up.',
       'Dimmer swaps when the new lamps can dim. If they do not match, the light flickers.',
       'Repair of a fixture that fell or lost its support, when the box is the problem. We fix the box before the light goes back up.',
     ],
@@ -464,6 +481,7 @@ export const servicePages: ServicePage[] = [
       'Replacement of a light box with a fan-rated brace. We do not leave a light box holding a fan.',
       'Fans that include a light kit and a switch leg. The light uses the switch you already have.',
       'Swaps of an old fan that wobbles because the box moved. We fix the brace, not just the blades.',
+      'Ceiling fan repair when the fan hums, will not start, or the light kit fails and the box is still sound.',
       'A two-switch setup when the wall already has the travelers or a second cable. If you need a new switch leg, we open the wall.',
       'A stop-work call if the ceiling structure will not hold the brace. We will not hang a fan on a ceiling that cannot hold it.',
     ],
@@ -493,7 +511,7 @@ export const servicePages: ServicePage[] = [
     slug: 'hot-tub-wiring',
     title: 'Hot Tub Wiring Sioux Falls SD',
     documentTitle: 'Hot Tub Wiring in Sioux Falls, SD',
-    description: 'Hot tub wiring in Sioux Falls, SD: the dedicated circuit and disconnect your tub needs, sized from its nameplate. Calls answered 24/7.',
+    description: 'Hot tub electrical installation in Sioux Falls, SD: the dedicated circuit and disconnect your tub needs, sized from its nameplate. Calls answered 24/7.',
     sub: 'The dedicated circuit and disconnect a tub needs, sized from the nameplate.',
     photo: 'service-hottub',
     alt: 'Electrician wiring a disconnect near a hot tub',
@@ -529,12 +547,13 @@ export const servicePages: ServicePage[] = [
       { q: 'Who pulls the permit?', a: 'When the city requires a permit, it is part of the job. The office depends on which town the pad is in.' },
     ],
     related: ['/services/panel-upgrades', '/services/wiring-rewiring', '/services/ev-charger-installation'],
+    ctaHeading: 'Need a hot tub electrician in Sioux Falls?',
   },
   {
     slug: 'electrical-inspections',
     title: 'Electrical Inspections Sioux Falls SD',
     documentTitle: 'Electrical Inspections in Sioux Falls, SD',
-    description: 'Private electrical safety checks in Sioux Falls for panels, wiring, and devices. This is not a city inspection.',
+    description: 'Home electrical inspection in Sioux Falls: a private safety check of panels, wiring, and devices. This is not a city inspection.',
     sub: 'A private look at the panel and visible wiring. This is not a city inspection.',
     photo: 'service-inspect',
     alt: 'Electrician inspecting an open breaker panel',
@@ -561,6 +580,7 @@ export const servicePages: ServicePage[] = [
       'A walkthrough of a small house is a different visit from a large shop with more than one panel. Access to attics, locked rooms, and buried panels changes the time.',
       'Repair work is separate from the inspection.',
     ],
+    costHeading: 'What affects electrical inspection cost',
     emergency: 'If something is sparking or you smell burning, call us right away. Leave that device off, and call 911 if you see smoke.',
     visit: 'You walk the building along or you leave a key and a room list. The panel is opened when that is safe. Cable that can be seen in the attic, the basement, and open joists is noted. Devices are sampled. They are not pulled from every wall. Findings go on a written list. That list is not a city approval. Repairs you want are a separate job drawn from the items you pick.',
     faqs: [
@@ -580,7 +600,7 @@ export const servicePages: ServicePage[] = [
     photo: 'service-surge',
     alt: 'Whole-house surge protector installed beside a breaker panel',
     answer:
-      'Surge protection in Sioux Falls means a whole-house device installed at the panel so a spike has a path before it reaches the branch circuits. Point-of-use strips are not a substitute. The panel is opened to find a place for the device. Call {phone}.',
+      'Surge protection in Sioux Falls means a whole-home surge protector installed at the panel so a spike has a path before it reaches the branch circuits. Point-of-use strips are not a substitute. The panel is opened to find a place for the device. Call {phone}.',
     includedLead: 'The device sits at the service equipment. It does not replace a ground or a damaged panel.',
     included: [
       'A surge protective device listed for the panel you have. Your panel brand decides which one fits.',
@@ -621,8 +641,8 @@ export const servicePages: ServicePage[] = [
     photo: 'service-smoke',
     alt: 'Electrician installing a hardwired smoke detector on a ceiling',
     answer:
-      'Smoke and CO detector work in Sioux Falls replaces or adds hardwired smoke alarms and carbon monoxide detectors, including the interconnect wire when the house already has it. Each alarm is dated and tested from its button. Call {phone}.',
-    includedLead: 'This is device and circuit work. The work is the devices and the circuit.',
+      'Smoke detector installation in Sioux Falls replaces or adds hardwired smoke alarms and carbon monoxide detectors, including the interconnect wire when the house already has it. Each alarm is dated and tested from its button. Call {phone}.',
+    includedLead: 'This is device and circuit work, from smoke detector installation to hardwired smoke detector replacement.',
     included: [
       'Replacement of hardwired smoke alarms that are past their date or that chirp after a new battery. That date means the sensor is done, not just the battery.',
       'Carbon monoxide alarms on levels that already have a place for them. We use a combined head only if you want one.',
@@ -657,12 +677,13 @@ export const servicePages: ServicePage[] = [
     slug: 'commercial-electrician',
     title: 'Commercial Electrician Sioux Falls SD',
     documentTitle: 'Commercial Electrician in Sioux Falls, SD',
-    description: 'Commercial electrician in Sioux Falls for lighting, circuits, and panels in shops, offices, and other buildings.',
+    description: 'Commercial electrician in Sioux Falls, SD. Commercial electrical services for lighting, circuits, and panels in shops, offices, and other buildings.',
     sub: 'Lighting, circuits, and panels for shops and offices, scheduled around your hours.',
     photo: 'service-commercial-hero',
-    alt: 'Electrician working among commercial electrical cabinets',
+    alt: 'Commercial electrician working among electrical cabinets',
     answer:
       'A commercial electrician in Sioux Falls does lighting, circuits, and panel work for shops, offices, and other businesses. The visit is scheduled around your hours when the equipment can be off. The suite, the ceiling type, and the panel directory are part of the visit. Call {phone}.',
+    includedHeading: 'What our commercial electrical services include',
     includedLead: 'Business work uses the same phone number as house calls. The scope is different.',
     included: [
       'Lighting swaps and added lights in a sales floor or office. Tell us about the ceiling before we book a lift.',

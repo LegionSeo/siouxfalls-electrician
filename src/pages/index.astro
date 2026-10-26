@@ -13,7 +13,7 @@ import { faqNode } from '../lib/schema';
 const faqs = homepageFaqs();
 const homeTitle = 'Best Electrician in Sioux Falls, SD | 24/7 Service';
 const homeSchemaName = 'Electrician Sioux Falls, SD | Sioux Falls Electricians';
-const homeDescription = `Residential and commercial electricians in Sioux Falls, Brandon, Harrisburg, Tea and nearby. Repairs, panel upgrades, EV chargers. Call ${SITE.phoneDisplay}.`;
+const homeDescription = `Need an electrician in Sioux Falls? Residential and commercial electricians for Sioux Falls, Brandon, Harrisburg, Tea and nearby, 24/7. Call ${SITE.phoneDisplay}.`;
 
 const featuredHrefs = [
   '/services/electrical-repair',
@@ -84,7 +84,7 @@ const steps = [
         Sioux Falls, SD
       </h1>
       <p class="hero-sub">
-        {SITE.name} handles electrical work for homes and businesses. Repairs, panel upgrades, EV chargers, and lighting at home. Lighting, circuits, and panels for shops and offices, done safely{SITE.available247 ? ', 24/7' : ''}.
+        {SITE.name} is a local electrical company for homes and businesses. Repairs, panel upgrades, EV chargers, and lighting at home. Lighting, circuits, and panels for shops and offices, done safely{SITE.available247 ? ', 24/7' : ''}.
       </p>
       <div class="mt-8 flex flex-col gap-3 sm:flex-row">
         <ContactLink track="call-hero" class="btn btn-gold w-full sm:w-auto" />
@@ -212,7 +212,7 @@ const steps = [
   <section class="bg-white" aria-labelledby="help-heading">
     <div class="wrap section">
       <div class="section-head">
-        <h2 id="help-heading">How can we help?</h2>
+        <h2 id="help-heading">Residential and commercial electrician in Sioux Falls</h2>
         <p class="lede">Call us for your house or your business. Tell us which one so we show up ready for that building.</p>
       </div>
       <div class="grid gap-6 md:grid-cols-2">
@@ -265,13 +265,13 @@ const steps = [
   <section id="service-area" class="bg-white" aria-labelledby="area-heading">
     <div class="wrap section">
       <div class="section-head">
-        <h2 id="area-heading">Electricians serving Sioux Falls and nearby towns</h2>
+        <h2 id="area-heading">Local electricians serving Sioux Falls and nearby towns</h2>
         <div class="lede stack-md">
           <p>
             Older central neighborhoods, including the Cathedral Historic District, often still have older wiring. Newer subdivisions to the south and east are a different kind of job. Downtown sits between those areas.
           </p>
           <p>
-            {joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages.
+            Looking for an electrician near you outside the city? {joinNames(townPages.filter((town) => town.live && town.href !== '/').map((town) => town.name))} have their own pages.
           </p>
         </div>
       </div>
@@ -343,7 +343,7 @@ const steps = [
     />
     <div class="absolute inset-0 ink-shade" aria-hidden="true"></div>
     <div class="wrap section relative">
-      <h2 class="max-w-[16ch] text-white">Need an electrician now?</h2>
+      <h2 class="max-w-[22ch] text-white">Need a Sioux Falls electrician now?</h2>
       <p class="mt-4 max-w-[46ch] on-dark-soft">Tell us the room and what stopped working. Your house and your business can both use this number.</p>
       <div class="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center">
         <ContactLink track="call-quote" class="btn btn-gold w-full sm:w-auto" />

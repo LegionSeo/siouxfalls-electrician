@@ -209,7 +209,7 @@ export const SITE: SiteConfig = {
     1280,
     800,
     720,
-    'Electrician checking a home breaker panel',
+    'Sioux Falls electrician checking a home breaker panel',
     'Temporary approved hero photo. The source file is 1280 pixels wide, so it is not enlarged. Replace hero-electrician-panel files, or heroPhoto, with a real job photo. Do not call the person company staff.',
   ),
   servicePhotos: {
