@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ContactLink from '../components/ContactLink.astro';
 import Icon from '../components/Icon.astro';
 import MapEmbed from '../components/MapEmbed.astro';
+import ServiceAreaSketch from '../components/ServiceAreaSketch.astro';
 import Photo from '../components/Photo.astro';
 import RequestPanel from '../components/RequestPanel.astro';
 import { joinNames, services, townPages } from '../config/catalog';
@@ -275,33 +276,36 @@ const steps = [
           </p>
         </div>
       </div>
-      <div class="grid items-start gap-8 lg:grid-cols-2">
+      <div class="area-grid">
         <MapEmbed
-          class="aspect-[4/3]"
-          src="https://www.google.com/maps?q=Sioux+Falls,+SD&z=10&output=embed"
+          class="area-map"
+          src="https://maps.google.com/maps?ll=43.563,-96.758&z=9&t=m&hl=en&output=embed"
           title="Map of Sioux Falls, South Dakota and nearby towns"
           label="Sioux Falls and the towns around it"
-          preview="/images/sioux-falls-area-preview.webp"
-        />
-        <div>
-          <ul class="flex flex-wrap gap-2">
-            {
-              townPages.map((town) =>
-                town.live ? (
-                  <li>
-                    <a class="town-chip" href={town.href}>
-                      {town.name}
-                    </a>
-                  </li>
-                ) : (
-                  <li>
-                    <span class="town-chip">{town.name}</span>
-                  </li>
-                ),
-              )
-            }
-          </ul>
-        </div>
+        >
+          <ServiceAreaSketch />
+        </MapEmbed>
+        <ul class="area-towns">
+          {
+            townPages.map((town) =>
+              town.live ? (
+                <li>
+                  <a class="town-chip" href={town.href}>
+                    <Icon name="pin" class="h-4 w-4" />
+                    {town.name}
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <span class="town-chip">
+                    <Icon name="pin" class="h-4 w-4" />
+                    {town.name}
+                  </span>
+                </li>
+              ),
+            )
+          }
+        </ul>
       </div>
     </div>
   </section>
