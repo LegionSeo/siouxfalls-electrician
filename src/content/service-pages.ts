@@ -8,11 +8,23 @@ export interface ServicePage {
   photo: string;
   alt: string;
   answer: string;
+  /** Overrides the shared “What’s included” heading. */
+  includedHeading?: string;
   includedLead: string;
   included: string[];
+  /** Overrides the shared “Signs you need it” heading. */
+  signsHeading?: string;
   signsLead: string;
   signs: string[];
+  /** Repair-versus-replace list. Omitted on pages that do not need one. */
+  compare?: {
+    heading: string;
+    lead: string;
+    rows: { title: string; text: string }[];
+  };
   cost: string[];
+  /** Overrides the shared “24/7 emergency service” heading. */
+  emergencyHeading?: string;
   emergency: string;
   visit: string;
   faqs: { q: string; a: string }[];
@@ -35,7 +47,7 @@ export const servicePages: ServicePage[] = [
       'Dead outlets, including a run of outlets that quit on one wall. We follow that whole run, not just the one that looks dead.',
       'Switches that feel warm, stick, or no longer turn the light on. Leave a warm switch off until we open it.',
       'Lights that flicker, dim, or buzz when another load starts. That usually means a loose wire or a circuit doing too much.',
-      'Breakers that trip again after a normal reset. If it trips again, leave it off and call us.',
+      'Breakers that trip again after a normal reset. If it trips again, leave it off. A failed breaker or a damaged panel is [circuit breaker and panel repair](/services/circuit-breaker-panel-repair).',
       'Loose devices, cracked covers, and fixtures that wobble. We check the box and the device.',
       'A burning smell at a device after the area is safe to enter. If you see smoke, call 911 first, then call us.',
     ],
@@ -59,7 +71,7 @@ export const servicePages: ServicePage[] = [
       { q: 'Do you repair both houses and small businesses?', a: 'Yes. Homes and businesses use the same phone number. Say whether the problem is in a house, a shop, or an office so the visit matches the building.' },
       { q: 'Should I keep resetting a breaker?', a: 'Reset it once if you can do that safely. If it trips again, leave it off and call. Repeated resets can hide a short or an overload.' },
     ],
-    related: ['/services/emergency-electrician', '/services/wiring-rewiring', '/services/panel-upgrades'],
+    related: ['/services/circuit-breaker-panel-repair', '/services/emergency-electrician', '/services/wiring-rewiring', '/services/panel-upgrades'],
   },
   {
     slug: 'emergency-electrician',
@@ -76,7 +88,7 @@ export const servicePages: ServicePage[] = [
       'Sparking outlets, switches, or panel buses. Keep everyone away from the spark.',
       'A burning smell with no visible flame. Call us even if you cannot see where it is coming from.',
       'Power out in one room, one floor, or half the panel. Tell us which lights are still on.',
-      'A breaker that trips the moment it is reset. Leave that breaker off and call us.',
+      'A breaker that trips the moment it is reset. Leave that breaker off. Once the area is safe, that fault is [circuit breaker and panel repair](/services/circuit-breaker-panel-repair).',
       'Water that has reached a panel, outlet, or light. Do not touch it. Call us.',
       'Storm damage to a mast, meter, or outdoor circuit after the utility says the service drop is safe. Wait until the power company says the line is safe.',
     ],
@@ -100,7 +112,7 @@ export const servicePages: ServicePage[] = [
       { q: 'Is a partial power outage always an emergency?', a: 'Not always. A single tripped breaker can be a simple overload. Partial power with a burning smell, heat, or buzzing should be treated as urgent.' },
       { q: 'Do emergency calls cover businesses too?', a: 'Yes. Shops and offices can lose lights, coolers, or a section of circuits. Say what equipment is down when you call.' },
     ],
-    related: ['/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation'],
+    related: ['/services/circuit-breaker-panel-repair', '/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation'],
   },
   {
     slug: 'outlet-switch-installation',
@@ -152,12 +164,13 @@ export const servicePages: ServicePage[] = [
     photo: 'service-panel-hero',
     alt: 'Electrician replacing a residential breaker panel',
     answer:
-      'A panel upgrade in Sioux Falls replaces a full, warm, buzzing, or outdated breaker panel, including an old fuse box. The new panel has to match the service and the loads you plan to add. The mast and meter are checked when a service change might be involved. Call {phone}.',
-    includedLead: 'Panel work is planned. It is not the same visit as swapping one breaker that failed.',
+      'A panel upgrade in Sioux Falls replaces a full or outdated breaker panel, including an old fuse box, when you need more capacity or open breaker spaces. A failed breaker or a damaged panel is a repair, not this upgrade. The new panel has to match the service and the loads you plan to add. The mast and meter are checked when a service change might be involved. Call {phone}.',
+    includedLead:
+      'Panel work is planned. It is not the same visit as [repairing a failed breaker or a damaged panel](/services/circuit-breaker-panel-repair).',
     included: [
       'Replacement of a panel that has no open breaker spaces. A full panel cannot safely take another circuit.',
       'Replacement of a fuse box with a breaker panel. We match the new panel to your service and to what you want to run.',
-      'Panels that are warm, rusted, or buzzing. We look at the heat or the buzzing before we set the upgrade.',
+      'Panels that are warm, rusted, or buzzing. We look at the heat or the buzzing before we set the upgrade. If the service size can stay, that visit is a repair.',
       'Service changes coordinated with the utility when the meter or mast has to move. If the power company has to move the meter, we line that up before we swap the panel.',
       'Labeling of circuits after the new panel is on. You get a copy of the new directory.',
       'Room for a later EV charger, shop, or addition when you say that is the goal. Tell us, and we will leave space for it.',
@@ -182,7 +195,94 @@ export const servicePages: ServicePage[] = [
       { q: 'Who inspects a panel change?', a: 'Inside Sioux Falls, the city has its own inspection path. Other towns follow that city plus the state electrical inspection rules. The visit notes what the job needs.' },
       { q: 'How should I prepare for a panel visit?', a: 'Send a photo of the panel with the cover closed and another with it open if you can do that safely. List any large loads you plan to add.' },
     ],
-    related: ['/services/ev-charger-installation', '/services/wiring-rewiring', '/services/surge-protection'],
+    related: ['/services/circuit-breaker-panel-repair', '/services/ev-charger-installation', '/services/wiring-rewiring', '/services/surge-protection'],
+  },
+  {
+    slug: 'circuit-breaker-panel-repair',
+    title: 'Circuit Breaker and Panel Repair Sioux Falls SD',
+    documentTitle: 'Circuit Breaker & Panel Repair in Sioux Falls, SD',
+    description:
+      'Circuit breaker and panel repair in Sioux Falls for breakers that keep tripping and panels that are hot, rusted, or damaged. Calls answered 24/7.',
+    sub: 'Tripping breakers and damaged panels. Not a capacity upgrade.',
+    photo: 'service-inspect',
+    alt: 'Electrician inspecting an open breaker panel',
+    includedHeading: 'Why does a breaker keep tripping?',
+    signsHeading: 'What are the signs your panel needs repair or replacement?',
+    emergencyHeading: 'What should you do right now?',
+    answer:
+      'Circuit breaker and panel repair in Sioux Falls means finding why a breaker trips, or why a panel is hot, rusted, or damaged, and fixing that fault. Replacing one failed breaker is not a [panel upgrade](/services/panel-upgrades) for more capacity. Homes and small businesses use the same number. Call {phone}.',
+    includedLead:
+      'A breaker trips to stop an overload, a short, a ground fault, or heat from a loose connection. Resetting it does not tell you which one. We test the circuit and the panel before we replace a part.',
+    included: [
+      'Too much load on one circuit. In a Sioux Falls winter a space heater or a microwave can trip a sound breaker that already shares a run. Unplug the extra load, then reset the breaker once.',
+      'A short, where a hot wire touches a neutral or a ground. The breaker trips the instant it is reset. Leave that breaker off. Do not keep forcing it on.',
+      'A ground fault near a kitchen, bath, garage, or outdoor outlet. A GFCI or an AFCI can open before a standard breaker does. We find the device or the cable that is leaking.',
+      'A loose wire at the breaker, at a device, or in a splice. The cover may feel warm, or lights may dip when a motor starts. We remake the connection that is heating. A larger breaker is not the fix.',
+      'A breaker that opens below its rating because it is worn out. We test that before we change it. The replacement has to be the type that panel is built to hold. A new breaker does not fix a damaged wire.',
+      'Water, rust, or a breaker that will not seat on the bus. That is panel damage. If the service size can stay, we repair or replace the panel. More spaces or more amps is a panel upgrade.',
+    ],
+    signsLead:
+      'These are signs the panel or a breaker has failed. A panel that still works but has no open spaces, or a fuse box you want to leave so you can add a charger or a shop, belongs on the [panel upgrades](/services/panel-upgrades) page.',
+    signs: [
+      'The same breaker trips during ordinary use, then trips again after one reset. Stop resetting it and call.',
+      'The panel cover is warm, you smell hot plastic, or you see scorch marks around a breaker. Leave the cover on.',
+      'A breaker will not stay on, rocks in its slot, or shows melted plastic. That breaker is not a reliable shutoff.',
+      'Rust, water stains, or white corrosion inside the panel. Moisture and a live bus should not be left until the next day.',
+      'Buzzing from the panel, or lights that brighten and dim on their own. A loose connection can do that, including a loose neutral. Tell us which rooms are affected.',
+    ],
+    compare: {
+      heading: 'Should you repair the breaker or replace the panel?',
+      lead: 'Repair and replacement here mean the equipment failed. Adding capacity is a different job. We say which one it is after the panel is open and the circuit is tested.',
+      rows: [
+        {
+          title: 'Replace one breaker',
+          text: 'The panel is dry and the bus is clean, one breaker fails the test, and the cable on that circuit is intact. We install a breaker listed for that panel and label the circuit.',
+        },
+        {
+          title: 'Repair the circuit',
+          text: 'The breaker is doing its job. The fault is a device, a splice, or a damaged cable. That visit is an [electrical repair](/services/electrical-repair), and the breaker stays unless the test says it is finished.',
+        },
+        {
+          title: 'Replace a damaged panel',
+          text: 'The bus is burned, the enclosure is rusted through, or breakers no longer seat. The replacement is sized to the service you already have, unless you also need more capacity.',
+        },
+        {
+          title: 'Upgrade for capacity',
+          text: 'Every space is full, you still have fuses and want room for new loads, or you are adding an EV charger, a hot tub, or a shop. That is a [panel upgrade](/services/panel-upgrades), including the meter and mast when the service size changes.',
+        },
+      ],
+    },
+    cost: [
+      'The price changes with how long the test takes, whether one breaker failed or the bus is damaged, and whether a permit is required. Inside Sioux Falls, the city has its own inspection path. [Brandon](/locations/brandon) and the other towns outside Sioux Falls follow the state electrical inspection rules, plus any local permit that town requires.',
+      'A breaker on a sound panel is a smaller job than a panel that has to come out, or a cable opened in finished plaster. A tight closet takes more labor than an open utility room. Parts follow the panel brand and the breaker that bus will accept.',
+    ],
+    emergency:
+      'Reset a tripped breaker once, if you can reach it without touching a hot cover or standing in water. If it trips again, leave it off. Do not take the panel cover off. If you see smoke or fire, leave and call 911 before you call an electrician. A burning smell, buzzing, or a breaker that will not stay on should not wait. Sparking at the panel is an [emergency electrician](/services/emergency-electrician) call.',
+    visit:
+      'You say which breaker opened, which rooms went dark, and what you already reset. A photo of the closed panel door helps when you can take it safely. On site the circuit is tested before a breaker is changed. A sound panel with one failed breaker stays a breaker replacement. A burned bus, rust, or a breaker that will not seat is written as a panel repair. A full panel, or a plan to add a large load, is a panel upgrade and a separate job. The breaker is labeled before we leave, and you are shown the circuit. A second problem found on site is its own item before anyone keeps going.',
+    faqs: [
+      {
+        q: 'Why does my breaker keep tripping?',
+        a: 'It is opening for an overload, a short, a ground fault, or a loose connection that is heating up. A worn breaker can also open below its rating. Reset it once if that is safe. If it trips again, leave it off and call so the circuit can be tested instead of guessed at.',
+      },
+      {
+        q: 'Is a tripping breaker the same as a bad panel?',
+        a: 'No. Many trips are one circuit doing too much, or a fault in a device or a cable. The panel needs repair when it is hot, rusted, scorched, buzzing, or when a breaker will not seat. A panel that only lacks empty spaces is a capacity question, not a failed breaker.',
+      },
+      {
+        q: 'Can you replace one breaker without replacing the panel?',
+        a: 'Yes, when the panel is in sound condition and the new breaker is the type that panel is made to hold. A burned bus, a rusted enclosure, or a breaker that will not stay seated is not a one-breaker repair.',
+      },
+      {
+        q: 'When is panel replacement a repair, and when is it an upgrade?',
+        a: 'Replacing a damaged panel at the same service size is a repair. A larger service, a fuse box changed so you can add circuits, or space for an EV charger or a shop is a panel upgrade. The visit names which one matches the panel in front of us.',
+      },
+      {
+        q: 'Do you repair breakers and panels in Brandon?',
+        a: 'Yes. [Brandon](/locations/brandon) and the other towns on the service area page use this same phone number. Older houses near Main Street in Brandon are where a small service or a fuse box shows up more often. A failed breaker there is a repair. A service that is too small for a new load is an upgrade.',
+      },
+    ],
+    related: ['/services/panel-upgrades', '/services/electrical-repair', '/services/emergency-electrician'],
   },
   {
     slug: 'wiring-rewiring',

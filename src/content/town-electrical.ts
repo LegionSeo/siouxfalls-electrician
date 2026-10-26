@@ -41,6 +41,7 @@ const tub = '/services/hot-tub-wiring';
 const wire = '/services/wiring-rewiring';
 const light = '/services/lighting-installation';
 const panel = '/services/panel-upgrades';
+const breaker = '/services/circuit-breaker-panel-repair';
 const outlet = '/services/outlet-switch-installation';
 const repair = '/services/electrical-repair';
 const surge = '/services/surge-protection';
@@ -75,7 +76,9 @@ export const townBlocks: TownBlock[] = [
         { text: '200-amp service upgrade', href: panel },
         { text: ' for a 60 or 100 amp service covers the meter and the service entrance, and it is coordinated with the utility. A ' },
         { text: 'panel replacement or a fuse box replacement', href: panel },
-        { text: ' is a different job.' },
+        { text: ' for more room is a different job. A breaker that keeps tripping, or a panel that is scorched or rusted, is ' },
+        { text: 'circuit breaker and panel repair', href: breaker },
+        { text: '.' },
       ],
       [
         { text: 'Ungrounded two-prong outlets', href: outlet },
