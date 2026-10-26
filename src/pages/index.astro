@@ -2,12 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import ContactLink from '../components/ContactLink.astro';
 import Icon from '../components/Icon.astro';
-import MapEmbed from '../components/MapEmbed.astro';
-import ServiceAreaSketch from '../components/ServiceAreaSketch.astro';
 import Photo from '../components/Photo.astro';
 import RequestPanel from '../components/RequestPanel.astro';
 import { joinNames, services, townPages } from '../config/catalog';
-import { SITE } from '../config/site';
+import { SITE, mapsUrl } from '../config/site';
 import { homepageFaqs } from '../content/home';
 import { faqNode } from '../lib/schema';
 
@@ -37,6 +35,8 @@ const homePhoto = SITE.servicePhotos['/services/lighting-installation'];
 const businessPhoto = SITE.servicePhotos['/services/commercial-electrician'];
 const cardSizes = '(min-width: 1024px) 360px, (min-width: 700px) 45vw, 100vw';
 const eyebrow = SITE.available247 ? '24/7 · Sioux Falls & nearby towns' : 'Sioux Falls & nearby towns';
+
+const areaMapSrc = 'https://maps.google.com/maps?ll=43.5460,-96.7313&z=8&t=m&hl=en&output=embed';
 
 const steps = [
   {
@@ -277,14 +277,23 @@ const steps = [
         </div>
       </div>
       <div class="area-grid">
-        <MapEmbed
-          class="area-map"
-          src="https://maps.google.com/maps?ll=43.563,-96.758&z=9&t=m&hl=en&output=embed"
-          title="Map of Sioux Falls, South Dakota and nearby towns"
-          label="Sioux Falls and the towns around it"
-        >
-          <ServiceAreaSketch />
-        </MapEmbed>
+        <div class="area-map">
+          <div class="home-map-frame">
+            <iframe
+              class="home-map"
+              src={areaMapSrc}
+              title="Map of Sioux Falls, South Dakota and nearby towns"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+              width="800"
+              height="600"
+            ></iframe>
+          </div>
+          <a class="home-map-link text-link" href={mapsUrl()} target="_blank" rel="noopener noreferrer">
+            Open in Google Maps
+          </a>
+        </div>
         <ul class="area-towns">
           {
             townPages.map((town) =>
