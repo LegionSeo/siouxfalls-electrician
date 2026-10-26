@@ -11,7 +11,7 @@ export const homeFaqs: FaqItem[] = [
   {
     question: 'How do I find a good electrician in Sioux Falls?',
     paragraphs: [
-      'Ask whether the job needs a city permit, because a careful electrician explains the problem in plain words and tells you what they will and will not touch.',
+      'When you compare electrical contractors in Sioux Falls, ask whether the job needs a city permit, because a careful electrician explains the problem in plain words and tells you what they will and will not touch.',
       'Call and say which room stopped working and what you already tried.',
     ],
   },

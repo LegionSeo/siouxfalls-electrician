@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 import Icon from '../../components/Icon.astro';
+import InlineText from '../../components/InlineText.astro';
 import PageHero from '../../components/PageHero.astro';
 import ServiceCards from '../../components/ServiceCards.astro';
 import SideRail from '../../components/SideRail.astro';
@@ -12,7 +13,12 @@ import { UPDATED_ISO, UPDATED_LABEL } from '../../content/updated';
 import { pagePhoto } from '../../lib/photos';
 import { visitSteps } from '../../lib/visit-steps';
 import { breadcrumb, serviceNode } from '../../lib/page-schema';
+import { faqNode } from '../../lib/schema';
 import { SITE } from '../../config/site';
+
+function plainText(text: string): string {
+  return text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+}
 
 export function getStaticPaths() {
   return servicePages.map((page) => ({ params: { slug: page.slug } }));
@@ -45,6 +51,7 @@ const ctaName: Record<string, string> = {
   'emergency-electrician': 'an emergency call',
   'outlet-switch-installation': 'an outlet or switch',
   'panel-upgrades': 'a panel upgrade',
+  'circuit-breaker-panel-repair': 'a breaker or panel repair',
   'wiring-rewiring': 'wiring',
   'generator-installation': 'a generator installation',
   'ev-charger-installation': 'an EV charger installation',
@@ -61,6 +68,7 @@ const serviceTypes: Record<string, string> = {
   'emergency-electrician': 'Emergency electrical service',
   'outlet-switch-installation': 'Receptacle and switch installation',
   'panel-upgrades': 'Electrical panel upgrade',
+  'circuit-breaker-panel-repair': 'Failed breaker and damaged panel repair',
   'wiring-rewiring': 'Circuit wiring and rewiring',
   'generator-installation': 'Standby generator installation',
   'ev-charger-installation': 'Level 2 EV charger installation',
@@ -80,6 +88,7 @@ const graph = [
     { name: 'Home', path: '/' },
     { name: page.title, path },
   ]),
+  faqNode(page.faqs.map((item) => ({ question: item.q, paragraphs: [plainText(item.a)] }))),
 ];
 ---
 
@@ -90,7 +99,9 @@ const graph = [
     <div class="page-main">
       <section class="bg-paper">
         <div class="section">
-          <p class="measure text-lg">{answer}</p>
+          <p class="measure text-lg">
+            <InlineText text={answer} />
+          </p>
           <p class="mt-6 text-sm text-muted">Updated <time datetime={UPDATED_ISO}>{UPDATED_LABEL}</time></p>
         </div>
       </section>
@@ -98,8 +109,10 @@ const graph = [
       <section class="bg-white" aria-labelledby="included-heading">
         <div class="section">
           <div class="block-head">
-            <h2 id="included-heading">What’s included</h2>
-            <p class="lede">{page.includedLead}</p>
+            <h2 id="included-heading">{page.includedHeading ?? 'What’s included'}</h2>
+            <p class="lede">
+              <InlineText text={page.includedLead} />
+            </p>
           </div>
           <ul class="card-grid cols-2">
             {
@@ -108,7 +121,9 @@ const graph = [
                   <span class="icon-chip">
                     <Icon name="check" />
                   </span>
-                  <p>{item}</p>
+                  <p>
+                    <InlineText text={item} />
+                  </p>
                 </li>
               ))
             }
@@ -119,8 +134,10 @@ const graph = [
       <section class="bg-paper" aria-labelledby="signs-heading">
         <div class="section">
           <div class="block-head">
-            <h2 id="signs-heading">Signs you need it</h2>
-            <p class="lede">{page.signsLead}</p>
+            <h2 id="signs-heading">{page.signsHeading ?? 'Signs you need it'}</h2>
+            <p class="lede">
+              <InlineText text={page.signsLead} />
+            </p>
           </div>
           <ul class="card-grid cols-2">
             {
@@ -129,18 +146,46 @@ const graph = [
                   <span class="icon-chip">
                     <Icon name="warning" />
                   </span>
-                  <p>{item}</p>
+                  <p>
+                    <InlineText text={item} />
+                  </p>
                 </li>
               ))
             }
           </ul>
+          {
+            page.compare && (
+              <>
+                <h2 id="compare-heading" class="mt-12">
+                  {page.compare.heading}
+                </h2>
+                <p class="lede">
+                  <InlineText text={page.compare.lead} />
+                </p>
+                <ul class="card-grid cols-2 mt-6">
+                  {
+                    page.compare.rows.map((row) => (
+                      <li class="icon-card">
+                        <span class="icon-chip">
+                          <Icon name="check" />
+                        </span>
+                        <p>
+                          <strong>{row.title}.</strong> <InlineText text={row.text} />
+                        </p>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </>
+            )
+          }
         </div>
       </section>
 
       <section class="bg-white" aria-labelledby="cost-heading">
         <div class="section">
           <div class="block-head">
-            <h2 id="cost-heading">What affects the price</h2>
+            <h2 id="cost-heading">{page.costHeading ?? 'What affects the price'}</h2>
             <p class="lede">What you pay depends on how hard the wires are to reach, the parts, and whether your city wants a permit. We do not list one price here.</p>
           </div>
           <ol class="card-grid cols-2">
@@ -148,13 +193,17 @@ const graph = [
               page.cost.map((paragraph, index) => (
                 <li class="num-card">
                   <span class="num">{index + 1}</span>
-                  <p>{paragraph}</p>
+                  <p>
+                    <InlineText text={paragraph} />
+                  </p>
                 </li>
               ))
             }
           </ol>
-          <h2 id="emergency-heading" class="mt-12">24/7 emergency service</h2>
-          <p class="measure mt-4 text-muted">{page.emergency}</p>
+          <h2 id="emergency-heading" class="mt-12">{page.emergencyHeading ?? '24/7 emergency service'}</h2>
+          <p class="measure mt-4 text-muted">
+            <InlineText text={page.emergency} />
+          </p>
           {SITE.available247 && <p class="measure mt-3 text-muted">{SITE.availabilityNote}</p>}
         </div>
       </section>
@@ -171,7 +220,9 @@ const graph = [
                 <li>
                   <span class="step-num">{index + 1}</span>
                   <h3 class="mt-4 text-white">{step.title}</h3>
-                  <p class="mt-2 on-dark">{step.text}</p>
+                  <p class="mt-2 on-dark">
+                    <InlineText text={step.text} />
+                  </p>
                 </li>
               ))
             }
@@ -207,5 +258,8 @@ const graph = [
     <SideRail />
   </div>
 
-  <CtaBand photo={photo} heading={`Need help with ${ctaName[page.slug] ?? catalogService.name.toLowerCase()}?`} />
+  <CtaBand
+    photo={photo}
+    heading={page.ctaHeading ?? `Need help with ${ctaName[page.slug] ?? catalogService.name.toLowerCase()}?`}
+  />
 </Layout>

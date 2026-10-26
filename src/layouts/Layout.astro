@@ -45,7 +45,6 @@ const jsonLd = jsonLdScript(
     { url: pageCanonical, name: schemaPageName, description: pageDescription, dateModified: UPDATED_ISO },
     extraGraph,
     {
-      fullBusiness: pagePath === '/' || pagePath === '/contact',
       catalog: pagePath === '/',
     },
   ),
@@ -101,6 +100,11 @@ const analytics = activeAnalytics();
         </script>
       )
     }
+    <script>
+      import { bindLeadForms } from '../scripts/lead-form';
+
+      bindLeadForms();
+    </script>
     <script is:inline>
       (function () {
         document.addEventListener('click', function (event) {

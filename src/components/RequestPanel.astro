@@ -1,7 +1,9 @@
 ---
 import { services, townPages } from '../config/catalog';
-import { SITE } from '../config/site';
+import { SITE, leadAjaxEndpoint } from '../config/site';
+import { staticPagePath } from '../lib/lead-form';
 import ContactLink from './ContactLink.astro';
+import LeadHoneypot from './LeadHoneypot.astro';
 import SmsConsent from './SmsConsent.astro';
 
 interface Props {
@@ -28,6 +30,7 @@ const {
 
 const Heading = headingTag;
 const formAction = SITE.formEndpoint;
+const pagePath = staticPagePath(Astro.url.pathname);
 const headingClass =
   headingTag === 'h2' ? 'text-ink' : 'text-2xl font-bold text-ink';
 ---
@@ -49,22 +52,19 @@ const headingClass =
   {
     formAction && (
       <form
-        class="surface-light mt-6 grid gap-4"
+        class="surface-light relative mt-6 grid gap-4"
         action={formAction}
         method="post"
+        accept-charset="UTF-8"
         data-request-form
+        data-endpoint={leadAjaxEndpoint()}
+        data-phone-display={SITE.phoneDisplay}
+        data-phone-href={SITE.phoneHref}
       >
-        <input type="hidden" name="page" value={Astro.url.pathname} />
-        <div class="hp-field" aria-hidden="true">
-          <label for={`${formIdPrefix}-website`}>Company website</label>
-          <input
-            id={`${formIdPrefix}-website`}
-            name="company_website"
-            type="text"
-            tabindex="-1"
-            autocomplete="off"
-          />
-        </div>
+        <LeadHoneypot idPrefix={formIdPrefix} />
+        <input type="hidden" name="_subject" value="New lead: General request - website visitor" />
+        <input type="hidden" name="_template" value="basic" />
+        <input type="hidden" name="Page" value={pagePath} />
         <label class="grid gap-1 text-sm font-semibold text-ink" for={`${formIdPrefix}-name`}>
           Name
           <input
@@ -139,6 +139,7 @@ const headingClass =
         </label>
         <SmsConsent id={`${formIdPrefix}-sms-consent`} />
         <button class="btn btn-gold btn-lg w-full" type="submit">Request service</button>
+        <p class="form-status" data-form-status tabindex="-1" role="status" aria-live="polite" aria-atomic="true" hidden></p>
         <p class="text-sm text-muted">
           Prefer to talk?{' '}
           <a class="font-bold text-link underline" href={SITE.phoneHref} data-track={`${callTrack}-form`} data-contact-channel="tel">
