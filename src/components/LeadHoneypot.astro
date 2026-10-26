@@ -1,0 +1,20 @@
+---
+interface Props {
+  idPrefix: string;
+}
+
+const { idPrefix } = Astro.props;
+---
+
+<div class="hp-field" aria-hidden="true">
+  <label for={`${idPrefix}-honey`}>Company website</label>
+  <input
+    id={`${idPrefix}-honey`}
+    name="_honey"
+    type="text"
+    tabindex="-1"
+    autocomplete="off"
+    autocapitalize="off"
+    spellcheck="false"
+  />
+</div>

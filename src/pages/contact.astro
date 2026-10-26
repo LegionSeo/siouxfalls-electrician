@@ -1,15 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
+import LeadHoneypot from '../components/LeadHoneypot.astro';
 import PageHero from '../components/PageHero.astro';
-import { townPages } from '../config/catalog';
-import { SITE, formatAddress } from '../config/site';
+import { services, townPages } from '../config/catalog';
+import { SITE, formatAddress, leadAjaxEndpoint } from '../config/site';
+import { staticPagePath } from '../lib/lead-form';
 import { pagePhoto } from '../lib/photos';
 import { breadcrumb } from '../lib/page-schema';
 
 const hero = pagePhoto('hero-contact', 'Shop counter with a desk phone and a blank notepad');
 
 const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').map((town) => town.name)];
+const pagePath = staticPagePath(Astro.url.pathname);
 const graph = [
   breadcrumb([
     { name: 'Home', path: '/' },
@@ -64,14 +67,21 @@ const graph = [
 
         <div>
           <h2 id="request-form">Short note</h2>
-          <p class="mt-4 text-muted">Name, phone, town, and what failed. The note opens in your email app.</p>
+          <p class="mt-4 text-muted">Name, phone, town, and what failed.</p>
           <form
-            class="mt-6 grid gap-4"
+            class="relative mt-6 grid gap-4"
             method="post"
+            accept-charset="UTF-8"
             action={SITE.formEndpoint ?? undefined}
             data-request-form
-            data-mail={SITE.email}
+            data-endpoint={leadAjaxEndpoint()}
+            data-phone-display={SITE.phoneDisplay}
+            data-phone-href={SITE.phoneHref}
           >
+            <LeadHoneypot idPrefix="contact" />
+            <input type="hidden" name="_subject" value="New lead: General request - website visitor" />
+            <input type="hidden" name="_template" value="basic" />
+            <input type="hidden" name="Page" value={pagePath} />
             <label class="grid gap-1 text-sm font-semibold" for="contact-name">
               Name
               <input class="field" id="contact-name" name="name" type="text" required autocomplete="name" />
@@ -80,10 +90,21 @@ const graph = [
               Phone
               <input class="field" id="contact-phone" name="phone" type="tel" required autocomplete="tel" />
             </label>
+            <label class="grid gap-1 text-sm font-semibold" for="contact-email">
+              Email <span class="font-semibold text-muted">(optional)</span>
+              <input class="field" id="contact-email" name="email" type="email" autocomplete="email" />
+            </label>
             <label class="grid gap-1 text-sm font-semibold" for="contact-town">
               Town
               <select class="field" id="contact-town" name="town" required>
                 {towns.map((town) => <option value={town}>{town}</option>)}
+              </select>
+            </label>
+            <label class="grid gap-1 text-sm font-semibold" for="contact-service">
+              Service <span class="font-semibold text-muted">(optional)</span>
+              <select class="field" id="contact-service" name="service">
+                <option value="">Not sure</option>
+                {services.map((service) => <option value={service.name}>{service.name}</option>)}
               </select>
             </label>
             <label class="grid gap-1 text-sm font-semibold" for="contact-message">
@@ -91,24 +112,10 @@ const graph = [
               <textarea class="field min-h-32" id="contact-message" name="message" required></textarea>
             </label>
             <button class="btn btn-gold w-full" type="submit">Send</button>
+            <p class="form-status" data-form-status tabindex="-1" role="status" aria-live="polite" aria-atomic="true" hidden></p>
           </form>
         </div>
       </div>
     </div>
   </section>
 </Layout>
-
-<script>
-  const form = document.querySelector<HTMLFormElement>('[data-request-form]');
-  if (form && !form.getAttribute('action')) {
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const data = new FormData(form);
-      const mail = form.dataset.mail || '';
-      const body = ['name', 'phone', 'town', 'message']
-        .map((key) => `${key}: ${String(data.get(key) || '')}`)
-        .join('\n');
-      window.location.href = `mailto:${mail}?subject=${encodeURIComponent('Service request')}&body=${encodeURIComponent(body)}`;
-    });
-  }
-</script>

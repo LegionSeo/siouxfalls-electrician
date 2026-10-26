@@ -100,6 +100,11 @@ const analytics = activeAnalytics();
         </script>
       )
     }
+    <script>
+      import { bindLeadForms } from '../scripts/lead-form';
+
+      bindLeadForms();
+    </script>
     <script is:inline>
       (function () {
         document.addEventListener('click', function (event) {

@@ -105,8 +105,8 @@ export interface SiteConfig {
   /** Real job photos for the proof block. Empty keeps that block hidden. */
   jobPhotos: JobPhoto[];
   /**
-   * Set to a form action URL to show the request form.
-   * While this is null the form is hidden so a lead cannot be posted nowhere.
+   * HTTPS action for the request form. Null hides that form.
+   * The live value is FormSubmit. Mail is sent by formsubmit.co, not this site.
    */
   formEndpoint: string | null;
   /** Palette id. Live tokens are Thunder Sunrise. */
@@ -153,6 +153,8 @@ const repairWiringPhoto = photo(
 
 const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
+const SERVICE_EMAIL = 'service@siouxfalls-electrician.com';
+
 export const SITE: SiteConfig = {
   name: 'Sioux Falls Electricians',
   origin: 'https://www.siouxfalls-electrician.com',
@@ -161,7 +163,7 @@ export const SITE: SiteConfig = {
   phoneHref: 'tel:+16052504838',
   smsHref: 'sms:+16052504838',
   smsEnabled: false,
-  email: 'service@siouxfalls-electrician.com',
+  email: SERVICE_EMAIL,
   address: {
     street: '5311 S Sycamore Ave, Suite 104',
     city: 'Sioux Falls',
@@ -264,7 +266,7 @@ export const SITE: SiteConfig = {
     ),
   },
   jobPhotos: [],
-  formEndpoint: null,
+  formEndpoint: `https://formsubmit.co/${SERVICE_EMAIL}`,
   theme: 'thunder-sunrise',
   ga4Id: '',
   gtmId: '',
@@ -274,6 +276,11 @@ const GTM_ID = /^GTM-[A-Z0-9]+$/;
 const GA4_ID = /^G-[A-Z0-9]+$/;
 
 /** Which tag to load. GTM wins when both ids are set. Empty or invalid ids load nothing. */
+/** AJAX endpoint on the same FormSubmit host. HTTPS only, no API key. */
+export function leadAjaxEndpoint(): string {
+  return `https://formsubmit.co/ajax/${SITE.email}`;
+}
+
 export function activeAnalytics(): { provider: 'gtm' | 'ga4'; id: string } | null {
   const gtmId = SITE.gtmId.trim();
   if (gtmId) return GTM_ID.test(gtmId) ? { provider: 'gtm', id: gtmId } : null;
