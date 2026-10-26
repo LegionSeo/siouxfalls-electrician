@@ -5,10 +5,17 @@ import PageHero from '../components/PageHero.astro';
 import { townPages } from '../config/catalog';
 import { SITE, formatAddress } from '../config/site';
 import { pagePhoto } from '../lib/photos';
+import { breadcrumb } from '../lib/page-schema';
 
 const hero = pagePhoto('hero-contact', 'Shop counter with a desk phone and a blank notepad');
 
 const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').map((town) => town.name)];
+const graph = [
+  breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: 'Contact', path: '/contact' },
+  ]),
+];
 ---
 
 <Layout
@@ -16,6 +23,7 @@ const towns = ['Sioux Falls', ...townPages.filter((town) => town.href !== '/').m
   schemaName="Contact Sioux Falls Electricians"
   description={`Call ${SITE.phoneDisplay} or send a short note to ${SITE.name}. ${formatAddress()}.`}
   fullTitle
+  extraGraph={graph}
   overlay
 >
   <PageHero
