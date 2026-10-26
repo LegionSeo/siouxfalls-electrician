@@ -32,13 +32,13 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'brandon',
     name: 'Brandon',
-    title: 'Electrician referrals in Brandon, SD',
-    documentTitle: 'Electrician Referrals in Brandon, SD | 24/7 Calls',
-    description: 'Electrician referrals in Brandon, SD for repairs, panels, EV chargers, and lighting. Sioux Falls Electricians connects you with a local licensed electrician. Brandon is five miles east of Sioux Falls in Minnehaha County.',
+    title: 'Electrician in Brandon, SD',
+    documentTitle: 'Best Electrician in Brandon, SD | 24/7 Service',
+    description: 'Electrician in Brandon, SD for repairs, panels, EV chargers, and lighting. Brandon is five miles east of Sioux Falls in Minnehaha County.',
     sub: 'Repair, panel, lighting, and EV-charger calls five miles east of Sioux Falls.',
     photo: photo('town-brandon', 'Electrician at a breaker panel inside a suburban house'),
     answer:
-      'Need an electrician in Brandon, SD? We connect you with a local licensed electrician for repairs, panel work, Level 2 EV chargers, and outlet work for homes and businesses across Brandon. Calls are answered 24/7. Call {phone} and tell us your street and what is going on at the house or the shop.',
+      'Need an electrician in Brandon, SD? We handle repairs, panel work, Level 2 EV chargers, and outlet work for homes and businesses across Brandon, 24/7. Call {phone} and tell us your street and what is going on at the house or the shop.',
     stats: [
       { label: 'County', value: 'Minnehaha' },
       { label: 'Distance', value: '5 miles east' },
@@ -55,7 +55,7 @@ export const townPagesContent: TownPage[] = [
     faqs: [
       {
         q: 'Do you serve all of Brandon?',
-        a: 'Yes. We connect you with a local licensed electrician for homes and businesses across Brandon, in the newer subdivisions and along the older streets near Main Street. We answer 24/7. Call {phone}, tell us the street, and tell us what the power is doing.',
+        a: 'Yes. We take electrical calls for homes and businesses across Brandon, in the newer subdivisions and along the older streets near Main Street. We answer 24/7. Call {phone}, tell us the street, and tell us what the power is doing. We will say whether that job is one we can take.',
       },
       {
         q: 'Do I need a permit for a panel upgrade in Brandon?',
@@ -63,7 +63,7 @@ export const townPagesContent: TownPage[] = [
       },
       {
         q: 'Can you install an EV charger in a Brandon garage?',
-        a: 'Yes. We connect you with a local licensed electrician for a Level 2 charger on its own 240-volt circuit in a Brandon garage. The electrician starts with a load calculation to see whether the panel and the service can carry it. A full panel, or a 60 or 100 amp service, is a separate job from the charger. Call {phone} and tell us the garage.',
+        a: 'Yes. A home charger in a Brandon garage is a Level 2 charger on its own 240-volt circuit. We start with a load calculation to see whether the panel and the service can carry it. A full panel, or a 60 or 100 amp service, is a separate job from the charger. Call {phone} and tell us the garage.',
       },
       {
         q: 'Who do I call for a power outage in Brandon?',
@@ -76,13 +76,13 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'harrisburg',
     name: 'Harrisburg',
-    title: 'Electrician referrals in Harrisburg, SD',
-    documentTitle: 'Electrician Referrals in Harrisburg, SD | 24/7 Calls',
-    description: 'Electrician referrals in Harrisburg, SD, a Lincoln County suburb of Sioux Falls. Sioux Falls Electricians connects you with a local licensed electrician for repairs, panels, lighting, and EV chargers.',
+    title: 'Electrician in Harrisburg, SD',
+    documentTitle: 'Best Electrician in Harrisburg, SD | 24/7 Service',
+    description: 'Electrician in Harrisburg, SD, a Lincoln County suburb of Sioux Falls. Repairs, panels, lighting, and EV chargers.',
     sub: 'Electrical calls in this Lincoln County suburb.',
     photo: photo('town-harrisburg', 'Electrician running conduit in a residential garage'),
     answer:
-      'Harrisburg is a Lincoln County suburb of Sioux Falls. The 2020 census counted 6,732 people. The school district and the city limits do not match, so many district schools sit inside Sioux Falls. Call {phone} and we will connect you with a local licensed electrician in Harrisburg.',
+      'Harrisburg is a Lincoln County suburb of Sioux Falls. The 2020 census counted 6,732 people. The school district and the city limits do not match, so many district schools sit inside Sioux Falls. Call {phone} for electrical work in Harrisburg.',
     stats: [
       { label: 'County', value: 'Lincoln' },
       { label: 'Population 2020', value: '6,732' },
@@ -106,13 +106,13 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'tea',
     name: 'Tea',
-    title: 'Electrician referrals in Tea, SD',
-    documentTitle: 'Electrician Referrals in Tea, SD | 24/7 Calls',
-    description: 'Electrician referrals in Tea, SD, a Lincoln County suburb of Sioux Falls. Sioux Falls Electricians connects you with a local licensed electrician for repairs, panels, lighting, and wiring.',
+    title: 'Electrician in Tea, SD',
+    documentTitle: 'Best Electrician in Tea, SD | 24/7 Service',
+    description: 'Electrician in Tea, SD, a Lincoln County suburb of Sioux Falls. Repairs, panels, lighting, and wiring.',
     sub: 'House and business electrical calls in this Lincoln County suburb.',
     photo: photo('town-tea', 'Electrician at an outdoor electric meter on a house'),
     answer:
-      'Tea is an incorporated city in Lincoln County and a suburb of Sioux Falls. The 2020 census counted 5,598 people. Students attend the Tea Area School District. Sioux Falls Electricians connects you with a local licensed electrician in Tea. Call {phone}.',
+      'Tea is an incorporated city in Lincoln County and a suburb of Sioux Falls. The 2020 census counted 5,598 people. Students attend the Tea Area School District. Sioux Falls Electricians takes electrical calls in Tea. Call {phone}.',
     stats: [
       { label: 'County', value: 'Lincoln' },
       { label: 'Population 2020', value: '5,598' },
@@ -136,13 +136,13 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'hartford',
     name: 'Hartford',
-    title: 'Electrician referrals in Hartford, SD',
-    documentTitle: 'Electrician Referrals in Hartford, SD | 24/7 Calls',
-    description: 'Electrician referrals in Hartford, SD, about 10 miles west of Sioux Falls in Minnehaha County. Sioux Falls Electricians connects you with a local licensed electrician. West Central schools.',
+    title: 'Electrician in Hartford, SD',
+    documentTitle: 'Best Electrician in Hartford, SD | 24/7 Service',
+    description: 'Electrician in Hartford, SD, about 10 miles west of Sioux Falls in Minnehaha County. West Central schools.',
     sub: 'Electrical calls about 10 miles west of Sioux Falls, in Minnehaha County.',
     photo: photo('town-hartford', 'Electrician on a ladder at a house service mast'),
     answer:
-      'Hartford is a suburban city in Minnehaha County. The city site says it lies about 10 miles west of Sioux Falls. The 2020 census counted 3,354 people. West Central schools serve the town. Call {phone} and we will connect you with a local licensed electrician.',
+      'Hartford is a suburban city in Minnehaha County. The city site says it lies about 10 miles west of Sioux Falls. The 2020 census counted 3,354 people. West Central schools serve the town. Call {phone} for electrical work.',
     stats: [
       { label: 'County', value: 'Minnehaha' },
       { label: 'Distance', value: '10 miles west' },
@@ -166,9 +166,9 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'dell-rapids',
     name: 'Dell Rapids',
-    title: 'Electrician referrals in Dell Rapids, SD',
-    documentTitle: 'Electrician Referrals in Dell Rapids, SD | 24/7 Calls',
-    description: 'Electrician referrals in Dell Rapids, SD, about 15 miles north of Sioux Falls along I-29. Sioux Falls Electricians connects you with a local licensed electrician. Dell Rapids School District 49-3.',
+    title: 'Electrician in Dell Rapids, SD',
+    documentTitle: 'Best Electrician in Dell Rapids, SD | 24/7 Service',
+    description: 'Electrician in Dell Rapids, SD, about 15 miles north of Sioux Falls along I-29. Dell Rapids School District 49-3.',
     sub: 'Electrical calls about 15 miles north of Sioux Falls, along I-29.',
     photo: photo('town-dell-rapids', 'Electrician in a utility room with a breaker panel'),
     answer:
@@ -196,14 +196,14 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'canton',
     name: 'Canton',
-    title: 'Electrician referrals in Canton, SD',
-    documentTitle: 'Electrician Referrals in Canton, SD | 24/7 Calls',
+    title: 'Electrician in Canton, SD',
+    documentTitle: 'Best Electrician in Canton, SD | 24/7 Service',
     description:
-      'Electrician referrals in Canton, SD, the Lincoln County seat 18 miles south of Sioux Falls. Sioux Falls Electricians connects you with a local licensed electrician for repairs, panels, lighting, and commercial work. Calls answered 24/7.',
+      'Electrician in Canton, SD, the Lincoln County seat 18 miles south of Sioux Falls. Repairs, panels, lighting and commercial work, 24/7.',
     sub: 'Electrical calls in the Lincoln County seat, 18 miles south of Sioux Falls.',
     photo: photo('town-canton', 'Electrician replacing a light in an older brick house'),
     answer:
-      'Canton is the county seat of Lincoln County, 18 miles south of Sioux Falls. The 2020 census counted 3,066 people. Canton School District 41-1 serves the city. Sioux Falls Electricians connects you with a local licensed electrician in Canton. Call {phone}.',
+      'Canton is the county seat of Lincoln County, 18 miles south of Sioux Falls. The 2020 census counted 3,066 people. Canton School District 41-1 serves the city. Sioux Falls Electricians takes calls in Canton. Call {phone}.',
     stats: [
       { label: 'County', value: 'Lincoln' },
       { label: 'Distance', value: '18 miles south' },
@@ -227,13 +227,13 @@ export const townPagesContent: TownPage[] = [
   {
     slug: 'lennox',
     name: 'Lennox',
-    title: 'Electrician referrals in Lennox, SD',
-    documentTitle: 'Electrician Referrals in Lennox, SD | 24/7 Calls',
-    description: 'Electrician referrals in Lennox, SD, 20 miles southwest of Sioux Falls in Lincoln County. Sioux Falls Electricians connects you with a local licensed electrician. Lennox School District 41-4.',
+    title: 'Electrician in Lennox, SD',
+    documentTitle: 'Best Electrician in Lennox, SD | 24/7 Service',
+    description: 'Electrician in Lennox, SD, 20 miles southwest of Sioux Falls in Lincoln County. Lennox School District 41-4.',
     sub: 'Electrical calls 20 miles southwest of Sioux Falls, in Lincoln County.',
     photo: photo('town-lennox', 'Electrician at a floor outlet in a ranch-house kitchen'),
     answer:
-      'Lennox is a city in Lincoln County, 20 miles southwest of Sioux Falls. The 2020 census counted 2,423 people. Lennox School District 41-4 operates the local schools. Call {phone} and we will connect you with a local licensed electrician in Lennox.',
+      'Lennox is a city in Lincoln County, 20 miles southwest of Sioux Falls. The 2020 census counted 2,423 people. Lennox School District 41-4 operates the local schools. Call {phone} for electrical work in Lennox.',
     stats: [
       { label: 'County', value: 'Lincoln' },
       { label: 'Distance', value: '20 miles SW' },

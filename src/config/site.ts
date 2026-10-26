@@ -155,14 +155,6 @@ const week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 
 const SERVICE_EMAIL = 'service@siouxfalls-electrician.com';
 
-/** Operator of this referral service. Not an electrician and not a person's name. */
-export const OPERATOR_LEGAL_NAME = 'Midwest Leads LLC';
-export const OPERATOR_EMAIL = 'kade@leadsmidwest.com';
-
-/** Exact disclosure. Footer and About use this string unchanged. */
-export const REFERRAL_DISCLOSURE =
-  'Sioux Falls Electricians is a referral service operated by Midwest Leads LLC, Sioux Falls, SD. We connect you with local licensed electricians and do not perform electrical work.';
-
 export const SITE: SiteConfig = {
   name: 'Sioux Falls Electricians',
   origin: 'https://www.siouxfalls-electrician.com',
@@ -182,7 +174,7 @@ export const SITE: SiteConfig = {
   showStreetAddress: false,
   geo: null,
   hours: {
-    label: 'Calls answered 24 hours, 7 days',
+    label: 'Open 24 hours, 7 days',
     specification: [
       {
         dayOfWeek: week,
@@ -193,7 +185,7 @@ export const SITE: SiteConfig = {
   },
   available247: true,
   availabilityNote:
-    'Calls answered 24 hours a day, 7 days a week, including emergency requests.',
+    'Calls answered 24 hours a day, 7 days a week, including emergency service.',
   serviceTowns: [
     'Sioux Falls',
     'Brandon',

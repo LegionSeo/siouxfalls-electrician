@@ -25,7 +25,7 @@ const path = `/locations/${page.slug}`;
 const block = townBlockBySlug(page.slug);
 if (!block) throw new Error(`Missing town electrical block ${town}`);
 const graph = [
-  serviceNode(`Electrician referral in ${page.name}, SD`, 'Referral to a licensed electrician', path, [page.name]),
+  serviceNode(`Electrician in ${page.name}, SD`, 'Electrician', path, [page.name]),
   breadcrumb([
     { name: 'Home', path: '/' },
     { name: 'Service area', path: '/service-area' },
@@ -37,7 +37,7 @@ const graph = [
 
 <Layout
   title={page.documentTitle}
-  schemaName={`Electrician referrals in ${page.name}, SD | ${SITE.name}`}
+  schemaName={`Electrician in ${page.name}, SD | ${SITE.name}`}
   description={page.description}
   fullTitle
   extraGraph={graph}
@@ -46,7 +46,7 @@ const graph = [
   <PageHero
     photo={page.photo}
     eyebrow={`${page.name}, South Dakota`}
-    title="Electrician referrals in"
+    title="Best Electrician in"
     titleAfter={`${page.name}, SD`}
     sub={page.sub}
     town

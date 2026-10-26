@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { services, townPages } from '../config/catalog';
-import { OPERATOR_EMAIL, REFERRAL_DISCLOSURE, SITE, formatAddress } from '../config/site';
+import { SITE, formatAddress } from '../config/site';
 
 export const GET: APIRoute = () => {
   const liveServices = services.filter((service) => service.live);
@@ -27,11 +27,8 @@ export const GET: APIRoute = () => {
 
   const body = `# ${SITE.name}
 
-${REFERRAL_DISCLOSURE}
-
 Phone: ${SITE.phoneDisplay}
 Email: ${SITE.email}
-Email: ${OPERATOR_EMAIL}
 Address: ${formatAddress()}
 Hours: ${hours}
 
