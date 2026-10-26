@@ -3,43 +3,110 @@ interface Props {
   src: string;
   title: string;
   label: string;
-  preview: string;
+  preview?: string;
   class?: string;
 }
 
 const { src, title, label, preview, class: className } = Astro.props;
+const sketched = Astro.slots.has('default');
 ---
 
 <div class:list={['map-embed relative overflow-hidden rounded-2xl', className]} data-map>
-  <img class="map-preview" src={preview} alt="" width="800" height="1000" decoding="async" />
+  {
+    sketched ? (
+      <div class="map-stage">
+        <span class="map-sketch" aria-hidden="true">
+          <slot />
+        </span>
+      </div>
+    ) : (
+      preview && <img class="map-preview" src={preview} alt="" width="800" height="1000" decoding="async" />
+    )
+  }
   <button type="button" class="map-open" data-map-load={src} data-map-title={title}>
-    <span>Show map</span>
-    <span class="map-open-note">{label}</span>
+    <span class="map-open-label">
+      <span>Show map</span>
+      <span class="map-open-note">{label}</span>
+    </span>
   </button>
-  <a class="map-credit" href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer">
-    © OpenStreetMap
-  </a>
+  <p class="map-status" data-map-status role="status" hidden>
+    <span class="map-spinner" aria-hidden="true"></span>
+    <span data-map-status-text>Loading map…</span>
+  </p>
+  {
+    !sketched && preview && (
+      <a class="map-credit" href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer">
+        © OpenStreetMap
+      </a>
+    )
+  }
   <noscript>
-    <iframe class="absolute inset-0 h-full w-full border-0" src={src} title={title} loading="lazy"></iframe>
+    <iframe class="map-noscript" src={src} title={title} loading="lazy"></iframe>
   </noscript>
 </div>
 
 <script>
+  function openMap(button: HTMLButtonElement) {
+    const src = button.dataset.mapLoad;
+    const pane = button.closest<HTMLElement>('[data-map]');
+    if (!src || !pane) return;
+    const state = pane.dataset.mapState;
+    if (state === 'loading' || state === 'ready') return;
+
+    pane.dataset.mapState = 'loading';
+    const status = pane.querySelector<HTMLElement>('[data-map-status]');
+    const statusText = pane.querySelector<HTMLElement>('[data-map-status-text]');
+    if (statusText) statusText.textContent = 'Loading map…';
+    if (status) status.hidden = false;
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+
+    const frame = document.createElement('iframe');
+    frame.className = 'map-frame';
+    frame.title = button.dataset.mapTitle || 'Map';
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.setAttribute('allowfullscreen', '');
+    pane.append(frame);
+
+    let settled = false;
+    const inFlow = Boolean(pane.querySelector('.map-stage'));
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      pane.dataset.mapState = 'ready';
+      frame.classList.add('is-ready');
+      window.setTimeout(() => {
+        if (inFlow) button.setAttribute('aria-hidden', 'true');
+        else button.hidden = true;
+        if (status) status.hidden = true;
+        pane.querySelector('.map-preview')?.setAttribute('hidden', '');
+        pane.querySelector('.map-credit')?.setAttribute('hidden', '');
+      }, 320);
+    };
+    const fail = () => {
+      if (settled) return;
+      settled = true;
+      frame.remove();
+      pane.dataset.mapState = 'error';
+      if (statusText) statusText.textContent = 'Map unavailable. Try again.';
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+    };
+    const timer = window.setTimeout(fail, 12000);
+    frame.addEventListener('load', () => {
+      window.clearTimeout(timer);
+      window.setTimeout(finish, 280);
+    });
+    frame.src = src;
+  }
+
   document.querySelectorAll<HTMLButtonElement>('[data-map-load]').forEach((button) => {
     if (button.dataset.mapBound) return;
     button.dataset.mapBound = '1';
-    button.addEventListener('click', () => {
-      const src = button.dataset.mapLoad;
-      const pane = button.closest('[data-map]');
-      if (!src || !pane) return;
-      const frame = document.createElement('iframe');
-      frame.src = src;
-      frame.title = button.dataset.mapTitle || 'Map';
-      frame.loading = 'lazy';
-      frame.referrerPolicy = 'strict-origin-when-cross-origin';
-      frame.setAttribute('allowfullscreen', '');
-      frame.className = 'absolute inset-0 h-full w-full border-0';
-      pane.replaceChildren(frame);
+    button.addEventListener('click', () => openMap(button));
+    const stage = button.closest('[data-map]')?.querySelector<HTMLElement>('.map-stage');
+    stage?.addEventListener('click', () => {
+      if (!button.disabled) button.click();
     });
   });
 </script>

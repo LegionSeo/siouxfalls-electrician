@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CtaBand from '../components/CtaBand.astro';
 import MapEmbed from '../components/MapEmbed.astro';
+import ServiceAreaSketch from '../components/ServiceAreaSketch.astro';
 import PageHero from '../components/PageHero.astro';
 import ServiceCards from '../components/ServiceCards.astro';
 import SideRail from '../components/SideRail.astro';
@@ -92,11 +93,13 @@ const graph = [
                 <p class="lede">The map is centered on Sioux Falls. Pick your town page, or call us if your town is only on the list.</p>
               </div>
               <MapEmbed
-                src="https://www.google.com/maps?q=Sioux+Falls,+SD&z=10&output=embed"
+                class="area-map"
+                src="https://maps.google.com/maps?ll=43.563,-96.758&z=9&t=m&hl=en&output=embed"
                 title="Map of Sioux Falls, South Dakota and nearby towns"
                 label="Sioux Falls and the towns around it"
-                preview="/images/sioux-falls-area-preview.webp"
-              />
+              >
+                <ServiceAreaSketch />
+              </MapEmbed>
             </div>
             <div>
               <div class="block-head">
