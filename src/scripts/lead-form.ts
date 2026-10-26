@@ -71,9 +71,11 @@ async function sendLead(form: HTMLFormElement): Promise<void> {
   const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
   if (!status || !button) return;
 
+  const successText = form.dataset.successMessage || LEAD_SUCCESS_MESSAGE;
+
   if (honeypotFilled(form)) {
     form.reset();
-    showStatus(status, 'success', document.createTextNode(LEAD_SUCCESS_MESSAGE));
+    showStatus(status, 'success', document.createTextNode(successText));
     return;
   }
 
@@ -116,9 +118,13 @@ async function sendLead(form: HTMLFormElement): Promise<void> {
     submittedAt: new Date(),
     town: fieldValue(form, 'town'),
     company: fieldValue(form, 'company'),
+    project: fieldValue(form, 'project'),
+    urgency: fieldValue(form, 'urgency'),
     smsConsent: smsConsent(form),
   });
 
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 12000);
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -129,15 +135,17 @@ async function sendLead(form: HTMLFormElement): Promise<void> {
       body: new URLSearchParams(payload),
       credentials: 'omit',
       cache: 'no-store',
-      signal: AbortSignal.timeout(20000),
+      signal: controller.signal,
     });
     const data: unknown = await response.json();
     if (!response.ok || !submissionAccepted(data)) throw new Error('Lead was not accepted');
-    showStatus(status, 'success', document.createTextNode(LEAD_SUCCESS_MESSAGE));
+    showStatus(status, 'success', document.createTextNode(successText));
     restore(true);
   } catch {
     showStatus(status, 'error', errorMessage(phoneDisplay, href));
     restore(false);
+  } finally {
+    clearTimeout(timer);
   }
 }
 

@@ -80,6 +80,10 @@ export interface LeadInput {
   submittedAt: Date;
   town?: string;
   company?: string;
+  /** House or business, when the form asks. */
+  project?: string;
+  /** How soon the visitor needs help, when the form asks. */
+  urgency?: string;
   /** Present only when the form actually has the checkbox. */
   smsConsent?: 'yes' | 'no' | null;
 }
@@ -114,8 +118,12 @@ export function buildLeadPayload(input: LeadInput): Record<string, string> {
   };
   const town = input.town ? oneLine(input.town, 80) : '';
   const company = input.company ? oneLine(input.company, 120) : '';
+  const project = input.project ? oneLine(input.project, 40) : '';
+  const urgency = input.urgency ? oneLine(input.urgency, 40) : '';
   if (town) payload.Town = town;
   if (company) payload.Company = company;
+  if (project) payload.Project = project;
+  if (urgency) payload.Urgency = urgency;
   if (input.smsConsent === 'yes' || input.smsConsent === 'no') {
     payload['SMS consent'] = input.smsConsent;
   }
