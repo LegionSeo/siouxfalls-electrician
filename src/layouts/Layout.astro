@@ -45,7 +45,6 @@ const jsonLd = jsonLdScript(
     { url: pageCanonical, name: schemaPageName, description: pageDescription, dateModified: UPDATED_ISO },
     extraGraph,
     {
-      fullBusiness: pagePath === '/' || pagePath === '/contact',
       catalog: pagePath === '/',
     },
   ),

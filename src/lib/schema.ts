@@ -108,11 +108,12 @@ export function faqNode(faqs: FaqItem[]) {
 export function siteGraph(
   page: { url: string; name: string; description: string; dateModified?: string },
   extra: Record<string, unknown>[] = [],
-  options: { fullBusiness?: boolean; catalog?: boolean } = {},
+  options: { catalog?: boolean } = {},
 ) {
-  const fullBusiness = options.fullBusiness ?? false;
   const catalog = options.catalog ?? false;
-  const business = fullBusiness ? electricianNode(catalog) : { '@id': businessId };
+  // Every page carries the same Electrician node. Rich Results Test reads one
+  // URL at a time and does not fill in a bare @id from another page.
+  const business = electricianNode(catalog);
 
   const webpage: Record<string, unknown> = {
     '@type': 'WebPage',

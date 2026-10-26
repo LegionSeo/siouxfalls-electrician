@@ -7,6 +7,7 @@ import SideRail from '../components/SideRail.astro';
 import { joinNames, services, townPages } from '../config/catalog';
 import { UPDATED_ISO, UPDATED_LABEL } from '../content/updated';
 import { pagePhoto } from '../lib/photos';
+import { breadcrumb } from '../lib/page-schema';
 import { SITE, formatAddress } from '../config/site';
 
 const liveServices = services.filter((service) => service.live);
@@ -22,6 +23,12 @@ const faqs = [
     a: `Call ${SITE.phoneDisplay} or use the contact page. Tell us your town, the room, and what stopped working.`,
   },
 ];
+const graph = [
+  breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+  ]),
+];
 ---
 
 <Layout
@@ -29,6 +36,7 @@ const faqs = [
   schemaName="About Sioux Falls Electricians"
   description={`About ${SITE.name}: residential and commercial electrical work in Sioux Falls and nearby towns. Call ${SITE.phoneDisplay}.`}
   fullTitle
+  extraGraph={graph}
   overlay
 >
   <PageHero
