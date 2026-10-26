@@ -1,14 +1,21 @@
 import {
   LEAD_ERROR_AFTER,
   LEAD_ERROR_BEFORE,
+  LEAD_REQUEST_TIMEOUT_MS,
+  LEAD_STILL_SENDING_MS,
   LEAD_SUCCESS_MESSAGE,
+  LEAD_UNCERTAIN_AFTER,
+  LEAD_UNCERTAIN_BEFORE,
   buildLeadPayload,
   isHttpsLeadEndpoint,
+  leadDeliveryUncertain,
+  leadResponseAccepted,
   pageUrlFromLocation,
   type LeadInput,
 } from '../lib/lead-form';
 
 const SENDING_LABEL = 'Sending…';
+const STILL_SENDING_LABEL = 'Still sending…';
 
 function fieldValue(form: HTMLFormElement, name: string): string {
   const control = form.elements.namedItem(name);
@@ -39,14 +46,33 @@ function phoneHref(value: string): string {
   return value.startsWith('tel:+') ? value : 'tel:+16052504838';
 }
 
-function errorMessage(phoneDisplay: string, href: string): DocumentFragment {
+function phoneMessage(before: string, after: string, phoneDisplay: string, href: string): DocumentFragment {
   const fragment = document.createDocumentFragment();
   const link = document.createElement('a');
   link.href = phoneHref(href);
   link.textContent = phoneDisplay || '(605) 250-4838';
   link.className = 'text-link';
-  fragment.append(LEAD_ERROR_BEFORE, link, LEAD_ERROR_AFTER);
+  fragment.append(before, link, after);
   return fragment;
+}
+
+function errorMessage(phoneDisplay: string, href: string): DocumentFragment {
+  return phoneMessage(LEAD_ERROR_BEFORE, LEAD_ERROR_AFTER, phoneDisplay, href);
+}
+
+function uncertainMessage(phoneDisplay: string, href: string): DocumentFragment {
+  return phoneMessage(LEAD_UNCERTAIN_BEFORE, LEAD_UNCERTAIN_AFTER, phoneDisplay, href);
+}
+
+async function readLeadBody(response: Response): Promise<unknown> {
+  const text = await response.text();
+  const trimmed = text.replace(/^\uFEFF/, '').trim();
+  if (!trimmed) return undefined;
+  try {
+    return JSON.parse(trimmed) as unknown;
+  } catch {
+    return undefined;
+  }
 }
 
 function showStatus(status: HTMLElement, kind: 'success' | 'error', content: Node): void {
@@ -57,13 +83,7 @@ function showStatus(status: HTMLElement, kind: 'success' | 'error', content: Nod
   status.focus();
 }
 
-function submissionAccepted(data: unknown): boolean {
-  if (!data || typeof data !== 'object') return false;
-  const success = (data as { success?: unknown }).success;
-  return success === true || success === 'true';
-}
-
-async function sendLead(form: HTMLFormElement): Promise<void> {
+export async function sendLead(form: HTMLFormElement): Promise<void> {
   if (form.dataset.sending === 'true') return;
   if (!form.reportValidity()) return;
 
@@ -123,8 +143,15 @@ async function sendLead(form: HTMLFormElement): Promise<void> {
     smsConsent: smsConsent(form),
   });
 
+  // FormSubmit often replies only after it sends the mail. A short abort
+  // (previously 12s, and 20s before that) showed a failure while the email
+  // still arrived. Wait a full minute, then treat a timeout or a dropped
+  // connection as "on its way" instead of a hard failure.
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 12000);
+  const stillSendingTimer = setTimeout(() => {
+    if (form.dataset.sending === 'true') button.textContent = STILL_SENDING_LABEL;
+  }, LEAD_STILL_SENDING_MS);
+  const abortTimer = setTimeout(() => controller.abort(), LEAD_REQUEST_TIMEOUT_MS);
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -137,15 +164,25 @@ async function sendLead(form: HTMLFormElement): Promise<void> {
       cache: 'no-store',
       signal: controller.signal,
     });
-    const data: unknown = await response.json();
-    if (!response.ok || !submissionAccepted(data)) throw new Error('Lead was not accepted');
+    const data = await readLeadBody(response);
+    if (!leadResponseAccepted(response.status, data)) {
+      showStatus(status, 'error', errorMessage(phoneDisplay, href));
+      restore(false);
+      return;
+    }
     showStatus(status, 'success', document.createTextNode(successText));
     restore(true);
-  } catch {
+  } catch (error) {
+    if (leadDeliveryUncertain(error)) {
+      showStatus(status, 'success', uncertainMessage(phoneDisplay, href));
+      restore(true);
+      return;
+    }
     showStatus(status, 'error', errorMessage(phoneDisplay, href));
     restore(false);
   } finally {
-    clearTimeout(timer);
+    clearTimeout(stillSendingTimer);
+    clearTimeout(abortTimer);
   }
 }
 

@@ -10,6 +10,20 @@ export const LEAD_SUCCESS_MESSAGE =
 export const LEAD_ERROR_BEFORE = "We couldn't send that. Call ";
 export const LEAD_ERROR_AFTER = " and we'll take it from here.";
 
+/**
+ * Shown when the POST was sent but the browser never got a clear answer.
+ * FormSubmit can still deliver the email after a slow or dropped response.
+ */
+export const LEAD_UNCERTAIN_BEFORE =
+  "Thanks, your request is on its way. If you don't hear from us in a few minutes, call ";
+export const LEAD_UNCERTAIN_AFTER = '.';
+
+/** How long to wait for FormSubmit before treating the in-flight POST as uncertain. */
+export const LEAD_REQUEST_TIMEOUT_MS = 60_000;
+
+/** Button label change while a slow FormSubmit response is still in flight. */
+export const LEAD_STILL_SENDING_MS = 8_000;
+
 /** Used when the visitor does not choose a service. Plain words, not a sales subject. */
 export const GENERAL_SERVICE = 'General request';
 
@@ -68,6 +82,42 @@ export function isReplyEmail(value: string): boolean {
 function displayEmail(value: string): string {
   const email = value.replace(/[\u0000-\u001F\u007F]/g, '').trim().slice(0, 254);
   return email || 'Not provided';
+}
+
+/** Pull `success` out of a FormSubmit body, including a JSON string wrapper. */
+export function leadSuccessValue(data: unknown): unknown {
+  if (typeof data === 'string') {
+    const trimmed = data.replace(/^\uFEFF/, '').trim();
+    if (!trimmed) return undefined;
+    try {
+      return leadSuccessValue(JSON.parse(trimmed));
+    } catch {
+      return undefined;
+    }
+  }
+  if (!data || typeof data !== 'object') return undefined;
+  return (data as { success?: unknown }).success;
+}
+
+/**
+ * Any HTTP 2xx is accepted unless FormSubmit said success=false.
+ * `true` and `"true"` are accepted. 4xx and 5xx are rejected.
+ */
+export function leadResponseAccepted(status: number, data: unknown): boolean {
+  if (status >= 400 && status <= 599) return false;
+  const success = leadSuccessValue(data);
+  const flag = typeof success === 'string' ? success.trim() : success;
+  if (flag === false || flag === 'false') return false;
+  if (status >= 200 && status < 300) return true;
+  return flag === true || flag === 'true';
+}
+
+/** Timeout or a network failure after fetch() was called. The POST may already be on its way. */
+export function leadDeliveryUncertain(error: unknown): boolean {
+  if (!error || typeof error !== 'object') return false;
+  const name = 'name' in error ? String((error as { name: unknown }).name) : '';
+  if (name === 'AbortError' || name === 'TimeoutError') return true;
+  return error instanceof TypeError;
 }
 
 export interface LeadInput {
