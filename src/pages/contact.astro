@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import LeadHoneypot from '../components/LeadHoneypot.astro';
 import PageHero from '../components/PageHero.astro';
+import SmsConsent from '../components/SmsConsent.astro';
 import { services, townPages } from '../config/catalog';
 import { SITE, formatAddress, leadAjaxEndpoint } from '../config/site';
 import { staticPagePath } from '../lib/lead-form';
@@ -111,6 +112,7 @@ const graph = [
               What happened
               <textarea class="field min-h-32" id="contact-message" name="message" required></textarea>
             </label>
+            <SmsConsent id="contact-sms-consent" />
             <button class="btn btn-gold w-full" type="submit">Send</button>
             <p class="form-status" data-form-status tabindex="-1" role="status" aria-live="polite" aria-atomic="true" hidden></p>
           </form>

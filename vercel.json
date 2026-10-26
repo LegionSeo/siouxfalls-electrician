@@ -16,7 +16,8 @@
     },
     { "source": "/sitemap.xml", "destination": "/sitemap-index.xml", "statusCode": 301 },
     { "source": "/index.html", "destination": "/", "statusCode": 301 },
-    { "source": "/home", "destination": "/", "statusCode": 301 }
+    { "source": "/home", "destination": "/", "statusCode": 301 },
+    { "source": "/privacy", "destination": "/privacy-policy", "statusCode": 301 }
   ],
   "headers": [
     {

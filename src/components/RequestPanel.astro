@@ -4,6 +4,7 @@ import { SITE, leadAjaxEndpoint } from '../config/site';
 import { staticPagePath } from '../lib/lead-form';
 import ContactLink from './ContactLink.astro';
 import LeadHoneypot from './LeadHoneypot.astro';
+import SmsConsent from './SmsConsent.astro';
 
 interface Props {
   id?: string;
@@ -136,6 +137,7 @@ const headingClass =
             placeholder="What's going on? For example, a breaker keeps tripping in the kitchen."
           />
         </label>
+        <SmsConsent id={`${formIdPrefix}-sms-consent`} />
         <button class="btn btn-gold btn-lg w-full" type="submit">Request service</button>
         <p class="form-status" data-form-status tabindex="-1" role="status" aria-live="polite" aria-atomic="true" hidden></p>
         <p class="text-sm text-muted">
