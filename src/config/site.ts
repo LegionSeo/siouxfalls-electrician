@@ -197,7 +197,10 @@ export const SITE: SiteConfig = {
     'Lennox',
   ],
   listOnlyTowns: ['Crooks', 'Renner', 'Baltic', 'Garretson'],
-  sameAs: [],
+  sameAs: [
+    'https://www.linkedin.com/company/sioux-falls-electricians',
+    'https://www.instagram.com/siouxfallselectricians/',
+  ],
   license: null,
   owner: null,
   rating: null,
