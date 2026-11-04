@@ -1,0 +1,118 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": "https://www.siouxfalls-electrician.com/guides/outlet-not-working#article",
+    "headline": "Outlet Not Working? What to Check First in Sioux Falls",
+    "description": "Outlet not working in your Sioux Falls home? Check GFCIs, wall switches, and breakers in order, learn the winter causes, and know when to call (605) 250-4838.",
+    "url": "https://www.siouxfalls-electrician.com/guides/outlet-not-working",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.siouxfalls-electrician.com/guides/outlet-not-working"
+    },
+    "datePublished": "2026-11-04",
+    "dateModified": "2026-11-04",
+    "inLanguage": "en-US",
+    "author": {
+      "@type": "Organization",
+      "@id": "https://www.siouxfalls-electrician.com/#business",
+      "name": "Sioux Falls Electricians",
+      "url": "https://www.siouxfalls-electrician.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://www.siouxfalls-electrician.com/#business",
+      "name": "Sioux Falls Electricians",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.siouxfalls-electrician.com/logo.png"
+      }
+    },
+    "isPartOf": {
+      "@id": "https://www.siouxfalls-electrician.com/#website"
+    },
+    "about": [
+      "Dead electrical outlet troubleshooting",
+      "GFCI outlets"
+    ],
+    "spatialCoverage": {
+      "@type": "City",
+      "name": "Sioux Falls",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "South Dakota"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://www.siouxfalls-electrician.com/guides/outlet-not-working#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why is my outlet not working when the breaker isn't tripped?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most often a GFCI outlet somewhere else on the circuit has tripped. Reset every GFCI in the house, including the garage and outdoors. Also try the wall switches. If power still doesn't return, a loose connection or a worn outlet is likely, and an electrician should test it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a GFCI in another room shut off my outlet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. One GFCI can protect ordinary outlets farther down the same circuit, sometimes in another room. When it trips, all of those outlets lose power. Pressing RESET on that one GFCI brings them all back."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my outdoor outlet stop working in winter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Outdoor outlets are usually GFCI-protected, and moisture from melting snow or frost can trip them. Holiday lights and outdoor cords can trip them too. Unplug everything, let the box dry, and reset once. If it trips with nothing plugged in, have it checked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why did my outlets stop working after a power outage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The outage, or the power coming back, may have tripped a GFCI or a breaker. Reset those first. If an outlet is still dead after that, a connection may have failed. Call an electrician rather than opening the outlet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a dead outlet dangerous?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A dead outlet alone is not always dangerous. Heat, scorch marks, buzzing, a burning smell, or power that comes and goes are warning signs of a loose or arcing connection. Stop using it, turn off its breaker if you can reach it safely, and call."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.siouxfalls-electrician.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://www.siouxfalls-electrician.com/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Outlet Not Working? What to Check First in Sioux Falls",
+        "item": "https://www.siouxfalls-electrician.com/guides/outlet-not-working"
+      }
+    ]
+  }
+]

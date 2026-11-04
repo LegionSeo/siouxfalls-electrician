@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SideRail from '../../components/SideRail.astro';
+import { guides } from '../../content/guides';
+import { breadcrumb } from '../../lib/page-schema';
+
+const graph = [
+  breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: 'Guides', path: '/guides' },
+  ]),
+];
+---
+
+<Layout
+  title="Electrical Guides for Sioux Falls Homeowners | Sioux Falls Electricians"
+  description="Plain guides for Sioux Falls homeowners: what to check when something electrical stops working, and when to call."
+  fullTitle
+  extraGraph={graph}
+>
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <div class="block-head">
+            <h1>Electrical guides for Sioux Falls homes</h1>
+            <p class="lede">Safe checks you can do yourself, and when it is time to call.</p>
+          </div>
+          <ul class="card-grid cols-2">
+            {
+              guides.map((guide) => (
+                <li>
+                  <a class="text-card" href={`/guides/${guide.slug}`}>
+                    {guide.h1}
+                    <span class="mt-2 block text-sm font-normal text-muted">{guide.summary}</span>
+                    <span class="mt-2 block text-sm font-normal text-muted">
+                      <time datetime={guide.datePublished}>{guide.dateLabel}</time>
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+    </div>
+    <SideRail />
+  </div>
+</Layout>

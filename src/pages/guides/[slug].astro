@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import SideRail from '../../components/SideRail.astro';
+import { guides } from '../../content/guides';
+import { pagePhoto } from '../../lib/photos';
+
+export function getStaticPaths() {
+  return guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+
+const { guide } = Astro.props;
+const bodies = import.meta.glob<{ Content: any }>('../../content/guides/*.md', { eager: true });
+const body = bodies[`../../content/guides/${guide.slug}.md`];
+const Content = body.Content;
+const ctaPhoto = pagePhoto('hero-about', 'Electrical contractor van parked in a residential driveway, side door open, no people');
+---
+
+<Layout title={guide.title} description={guide.description} fullTitle>
+  <Fragment slot="head">
+    {guide.schema.map((node) => <script type="application/ld+json" set:html={JSON.stringify(node)} />)}
+  </Fragment>
+
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <nav class="guide-crumbs text-sm text-muted" aria-label="Breadcrumb">
+            <a class="text-link" href="/">Home</a>{" "}<span aria-hidden="true">/</span>{" "}
+            <a class="text-link" href="/guides">Guides</a>
+          </nav>
+          <article class="guide-prose measure">
+            <h1>{guide.h1}</h1>
+            <Content />
+          </article>
+        </div>
+      </section>
+    </div>
+    <SideRail />
+  </div>
+
+  <CtaBand photo={ctaPhoto} heading="Call with the problem" />
+</Layout>
