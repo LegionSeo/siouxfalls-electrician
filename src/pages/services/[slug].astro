@@ -20,6 +20,10 @@ function plainText(text: string): string {
   return text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
 }
 
+function withPhone(text: string): string {
+  return text.replaceAll('{phone}', SITE.phoneDisplay);
+}
+
 export function getStaticPaths() {
   return servicePages.map((page) => ({ params: { slug: page.slug } }));
 }
@@ -30,7 +34,8 @@ if (!page) throw new Error(`Missing service page ${slug}`);
 
 const path = `/services/${page.slug}`;
 const photo = pagePhoto(page.photo, page.alt);
-const answer = page.answer.replaceAll('{phone}', SITE.phoneDisplay);
+const answer = withPhone(page.answer);
+const faqs = page.faqs.map((item) => ({ q: item.q, a: withPhone(item.a) }));
 const related = page.related
   .map((href) => services.find((service) => service.href === href))
   .filter((service) => service?.live);
@@ -88,7 +93,7 @@ const graph = [
     { name: 'Home', path: '/' },
     { name: page.title, path },
   ]),
-  faqNode(page.faqs.map((item) => ({ question: item.q, paragraphs: [plainText(item.a)] }))),
+  faqNode(faqs.map((item) => ({ question: item.q, paragraphs: [plainText(item.a)] }))),
 ];
 ---
 
@@ -253,7 +258,7 @@ const graph = [
         </div>
       </section>
 
-      <FaqAccordion items={page.faqs} heading="Questions about this work" />
+      <FaqAccordion items={faqs} heading="Questions about this work" />
     </div>
     <SideRail />
   </div>
