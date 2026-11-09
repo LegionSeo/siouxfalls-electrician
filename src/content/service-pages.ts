@@ -119,6 +119,7 @@ export const servicePages: ServicePage[] = [
       { q: 'What should I do before the electrician arrives?', a: 'Keep people away from the sparking device. Shut the breaker off if you can reach it without stepping in water or touching a hot cover. Do not pour water on an electrical fire.' },
       { q: 'Is a partial power outage always an emergency?', a: 'Not always. A single tripped breaker can be a simple overload. Partial power with a burning smell, heat, or buzzing should be treated as urgent.' },
       { q: 'Do emergency calls cover businesses too?', a: 'Yes. Shops and offices can lose lights, coolers, or a section of circuits. Say what equipment is down when you call.' },
+      { q: 'Half my house has no power but no breaker is tripped. What does that mean and who do I call?', a: 'This often means you have lost one leg (phase) of power from the utility, or the main breaker or service connection is failing. For a quick safety check, look at your main breaker, and if your neighbors have the same problem, call your power company first. Xcel Energy serves most of Sioux Falls. Don\'t open the panel or touch the service wires yourself. If your neighbors have power or the utility says their side is fine, call us for emergency service at {phone}.' },
     ],
     related: ['/services/circuit-breaker-panel-repair', '/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation'],
   },
