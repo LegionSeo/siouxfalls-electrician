@@ -7,9 +7,14 @@ import RequestPanel from '../components/RequestPanel.astro';
 import { joinNames, services, townPages } from '../config/catalog';
 import { SITE, mapsUrl } from '../config/site';
 import { homepageFaqs } from '../content/home';
+import { BRIEF_ISO } from '../content/updated';
+import InlineText from '../components/InlineText.astro';
 import { faqNode } from '../lib/schema';
 
 const faqs = homepageFaqs();
+function faqPlain(text: string): string {
+  return text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+}
 const homeTitle = 'Best Electrician in Sioux Falls, SD | 24/7 Service';
 const homeSchemaName = 'Electrician Sioux Falls, SD | Sioux Falls Electricians';
 const homeDescription = `Need an electrician in Sioux Falls? Residential and commercial electricians for Sioux Falls, Brandon, Harrisburg, Tea and nearby, 24/7. Call ${SITE.phoneDisplay}.`;
@@ -54,7 +59,15 @@ const steps = [
 ];
 ---
 
-<Layout title={homeTitle} schemaName={homeSchemaName} description={homeDescription} fullTitle extraGraph={[faqNode(faqs)]} overlay>
+<Layout
+  title={homeTitle}
+  schemaName={homeSchemaName}
+  description={homeDescription}
+  fullTitle
+  extraGraph={[faqNode(faqs.map((item) => ({ question: item.question, paragraphs: item.paragraphs.map(faqPlain) })))]}
+  overlay
+  dateModified={BRIEF_ISO}
+>
   <link
     slot="head"
     rel="preload"
@@ -207,6 +220,10 @@ const steps = [
           })
         }
       </ul>
+      <p class="measure mt-8">
+        For a rough price range, try the <a class="text-link" href="/tools/electrical-cost-calculator">electrical cost calculator</a>.
+        For a standby unit, try the <a class="text-link" href="/tools/generator-size-calculator">generator size calculator</a>.
+      </p>
     </div>
   </section>
 
@@ -336,7 +353,9 @@ const steps = [
                 <span class="faq-minus text-2xl font-bold leading-none text-rose" aria-hidden="true">−</span>
               </summary>
               {item.paragraphs.map((paragraph) => (
-                <p class="measure mt-3 text-muted">{paragraph}</p>
+                <p class="measure mt-3 text-muted">
+                  <InlineText text={paragraph} />
+                </p>
               ))}
             </details>
           ))

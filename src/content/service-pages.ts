@@ -1,3 +1,5 @@
+import { BRIEF_ISO } from './updated';
+
 export interface ServicePage {
   slug: string;
   title: string;
@@ -33,6 +35,10 @@ export interface ServicePage {
   related: string[];
   /** Overrides the shared bottom call-to-action heading. */
   ctaHeading?: string;
+  /** WebPage.name when it should match a new title tag. */
+  schemaName?: string;
+  /** Schema dateModified for pages updated by the Nov 2026 brief. */
+  dateModified?: string;
 }
 
 export const servicePages: ServicePage[] = [
@@ -82,8 +88,10 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'emergency-electrician',
     title: 'Emergency Electrician Sioux Falls SD',
-    documentTitle: '24/7 Emergency Electrician in Sioux Falls, SD',
-    description: '24/7 emergency electrician in Sioux Falls for sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
+    documentTitle: 'Emergency Electrician for Power Outages | Sioux Falls 24/7',
+    schemaName: 'Emergency Electrician for Power Outages | Sioux Falls 24/7',
+    dateModified: BRIEF_ISO,
+    description: 'Power out in part or all of your house? 24/7 emergency electrician in Sioux Falls for power failures, sparking, and burning smells. Call (605) 250-4838. Call 911 for smoke or fire.',
     sub: 'Sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
     photo: 'service-emergency-hero',
     alt: 'Emergency electrician checking an outdoor outlet at night',
@@ -120,6 +128,8 @@ export const servicePages: ServicePage[] = [
       { q: 'Is a partial power outage always an emergency?', a: 'Not always. A single tripped breaker can be a simple overload. Partial power with a burning smell, heat, or buzzing should be treated as urgent.' },
       { q: 'Do emergency calls cover businesses too?', a: 'Yes. Shops and offices can lose lights, coolers, or a section of circuits. Say what equipment is down when you call.' },
       { q: 'Half my house has no power but no breaker is tripped. What does that mean and who do I call?', a: 'This often means you have lost one leg (phase) of power from the utility, or the main breaker or service connection is failing. For a quick safety check, look at your main breaker, and if your neighbors have the same problem, call your power company first. Xcel Energy serves most of Sioux Falls. Don\'t open the panel or touch the service wires yourself. If your neighbors have power or the utility says their side is fine, call us for emergency service at {phone}.' },
+      { q: 'Can an electrician fix a power outage?', a: 'An electrician fixes problems on your side of the meter, like a failed main breaker, a burned connection, or damaged service equipment. If the whole street is out, the utility has to restore power first.' },
+      { q: 'My lights are flickering and dimming all over the house. Is that an emergency?', a: 'Treat it as urgent. House wide flickering or dimming, especially when big appliances start, can mean a loose neutral or service connection, which can damage electronics and overheat parts. Call us at (605) 250-4838.' },
     ],
     related: ['/services/circuit-breaker-panel-repair', '/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation'],
   },
@@ -168,8 +178,10 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'panel-upgrades',
     title: 'Panel Upgrades Sioux Falls SD',
-    documentTitle: 'Electrical Panel Upgrades in Sioux Falls, SD',
-    description: 'Panel upgrades in Sioux Falls for full, warm, or outdated breaker panels and old fuse boxes. Calls answered 24/7.',
+    documentTitle: 'Panel Upgrade Cost Sioux Falls SD | 200 Amp, FPE, Fuse Box',
+    schemaName: 'Panel Upgrade Cost Sioux Falls SD | 200 Amp, FPE, Fuse Box',
+    dateModified: BRIEF_ISO,
+    description: 'Panel upgrade cost in Sioux Falls, SD: typical ranges for 100 to 200 amp upgrades, Federal Pacific panel replacement, and fuse box replacement. Call (605) 250-4838.',
     sub: 'Full, warm, or fuse-box panels replaced.',
     photo: 'service-panel-hero',
     alt: 'Electrician replacing a residential breaker panel',
@@ -207,6 +219,11 @@ export const servicePages: ServicePage[] = [
       { q: 'Can you add circuits without replacing the panel?', a: 'Only when there is space and the panel is in sound condition. Tandem breakers are not a fit for every panel. The visit says which path is real.' },
       { q: 'Who inspects a panel change?', a: 'Inside Sioux Falls, the city has its own inspection path. Other towns follow that city plus the state electrical inspection rules. The visit notes what the job needs.' },
       { q: 'How should I prepare for a panel visit?', a: 'Send a photo of the panel with the cover closed and another with it open if you can do that safely. List any large loads you plan to add.' },
+      { q: 'How much does it cost to upgrade from 100 amp to 200 amp service?', a: 'Published national figures put a 200 amp panel with installation at about $1,300 to $2,000. If the meter base and service wires also need to be replaced, the total is higher. We confirm the scope after looking at the panel, meter, and loads you want to add.' },
+      { q: 'How much does it cost to replace a Federal Pacific panel?', a: 'Published national figures put replacing a panel like a Federal Pacific Stab-Lok at about $550 to $2,100, with an average near $1,300. The size of the new panel and its location set the price.' },
+      { q: 'Should I replace my Federal Pacific panel even if it works?', a: 'Many electricians recommend it. Testing has shown that some Stab-Lok breakers fail to trip when they should, and a breaker that does not trip cannot protect the circuit. Some insurers and inspectors also ask about these panels.' },
+      { q: 'How much does it cost to replace a fuse box?', a: 'Published national figures put replacing a fuse box with a breaker panel at about $1,500 to $2,000, more if the service size also goes up.' },
+      { q: 'Do I need 200 amp service?', a: 'Not always. A home adding an EV charger, heat pump, hot tub, or shop often does. Our [generator](/tools/generator-size-calculator) and [cost tools](/tools/electrical-cost-calculator) give a rough start, and a load review on site gives the real answer.' },
     ],
     related: ['/services/circuit-breaker-panel-repair', '/services/ev-charger-installation', '/services/wiring-rewiring', '/services/surge-protection'],
   },
@@ -214,6 +231,7 @@ export const servicePages: ServicePage[] = [
     slug: 'circuit-breaker-panel-repair',
     title: 'Circuit Breaker and Panel Repair Sioux Falls SD',
     documentTitle: 'Circuit Breaker & Panel Repair in Sioux Falls, SD',
+    dateModified: BRIEF_ISO,
     description:
       'Circuit breaker repair and panel repair in Sioux Falls for breakers that keep tripping and panels that are hot, rusted, or damaged. Calls answered 24/7.',
     sub: 'Tripping breakers and damaged panels. Not a capacity upgrade.',
@@ -271,7 +289,7 @@ export const servicePages: ServicePage[] = [
     ],
     costHeading: 'What affects breaker repair and replacement cost',
     emergency:
-      'Reset a tripped breaker once, if you can reach it without touching a hot cover or standing in water. If it trips again, leave it off. Do not take the panel cover off. If you see smoke or fire, leave and call 911 before you call an electrician. A burning smell, buzzing, or a breaker that will not stay on should not wait. Sparking at the panel is an [emergency electrician](/services/emergency-electrician) call.',
+      'Reset a tripped breaker once, if you can reach it without touching a hot cover or standing in water. If it trips again, leave it off. Do not take the panel cover off. If you see smoke or fire, leave and call 911 before you call an electrician. A burning smell, buzzing, or a breaker that will not stay on should not wait. Sparking at the panel is an [emergency electrician](/services/emergency-electrician) call. See [what to do in a power failure](/services/emergency-electrician#power-failure).',
     visit:
       'You say which breaker opened, which rooms went dark, and what you already reset. A photo of the closed panel door helps when you can take it safely. On site the circuit is tested before a breaker is changed. A sound panel with one failed breaker stays a breaker replacement. A burned bus, rust, or a breaker that will not seat is written as a panel repair. A full panel, or a plan to add a large load, is a panel upgrade and a separate job. The breaker is labeled before we leave, and you are shown the circuit. A second problem found on site is its own item before anyone keeps going.',
     faqs: [
@@ -289,7 +307,7 @@ export const servicePages: ServicePage[] = [
       },
       {
         q: 'When is panel replacement a repair, and when is it an upgrade?',
-        a: 'Replacing a damaged panel at the same service size is a repair. A larger service, a fuse box changed so you can add circuits, or space for an EV charger or a shop is a panel upgrade. The visit names which one matches the panel in front of us.',
+        a: 'Replacing a damaged panel at the same service size is a repair. A larger service, a fuse box changed so you can add circuits, or space for an EV charger or a shop is a panel upgrade. The visit names which one matches the panel in front of us. See [typical panel upgrade costs](/services/panel-upgrades#upgrade-200-amp).',
       },
       {
         q: 'Do you repair breakers and panels in Brandon?',
@@ -301,8 +319,10 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'wiring-rewiring',
     title: 'Wiring and Rewiring Sioux Falls SD',
-    documentTitle: 'Home Wiring & Rewiring in Sioux Falls, SD',
-    description: 'Wiring and rewiring in Sioux Falls for old circuits, added rooms, and whole-house rewires. Calls answered 24/7.',
+    documentTitle: 'Rewiring & Knob and Tube Removal Cost | Sioux Falls, SD',
+    schemaName: 'Rewiring & Knob and Tube Removal Cost | Sioux Falls, SD',
+    dateModified: BRIEF_ISO,
+    description: 'Cost to rewire an older Sioux Falls home and remove knob and tube wiring: typical ranges by home size, plaster walls, and staged rewires. Call (605) 250-4838.',
     sub: 'Old circuits, added rooms, and rewires.',
     photo: 'service-wiring',
     alt: 'Electrician pulling new cable through open wall studs',
@@ -337,14 +357,20 @@ export const servicePages: ServicePage[] = [
       { q: 'What if the house has aluminum wiring?', a: 'If aluminum branch wiring is found, those connections are their own scope.' },
       { q: 'Will a rewire include new devices?', a: 'The new cable ends at new devices where the old ones will not grip the new wire. A device swap by itself is outlet and switch work.' },
       { q: 'Is cloth wiring the same as knob-and-tube, and does it need to be replaced?', a: 'Cloth wiring is not the same as knob-and-tube. Cloth-covered cable uses fabric insulation around modern-style conductors; knob-and-tube runs individual wires on porcelain knobs and tubes. Both are aging systems. Cloth that is brittle, damaged, or overloaded should be evaluated and often replaced by a licensed electrician.' },
+      { q: 'How much does it cost to rewire an old house in Sioux Falls?', a: 'Published national figures for a general rewire run about $2 to $4 per square foot, about $4,000 to $8,000 for 2,000 square feet. Older homes with plaster walls or knob and tube wiring often cost much more. We price your home after a walk through.' },
+      { q: 'How much does it cost to remove knob and tube wiring?', a: 'Published national figures put knob and tube replacement at about $12,000 to $36,600, with an average near $24,300, or about $10 to $20 per square foot. Access through an attic or basement keeps it toward the low end.' },
+      { q: 'Can I live in the house during a rewire?', a: 'Usually yes. Rewires can be staged so most circuits are back on each night. Expect some open walls and dust in the rooms being worked on.' },
+      { q: 'Do I have to rewire the whole house at once?', a: 'No. Many owners start with the oldest circuits, the kitchen, or the bedrooms and finish the rest later. We tell you which circuits are the priority.' },
     ],
     related: ['/services/electrical-repair', '/services/panel-upgrades', '/services/lighting-installation'],
   },
   {
     slug: 'generator-installation',
     title: 'Generator Installation Sioux Falls SD',
-    documentTitle: 'Generator Installation in Sioux Falls, SD',
-    description: 'Home backup generator installation in Sioux Falls: standby generators, transfer switches, and inlets for a portable generator. No backfeed setups.',
+    documentTitle: 'Generac Generator & Transfer Switch Cost | Sioux Falls, SD',
+    schemaName: 'Generac Generator & Transfer Switch Cost | Sioux Falls, SD',
+    dateModified: BRIEF_ISO,
+    description: 'Generac and standby generator installation cost in Sioux Falls, SD, plus transfer switch prices for portable generators. Typical ranges and what changes them. Call (605) 250-4838.',
     sub: 'Standby units, transfer switches, and inlets. No backfeed setups.',
     photo: 'service-generator',
     alt: 'Electrician checking a home standby generator',
@@ -381,14 +407,20 @@ export const servicePages: ServicePage[] = [
       { q: 'Do standby generators need the utility involved?', a: 'Often yes, because the automatic switch sits between the meter and the panel. The visit notes when that approval is part of the job.' },
       { q: 'Where should the generator sit?', a: 'Away from windows and the intake of a furnace, on a pad the manufacturer allows. The visit marks a spot.' },
       { q: 'Interlock kit or transfer switch: which do I need, and does it need a permit?', a: 'An interlock kit lets a portable generator power selected circuits through your panel. A transfer switch (manual or automatic) is for a standby generator or a fixed setup. Both need a licensed electrician and typically a permit so utility power and generator power cannot backfeed each other.' },
+      { q: 'How much does a Generac whole house generator cost to install?', a: 'Published national figures put whole house generator installation at about $1,500 to $8,800, with an average near $5,200, and Generac units starting around $6,000. Size, fuel, the pad, and the transfer switch decide where your job lands.' },
+      { q: 'What size generator do I need for my house?', a: 'Published sizing guides suggest about 10 to 14 kW for a 2,000 square foot home and 16 to 20 kW or more for 3,000 square feet, depending on what you want to run. Try our [generator size calculator](/tools/generator-size-calculator) for a quick start.' },
+      { q: 'How much does a generator transfer switch cost?', a: 'Published national figures put transfer switch installation at about $1,200 to $1,600 on average, with manual switches about $400 to $1,300 and automatic switches about $600 to $2,500.' },
+      { q: 'Do I need a transfer switch for a portable generator?', a: 'You need a safe way to connect it, either a transfer switch or an interlock with an inlet. Plugging a generator into an outlet can backfeed the utility lines and injure a line worker.' },
     ],
     related: ['/services/panel-upgrades', '/services/emergency-electrician', '/services/surge-protection'],
   },
   {
     slug: 'ev-charger-installation',
     title: 'EV Charger Installation Sioux Falls SD',
-    documentTitle: 'EV Charger Installation in Sioux Falls, SD',
-    description: 'Level 2 home EV charger installation in Sioux Falls, including the circuit and a panel check. Calls answered 24/7.',
+    documentTitle: 'EV Charger Installation Cost in Sioux Falls, SD',
+    schemaName: 'EV Charger Installation Cost in Sioux Falls, SD',
+    dateModified: BRIEF_ISO,
+    description: 'EV charger installation cost in Sioux Falls, Harrisburg and Tea: typical Level 2 ranges, panel capacity, and garage installs. Call (605) 250-4838.',
     sub: 'A Level 2 home charger on a new circuit, after the panel is checked.',
     photo: 'service-ev-hero',
     alt: 'Electrician mounting a home EV charger in a garage',
@@ -423,6 +455,9 @@ export const servicePages: ServicePage[] = [
       { q: 'Do you install a charger I already bought?', a: 'Yes, if the unit is meant for a home circuit and the nameplate matches the wire and breaker. Bring the manual or a photo of the label.' },
       { q: 'Is a permit part of an EV circuit?', a: 'Often yes for a new 240-volt circuit. The visit names the city office when the job is inside a town that issues its own permits.' },
       { q: 'Can the charger be outside?', a: 'Yes, with a weather-rated unit and a mount that keeps the cord off the ground. The parking spot decides the route of the conduit.' },
+      { q: 'How much does it cost to install a Level 2 EV charger?', a: 'Published national figures put installation at about $555 to $1,380, with an average near $970, or about $700 to $2,000 with the charger included. Distance from the panel and panel capacity move the price the most.' },
+      { q: 'Do I need a panel upgrade for an EV charger?', a: 'Not always. If your panel has space and spare capacity, the charger can go on a new circuit. Older homes on 100 amp service sometimes need an upgrade first, which published figures put at about $800 to $2,000.' },
+      { q: 'How long does EV charger installation take?', a: 'A straightforward garage install near the panel is often a quick visit. Long wire runs, outdoor mounts, or a panel upgrade take longer.' },
     ],
     related: ['/services/panel-upgrades', '/services/wiring-rewiring', '/services/outlet-switch-installation'],
   },
@@ -514,8 +549,10 @@ export const servicePages: ServicePage[] = [
   {
     slug: 'hot-tub-wiring',
     title: 'Hot Tub Wiring Sioux Falls SD',
-    documentTitle: 'Hot Tub Wiring in Sioux Falls, SD',
-    description: 'Hot tub electrical installation in Sioux Falls, SD: the dedicated circuit and disconnect your tub needs, sized from its nameplate. Calls answered 24/7.',
+    documentTitle: 'Hot Tub Electrical Installation Cost | Sioux Falls, SD',
+    schemaName: 'Hot Tub Electrical Installation Cost | Sioux Falls, SD',
+    dateModified: BRIEF_ISO,
+    description: 'Hot tub electrical installation in Sioux Falls, SD: typical cost, the dedicated circuit and GFCI disconnect, and trenching before the ground freezes. Call (605) 250-4838.',
     sub: 'The dedicated circuit and disconnect a tub needs, sized from the nameplate.',
     photo: 'service-hottub',
     alt: 'Electrician wiring a disconnect near a hot tub',
@@ -547,8 +584,11 @@ export const servicePages: ServicePage[] = [
     faqs: [
       { q: 'Can the tub share a circuit with the garage?', a: 'No. A hot tub needs its own circuit sized from its nameplate. Shared circuits trip and can overheat.' },
       { q: 'Do you need the tub on site to wire it?', a: 'The nameplate is enough to build the circuit. The final connection waits until the tub is set where it will stay.' },
-      { q: 'What if the panel is full?', a: 'Then the tub job includes a panel upgrade, or the tub circuit waits. Space is checked before the trench is dug.' },
+      { q: 'What if the panel is full?', a: 'Then the tub job includes a panel upgrade, or the tub circuit waits. Space is checked before the trench is dug. See [panel upgrade costs](/services/panel-upgrades#upgrade-200-amp).' },
       { q: 'Who pulls the permit?', a: 'When the city requires a permit, it is part of the job. The office depends on which town the pad is in.' },
+      { q: 'How much does it cost to wire a hot tub?', a: 'Published national figures put hot tub wiring at about $1,900 to $4,200, with an average near $2,300. A long trench or a full panel pushes it higher.' },
+      { q: 'What does a hot tub need electrically?', a: 'Most hot tubs need a dedicated 240 volt circuit sized from the tub\'s nameplate, GFCI protection, and a disconnect within sight of the tub. Plug in tubs on 120 volts are the exception.' },
+      { q: 'Can I wire a hot tub in the winter?', a: 'Yes for most of the work, but trenching frozen ground is slower and costs more. If you are planning a spring tub, get the trench and conduit in before the ground freezes.' },
     ],
     related: ['/services/panel-upgrades', '/services/wiring-rewiring', '/services/ev-charger-installation'],
     ctaHeading: 'Need a hot tub electrician in Sioux Falls?',
@@ -557,12 +597,13 @@ export const servicePages: ServicePage[] = [
     slug: 'electrical-inspections',
     title: 'Electrical Inspections Sioux Falls SD',
     documentTitle: 'Electrical Inspections in Sioux Falls, SD',
+    dateModified: BRIEF_ISO,
     description: 'Home electrical inspection in Sioux Falls: a private safety check of panels, wiring, and devices. This is not a city inspection.',
     sub: 'A private look at the panel and visible wiring. This is not a city inspection.',
     photo: 'service-inspect',
     alt: 'Electrician inspecting an open breaker panel',
     answer:
-      'An electrical inspection is a private safety check of the panel, wiring, and devices in a Sioux Falls area building. It is not a city or state inspection and it does not replace a permit inspection. You get a written list of what was seen. Call {phone}.',
+      'An electrical inspection is a private safety check of the panel, wiring, and devices in a Sioux Falls area building. It is not a city or state inspection and it does not replace a permit inspection. You get a written list of what was seen. Call {phone}. See [rewire and knob and tube costs](/services/wiring-rewiring).',
     includedLead: 'The visit looks. It does not certify the whole building.',
     included: [
       'A look at the panel cover, breakers, and any signs of heat. We take the cover off only when it is safe.',

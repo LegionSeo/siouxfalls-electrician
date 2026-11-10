@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import SideRail from '../../components/SideRail.astro';
 import { guides } from '../../content/guides';
+import { BRIEF_ISO } from '../../content/updated';
 import { pagePhoto } from '../../lib/photos';
 
 export function getStaticPaths() {
@@ -16,7 +17,7 @@ const Content = body.Content;
 const ctaPhoto = pagePhoto('hero-about', 'Electrical contractor van parked in a residential driveway, side door open, no people');
 ---
 
-<Layout title={guide.title} description={guide.description} fullTitle>
+<Layout title={guide.title} description={guide.description} fullTitle dateModified={guide.slug === 'outlet-not-working' ? BRIEF_ISO : undefined}>
   <Fragment slot="head">
     {guide.schema.map((node) => <script type="application/ld+json" set:html={JSON.stringify(node)} />)}
   </Fragment>

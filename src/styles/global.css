@@ -1507,16 +1507,22 @@ details[open] .faq-minus {
   gap: 16px;
   align-content: start;
   padding-block: 24px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .page-main > section {
   background: #fff;
   border: 1px solid #e7e2d9;
   border-radius: 16px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .page-main > section .section {
   padding: 24px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .page-main > section.surface-dark {
@@ -1997,3 +2003,160 @@ details[open] .faq-minus {
 .guide-prose th, .guide-prose td { border: 1px solid rgb(0 0 0 / 0.12); padding: 0.5rem 0.65rem; text-align: left; vertical-align: top; min-width: 9rem; }
 .guide-prose th { background: rgb(0 0 0 / 0.04); }
 .page-main:has(.guide-prose), .page-main:has(.guide-prose) > section { min-width: 0; max-width: 100%; }
+
+.page-main h2[id],
+.page-main h3[id],
+.page-main details[id] {
+  scroll-margin-top: 96px;
+}
+
+.jump-row,
+.brief-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brief-links {
+  margin-top: 24px;
+}
+
+.brief-list {
+  margin-top: 16px;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.brief-list li + li {
+  margin-top: 8px;
+}
+
+.calc-tool {
+  max-width: 40rem;
+}
+
+.calc-result {
+  border: 1px solid #e7e2d9;
+  border-radius: 12px;
+  background: #faf7f2;
+  padding: 16px;
+  line-height: 1.5;
+}
+
+.rate-wrap {
+  max-width: 100%;
+  margin-top: 24px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rate-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.rate-table caption {
+  caption-side: bottom;
+  padding-top: 8px;
+  color: #4e5754;
+  font-size: 0.8125rem;
+  text-align: left;
+}
+
+.rate-table th,
+.rate-table td {
+  border: 1px solid #e7e2d9;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.rate-label {
+  display: none;
+}
+
+.rate-table th {
+  background: #f3eee6;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.price-note,
+.price-source {
+  max-width: 65ch;
+  margin-top: 12px;
+  color: #4e5754;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.price-source {
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .rate-wrap {
+    overflow-x: visible;
+  }
+
+  .rate-table,
+  .rate-table tbody,
+  .rate-table tr,
+  .rate-table td,
+  .rate-table caption {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .rate-table caption {
+    margin-bottom: 4px;
+  }
+
+  .rate-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .rate-table tr {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border: 1px solid #e7e2d9;
+    border-radius: 12px;
+    background: #faf7f2;
+  }
+
+  .rate-table td {
+    border: 0;
+    padding: 8px 0 0;
+  }
+
+  .rate-table td:not(:has(.rate-label)) {
+    display: none;
+  }
+
+  .rate-label {
+    display: block;
+    margin-bottom: 2px;
+    color: #4e5754;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}

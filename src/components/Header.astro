@@ -65,6 +65,7 @@ if (!siouxFalls) throw new Error('Sioux Falls town entry is missing');
         </ul>
       </div>
       <ul class="menu-plain">
+        <li><a href="/tools" class="menu-link" aria-current={path === '/tools' || path.startsWith('/tools/') ? 'page' : undefined}>Tools</a></li>
         <li><a href="/about" class="menu-link" aria-current={path === '/about' ? 'page' : undefined}>About</a></li>
         <li><a href="/contact" class="menu-link" aria-current={path === '/contact' ? 'page' : undefined}>Contact</a></li>
       </ul>

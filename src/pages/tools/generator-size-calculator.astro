@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CalculatorQuote from '../../components/CalculatorQuote.astro';
+import DataTable from '../../components/DataTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import Icon from '../../components/Icon.astro';
+import SideRail from '../../components/SideRail.astro';
+import { GENERATOR_SOURCE, coverageChoices, generatorFaqs, homeSizes, selectGenerator } from '../../content/calculators';
+import { BRIEF_ISO } from '../../content/updated';
+import { SITE } from '../../config/site';
+import { breadcrumb } from '../../lib/page-schema';
+import { faqNode } from '../../lib/schema';
+
+const title = 'Generator Size Calculator | What Size Do I Need? Sioux Falls';
+const description = `What size home generator do you need? Pick your home size and what you want to keep running for a rough kW range and cost. Sioux Falls Electricians, ${SITE.phoneDisplay}.`;
+const path = '/tools/generator-size-calculator';
+const starting = selectGenerator('2000', 'air');
+
+const graph = [
+  {
+    '@type': 'WebApplication',
+    name: 'Generator Size Calculator',
+    url: `${SITE.origin}${path}`,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    isAccessibleForFree: true,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    provider: { '@id': `${SITE.origin}/#business` },
+  },
+  breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Generator Size Calculator', path },
+  ]),
+  faqNode(generatorFaqs.map((item) => ({ question: item.q, paragraphs: [item.a] }))),
+];
+---
+
+<Layout title={title} description={description} fullTitle schemaName={title} extraGraph={graph} dateModified={BRIEF_ISO}>
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <nav class="guide-crumbs text-sm text-muted" aria-label="Breadcrumb">
+            <a class="text-link" href="/">Home</a>{' '}<span aria-hidden="true">/</span>{' '}
+            <a class="text-link" href="/tools">Tools</a>{' '}<span aria-hidden="true">/</span>{' '}
+            Generator Size Calculator
+          </nav>
+          <div class="block-head mt-6">
+            <h1>What Size Generator Do I Need?</h1>
+            <p class="lede">
+              Two questions, both answered from published tables. Use the larger answer as your starting point. An electrician still sizes the generator from your actual loads.
+            </p>
+          </div>
+
+          <div class="calc-tool" data-generator-calculator>
+            <label class="grid gap-1 text-sm font-semibold" for="gen-home">
+              Home size
+              <select class="field" id="gen-home" data-gen-home>
+                {
+                  homeSizes.map((size) => (
+                    <option value={size.id} selected={size.id === '2000'}>
+                      {size.label}
+                    </option>
+                  ))
+                }
+              </select>
+            </label>
+            <label class="mt-4 grid gap-1 text-sm font-semibold" for="gen-cover">
+              What do you want running in an outage?
+              <select class="field" id="gen-cover" data-gen-cover>
+                {
+                  coverageChoices.map((choice) => (
+                    <option value={choice.id} selected={choice.id === 'air'}>
+                      {choice.label}
+                    </option>
+                  ))
+                }
+              </select>
+            </label>
+            <p class="calc-result mt-4" data-gen-result>{starting.range}</p>
+            <div class="mt-4 flex flex-col gap-3 sm:flex-row">
+              <a class="btn btn-gold w-full sm:w-auto" href={SITE.phoneHref} data-track="call-generator-tool" data-contact-channel="tel">
+                <Icon name="phone" class="h-5 w-5" />
+                <span>Call {SITE.phoneDisplay}</span>
+              </a>
+              <a class="btn btn-line-dark w-full sm:w-auto" href="#quote">Get my quote</a>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-muted">Both tables below are on the page even when JavaScript is off.</p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="how-sizing">
+        <div class="section">
+          <h2 id="how-sizing">How generator sizing works</h2>
+          <p class="measure mt-4">
+            Generators are rated in kilowatts. A 10 kW generator supplies 10,000 watts. To size one, list what you want running during an outage and add up the wattage, including the extra surge some motors need to start. Published guides offer two shortcuts: home size, and what you want to keep on. This tool shows both. Use the larger answer as your starting point.
+          </p>
+          <p class="measure mt-4">
+            The home size shortcut is a band, not a promise that every house of that size needs the same generator. A small house with electric heat can need more than a larger house with a gas furnace. That is why the second question asks what you want to keep running, and why the starting point is the larger of the two answers.
+          </p>
+          <h2 id="appliance-watts" class="mt-12">Common appliance wattages</h2>
+          <p class="measure mt-4">
+            Published figures list a refrigerator at about 600 watts, a large dehumidifier at about 700 watts, a large window air conditioner at about 1,400 watts, a water heater at 3,000 to 4,500 watts, and an electric furnace at 5,000 to 25,000 watts. (Source: Angi, updated Sep 1, 2026)
+          </p>
+          <p class="measure mt-4">
+            Motors such as a well pump, a sump pump, and a furnace fan draw extra watts for a moment when they start. A generator that looks big enough for the running watts can still trip if it cannot cover that surge. The published bands already leave room for that. A load list from your panel is still the real sizing step.
+          </p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="winters">
+        <div class="section">
+          <h2 id="winters">Sioux Falls winters</h2>
+          <p class="measure mt-4">
+            In a winter outage, the furnace fan, sump pump, fridge, and, on acreages, the well pump are usually the priority. Homes with electric heat need far more capacity than homes with a gas furnace.
+          </p>
+          <p class="measure mt-4">
+            Blizzards and ice storms are when backup power matters most around Sioux Falls, Hartford, Canton, and Dell Rapids. A gas furnace still needs the fan. An acreage on a well still needs the pump. Tell us which of those have to stay on, and we will size from those loads instead of from square footage alone.
+          </p>
+          <h2 id="portable-or-standby" class="mt-12">Portable or standby</h2>
+          <p class="measure mt-4">
+            A portable generator with a transfer switch or interlock can run a few essential circuits. A standby generator starts on its own and can run most or all of the house. See <a class="text-link" href="/services/generator-installation#standby-cost">generator installation</a> for costs, and <a class="text-link" href="/services/generator-installation#transfer-switch">transfer switches</a>.
+          </p>
+          <p class="measure mt-4">
+            Generac units are one of the standby brands these published cost bands cover. The size you need comes from the loads, not from the brand. Installation, the pad, the fuel connection, and the transfer switch sit on top of the generator price.
+          </p>
+          <h2 id="sized-right" class="mt-12">Get it sized right</h2>
+          <p class="measure mt-4">
+            Too small and it trips under load; too big and you pay for capacity you never use. Call {SITE.phoneDisplay} and we will size it from your real loads.
+          </p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="size-tables">
+        <div class="section">
+          <h2 id="size-tables">Typical published size and cost ranges</h2>
+          <h3 class="mt-8">By home size</h3>
+          <DataTable
+            caption="Typical generator size by home size"
+            columns={['Home size', 'Typical size range']}
+            rows={homeSizes.map((size) => [size.label, size.kw])}
+          />
+          <h3 class="mt-8">By what you want to run</h3>
+          <DataTable
+            caption="Typical generator size and cost by coverage"
+            columns={['Coverage', 'Typical size', 'Typical published generator cost']}
+            rows={coverageChoices.map((choice) => [
+              choice.id === 'essentials' ? `Essentials: ${choice.covers}` : choice.covers,
+              choice.kw,
+              choice.cost,
+            ])}
+            showLabel={true}
+            source={GENERATOR_SOURCE}
+          />
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="quote-heading">
+        <div class="section">
+          <h2 id="quote-heading">Get my quote</h2>
+          <p class="measure mt-4">
+            Send the home size and what you want running. A local electrician will size it from the real loads. This form goes to {SITE.email}.
+          </p>
+          <div class="mt-6 max-w-xl">
+            <CalculatorQuote
+              idPrefix="gen-quote"
+              subject="New lead: Generator size calculator, website visitor"
+              job={starting.job}
+              range={starting.range}
+              service={starting.service}
+            />
+          </div>
+        </div>
+      </section>
+
+      <FaqAccordion items={generatorFaqs} heading="Questions about generator size" />
+    </div>
+    <SideRail />
+  </div>
+</Layout>
+
+<script>
+  import { bindGeneratorCalculator } from '../../scripts/generator-calculator';
+
+  bindGeneratorCalculator();
+</script>

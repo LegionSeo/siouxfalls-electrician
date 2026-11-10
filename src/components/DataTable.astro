@@ -1,0 +1,40 @@
+---
+import { PRICE_LABEL } from '../content/calculators';
+
+interface Props {
+  caption: string;
+  columns: string[];
+  rows: string[][];
+  source?: string;
+  showLabel?: boolean;
+}
+
+const { caption, columns, rows, source, showLabel = false } = Astro.props;
+---
+
+<div class="rate-wrap">
+  <table class="rate-table">
+    <caption>{caption}</caption>
+    <thead>
+      <tr>
+        {columns.map((column) => <th scope="col">{column}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        rows.map((row) => (
+          <tr>
+            {row.map((cell, index) => (
+              <td>
+                {cell ? <span class="rate-label">{columns[index]}</span> : null}
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+{showLabel && <p class="price-note">{PRICE_LABEL}</p>}
+{source && <p class="price-source">{source}</p>}

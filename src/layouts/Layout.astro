@@ -26,9 +26,11 @@ interface Props {
   overlay?: boolean;
   /** Omit the canonical link and ask crawlers not to index the page. */
   noindex?: boolean;
+  /** Overrides the sitewide WebPage dateModified. */
+  dateModified?: string;
 }
 
-const { title, description, fullTitle, schemaName, extraGraph = [], overlay = false, noindex = false } = Astro.props;
+const { title, description, fullTitle, schemaName, extraGraph = [], overlay = false, noindex = false, dateModified } = Astro.props;
 const pageTitle = fullTitle ? title : `${title} | ${SITE.name}`;
 const schemaPageName = schemaName ?? pageTitle;
 const pageDescription =
@@ -42,7 +44,7 @@ const pagePath = (() => {
 })();
 const jsonLd = jsonLdScript(
   siteGraph(
-    { url: pageCanonical, name: schemaPageName, description: pageDescription, dateModified: UPDATED_ISO },
+    { url: pageCanonical, name: schemaPageName, description: pageDescription, dateModified: dateModified ?? UPDATED_ISO },
     extraGraph,
     {
       catalog: pagePath === '/',
