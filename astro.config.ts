@@ -8,14 +8,25 @@ import { SITE } from './src/config/site';
 
 function gitLastmod(pathname: string): string | undefined {
   const path = pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  const guideSlug = path.startsWith('/guides/') ? path.slice('/guides/'.length) : '';
   const files = [
     path === '/' ? 'src/pages/index.astro' : '',
     path === '/' ? 'src/content/home.ts' : '',
     path.startsWith('/services/') ? 'src/pages/services/[slug].astro' : '',
     path.startsWith('/services/') ? 'src/content/service-pages.ts' : '',
+    path.startsWith('/services/') ? 'src/content/brief-sections.ts' : '',
     path.startsWith('/locations/') ? 'src/pages/locations/[town].astro' : '',
     path.startsWith('/locations/') ? 'src/content/town-pages.ts' : '',
-    path !== '/' && !path.startsWith('/services/') && !path.startsWith('/locations/') ? `src/pages${path}.astro` : '',
+    path.startsWith('/locations/') ? 'src/content/town-electrical.ts' : '',
+    path.startsWith('/locations/') ? 'src/content/town-additions.ts' : '',
+    path.startsWith('/locations/') ? 'src/components/TownElectrical.astro' : '',
+    guideSlug ? 'src/pages/guides/[slug].astro' : '',
+    guideSlug ? `src/content/guides/${guideSlug}.md` : '',
+    guideSlug ? `src/content/guides/${guideSlug}.schema.json` : '',
+    path.startsWith('/tools') ? 'src/content/calculators.ts' : '',
+    path !== '/' && !path.startsWith('/services/') && !path.startsWith('/locations/') && !path.startsWith('/guides/')
+      ? `src/pages${path}.astro`
+      : '',
   ].filter((file) => file && existsSync(file));
   const stamps: string[] = [];
   for (const file of files) {

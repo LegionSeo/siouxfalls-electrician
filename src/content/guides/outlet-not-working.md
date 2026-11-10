@@ -87,3 +87,5 @@ A dead outlet alone is not always dangerous. Heat, scorch marks, buzzing, a burn
 ## Need a dead outlet traced in Sioux Falls?
 
 If you've reset the GFCIs and the breaker and the outlet is still dead, or you've noticed heat, a smell, or buzzing, call Sioux Falls Electricians at **[(605) 250-4838](tel:+16052504838)**. Tell us your town, which outlets are dead, and what you already reset.
+
+See [what to do in a power failure](/services/emergency-electrician#power-failure).

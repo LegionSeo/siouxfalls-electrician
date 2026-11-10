@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CalculatorQuote from '../../components/CalculatorQuote.astro';
+import DataTable from '../../components/DataTable.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import Icon from '../../components/Icon.astro';
+import SideRail from '../../components/SideRail.astro';
+import { costFaqs, costJobs, costSourceLines, costTableRows, selectCost } from '../../content/calculators';
+import { BRIEF_ISO } from '../../content/updated';
+import { SITE } from '../../config/site';
+import { breadcrumb } from '../../lib/page-schema';
+import { faqNode } from '../../lib/schema';
+
+const title = 'Sioux Falls Electrical Cost Calculator | Rough Price Ranges';
+const description = `Rough electrician cost ranges for Sioux Falls jobs: 200 amp upgrades, panel and fuse box replacement, rewiring, generators, EV chargers, hot tubs. Then call ${SITE.phoneDisplay}.`;
+const path = '/tools/electrical-cost-calculator';
+const starting = selectCost('panel-200');
+const rows = costTableRows().map((row) => [row.job, row.option, row.low, row.typical, row.high, row.note]);
+
+const graph = [
+  {
+    '@type': 'WebApplication',
+    name: 'Sioux Falls Electrical Cost Calculator',
+    url: `${SITE.origin}${path}`,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Any',
+    isAccessibleForFree: true,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    provider: { '@id': `${SITE.origin}/#business` },
+  },
+  breadcrumb([
+    { name: 'Home', path: '/' },
+    { name: 'Tools', path: '/tools' },
+    { name: 'Electrical Cost Calculator', path },
+  ]),
+  faqNode(costFaqs.map((item) => ({ question: item.q, paragraphs: [item.a] }))),
+];
+---
+
+<Layout title={title} description={description} fullTitle schemaName={title} extraGraph={graph} dateModified={BRIEF_ISO}>
+  <div class="page-split">
+    <div class="page-main">
+      <section class="bg-paper">
+        <div class="section">
+          <nav class="guide-crumbs text-sm text-muted" aria-label="Breadcrumb">
+            <a class="text-link" href="/">Home</a>{' '}<span aria-hidden="true">/</span>{' '}
+            <a class="text-link" href="/tools">Tools</a>{' '}<span aria-hidden="true">/</span>{' '}
+            Electrical Cost Calculator
+          </nav>
+          <div class="block-head mt-6">
+            <h1>Sioux Falls Electrical Cost Calculator</h1>
+            <p class="lede">
+              Pick the electrical job you are pricing. You will see a rough low, typical, and high price from published national guides. Your final price comes after an electrician sees the job.
+            </p>
+          </div>
+
+          <div class="calc-tool" data-cost-calculator>
+            <label class="grid gap-1 text-sm font-semibold" for="cost-job">
+              What do you need?
+              <select class="field" id="cost-job" data-cost-job>
+                {costJobs.map((job) => <option value={job.id}>{job.label}</option>)}
+              </select>
+            </label>
+            <div data-option-wrap hidden>
+              <label class="mt-4 grid gap-1 text-sm font-semibold" for="cost-option">
+                <span data-option-label>Option</span>
+                <select class="field" id="cost-option" data-cost-option></select>
+              </label>
+            </div>
+            <p class="calc-result mt-4" data-cost-result>{starting.range}</p>
+            <p class="mt-3" data-size-link hidden>
+              <a class="text-link" href="/tools/generator-size-calculator">Not sure about size?</a>
+            </p>
+            <div class="mt-4 flex flex-col gap-3 sm:flex-row">
+              <a class="btn btn-gold w-full sm:w-auto" href={SITE.phoneHref} data-track="call-cost-tool" data-contact-channel="tel">
+                <Icon name="phone" class="h-5 w-5" />
+                <span>Call {SITE.phoneDisplay}</span>
+              </a>
+              <a class="btn btn-line-dark w-full sm:w-auto" href="#quote">Get my quote</a>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-muted">The full table below lists every job, including when JavaScript is off.</p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="how-to-use">
+        <div class="section">
+          <h2 id="how-to-use">How to use this calculator</h2>
+          <p class="measure mt-4">
+            Pick the electrical job you are pricing, choose the one option if asked, and you will see a rough low, typical, and high price. The numbers come from published national cost guides (Angi, updated in 2026) and are rounded on purpose. Use them for budgeting. Your final price comes after an electrician sees the panel, the wiring, and the route.
+          </p>
+          <p class="measure mt-4">
+            Where a guide publishes an average, the result shows that figure as typical. Where it does not, the result says most pay about the low and high figures. A meter base, a long trench, plaster walls, or a panel that is too small can move a job above the range. Emergency calls and interlock kits are not in this tool, because no sourced price is published for them.
+          </p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="why-prices">
+        <div class="section">
+          <h2 id="why-prices">Why electrical prices vary in Sioux Falls</h2>
+          <ul class="brief-list">
+            <li>The age of the home. Houses in older Sioux Falls neighborhoods are more likely to have fuse boxes, small services, cloth or knob and tube wiring, and plaster walls. Each of those adds time.</li>
+            <li>The service size you need. Adding an EV charger, heat pump, hot tub, or shop can push a 100 amp service to its limit. Sometimes the fix is a new panel. Sometimes it is a larger service with a new meter base.</li>
+            <li>Distance and access. A charger next to the panel in the garage is quick. A hot tub 80 feet across the yard needs a trench. Finished basements hide wiring behind drywall.</li>
+            <li>Weather. Trenching frozen ground is slower, and generator pads and gas lines are easier before winter.</li>
+            <li>Permits and inspections. Panel changes, generators, and new 240 volt circuits usually need a permit, which is part of doing the job right.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="ranges-include">
+        <div class="section">
+          <h2 id="ranges-include">What the ranges include and leave out</h2>
+          <p class="measure mt-4">
+            Published ranges generally include the equipment and the labor to install it. They do not know your house. A meter base, a subpanel, drywall patching, or a long trench can push a job higher. That is why we look first and give you the price before work starts.
+          </p>
+          <h2 id="upgrade-timing" class="mt-12">Upgrade now or later?</h2>
+          <p class="measure mt-4">
+            If you are planning several electrical projects, like an EV charger this year and a hot tub next year, it is often cheaper to size the panel once. Tell us everything you plan to add so the new panel has room.
+          </p>
+          <h2 id="safety-first" class="mt-12">Safety first</h2>
+          <p class="measure mt-4">
+            If a panel is hot, buzzing, or smells burnt, skip the calculator and call {SITE.phoneDisplay}. Call 911 if you see smoke or fire.
+          </p>
+          <h2 id="real-number" class="mt-12">Get a real number</h2>
+          <p class="measure mt-4">
+            Call {SITE.phoneDisplay} any time or send the form with your calculator result and a photo of the panel label.
+          </p>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="price-ranges">
+        <div class="section">
+          <h2 id="price-ranges">Typical published price ranges</h2>
+          <DataTable
+            caption="Typical published national price ranges for common electrical jobs"
+            columns={['Job', 'Option', 'Low', 'Typical', 'High', 'Note']}
+            rows={rows}
+            showLabel={true}
+          />
+          <ul class="brief-list">
+            {
+              costSourceLines().map((line) => (
+                <li>
+                  <span class="font-semibold">{line.jobs}. </span>
+                  {line.source}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+
+      <section class="bg-white" aria-labelledby="quote-heading">
+        <div class="section">
+          <h2 id="quote-heading">Get my quote</h2>
+          <p class="measure mt-4">
+            Send the job and the range you saw. A local electrician will call you about the real price. This form goes to {SITE.email}.
+          </p>
+          <div class="mt-6 max-w-xl">
+            <CalculatorQuote
+              idPrefix="cost-quote"
+              subject="New lead: Cost calculator, website visitor"
+              job={starting.job}
+              range={starting.range}
+              service={starting.service}
+            />
+          </div>
+        </div>
+      </section>
+
+      <FaqAccordion items={costFaqs} heading="Questions about these ranges" />
+    </div>
+    <SideRail />
+  </div>
+</Layout>
+
+<script>
+  import { bindCostCalculator } from '../../scripts/cost-calculator';
+
+  bindCostCalculator();
+</script>

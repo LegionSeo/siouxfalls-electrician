@@ -9,6 +9,7 @@ import { townPlaceBySlug } from '../../content/town-places';
 import { faqItemsFor, townBlockBySlug } from '../../content/town-electrical';
 import { breadcrumb, serviceNode } from '../../lib/page-schema';
 import { faqNode } from '../../lib/schema';
+import { BRIEF_ISO } from '../../content/updated';
 import { SITE } from '../../config/site';
 
 export function getStaticPaths() {
@@ -42,6 +43,7 @@ const graph = [
   fullTitle
   extraGraph={graph}
   overlay
+  dateModified={BRIEF_ISO}
 >
   <PageHero
     photo={page.photo}

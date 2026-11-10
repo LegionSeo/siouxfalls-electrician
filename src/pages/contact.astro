@@ -7,6 +7,7 @@ import PageHero from '../components/PageHero.astro';
 import SmsConsent from '../components/SmsConsent.astro';
 import { joinNames, services, townPages } from '../config/catalog';
 import type { FaqItem } from '../content/home';
+import { BRIEF_ISO } from '../content/updated';
 import { SITE, formatAddress, leadAjaxEndpoint } from '../config/site';
 import { staticPagePath } from '../lib/lead-form';
 import { pagePhoto } from '../lib/photos';
@@ -94,6 +95,7 @@ const successMessage = `Thanks. We got your note. Someone on our team will reply
   fullTitle
   extraGraph={graph}
   overlay
+  dateModified={BRIEF_ISO}
 >
   <PageHero
     photo={hero}
@@ -112,6 +114,9 @@ const successMessage = `Thanks. We got your note. Someone on our team will reply
       <p class="measure">
         Call {SITE.phoneDisplay}. We answer 24 hours a day, 7 days a week. If you send the note, someone on our team
         replies. There is no promised time for that reply.
+      </p>
+      <p class="measure mt-4">
+        For a rough range before you call, try the <a class="text-link" href="/tools/electrical-cost-calculator">electrical cost calculator</a> or the <a class="text-link" href="/tools/generator-size-calculator">generator size calculator</a>.
       </p>
 
       <div class="contact-layout">

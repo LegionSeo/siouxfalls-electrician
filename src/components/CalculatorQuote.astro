@@ -1,0 +1,85 @@
+---
+import LeadHoneypot from './LeadHoneypot.astro';
+import SmsConsent from './SmsConsent.astro';
+import { SITE, leadAjaxEndpoint } from '../config/site';
+import { calculatorTowns } from '../content/calculators';
+import { staticPagePath } from '../lib/lead-form';
+
+interface Props {
+  idPrefix: string;
+  subject: string;
+  job: string;
+  range: string;
+  service: string;
+}
+
+const { idPrefix, subject, job, range, service } = Astro.props;
+const pagePath = staticPagePath(Astro.url.pathname);
+---
+
+<form
+  id="quote"
+  class="surface-light relative grid gap-4"
+  action={SITE.formEndpoint}
+  method="post"
+  accept-charset="UTF-8"
+  data-request-form
+  data-fixed-subject="true"
+  data-endpoint={leadAjaxEndpoint()}
+  data-phone-display={SITE.phoneDisplay}
+  data-phone-href={SITE.phoneHref}
+>
+  <LeadHoneypot idPrefix={idPrefix} />
+  <input type="hidden" name="_subject" value={subject} />
+  <input type="hidden" name="_template" value="basic" />
+  <input type="hidden" name="Page" value={pagePath} />
+  <input type="hidden" name="calculator_job" data-calculator-job value={job} />
+  <input type="hidden" name="calculator_range" data-calculator-range value={range} />
+  <input type="hidden" name="service" data-calculator-service value={service} />
+  <label class="grid gap-1 text-sm font-semibold text-ink" for={`${idPrefix}-name`}>
+    Name
+    <input class="field" id={`${idPrefix}-name`} name="name" type="text" required autocomplete="name" />
+  </label>
+  <label class="grid gap-1 text-sm font-semibold text-ink" for={`${idPrefix}-phone`}>
+    Phone
+    <input
+      class="field"
+      id={`${idPrefix}-phone`}
+      name="phone"
+      type="tel"
+      inputmode="tel"
+      required
+      autocomplete="tel"
+    />
+  </label>
+  <label class="grid gap-1 text-sm font-semibold text-ink" for={`${idPrefix}-email`}>
+    Email <span class="font-semibold text-muted">(optional)</span>
+    <input class="field" id={`${idPrefix}-email`} name="email" type="email" autocomplete="email" />
+  </label>
+  <label class="grid gap-1 text-sm font-semibold text-ink" for={`${idPrefix}-town`}>
+    Town
+    <select class="field" id={`${idPrefix}-town`} name="town">
+      <option value="">Select a town</option>
+      {calculatorTowns.map((town) => <option value={town}>{town}</option>)}
+    </select>
+  </label>
+  <label class="grid gap-1 text-sm font-semibold text-ink" for={`${idPrefix}-message`}>
+    Message <span class="font-semibold text-muted">(optional)</span>
+    <textarea
+      class="field"
+      id={`${idPrefix}-message`}
+      name="message"
+      rows="3"
+      placeholder="What is going on, and which range did you see?"
+    />
+  </label>
+  <SmsConsent id={`${idPrefix}-sms-consent`} />
+  <button class="btn btn-gold btn-lg w-full" type="submit">Get my quote</button>
+  <p class="form-status" data-form-status tabindex="-1" role="status" aria-live="polite" aria-atomic="true" hidden></p>
+  <p class="text-sm text-muted">
+    Prefer to talk?{' '}
+    <a class="font-bold text-link underline" href={SITE.phoneHref} data-track={`${idPrefix}-call`} data-contact-channel="tel">
+      Call {SITE.phoneDisplay}
+    </a>
+  </p>
+</form>

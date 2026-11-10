@@ -19,6 +19,7 @@ export const homeFaqs: FaqItem[] = [
     question: 'What does an electrician in Sioux Falls typically charge, and what affects the price?',
     paragraphs: [
       'There is no single price for electrical work in Sioux Falls, because the price changes with the type of repair, how hard the wiring is to reach, the space left in the panel, the materials, and whether the city requires a permit and inspection.',
+      'For a rough range first, try our [electrical cost calculator](/tools/electrical-cost-calculator).',
     ],
   },
   {
@@ -33,6 +34,7 @@ export const homeFaqs: FaqItem[] = [
     paragraphs: [
       'Yes, sparking or a burning smell at an outlet, switch, or panel is a fire risk, so keep people back, shut the breaker off if you can do it safely, and call 911 if you see smoke or flames.',
       'After everyone is safe, call an electrician to find the cause. We do not promise how soon someone can be there.',
+      'See [what to do in a power failure](/services/emergency-electrician#power-failure).',
     ],
   },
   {
@@ -54,6 +56,7 @@ export const homeFaqs: FaqItem[] = [
     paragraphs: [
       'You may need a panel upgrade if breakers trip often, the panel is warm or buzzing, you still have a fuse box, every breaker slot is full, or you are adding a large load such as an EV charger, a hot tub, or a heat pump.',
       'Call and describe the label on the panel door.',
+      'See [typical panel upgrade costs](/services/panel-upgrades#upgrade-200-amp).',
     ],
   },
   {
@@ -76,7 +79,7 @@ export function homepageFaqs(): FaqItem[] {
     if (!item.question.startsWith('Is it an emergency')) return item;
     return {
       ...item,
-      paragraphs: [item.paragraphs[0], `${SITE.availabilityNote} ${item.paragraphs[1]}`],
+      paragraphs: [item.paragraphs[0], `${SITE.availabilityNote} ${item.paragraphs[1]}`, ...item.paragraphs.slice(2)],
     };
   });
 }

@@ -1,6 +1,7 @@
 ---
 import MapEmbed from './MapEmbed.astro';
 import Photo from './Photo.astro';
+import { townAdditions } from '../content/town-additions';
 import { withPhone, type TextPart, type TownBlock } from '../content/town-electrical';
 import type { TownPlace } from '../content/town-places';
 
@@ -40,6 +41,21 @@ function filled(parts: TextPart[]): TextPart[] {
             {filled(job).map((part) =>
               part.href ? (
                 <a class="text-link" href={part.href} rel={part.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                  {part.text}
+                </a>
+              ) : (
+                part.text
+              ),
+            )}
+          </li>
+        ))
+      }
+      {
+        townAdditions(block.slug).map((line) => (
+          <li>
+            {filled(line).map((part) =>
+              part.href ? (
+                <a class="text-link" href={part.href}>
                   {part.text}
                 </a>
               ) : (

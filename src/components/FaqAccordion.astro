@@ -1,5 +1,6 @@
 ---
 import InlineText from './InlineText.astro';
+import { faqAnchor } from '../lib/faq-anchor';
 
 interface Item {
   q: string;
@@ -23,7 +24,7 @@ const { items, heading = 'Questions' } = Astro.props;
       <div class="faq">
         {
           items.map((item) => (
-            <details>
+            <details id={faqAnchor(item.q)}>
               <summary class="flex items-center justify-between gap-4">
                 <h2>{item.q}</h2>
                 <span class="faq-plus text-2xl font-bold leading-none text-rose" aria-hidden="true">+</span>

@@ -143,6 +143,15 @@ export async function sendLead(form: HTMLFormElement): Promise<void> {
     smsConsent: smsConsent(form),
   });
 
+  if (form.dataset.fixedSubject === 'true') {
+    const subject = fieldValue(form, '_subject');
+    if (subject) payload._subject = subject;
+  }
+  const calculatorJob = fieldValue(form, 'calculator_job').replace(/[\u0000-\u001F\u007F]+/g, ' ').replace(/\s+/g, ' ').trim();
+  const calculatorRange = fieldValue(form, 'calculator_range').replace(/[\u0000-\u001F\u007F]+/g, ' ').replace(/\s+/g, ' ').trim();
+  if (calculatorJob) payload.calculator_job = calculatorJob.slice(0, 300);
+  if (calculatorRange) payload.calculator_range = calculatorRange.slice(0, 2000);
+
   // FormSubmit often replies only after it sends the mail. A short abort
   // (previously 12s, and 20s before that) showed a failure while the email
   // still arrived. Wait a full minute, then treat a timeout or a dropped
