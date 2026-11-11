@@ -11,13 +11,25 @@ export function getStaticPaths() {
 }
 
 const { guide } = Astro.props;
-const bodies = import.meta.glob<{ Content: any }>('../../content/guides/*.md', { eager: true });
+const bodies = import.meta.glob<{ Content: any; compiledContent: () => Promise<string> }>(
+  '../../content/guides/*.md',
+  { eager: true },
+);
 const body = bodies[`../../content/guides/${guide.slug}.md`];
 const Content = body.Content;
 const ctaPhoto = pagePhoto('hero-about', 'Electrical contractor van parked in a residential driveway, side door open, no people');
+// Keep this post's apostrophes and quotes as written so the visible FAQs match the JSON-LD.
+const exactHtml =
+  guide.slug === 'lights-flickering-in-house'
+    ? (await body.compiledContent())
+        .replaceAll('\u2018', "'")
+        .replaceAll('\u2019', "'")
+        .replaceAll('\u201C', '"')
+        .replaceAll('\u201D', '"')
+    : '';
 ---
 
-<Layout title={guide.title} description={guide.description} fullTitle dateModified={guide.slug === 'outlet-not-working' ? BRIEF_ISO : undefined}>
+<Layout title={guide.title} description={guide.description} fullTitle dateModified={guide.dateModified ?? (guide.slug === 'outlet-not-working' ? BRIEF_ISO : undefined)}>
   <Fragment slot="head">
     {guide.schema.map((node) => <script type="application/ld+json" set:html={JSON.stringify(node)} />)}
   </Fragment>
@@ -32,7 +44,14 @@ const ctaPhoto = pagePhoto('hero-about', 'Electrical contractor van parked in a 
           </nav>
           <article class="guide-prose measure">
             <h1>{guide.h1}</h1>
-            <Content />
+            {exactHtml ? <Fragment set:html={exactHtml} /> : <Content />}
+            {
+              guide.related && (
+                <p>
+                  See <a href={guide.related.href}>{guide.related.label}</a>.
+                </p>
+              )
+            }
           </article>
         </div>
       </section>
