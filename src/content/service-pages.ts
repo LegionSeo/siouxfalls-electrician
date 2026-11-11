@@ -57,7 +57,7 @@ export const servicePages: ServicePage[] = [
     included: [
       'Dead outlets, including a run of outlets that quit on one wall. We follow that whole run, not just the one that looks dead.',
       'Switches that feel warm, stick, or no longer turn the light on. Leave a warm switch off until we open it.',
-      'Lights that flicker, dim, or buzz when another load starts. That usually means a loose wire or a circuit doing too much.',
+      '[Lights that flicker, dim, or buzz](/guides/lights-flickering-in-house) when another load starts. That usually means a loose wire or a circuit doing too much.',
       'Breakers that trip again after a normal reset. If it trips again, leave it off. A failed breaker or a damaged panel is [circuit breaker and panel repair](/services/circuit-breaker-panel-repair).',
       'Loose devices, cracked covers, and fixtures that wobble. We check the box and the device.',
       'A burning smell at a device after the area is safe to enter. If you see smoke, call 911 first, then call us.',
