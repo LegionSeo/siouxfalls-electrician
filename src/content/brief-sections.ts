@@ -48,8 +48,6 @@ const generatorDryer = `#${faqAnchor('Can I plug a generator into a dryer outlet
 const plasterFaq = `#${faqAnchor('Can new wire be fished without wrecking the plaster?')}`;
 const stagedFaq = `#${faqAnchor('Do you rewire one room without doing the whole house?')}`;
 const clothFaq = `#${faqAnchor('Is cloth wiring the same as knob-and-tube, and does it need to be replaced?')}`;
-const chargerOutside = `#${faqAnchor('Can the charger be outside?')}`;
-
 const panelSource = 'Source: Angi, electrical panel upgrade cost, updated Oct 29, 2026';
 const fpeSource = 'Source: Angi, Federal Pacific breakers, updated Jul 9, 2026';
 const panelReplaceSource = 'Source: Angi, cost to replace a circuit breaker box, updated Oct 22, 2026';
@@ -254,7 +252,71 @@ const briefs: Record<string, PageBrief> = {
   'emergency-electrician': {
     placement: 'after-signs',
     showPriceNote: false,
+    jumps: [
+      { href: '#urgent-or-wait', label: 'Urgent now vs can wait' },
+      { href: '#safety-steps', label: 'Safety steps' },
+      { href: '#storm-surge', label: 'Storm and surge damage' },
+      { href: '#power-failure', label: 'Power failure help' },
+    ],
     sections: [
+      {
+        id: 'urgent-or-wait',
+        heading: 'Urgent now vs can wait',
+        paragraphs: [
+          'Some electrical problems should be treated as urgent. Others can wait for a planned visit. If you see smoke or fire, call 911 first.',
+        ],
+        table: {
+          caption: 'Urgent now vs can wait',
+          columns: ['What you see', 'What to do'],
+          rows: [
+            ['Sparking at an outlet, switch, or panel', 'Urgent now. Keep people away and call.'],
+            ['Burning smell, with or without a visible flame', 'Urgent now. Call. Call 911 if you see smoke or fire.'],
+            ['Partial power loss with heat, buzzing, or a burning smell', 'Urgent now. Leave the panel cover on and call.'],
+            ['Buzzing from the panel, especially if the cover is hot', 'Urgent now. Leave the cover on and call.'],
+            ['Storm damage to the mast, meter, or outdoor wiring', 'Call the power company first if a line is down or the utility has not said the drop is safe. Then call an electrician for your side of the meter.'],
+            ['One breaker tripped, it stays on after one reset, and nothing is hot or smells burnt', 'Can wait. A single trip with no heat or smell is often a simple overload.'],
+            ['Power out in one room, with no heat, smell, or buzzing', 'Can wait if a reset stays on. If the breaker trips again, leave it off and call.'],
+            ['You want a new charger, new lights, or a panel upgrade', 'Can wait. That is a planned job.'],
+          ],
+        },
+        blocks: [],
+        links: [{ href: '/services/electrical-repair', label: 'Electrical repair' }],
+      },
+      {
+        id: 'safety-steps',
+        heading: 'Safety steps while you wait',
+        paragraphs: [
+          'Make the area safe, then call. These steps are the same day or night.',
+          'Calls are answered after hours. The response is fast.',
+        ],
+        blocks: [
+          {
+            paragraphs: [],
+            list: [
+              'Keep people away from a sparking outlet, switch, or panel.',
+              'Shut the breaker off if you can reach it without stepping in water or touching a hot cover.',
+              'Leave the panel cover on. Do not take it off.',
+              'Do not pour water on an electrical fire. If you see smoke or fire, leave and call 911.',
+              'Unplug sensitive electronics if lights are flickering or dimming.',
+              'Do not run a portable generator through a dryer outlet or any plug.',
+            ],
+          },
+        ],
+        links: [{ href: '/services/generator-installation', label: 'Generator installation' }],
+      },
+      {
+        id: 'storm-surge',
+        heading: 'Storm and surge damage',
+        paragraphs: [
+          'A storm can damage the service mast, the meter, or outdoor wiring, and it can send a surge in on the wires. If the whole street is dark, or a line is down, call the power company first. If the utility says the service drop is safe and the fault is on your side of the meter, call an electrician.',
+          'Heat, buzzing, or a burning smell after the power returns should not wait. A surge protector for the whole house is a planned job on its own.',
+        ],
+        blocks: [],
+        links: [
+          { href: '/services/surge-protection', label: 'Surge protection' },
+          { href: '#power-failure', label: 'Power failure: utility or electrician?' },
+        ],
+      },
       {
         id: 'power-failure',
         heading: 'Power failure: utility or electrician?',
@@ -393,6 +455,12 @@ const briefs: Record<string, PageBrief> = {
   'ev-charger-installation': {
     placement: 'after-cost',
     showPriceNote: true,
+    jumps: [
+      { href: '#ev-brands', label: 'Tesla and other brands' },
+      { href: '#ev-winter', label: 'Winter and outdoor installs' },
+      { href: '#ev-permit', label: 'Sioux Falls permit and inspection' },
+      { href: '#ev-cost', label: 'EV charger cost' },
+    ],
     sections: [
       {
         id: 'ev-cost',
@@ -419,14 +487,41 @@ const briefs: Record<string, PageBrief> = {
               'Older Sioux Falls homes on 100 amp service may need a [panel upgrade](/services/panel-upgrades#upgrade-200-amp) first. Newer homes in Harrisburg and Tea often have more panel space, but the load still has to be checked.',
             ],
           },
-          {
-            heading: 'Cold garages',
-            paragraphs: [
-              `A charger in an attached garage stays out of snow and ice. Outdoor units need a weather rated charger and mount. See [Can the charger be outside?](${chargerOutside})`,
-            ],
-          },
         ],
         links: [{ href: '/tools/electrical-cost-calculator?job=ev-charger', label: 'Get a rough EV charger range' }],
+      },
+      {
+        id: 'ev-brands',
+        heading: 'Tesla and other brand chargers',
+        paragraphs: [
+          'We install a Tesla Wall Connector and other brand home chargers. A charger you already bought can be mounted when the nameplate matches the wire and the breaker.',
+          'Each charger gets its own 240 volt circuit. A second charger uses the same panel capacity check: the panel has to have space and spare capacity before either unit is treated as ready.',
+        ],
+        blocks: [],
+        links: [{ href: '/services/panel-upgrades', label: 'Panel upgrades' }],
+      },
+      {
+        id: 'ev-winter',
+        heading: 'Winter and outdoor installs',
+        paragraphs: [
+          'A charger in an attached garage stays out of snow and ice. When the car parks outside, the install uses a weather rated charger, including a cold weather outdoor unit, and a mount that keeps the cord off the ground.',
+          'Winter does not change the panel capacity check or the dedicated 240 volt circuit.',
+        ],
+        blocks: [],
+        links: [],
+      },
+      {
+        id: 'ev-permit',
+        heading: 'Sioux Falls permit and inspection',
+        paragraphs: [
+          'A new 240 volt circuit for an EV charger in Sioux Falls often needs a permit. The City of Sioux Falls requires a permit for most new circuits and equipment installs. We pull the permit when the city requires it.',
+          'Inside Sioux Falls, the city has its own inspection path. The visit names what the job needs. Harrisburg and Tea are outside Sioux Falls, so a charger there follows the permit and inspection path for that town.',
+        ],
+        blocks: [],
+        links: [
+          { href: '/locations/harrisburg', label: 'Electrician in Harrisburg' },
+          { href: '/locations/tea', label: 'Electrician in Tea' },
+        ],
       },
     ],
   },

@@ -7,7 +7,7 @@ import RequestPanel from '../components/RequestPanel.astro';
 import { joinNames, services, townPages } from '../config/catalog';
 import { SITE, mapsUrl } from '../config/site';
 import { homepageFaqs } from '../content/home';
-import { BRIEF_ISO } from '../content/updated';
+import { REFRESH_ISO } from '../content/updated';
 import InlineText from '../components/InlineText.astro';
 import { faqNode } from '../lib/schema';
 
@@ -66,7 +66,7 @@ const steps = [
   fullTitle
   extraGraph={[faqNode(faqs.map((item) => ({ question: item.question, paragraphs: item.paragraphs.map(faqPlain) })))]}
   overlay
-  dateModified={BRIEF_ISO}
+  dateModified={REFRESH_ISO}
 >
   <link
     slot="head"
@@ -170,6 +170,9 @@ const steps = [
         <p class="eyebrow">Quick answer</p>
         <p>
           Sioux Falls Electricians handles repairs, panel upgrades, EV chargers, lighting, and wiring for homes and businesses in Sioux Falls and nearby towns.{SITE.available247 ? ` ${SITE.availabilityNote}` : ''} Call {SITE.phoneDisplay}.
+        </p>
+        <p class="mt-4">
+          For sparking, a burning smell, or power out in part of the house, call an <a class="text-link" href="/services/emergency-electrician">emergency electrician in Sioux Falls</a>.
         </p>
       </div>
     </div>
