@@ -1,4 +1,4 @@
-import { BRIEF_ISO } from './updated';
+import { BRIEF_ISO, REFRESH_ISO } from './updated';
 
 export interface ServicePage {
   slug: string;
@@ -90,7 +90,7 @@ export const servicePages: ServicePage[] = [
     title: 'Emergency Electrician Sioux Falls SD',
     documentTitle: 'Emergency Electrician for Power Outages | Sioux Falls 24/7',
     schemaName: 'Emergency Electrician for Power Outages | Sioux Falls 24/7',
-    dateModified: BRIEF_ISO,
+    dateModified: REFRESH_ISO,
     description: 'Power out in part or all of your house? 24/7 emergency electrician in Sioux Falls for power failures, sparking, and burning smells. Call (605) 250-4838. Call 911 for smoke or fire.',
     sub: 'Sparking, burning smells, and partial power loss. Call 911 if you see smoke or fire.',
     photo: 'service-emergency-hero',
@@ -130,6 +130,7 @@ export const servicePages: ServicePage[] = [
       { q: 'Half my house has no power but no breaker is tripped. What does that mean and who do I call?', a: 'This often means you have lost one leg (phase) of power from the utility, or the main breaker or service connection is failing. For a quick safety check, look at your main breaker, and if your neighbors have the same problem, call your power company first. Xcel Energy serves most of Sioux Falls. Don\'t open the panel or touch the service wires yourself. If your neighbors have power or the utility says their side is fine, call us for emergency service at {phone}.' },
       { q: 'Can an electrician fix a power outage?', a: 'An electrician fixes problems on your side of the meter, like a failed main breaker, a burned connection, or damaged service equipment. If the whole street is out, the utility has to restore power first.' },
       { q: 'My lights are flickering and dimming all over the house. Is that an emergency?', a: 'Treat it as urgent. House wide flickering or dimming, especially when big appliances start, can mean a loose neutral or service connection, which can damage electronics and overheat parts. Call us at (605) 250-4838.' },
+      { q: 'Do you answer emergency electrical calls after hours?', a: 'Yes. Calls are answered after hours. The response is fast. Call {phone}.' },
     ],
     related: ['/services/circuit-breaker-panel-repair', '/services/electrical-repair', '/services/panel-upgrades', '/services/generator-installation'],
   },
@@ -416,11 +417,11 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'ev-charger-installation',
-    title: 'EV Charger Installation Sioux Falls SD',
-    documentTitle: 'EV Charger Installation Cost in Sioux Falls, SD',
-    schemaName: 'EV Charger Installation Cost in Sioux Falls, SD',
-    dateModified: BRIEF_ISO,
-    description: 'EV charger installation cost in Sioux Falls, Harrisburg and Tea: typical Level 2 ranges, panel capacity, and garage installs. Call (605) 250-4838.',
+    title: 'EV Charger Installation in Sioux Falls, SD',
+    documentTitle: 'EV Charger Installation in Sioux Falls, SD | Level 2 Home Chargers',
+    schemaName: 'EV Charger Installation in Sioux Falls, SD | Level 2 Home Chargers',
+    dateModified: REFRESH_ISO,
+    description: 'Level 2 home EV charger installation in Sioux Falls, Harrisburg and Tea: panel capacity checks, 240 volt circuits, garage and outdoor installs, and typical costs. Call (605) 250-4838.',
     sub: 'A Level 2 home charger on a new circuit, after the panel is checked.',
     photo: 'service-ev-hero',
     alt: 'Electrician mounting a home EV charger in a garage',
@@ -430,9 +431,9 @@ export const servicePages: ServicePage[] = [
     included: [
       'The panel is checked before a charger is installed. We will not mount a charger your panel cannot feed.',
       'A new 240-volt circuit from the panel to the garage or outdoor pad. We measure that run while we are there.',
-      'Mounting a charger you already own, or one chosen before the visit. The label has to match the wire and the breaker.',
-      'An outdoor pedestal or wall mount when the parking spot is not inside. The charger has to be rated for the weather.',
-      'Permit paperwork when the city requires it. We pull the permit with the office your city uses.',
+      'A Tesla Wall Connector or another brand of home charger, including a unit you already bought. The nameplate has to match the wire and the breaker.',
+      'An outdoor pedestal or wall mount when the parking spot is not inside, including a cold weather outdoor unit. The charger has to be weather rated, and the mount keeps the cord off the ground.',
+      'Permit paperwork when the city requires it. Inside Sioux Falls, the city has its own inspection path. We pull the permit with the office your city uses.',
       'A load talk if the panel is already full. If it is full, we do the panel before the charger.',
     ],
     signsLead: 'Call us before you buy a charger if you are not sure your panel can feed it. A full panel means the charger has to wait.',
@@ -458,6 +459,9 @@ export const servicePages: ServicePage[] = [
       { q: 'How much does it cost to install a Level 2 EV charger?', a: 'Published national figures put installation at about $555 to $1,380, with an average near $970, or about $700 to $2,000 with the charger included. Distance from the panel and panel capacity move the price the most.' },
       { q: 'Do I need a panel upgrade for an EV charger?', a: 'Not always. If your panel has space and spare capacity, the charger can go on a new circuit. Older homes on 100 amp service sometimes need an upgrade first, which published figures put at about $800 to $2,000.' },
       { q: 'How long does EV charger installation take?', a: 'A straightforward garage install near the panel is often a quick visit. Long wire runs, outdoor mounts, or a panel upgrade take longer.' },
+      { q: 'Do you install a Tesla Wall Connector or another brand of charger?', a: 'Yes. We install a Tesla Wall Connector and other brand home chargers, including a unit you already bought, when the nameplate matches the circuit. Each charger gets its own 240 volt circuit after the panel capacity check.' },
+      { q: 'Can you install an EV charger outside in winter?', a: 'Yes. An outdoor install uses a weather rated charger, including a cold weather outdoor unit, and a mount that keeps the cord off the ground. A garage install stays out of snow and ice. The panel check and the 240 volt circuit are the same in winter.' },
+      { q: 'Does EV charger installation in Sioux Falls need a permit and inspection?', a: 'A new 240 volt circuit in Sioux Falls often needs a permit. The City of Sioux Falls requires a permit for most new circuits and equipment installs. Inside Sioux Falls, the city has its own inspection path. We pull the permit when the city requires it.' },
     ],
     related: ['/services/panel-upgrades', '/services/wiring-rewiring', '/services/outlet-switch-installation'],
   },

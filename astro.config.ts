@@ -6,8 +6,31 @@ import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 import { SITE } from './src/config/site';
 
+/**
+ * Service pages share service-pages.ts and brief-sections.ts.
+ * These stamps are the Nov 11, 2026 lastmod from before the EV and emergency refresh.
+ * Pages omitted here pick up the new git lastmod.
+ */
+const pinnedServiceLastmod: Record<string, string> = {
+  '/services/electrical-repair': '2026-11-11T15:22:47+00:00',
+  '/services/outlet-switch-installation': '2026-11-11T15:22:47+00:00',
+  '/services/panel-upgrades': '2026-11-11T15:22:47+00:00',
+  '/services/circuit-breaker-panel-repair': '2026-11-11T15:22:47+00:00',
+  '/services/wiring-rewiring': '2026-11-11T15:22:47+00:00',
+  '/services/generator-installation': '2026-11-11T15:22:47+00:00',
+  '/services/lighting-installation': '2026-11-11T15:22:47+00:00',
+  '/services/ceiling-fan-installation': '2026-11-11T15:22:47+00:00',
+  '/services/hot-tub-wiring': '2026-11-11T15:22:47+00:00',
+  '/services/electrical-inspections': '2026-11-11T15:22:47+00:00',
+  '/services/surge-protection': '2026-11-11T15:22:47+00:00',
+  '/services/smoke-co-detectors': '2026-11-11T15:22:47+00:00',
+  '/services/commercial-electrician': '2026-11-11T15:22:47+00:00',
+};
+
 function gitLastmod(pathname: string): string | undefined {
   const path = pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/$/, '') || '/';
+  const pinned = pinnedServiceLastmod[path];
+  if (pinned) return pinned;
   const guideSlug = path.startsWith('/guides/') ? path.slice('/guides/'.length) : '';
   const files = [
     path === '/' ? 'src/pages/index.astro' : '',
