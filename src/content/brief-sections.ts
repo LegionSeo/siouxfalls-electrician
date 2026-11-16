@@ -48,12 +48,6 @@ const generatorDryer = `#${faqAnchor('Can I plug a generator into a dryer outlet
 const plasterFaq = `#${faqAnchor('Can new wire be fished without wrecking the plaster?')}`;
 const stagedFaq = `#${faqAnchor('Do you rewire one room without doing the whole house?')}`;
 const clothFaq = `#${faqAnchor('Is cloth wiring the same as knob-and-tube, and does it need to be replaced?')}`;
-const chargerOutside = `#${faqAnchor('Can the charger be outside?')}`;
-const chargerBrands = `#${faqAnchor('Do you install a Tesla Wall Connector or another brand of charger?')}`;
-const chargerWinter = `#${faqAnchor('Can you install an EV charger outside in winter?')}`;
-const chargerPermit = `#${faqAnchor('Does EV charger installation in Sioux Falls need a permit and inspection?')}`;
-const afterHoursFaq = `#${faqAnchor('Do you answer emergency electrical calls after hours?')}`;
-
 const panelSource = 'Source: Angi, electrical panel upgrade cost, updated Oct 29, 2026';
 const fpeSource = 'Source: Angi, Federal Pacific breakers, updated Jul 9, 2026';
 const panelReplaceSource = 'Source: Angi, cost to replace a circuit breaker box, updated Oct 22, 2026';
@@ -293,7 +287,7 @@ const briefs: Record<string, PageBrief> = {
         heading: 'Safety steps while you wait',
         paragraphs: [
           'Make the area safe, then call. These steps are the same day or night.',
-          `Calls are answered after hours. The response is fast. See [Do you answer emergency electrical calls after hours?](${afterHoursFaq})`,
+          'Calls are answered after hours. The response is fast.',
         ],
         blocks: [
           {
@@ -502,7 +496,6 @@ const briefs: Record<string, PageBrief> = {
         paragraphs: [
           'We install a Tesla Wall Connector and other brand home chargers. A charger you already bought can be mounted when the nameplate matches the wire and the breaker.',
           'Each charger gets its own 240 volt circuit. A second charger uses the same panel capacity check: the panel has to have space and spare capacity before either unit is treated as ready.',
-          `See [Do you install a Tesla Wall Connector or another brand of charger?](${chargerBrands})`,
         ],
         blocks: [],
         links: [{ href: '/services/panel-upgrades', label: 'Panel upgrades' }],
@@ -513,7 +506,6 @@ const briefs: Record<string, PageBrief> = {
         paragraphs: [
           'A charger in an attached garage stays out of snow and ice. When the car parks outside, the install uses a weather rated charger, including a cold weather outdoor unit, and a mount that keeps the cord off the ground.',
           'Winter does not change the panel capacity check or the dedicated 240 volt circuit.',
-          `See [Can the charger be outside?](${chargerOutside}) and [Can you install an EV charger outside in winter?](${chargerWinter})`,
         ],
         blocks: [],
         links: [],
@@ -524,7 +516,6 @@ const briefs: Record<string, PageBrief> = {
         paragraphs: [
           'A new 240 volt circuit for an EV charger in Sioux Falls often needs a permit. The City of Sioux Falls requires a permit for most new circuits and equipment installs. We pull the permit when the city requires it.',
           'Inside Sioux Falls, the city has its own inspection path. The visit names what the job needs. Harrisburg and Tea are outside Sioux Falls, so a charger there follows the permit and inspection path for that town.',
-          `See [Does EV charger installation in Sioux Falls need a permit and inspection?](${chargerPermit})`,
         ],
         blocks: [],
         links: [
