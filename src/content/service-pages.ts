@@ -649,7 +649,7 @@ export const servicePages: ServicePage[] = [
     photo: 'service-surge',
     alt: 'Whole-house surge protector installed beside a breaker panel',
     answer:
-      'Surge protection in Sioux Falls means a whole-home surge protector installed at the panel so a spike has a path before it reaches the branch circuits. Point-of-use strips are not a substitute. The panel is opened to find a place for the device. Call {phone}.',
+      'Surge protection in Sioux Falls means a whole-home surge protector installed at the panel so a spike has a path before it reaches the branch circuits. Point-of-use strips are not a substitute. The panel is opened to find a place for the device. Call {phone}. [Is a whole house surge protector worth it?](/guides/is-whole-house-surge-protector-worth-it)',
     includedLead: 'The device sits at the service equipment. It does not replace a ground or a damaged panel.',
     included: [
       'A surge protective device listed for the panel you have. Your panel brand decides which one fits.',

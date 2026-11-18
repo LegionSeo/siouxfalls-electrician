@@ -18,15 +18,15 @@ const bodies = import.meta.glob<{ Content: any; compiledContent: () => Promise<s
 const body = bodies[`../../content/guides/${guide.slug}.md`];
 const Content = body.Content;
 const ctaPhoto = pagePhoto('hero-about', 'Electrical contractor van parked in a residential driveway, side door open, no people');
-// Keep this post's apostrophes and quotes as written so the visible FAQs match the JSON-LD.
-const exactHtml =
-  guide.slug === 'lights-flickering-in-house'
-    ? (await body.compiledContent())
-        .replaceAll('\u2018', "'")
-        .replaceAll('\u2019', "'")
-        .replaceAll('\u201C', '"')
-        .replaceAll('\u201D', '"')
-    : '';
+// Keep these posts' apostrophes and quotes as written so the visible FAQs match the JSON-LD.
+const exactQuoteSlugs = new Set(['lights-flickering-in-house', 'is-whole-house-surge-protector-worth-it']);
+const exactHtml = exactQuoteSlugs.has(guide.slug)
+  ? (await body.compiledContent())
+      .replaceAll('\u2018', "'")
+      .replaceAll('\u2019', "'")
+      .replaceAll('\u201C', '"')
+      .replaceAll('\u201D', '"')
+  : '';
 ---
 
 <Layout title={guide.title} description={guide.description} fullTitle dateModified={guide.dateModified ?? (guide.slug === 'outlet-not-working' ? BRIEF_ISO : undefined)}>

@@ -8,16 +8,18 @@ import { SITE } from './src/config/site';
 
 /**
  * Service pages share service-pages.ts and brief-sections.ts.
- * These stamps are the Nov 11, 2026 lastmod from before the EV and emergency refresh.
- * Pages omitted here pick up the new git lastmod.
+ * These stamps are the lastmod from before a later edit to that shared file.
+ * The Nov 16 values are the EV and emergency refresh. Pages omitted here pick up git lastmod.
  */
 const pinnedServiceLastmod: Record<string, string> = {
   '/services/electrical-repair': '2026-11-11T15:22:47+00:00',
+  '/services/emergency-electrician': '2026-11-16T15:38:42+00:00',
   '/services/outlet-switch-installation': '2026-11-11T15:22:47+00:00',
   '/services/panel-upgrades': '2026-11-11T15:22:47+00:00',
   '/services/circuit-breaker-panel-repair': '2026-11-11T15:22:47+00:00',
   '/services/wiring-rewiring': '2026-11-11T15:22:47+00:00',
   '/services/generator-installation': '2026-11-11T15:22:47+00:00',
+  '/services/ev-charger-installation': '2026-11-16T15:38:42+00:00',
   '/services/lighting-installation': '2026-11-11T15:22:47+00:00',
   '/services/ceiling-fan-installation': '2026-11-11T15:22:47+00:00',
   '/services/hot-tub-wiring': '2026-11-11T15:22:47+00:00',
@@ -27,9 +29,19 @@ const pinnedServiceLastmod: Record<string, string> = {
   '/services/commercial-electrician': '2026-11-11T15:22:47+00:00',
 };
 
+/**
+ * Guide posts share src/pages/guides/[slug].astro.
+ * These stamps stay at the Nov 11, 2026 lastmod so a shared template edit does not move them.
+ * A guide omitted here uses the latest git date of its markdown, schema, and the shared template.
+ */
+const pinnedGuideLastmod: Record<string, string> = {
+  '/guides/outlet-not-working': '2026-11-11T15:22:47+00:00',
+  '/guides/lights-flickering-in-house': '2026-11-11T15:22:47+00:00',
+};
+
 function gitLastmod(pathname: string): string | undefined {
   const path = pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '').replace(/\/$/, '') || '/';
-  const pinned = pinnedServiceLastmod[path];
+  const pinned = pinnedServiceLastmod[path] ?? pinnedGuideLastmod[path];
   if (pinned) return pinned;
   const guideSlug = path.startsWith('/guides/') ? path.slice('/guides/'.length) : '';
   const files = [

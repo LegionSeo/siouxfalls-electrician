@@ -1,5 +1,6 @@
 import flickerSchema from './guides/lights-flickering-in-house.schema.json';
 import outletSchema from './guides/outlet-not-working.schema.json';
+import surgeSchema from './guides/is-whole-house-surge-protector-worth-it.schema.json';
 
 export interface Guide {
   slug: string;
@@ -50,5 +51,17 @@ export const guides: Guide[] = [
       label: 'what to check when an outlet is not working',
     },
     schema: flickerSchema as Record<string, unknown>[],
+  },
+  {
+    slug: 'is-whole-house-surge-protector-worth-it',
+    title: 'Is a Whole House Surge Protector Worth It? Sioux Falls',
+    h1: 'Is a Whole House Surge Protector Worth It in Sioux Falls?',
+    description:
+      "Is a whole house surge protector worth it in Sioux Falls? What it covers, what it can't stop, when SD code requires one, and when to call (605) 250-4838.",
+    summary: "What it covers, what it can't stop, and when South Dakota code already requires one.",
+    datePublished: '2026-11-18',
+    dateLabel: 'November 18, 2026',
+    dateModified: '2026-11-18',
+    schema: surgeSchema as Record<string, unknown>[],
   },
 ];
