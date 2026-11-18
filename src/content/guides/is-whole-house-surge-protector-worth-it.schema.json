@@ -1,0 +1,114 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": "https://www.siouxfalls-electrician.com/guides/is-whole-house-surge-protector-worth-it#article",
+    "headline": "Is a Whole House Surge Protector Worth It in Sioux Falls?",
+    "description": "Is a whole house surge protector worth it in Sioux Falls? What it covers, what it can't stop, when SD code requires one, and when to call (605) 250-4838.",
+    "url": "https://www.siouxfalls-electrician.com/guides/is-whole-house-surge-protector-worth-it",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.siouxfalls-electrician.com/guides/is-whole-house-surge-protector-worth-it"
+    },
+    "datePublished": "2026-11-18",
+    "dateModified": "2026-11-18",
+    "inLanguage": "en-US",
+    "author": {
+      "@type": "Organization",
+      "@id": "https://www.siouxfalls-electrician.com/#business",
+      "name": "Sioux Falls Electricians",
+      "url": "https://www.siouxfalls-electrician.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://www.siouxfalls-electrician.com/#business",
+      "name": "Sioux Falls Electricians",
+      "url": "https://www.siouxfalls-electrician.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.siouxfalls-electrician.com/logo.png"
+      }
+    },
+    "about": "Whole house surge protectors for Sioux Falls, South Dakota homes",
+    "keywords": "is a whole house surge protector worth it, Sioux Falls, whole house surge protector, surge protective device, panel surge protection, South Dakota electrical code",
+    "spatialCoverage": {
+      "@type": "City",
+      "name": "Sioux Falls",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "South Dakota"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://www.siouxfalls-electrician.com/guides/is-whole-house-surge-protector-worth-it#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is a whole house surge protector worth it if I already use power strips?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually, yes. Strips only guard what is plugged into them. The furnace, air conditioner, range, washer, dryer and garage door opener are wired or plugged in where a strip can't help. Keep your strips on TVs and computers and add the panel device for the rest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will a whole house surge protector stop lightning damage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No device can promise that. A direct strike can still damage equipment. A panel surge protector is built for surges that come in on the power lines, such as a nearby strike or a utility switching event, plus the smaller surges made inside your home."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a whole house surge protector required in South Dakota?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For new or replaced services, yes. South Dakota inspects permits under the 2023 National Electrical Code, which requires a surge protective device on services supplying homes. A house with an older panel that isn't being changed generally isn't forced to add one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know if my surge protector still works?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most panel devices have an indicator light. Check it after big storms and a few times a year. If the light shows a fault or is out, the device may have used itself up and should be checked and replaced. Don't open the panel yourself."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a surge protector be added to my existing panel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Often, yes. It usually needs an open breaker space or a side mount, plus a working ground path. A full, damaged or outdated panel may need repair or an upgrade first. An electrician checks this before anything is installed."
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.siouxfalls-electrician.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Guides",
+        "item": "https://www.siouxfalls-electrician.com/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Is a Whole House Surge Protector Worth It in Sioux Falls?",
+        "item": "https://www.siouxfalls-electrician.com/guides/is-whole-house-surge-protector-worth-it"
+      }
+    ]
+  }
+]
