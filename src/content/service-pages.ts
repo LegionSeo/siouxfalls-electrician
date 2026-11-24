@@ -193,7 +193,7 @@ export const servicePages: ServicePage[] = [
     included: [
       'Replacement of a panel that has no open breaker spaces. A full panel cannot safely take another circuit.',
       'Replacement of a fuse box with a breaker panel. We match the new panel to your service and to what you want to run.',
-      'Panels that are warm, rusted, or buzzing. We look at the heat or the buzzing before we set the upgrade. If the service size can stay, that visit is a repair.',
+      'Panels that are warm, rusted, or buzzing. We look at the heat or the buzzing before we set the upgrade. If the service size can stay, that visit is [circuit breaker and panel repair](/services/circuit-breaker-panel-repair).',
       'Service changes coordinated with the utility when the meter or mast has to move. If the power company has to move the meter, we line that up before we swap the panel.',
       'Labeling of circuits after the new panel is on. You get a copy of the new directory.',
       'Room for a later EV charger, shop, or addition when you say that is the goal. Tell us, and we will leave space for it.',
@@ -225,6 +225,8 @@ export const servicePages: ServicePage[] = [
       { q: 'Should I replace my Federal Pacific panel even if it works?', a: 'Many electricians recommend it. Testing has shown that some Stab-Lok breakers fail to trip when they should, and a breaker that does not trip cannot protect the circuit. Some insurers and inspectors also ask about these panels.' },
       { q: 'How much does it cost to replace a fuse box?', a: 'Published national figures put replacing a fuse box with a breaker panel at about $1,500 to $2,000, more if the service size also goes up.' },
       { q: 'Do I need 200 amp service?', a: 'Not always. A home adding an EV charger, heat pump, hot tub, or shop often does. Our [generator](/tools/generator-size-calculator) and [cost tools](/tools/electrical-cost-calculator) give a rough start, and a load review on site gives the real answer.' },
+      { q: 'How old is too old for an electrical panel?', a: 'Most panels last roughly 25 to 40 years. Replace one sooner for a Federal Pacific or Zinsco panel, for breakers that trip often or feel warm, for scorch marks, or when there is not enough room for new circuits. A typical panel replacement takes about a day.' },
+      { q: 'Do I need 200 amp or 400 amp service?', a: '200 amps covers most homes, including one EV charger. 400 amps makes sense for large homes with multiple EV chargers, electric heat, a shop, or a pool and hot tub. A load calculation decides it.' },
     ],
     related: ['/services/circuit-breaker-panel-repair', '/services/ev-charger-installation', '/services/wiring-rewiring', '/services/surge-protection'],
   },
@@ -251,7 +253,7 @@ export const servicePages: ServicePage[] = [
       'A ground fault near a kitchen, bath, garage, or outdoor outlet. A GFCI or an AFCI can open before a standard breaker does. We find the device or the cable that is leaking.',
       'A loose wire at the breaker, at a device, or in a splice. The cover may feel warm, or lights may dip when a motor starts. We remake the connection that is heating. A larger breaker is not the fix.',
       'A breaker that opens below its rating because it is worn out. We test that before we change it. The replacement has to be the type that panel is built to hold. A new breaker does not fix a damaged wire.',
-      'Water, rust, or a breaker that will not seat on the bus. That is panel damage. If the service size can stay, we repair or replace the panel. More spaces or more amps is a panel upgrade.',
+      'Water, rust, or a breaker that will not seat on the bus. That is panel damage. If the service size can stay, we repair or replace the panel. More spaces or more amps is a [panel upgrade](/services/panel-upgrades).',
     ],
     signsLead:
       'These are signs the panel or a breaker has failed. A panel that still works but has no open spaces, or a fuse box you want to leave so you can add a charger or a shop, belongs on the [panel upgrades](/services/panel-upgrades) page. A Stab-Lok panel replacement belongs there too.',
@@ -474,7 +476,7 @@ export const servicePages: ServicePage[] = [
     photo: 'service-lighting-hero',
     alt: 'Electrician installing recessed lights in a kitchen ceiling',
     answer:
-      'Lighting installation in Sioux Falls covers recessed lights, LED swaps, new fixtures, and outdoor lighting. The existing circuit is checked before more lamps are added to it. The layout is marked in the room before a hole is cut. Call {phone}.',
+      'Lighting installation in Sioux Falls covers recessed lights, LED swaps, new fixtures, and outdoor lighting. In a Sioux Falls home that often means recessed lighting in a kitchen or hall, canless lighting where the ceiling is too shallow for an old housing, a pot light over a dark corner, or ceiling light installation on a box that is already there. The existing circuit is checked before more lamps are added to it. The layout is marked in the room before a hole is cut. Call {phone}.',
     includedHeading: 'What’s included in lighting installation',
     includedLead: 'We install new lights and we replace old ones, inside and outside. We check the circuit before we add more lamps.',
     included: [
@@ -505,6 +507,7 @@ export const servicePages: ServicePage[] = [
       { q: 'Do you install fixtures I bought?', a: 'Yes, when the box can carry the weight and the wiring matches. Heavy fixtures need a fan-rated or listed brace, which may be a different visit.' },
       { q: 'Will new LED lamps work on my old dimmer?', a: 'Only if the dimmer is listed for those lamps. A mismatch flickers. A dimmer change can be part of the same visit.' },
       { q: 'Can outdoor lights share an indoor circuit?', a: 'Sometimes. The load and the GFCI needs decide it. A long yard run is usually its own circuit.' },
+      { q: 'Do I need an electrician to install or replace a light fixture?', a: 'A simple like for like swap on an existing box can be a DIY job. New circuits, new boxes, recessed or canless lighting, heavy fixtures, and anything with aluminum wiring or no ground should go to a licensed electrician. Local permit rules can apply.' },
     ],
     related: ['/services/ceiling-fan-installation', '/services/wiring-rewiring', '/services/commercial-electrician'],
   },
@@ -690,7 +693,7 @@ export const servicePages: ServicePage[] = [
     photo: 'service-smoke',
     alt: 'Electrician installing a hardwired smoke detector on a ceiling',
     answer:
-      'Smoke detector installation in Sioux Falls replaces or adds hardwired smoke alarms and carbon monoxide detectors, including the interconnect wire when the house already has it. Each alarm is dated and tested from its button. Call {phone}.',
+      'Smoke detector installation in Sioux Falls replaces or adds hardwired smoke alarms and carbon monoxide detectors, including the interconnect wire when the house already has it. Hardwired smoke detector installation uses a ceiling box that already has the alarm circuit, and hardwired smoke detector replacement swaps a dated or chirping unit on that same circuit. Each alarm is dated and tested from its button. Call {phone}.',
     includedLead: 'This is device and circuit work, from smoke detector installation to hardwired smoke detector replacement.',
     included: [
       'Replacement of hardwired smoke alarms that are past their date or that chirp after a new battery. That date means the sensor is done, not just the battery.',
@@ -719,6 +722,7 @@ export const servicePages: ServicePage[] = [
       { q: 'Can you add interconnection to old alarms?', a: 'Only if a traveler wire can be run or is already in the box. Wireless interconnect is a product choice. Not every ceiling can be fished.' },
       { q: 'Do you tell me how many alarms the code requires?', a: 'The city or the fire official sets the required locations. We install the devices you approve.' },
       { q: 'Are CO alarms the same device as smoke alarms?', a: 'They can be separate or combined. The notes list which heads go where, based on the appliances and the floors you describe.' },
+      { q: 'How often should smoke detectors be replaced?', a: 'Smoke detectors should be replaced about every 10 years from the manufacture date printed on the back. CO alarms should be replaced about every 5 to 7 years, depending on the model. Replace hardwired interconnected units together.' },
     ],
     related: ['/services/electrical-repair', '/services/lighting-installation', '/services/electrical-inspections'],
   },
