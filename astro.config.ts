@@ -9,23 +9,25 @@ import { SITE } from './src/config/site';
 /**
  * Service pages share service-pages.ts and brief-sections.ts.
  * These stamps are the lastmod from before a later edit to that shared file.
- * The Nov 16 values are the EV and emergency refresh. Pages omitted here pick up git lastmod.
+ * The Nov 16 values are the EV and emergency refresh.
+ * The Nov 23 values are the lighting, smoke and CO, and panel copy refresh.
+ * Pages omitted here pick up git lastmod.
  */
 const pinnedServiceLastmod: Record<string, string> = {
   '/services/electrical-repair': '2026-11-11T15:22:47+00:00',
   '/services/emergency-electrician': '2026-11-16T15:38:42+00:00',
   '/services/outlet-switch-installation': '2026-11-11T15:22:47+00:00',
-  '/services/panel-upgrades': '2026-11-11T15:22:47+00:00',
-  '/services/circuit-breaker-panel-repair': '2026-11-11T15:22:47+00:00',
+  '/services/panel-upgrades': '2026-11-23',
+  '/services/circuit-breaker-panel-repair': '2026-11-23',
   '/services/wiring-rewiring': '2026-11-11T15:22:47+00:00',
   '/services/generator-installation': '2026-11-11T15:22:47+00:00',
   '/services/ev-charger-installation': '2026-11-16T15:38:42+00:00',
-  '/services/lighting-installation': '2026-11-11T15:22:47+00:00',
+  '/services/lighting-installation': '2026-11-23',
   '/services/ceiling-fan-installation': '2026-11-11T15:22:47+00:00',
   '/services/hot-tub-wiring': '2026-11-11T15:22:47+00:00',
   '/services/electrical-inspections': '2026-11-11T15:22:47+00:00',
   '/services/surge-protection': '2026-11-11T15:22:47+00:00',
-  '/services/smoke-co-detectors': '2026-11-11T15:22:47+00:00',
+  '/services/smoke-co-detectors': '2026-11-23',
   '/services/commercial-electrician': '2026-11-11T15:22:47+00:00',
 };
 
